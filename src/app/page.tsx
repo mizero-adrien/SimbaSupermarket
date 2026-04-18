@@ -25,20 +25,27 @@ export default function HomePage() {
   return (
     <div className="page-transition">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white py-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
+      <section className="relative hero-section py-20 px-4 overflow-hidden">
+        {/* Light mode blobs */}
+        <div className="absolute inset-0 opacity-40 dark:hidden">
           <div className="absolute top-10 left-10 w-64 h-64 bg-[#16a34a] rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#f59e0b] rounded-full blur-3xl" />
         </div>
+        {/* Dark mode blobs */}
+        <div className="absolute inset-0 opacity-10 hidden dark:block">
+          <div className="absolute top-10 left-10 w-64 h-64 bg-[#16a34a] rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#f59e0b] rounded-full blur-3xl" />
+        </div>
+
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-[#16a34a]/20 border border-[#16a34a]/30 rounded-full px-4 py-1 text-[#4ade80] text-sm font-medium mb-6">
+          <div className="inline-block bg-[#16a34a]/20 dark:bg-[#16a34a]/20 border border-[#16a34a]/40 dark:border-[#16a34a]/30 rounded-full px-4 py-1 text-[#166534] dark:text-[#4ade80] text-sm font-medium mb-6">
             🇷🇼 Rwanda&apos;s Premier Online Supermarket
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-balance">
+          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-balance text-[#0f172a] dark:text-white">
             Rwanda&apos;s Freshest{' '}
             <span className="text-[#16a34a]">Online Supermarket</span>
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-[#166534] dark:text-gray-300 mb-8 max-w-2xl mx-auto font-medium">
             552 products delivered to your door in Kigali. Shop groceries, fresh produce, and more with ease.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -51,7 +58,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/products"
-              className="flex items-center justify-center gap-2 border-2 border-white/40 hover:border-white text-white font-semibold px-8 py-3 rounded-btn transition-colors"
+              className="flex items-center justify-center gap-2 border-2 border-[#0f172a] dark:border-white/40 hover:border-[#16a34a] dark:hover:border-white text-[#0f172a] dark:text-white font-semibold px-8 py-3 rounded-btn transition-colors"
             >
               <Grid3X3 size={18} />
               {t('Browse Categories')}
@@ -59,7 +66,7 @@ export default function HomePage() {
           </div>
 
           {/* Trust badges */}
-          <div className="flex flex-wrap justify-center gap-6 mt-10 text-sm text-gray-400">
+          <div className="flex flex-wrap justify-center gap-6 mt-10 text-sm text-[#166534] dark:text-gray-400 font-medium">
             <span className="flex items-center gap-2">🚚 Fast Delivery</span>
             <span className="flex items-center gap-2">✅ Verified Products</span>
             <span className="flex items-center gap-2">💳 MoMo Payment</span>

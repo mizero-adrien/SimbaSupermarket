@@ -51,6 +51,26 @@ export function getCategoryImage(category: string): string {
   return categoryImages[category] ?? FALLBACK_IMAGE;
 }
 
+const SALE_DISCOUNT = 0.15;
+
+// Deterministic: product id hash → same products are always on sale
+function hashId(id: string | number): number {
+  const s = String(id);
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+}
+
+export function getSaleInfo(product: Product): { onSale: boolean; originalPrice: number; salePrice: number; savePct: number } {
+  const onSale = hashId(product.id) % 5 === 0; // ~20%
+  return {
+    onSale,
+    originalPrice: product.price,
+    salePrice: onSale ? Math.round(product.price * (1 - SALE_DISCOUNT)) : product.price,
+    savePct: Math.round(SALE_DISCOUNT * 100),
+  };
+}
+
 export function getCategories(products: Product[]): { name: string; count: number }[] {
   const counts: Record<string, number> = {};
   for (const p of products) {

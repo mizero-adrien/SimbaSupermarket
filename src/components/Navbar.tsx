@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, Search, Menu, X, Sun, Moon, ChevronDown, Globe } from 'lucide-react';
+import { ShoppingCart, Search, X, Sun, Moon, ChevronDown, Globe } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
@@ -217,8 +217,8 @@ export default function Navbar() {
             </button>
           )}
 
-          {/* Cart */}
-          <Link href="/cart" className="relative p-2 text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors" aria-label={`Cart, ${totalItems} items`}>
+          {/* Cart icon — desktop only; mobile uses BottomNav */}
+          <Link href="/cart" className="hidden md:flex relative p-2 text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors" aria-label={`Cart, ${totalItems} items`}>
             <ShoppingCart size={20} />
             {totalItems > 0 && (
               <span className="absolute -top-0.5 -right-0.5 bg-[#f59e0b] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
@@ -226,15 +226,6 @@ export default function Navbar() {
               </span>
             )}
           </Link>
-
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 text-light-text dark:text-dark-text"
-            onClick={() => setMenuOpen(v => !v)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
         </div>
       </div>
 

@@ -6,6 +6,8 @@ import { CartProvider } from '@/context/CartContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
+import BottomNav from '@/components/BottomNav';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -25,6 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Navbar />
               <main>{children}</main>
               <Footer />
+              <BackToTop />
+              <BottomNav />
             </CartProvider>
           </LanguageProvider>
         </ThemeProvider>
