@@ -1,0 +1,4418 @@
+[
+  {
+    "id": "1",
+    "name": "Coca-Cola 500ml",
+    "category": "Beverages",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "2",
+    "name": "Pepsi 500ml",
+    "category": "Beverages",
+    "price": 1700,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "3",
+    "name": "Fanta Orange 500ml",
+    "category": "Beverages",
+    "price": 7600,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "4",
+    "name": "Sprite 500ml",
+    "category": "Beverages",
+    "price": 5200,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "5",
+    "name": "Mountain Dew 500ml",
+    "category": "Beverages",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "6",
+    "name": "Minute Maid Orange 1L",
+    "category": "Beverages",
+    "price": 2600,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "7",
+    "name": "Minute Maid Apple 1L",
+    "category": "Beverages",
+    "price": 1900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "8",
+    "name": "Dawa Plus Energy Drink",
+    "category": "Beverages",
+    "price": 1900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "9",
+    "name": "Red Bull 250ml",
+    "category": "Beverages",
+    "price": 5500,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "10",
+    "name": "Monster Energy 500ml",
+    "category": "Beverages",
+    "price": 4400,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "11",
+    "name": "Inyange Milk 500ml",
+    "category": "Beverages",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "12",
+    "name": "Inyange Water 500ml",
+    "category": "Beverages",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "13",
+    "name": "Bralirwa Primus 500ml",
+    "category": "Beverages",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "14",
+    "name": "Mutzig Beer 330ml",
+    "category": "Beverages",
+    "price": 6900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "15",
+    "name": "Amstel Beer 500ml",
+    "category": "Beverages",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "16",
+    "name": "Heineken 330ml",
+    "category": "Beverages",
+    "price": 800,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "17",
+    "name": "Kilimanjaro Beer 500ml",
+    "category": "Beverages",
+    "price": 3300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "18",
+    "name": "Nile Special Beer 500ml",
+    "category": "Beverages",
+    "price": 4300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "19",
+    "name": "Club Pilsener 500ml",
+    "category": "Beverages",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "20",
+    "name": "Rwenzori Water 750ml",
+    "category": "Beverages",
+    "price": 6500,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "21",
+    "name": "Vivo Water 1.5L",
+    "category": "Beverages",
+    "price": 1800,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "22",
+    "name": "Masafi Water 500ml",
+    "category": "Beverages",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "23",
+    "name": "Evian Water 500ml",
+    "category": "Beverages",
+    "price": 1800,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "24",
+    "name": "Fiji Water 330ml",
+    "category": "Beverages",
+    "price": 5300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "25",
+    "name": "Lucozade Sport Orange",
+    "category": "Beverages",
+    "price": 5300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "26",
+    "name": "Lucozade Energy Original",
+    "category": "Beverages",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "27",
+    "name": "Ribena Blackcurrant 250ml",
+    "category": "Beverages",
+    "price": 2300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "28",
+    "name": "Capri-Sun Orange 200ml",
+    "category": "Beverages",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "29",
+    "name": "Capri-Sun Tropical 200ml",
+    "category": "Beverages",
+    "price": 7400,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "30",
+    "name": "Daimon Juice Mango 1L",
+    "category": "Beverages",
+    "price": 2000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "31",
+    "name": "Daimon Juice Guava 1L",
+    "category": "Beverages",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "32",
+    "name": "SunSet Passion Juice 500ml",
+    "category": "Beverages",
+    "price": 4200,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "33",
+    "name": "Fruits of the Forest 1L",
+    "category": "Beverages",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "34",
+    "name": "Tropicana Orange 1L",
+    "category": "Beverages",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "35",
+    "name": "Tropicana Apple 1L",
+    "category": "Beverages",
+    "price": 5300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "36",
+    "name": "Mango Nectar 250ml",
+    "category": "Beverages",
+    "price": 4000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "37",
+    "name": "Pineapple Juice 500ml",
+    "category": "Beverages",
+    "price": 3500,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "38",
+    "name": "Hibiscus Drink 500ml",
+    "category": "Beverages",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "39",
+    "name": "Ugano Tea Bag 100g",
+    "category": "Beverages",
+    "price": 5300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "40",
+    "name": "Lipton Yellow Label 100g",
+    "category": "Beverages",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "41",
+    "name": "Tetley Green Tea 50g",
+    "category": "Beverages",
+    "price": 6900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "42",
+    "name": "Nescafe Classic 200g",
+    "category": "Beverages",
+    "price": 4400,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "43",
+    "name": "Jacobs Kronung Coffee 200g",
+    "category": "Beverages",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "44",
+    "name": "Lavazza Espresso 250g",
+    "category": "Beverages",
+    "price": 1700,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "45",
+    "name": "Kericho Gold Tea 50g",
+    "category": "Beverages",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "46",
+    "name": "Chai Bora Tea 100g",
+    "category": "Beverages",
+    "price": 7900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "47",
+    "name": "BonCafe Instant 100g",
+    "category": "Beverages",
+    "price": 2600,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "48",
+    "name": "Milo Powder 400g",
+    "category": "Beverages",
+    "price": 4900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "49",
+    "name": "Nesquik Chocolate 400g",
+    "category": "Beverages",
+    "price": 7100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "50",
+    "name": "Ovaltine Chocolate 400g",
+    "category": "Beverages",
+    "price": 3500,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "51",
+    "name": "Horlicks Malt 400g",
+    "category": "Beverages",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "52",
+    "name": "Bournvita Chocolate 400g",
+    "category": "Beverages",
+    "price": 4000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "53",
+    "name": "Peak Milk Powder 400g",
+    "category": "Beverages",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "54",
+    "name": "Skimmed Milk 1L",
+    "category": "Beverages",
+    "price": 7100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "55",
+    "name": "Full Cream Milk 1L",
+    "category": "Beverages",
+    "price": 7500,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "56",
+    "name": "Soy Milk 500ml",
+    "category": "Beverages",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "57",
+    "name": "Oat Milk 1L",
+    "category": "Beverages",
+    "price": 900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "58",
+    "name": "Almond Milk 1L",
+    "category": "Beverages",
+    "price": 2600,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "59",
+    "name": "Coconut Water 330ml",
+    "category": "Beverages",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "60",
+    "name": "Sugarcane Juice 500ml",
+    "category": "Beverages",
+    "price": 4600,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "61",
+    "name": "Tamarind Drink 330ml",
+    "category": "Beverages",
+    "price": 7900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "62",
+    "name": "Ginger Beer 330ml",
+    "category": "Beverages",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "63",
+    "name": "Kombucha Original 330ml",
+    "category": "Beverages",
+    "price": 3900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "64",
+    "name": "Sparkling Water Lemon 330ml",
+    "category": "Beverages",
+    "price": 6600,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "65",
+    "name": "Tonic Water 200ml",
+    "category": "Beverages",
+    "price": 5900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "66",
+    "name": "Elderflower Cordial 500ml",
+    "category": "Beverages",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "67",
+    "name": "Rose Water Drink 250ml",
+    "category": "Beverages",
+    "price": 6300,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "68",
+    "name": "Barley Water 500ml",
+    "category": "Beverages",
+    "price": 7900,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "69",
+    "name": "Coca-Cola 500ml (2)",
+    "category": "Beverages",
+    "price": 1500,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "70",
+    "name": "Pepsi 500ml (3)",
+    "category": "Beverages",
+    "price": 8000,
+    "image": "https://images.unsplash.com/photo-1544145945-f90425340c7e?w=300&h=200&fit=crop",
+    "description": "Refreshing drink to quench your thirst. Perfect for any occasion."
+  },
+  {
+    "id": "71",
+    "name": "Inyange Full Cream Yogurt 500g",
+    "category": "Dairy",
+    "price": 5500,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "72",
+    "name": "Inyange Strawberry Yogurt 200g",
+    "category": "Dairy",
+    "price": 1400,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "73",
+    "name": "Inyange Plain Yogurt 1kg",
+    "category": "Dairy",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "74",
+    "name": "Brookside Yogurt Vanilla 500g",
+    "category": "Dairy",
+    "price": 6600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "75",
+    "name": "Activia Probiotic Yogurt 400g",
+    "category": "Dairy",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "76",
+    "name": "Greek Yogurt 200g",
+    "category": "Dairy",
+    "price": 7200,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "77",
+    "name": "Inyange Butter 250g",
+    "category": "Dairy",
+    "price": 5100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "78",
+    "name": "Blue Band Margarine 500g",
+    "category": "Dairy",
+    "price": 9900,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "79",
+    "name": "Stork Margarine 250g",
+    "category": "Dairy",
+    "price": 8800,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "80",
+    "name": "Anchor Butter Unsalted 200g",
+    "category": "Dairy",
+    "price": 7200,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "81",
+    "name": "Kerrygold Butter 200g",
+    "category": "Dairy",
+    "price": 9800,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "82",
+    "name": "Lurpak Butter 250g",
+    "category": "Dairy",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "83",
+    "name": "Gouda Cheese 200g",
+    "category": "Dairy",
+    "price": 2700,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "84",
+    "name": "Cheddar Cheese Block 250g",
+    "category": "Dairy",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "85",
+    "name": "Mozzarella 200g",
+    "category": "Dairy",
+    "price": 8800,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "86",
+    "name": "Feta Cheese 200g",
+    "category": "Dairy",
+    "price": 12000,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "87",
+    "name": "Cream Cheese Philadelphia 200g",
+    "category": "Dairy",
+    "price": 10700,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "88",
+    "name": "Processed Cheese Slices 200g",
+    "category": "Dairy",
+    "price": 5000,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "89",
+    "name": "La Vache Qui Rit Cheese 200g",
+    "category": "Dairy",
+    "price": 11100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "90",
+    "name": "Edam Cheese 250g",
+    "category": "Dairy",
+    "price": 5900,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "91",
+    "name": "Parmesan Cheese 100g",
+    "category": "Dairy",
+    "price": 2800,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "92",
+    "name": "Brie Cheese 125g",
+    "category": "Dairy",
+    "price": 2400,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "93",
+    "name": "Camembert Cheese 125g",
+    "category": "Dairy",
+    "price": 10200,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "94",
+    "name": "Cottage Cheese 200g",
+    "category": "Dairy",
+    "price": 3200,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "95",
+    "name": "Inyange Milk 1L",
+    "category": "Dairy",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "96",
+    "name": "Inyange Milk 500ml",
+    "category": "Dairy",
+    "price": 8500,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "97",
+    "name": "UHT Whole Milk 1L",
+    "category": "Dairy",
+    "price": 6200,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "98",
+    "name": "UHT Skimmed Milk 1L",
+    "category": "Dairy",
+    "price": 5300,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "99",
+    "name": "Lactose-Free Milk 1L",
+    "category": "Dairy",
+    "price": 7400,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "100",
+    "name": "Condensed Milk 397g",
+    "category": "Dairy",
+    "price": 7900,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "101",
+    "name": "Evaporated Milk 410g",
+    "category": "Dairy",
+    "price": 4400,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "102",
+    "name": "Nestle Cream 170g",
+    "category": "Dairy",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "103",
+    "name": "Whipping Cream 500ml",
+    "category": "Dairy",
+    "price": 10100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "104",
+    "name": "Double Cream 250ml",
+    "category": "Dairy",
+    "price": 6700,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "105",
+    "name": "Sour Cream 200g",
+    "category": "Dairy",
+    "price": 5500,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "106",
+    "name": "Crème Fraîche 200g",
+    "category": "Dairy",
+    "price": 8800,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "107",
+    "name": "Ice Cream Vanilla 500ml",
+    "category": "Dairy",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "108",
+    "name": "Ice Cream Chocolate 500ml",
+    "category": "Dairy",
+    "price": 11300,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "109",
+    "name": "Ice Cream Strawberry 500ml",
+    "category": "Dairy",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "110",
+    "name": "Frozen Yogurt Mango 250ml",
+    "category": "Dairy",
+    "price": 7100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "111",
+    "name": "Inyange Ghee 500g",
+    "category": "Dairy",
+    "price": 11000,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "112",
+    "name": "Pure Ghee Tin 1kg",
+    "category": "Dairy",
+    "price": 6900,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "113",
+    "name": "Cooking Butter 200g",
+    "category": "Dairy",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "114",
+    "name": "Kefir Plain 500ml",
+    "category": "Dairy",
+    "price": 4900,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "115",
+    "name": "Lassi Mango 250ml",
+    "category": "Dairy",
+    "price": 5800,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "116",
+    "name": "Drinking Yogurt Strawberry 330ml",
+    "category": "Dairy",
+    "price": 2000,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "117",
+    "name": "Cheese Spread Garlic 200g",
+    "category": "Dairy",
+    "price": 1700,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "118",
+    "name": "Ricotta Cheese 250g",
+    "category": "Dairy",
+    "price": 2300,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "119",
+    "name": "Mascarpone 250g",
+    "category": "Dairy",
+    "price": 9700,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "120",
+    "name": "Provolone Cheese 200g",
+    "category": "Dairy",
+    "price": 11600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "121",
+    "name": "Havarti Cheese 200g",
+    "category": "Dairy",
+    "price": 9600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "122",
+    "name": "Swiss Cheese Slice 200g",
+    "category": "Dairy",
+    "price": 5200,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "123",
+    "name": "Emmental Cheese 200g",
+    "category": "Dairy",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "124",
+    "name": "Manchego Cheese 150g",
+    "category": "Dairy",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "125",
+    "name": "Paneer Fresh 200g",
+    "category": "Dairy",
+    "price": 1300,
+    "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&h=200&fit=crop",
+    "description": "Fresh dairy product from trusted farms. Rich in nutrients."
+  },
+  {
+    "id": "126",
+    "name": "Lays Classic Chips 150g",
+    "category": "Snacks",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "127",
+    "name": "Pringles Original 165g",
+    "category": "Snacks",
+    "price": 5600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "128",
+    "name": "Pringles Sour Cream 165g",
+    "category": "Snacks",
+    "price": 2400,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "129",
+    "name": "Doritos Nacho Cheese 150g",
+    "category": "Snacks",
+    "price": 3900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "130",
+    "name": "Doritos Cool Ranch 150g",
+    "category": "Snacks",
+    "price": 3800,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "131",
+    "name": "Cheetos Crunchy 100g",
+    "category": "Snacks",
+    "price": 1900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "132",
+    "name": "Nile Crisps Salt 100g",
+    "category": "Snacks",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "133",
+    "name": "Kibo Crisps Paprika 100g",
+    "category": "Snacks",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "134",
+    "name": "Safari Groundnuts 200g",
+    "category": "Snacks",
+    "price": 4600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "135",
+    "name": "Kasuku Popcorn Original 100g",
+    "category": "Snacks",
+    "price": 3200,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "136",
+    "name": "Kasuku Popcorn Caramel 100g",
+    "category": "Snacks",
+    "price": 3400,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "137",
+    "name": "Jolly Time Popcorn 300g",
+    "category": "Snacks",
+    "price": 5100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "138",
+    "name": "Microwave Popcorn Butter 100g",
+    "category": "Snacks",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "139",
+    "name": "Rice Cakes Plain 130g",
+    "category": "Snacks",
+    "price": 5900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "140",
+    "name": "Corn Thins Original 150g",
+    "category": "Snacks",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "141",
+    "name": "Ritz Crackers 200g",
+    "category": "Snacks",
+    "price": 2800,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "142",
+    "name": "Club Crackers 200g",
+    "category": "Snacks",
+    "price": 4300,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "143",
+    "name": "Jacob's Cream Crackers 200g",
+    "category": "Snacks",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "144",
+    "name": "Digestive Biscuits 400g",
+    "category": "Snacks",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "145",
+    "name": "McVitie's Rich Tea 200g",
+    "category": "Snacks",
+    "price": 700,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "146",
+    "name": "Oreo Original 154g",
+    "category": "Snacks",
+    "price": 3400,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "147",
+    "name": "Oreo Double Stuf 154g",
+    "category": "Snacks",
+    "price": 3400,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "148",
+    "name": "Digestive Chocolate 300g",
+    "category": "Snacks",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "149",
+    "name": "HobNobs 300g",
+    "category": "Snacks",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "150",
+    "name": "Gateau Biscuit 100g",
+    "category": "Snacks",
+    "price": 4900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "151",
+    "name": "Bourbon Cream 200g",
+    "category": "Snacks",
+    "price": 700,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "152",
+    "name": "Fig Rolls 200g",
+    "category": "Snacks",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "153",
+    "name": "Kit Kat 4 Finger 45g",
+    "category": "Snacks",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "154",
+    "name": "Snickers 50g",
+    "category": "Snacks",
+    "price": 5100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "155",
+    "name": "Mars Bar 58g",
+    "category": "Snacks",
+    "price": 1200,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "156",
+    "name": "Twix 58g",
+    "category": "Snacks",
+    "price": 2700,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "157",
+    "name": "Milky Way 26g",
+    "category": "Snacks",
+    "price": 4300,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "158",
+    "name": "Bounty 57g",
+    "category": "Snacks",
+    "price": 2700,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "159",
+    "name": "Lion Bar 42g",
+    "category": "Snacks",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "160",
+    "name": "Crunchie 40g",
+    "category": "Snacks",
+    "price": 3500,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "161",
+    "name": "Cadbury Dairy Milk 110g",
+    "category": "Snacks",
+    "price": 1500,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "162",
+    "name": "Lindt 70% Dark 100g",
+    "category": "Snacks",
+    "price": 900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "163",
+    "name": "Toblerone Milk 100g",
+    "category": "Snacks",
+    "price": 900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "164",
+    "name": "Ferrero Rocher 3-pack",
+    "category": "Snacks",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "165",
+    "name": "Raffinello Coconut 100g",
+    "category": "Snacks",
+    "price": 5500,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "166",
+    "name": "Nut crackers Mix 200g",
+    "category": "Snacks",
+    "price": 2600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "167",
+    "name": "Cashew Nuts Roasted 100g",
+    "category": "Snacks",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "168",
+    "name": "Almonds Salted 100g",
+    "category": "Snacks",
+    "price": 5900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "169",
+    "name": "Macadamia Nuts 100g",
+    "category": "Snacks",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "170",
+    "name": "Trail Mix 200g",
+    "category": "Snacks",
+    "price": 4900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "171",
+    "name": "Dried Mango Slices 100g",
+    "category": "Snacks",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "172",
+    "name": "Dried Apricots 200g",
+    "category": "Snacks",
+    "price": 4200,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "173",
+    "name": "Raisins 200g",
+    "category": "Snacks",
+    "price": 4900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "174",
+    "name": "Prunes 200g",
+    "category": "Snacks",
+    "price": 1500,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "175",
+    "name": "Fruit & Nut Mix 150g",
+    "category": "Snacks",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "176",
+    "name": "Granola Bar Oat 35g",
+    "category": "Snacks",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "177",
+    "name": "Quaker Oat Granola Bar 35g",
+    "category": "Snacks",
+    "price": 2800,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "178",
+    "name": "Nature Valley Bar 42g",
+    "category": "Snacks",
+    "price": 5200,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "179",
+    "name": "Larabar Original 45g",
+    "category": "Snacks",
+    "price": 3900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "180",
+    "name": "Protein Bar Chocolate 60g",
+    "category": "Snacks",
+    "price": 1400,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "181",
+    "name": "Energy Chews 40g",
+    "category": "Snacks",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "182",
+    "name": "Chewing Gum Spearmint",
+    "category": "Snacks",
+    "price": 3400,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "183",
+    "name": "Chewing Gum Peppermint",
+    "category": "Snacks",
+    "price": 3300,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "184",
+    "name": "Mentos Fruit Roll",
+    "category": "Snacks",
+    "price": 3800,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "185",
+    "name": "Tic Tac Orange",
+    "category": "Snacks",
+    "price": 2000,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "186",
+    "name": "Skittles Original 55g",
+    "category": "Snacks",
+    "price": 5300,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "187",
+    "name": "Haribo Gummies 100g",
+    "category": "Snacks",
+    "price": 3500,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "188",
+    "name": "Marshmallows Mini 200g",
+    "category": "Snacks",
+    "price": 3900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "189",
+    "name": "Gummy Bears 100g",
+    "category": "Snacks",
+    "price": 5600,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "190",
+    "name": "Lays Classic Chips 150g (2)",
+    "category": "Snacks",
+    "price": 1900,
+    "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=300&h=200&fit=crop",
+    "description": "Delicious snack for any time of day. Great taste guaranteed."
+  },
+  {
+    "id": "191",
+    "name": "Corn Flakes Kellogg's 500g",
+    "category": "Grains & Cereals",
+    "price": 13800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "192",
+    "name": "Kellogg's Crunchy Nut 500g",
+    "category": "Grains & Cereals",
+    "price": 14100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "193",
+    "name": "Special K Red Berry 375g",
+    "category": "Grains & Cereals",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "194",
+    "name": "Weetabix 430g",
+    "category": "Grains & Cereals",
+    "price": 9600,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "195",
+    "name": "Shreddies 500g",
+    "category": "Grains & Cereals",
+    "price": 6800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "196",
+    "name": "All-Bran Original 375g",
+    "category": "Grains & Cereals",
+    "price": 8000,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "197",
+    "name": "Nestle Cheerios 450g",
+    "category": "Grains & Cereals",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "198",
+    "name": "Honey Smacks 500g",
+    "category": "Grains & Cereals",
+    "price": 14900,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "199",
+    "name": "Quaker Oats 1kg",
+    "category": "Grains & Cereals",
+    "price": 13400,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "200",
+    "name": "Quaker Instant Oat Sachets 10-pack",
+    "category": "Grains & Cereals",
+    "price": 9100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "201",
+    "name": "Oat Bran 500g",
+    "category": "Grains & Cereals",
+    "price": 11100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "202",
+    "name": "Muesli Original 500g",
+    "category": "Grains & Cereals",
+    "price": 7800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "203",
+    "name": "Granola Honey 500g",
+    "category": "Grains & Cereals",
+    "price": 5900,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "204",
+    "name": "Porridge Oats 1kg",
+    "category": "Grains & Cereals",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "205",
+    "name": "Semolina 1kg",
+    "category": "Grains & Cereals",
+    "price": 1300,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "206",
+    "name": "Ugali Flour 2kg",
+    "category": "Grains & Cereals",
+    "price": 14700,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "207",
+    "name": "Posho Mill Flour 1kg",
+    "category": "Grains & Cereals",
+    "price": 1000,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "208",
+    "name": "Maize Meal Fine 2kg",
+    "category": "Grains & Cereals",
+    "price": 13500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "209",
+    "name": "Sorghum Flour 1kg",
+    "category": "Grains & Cereals",
+    "price": 10200,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "210",
+    "name": "Millet Flour 1kg",
+    "category": "Grains & Cereals",
+    "price": 9400,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "211",
+    "name": "Teff Flour 500g",
+    "category": "Grains & Cereals",
+    "price": 14100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "212",
+    "name": "Wheat Flour Bread 1kg",
+    "category": "Grains & Cereals",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "213",
+    "name": "Self-Raising Flour 1kg",
+    "category": "Grains & Cereals",
+    "price": 7700,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "214",
+    "name": "Chapati Flour 2kg",
+    "category": "Grains & Cereals",
+    "price": 3800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "215",
+    "name": "Rice Basmati 5kg",
+    "category": "Grains & Cereals",
+    "price": 3500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "216",
+    "name": "Rice Jasmine 2kg",
+    "category": "Grains & Cereals",
+    "price": 5500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "217",
+    "name": "Rice Long Grain 2kg",
+    "category": "Grains & Cereals",
+    "price": 14100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "218",
+    "name": "Rice Parboiled 5kg",
+    "category": "Grains & Cereals",
+    "price": 11300,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "219",
+    "name": "Rice Brown 1kg",
+    "category": "Grains & Cereals",
+    "price": 10000,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "220",
+    "name": "Rice Pilau 1kg",
+    "category": "Grains & Cereals",
+    "price": 14800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "221",
+    "name": "Pasta Spaghetti 500g",
+    "category": "Grains & Cereals",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "222",
+    "name": "Pasta Penne 500g",
+    "category": "Grains & Cereals",
+    "price": 14100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "223",
+    "name": "Pasta Fusilli 500g",
+    "category": "Grains & Cereals",
+    "price": 5600,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "224",
+    "name": "Pasta Tagliatelle 250g",
+    "category": "Grains & Cereals",
+    "price": 10000,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "225",
+    "name": "Macaroni 500g",
+    "category": "Grains & Cereals",
+    "price": 4300,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "226",
+    "name": "Lasagne Sheets 250g",
+    "category": "Grains & Cereals",
+    "price": 6400,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "227",
+    "name": "Whole Wheat Spaghetti 500g",
+    "category": "Grains & Cereals",
+    "price": 11500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "228",
+    "name": "Noodles Instant Chicken 85g",
+    "category": "Grains & Cereals",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "229",
+    "name": "Indomie Chicken 70g",
+    "category": "Grains & Cereals",
+    "price": 13700,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "230",
+    "name": "Indomie Beef 70g",
+    "category": "Grains & Cereals",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "231",
+    "name": "Mama Chicken Noodles 80g",
+    "category": "Grains & Cereals",
+    "price": 3900,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "232",
+    "name": "Cup Noodles Seafood 65g",
+    "category": "Grains & Cereals",
+    "price": 12500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "233",
+    "name": "Couscous 500g",
+    "category": "Grains & Cereals",
+    "price": 6600,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "234",
+    "name": "Quinoa 400g",
+    "category": "Grains & Cereals",
+    "price": 7700,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "235",
+    "name": "Bulgur Wheat 500g",
+    "category": "Grains & Cereals",
+    "price": 6800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "236",
+    "name": "Pearl Barley 500g",
+    "category": "Grains & Cereals",
+    "price": 14400,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "237",
+    "name": "Lentils Red 500g",
+    "category": "Grains & Cereals",
+    "price": 7400,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "238",
+    "name": "Lentils Green 500g",
+    "category": "Grains & Cereals",
+    "price": 8200,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "239",
+    "name": "Chickpeas Dried 500g",
+    "category": "Grains & Cereals",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "240",
+    "name": "Black Beans 500g",
+    "category": "Grains & Cereals",
+    "price": 1400,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "241",
+    "name": "Kidney Beans 500g",
+    "category": "Grains & Cereals",
+    "price": 5500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "242",
+    "name": "Split Peas 500g",
+    "category": "Grains & Cereals",
+    "price": 9200,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "243",
+    "name": "Soybeans 500g",
+    "category": "Grains & Cereals",
+    "price": 13900,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "244",
+    "name": "Popcorn Kernels 500g",
+    "category": "Grains & Cereals",
+    "price": 1300,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "245",
+    "name": "Amaranth 500g",
+    "category": "Grains & Cereals",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "246",
+    "name": "Polenta 500g",
+    "category": "Grains & Cereals",
+    "price": 7800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "247",
+    "name": "Grits 500g",
+    "category": "Grains & Cereals",
+    "price": 13500,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "248",
+    "name": "Breadcrumbs Panko 200g",
+    "category": "Grains & Cereals",
+    "price": 7800,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "249",
+    "name": "Corn Starch 200g",
+    "category": "Grains & Cereals",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "250",
+    "name": "Tapioca Starch 200g",
+    "category": "Grains & Cereals",
+    "price": 13100,
+    "image": "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=300&h=200&fit=crop",
+    "description": "Nutritious grain product for a healthy balanced diet."
+  },
+  {
+    "id": "251",
+    "name": "Omo Washing Powder 1kg",
+    "category": "Household",
+    "price": 5700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "252",
+    "name": "Omo Washing Powder 500g",
+    "category": "Household",
+    "price": 2300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "253",
+    "name": "Ariel Washing Powder 1kg",
+    "category": "Household",
+    "price": 11000,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "254",
+    "name": "Surf Excel 1kg",
+    "category": "Household",
+    "price": 4600,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "255",
+    "name": "Sunlight Washing Powder 1kg",
+    "category": "Household",
+    "price": 9700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "256",
+    "name": "Persil Bio 1kg",
+    "category": "Household",
+    "price": 12200,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "257",
+    "name": "Vanish Stain Remover 500ml",
+    "category": "Household",
+    "price": 13500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "258",
+    "name": "Comfort Fabric Softener 1L",
+    "category": "Household",
+    "price": 18500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "259",
+    "name": "Downy Fabric Softener 1L",
+    "category": "Household",
+    "price": 19400,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "260",
+    "name": "Lenor Fabric Softener 1L",
+    "category": "Household",
+    "price": 7300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "261",
+    "name": "Dettol Disinfectant 500ml",
+    "category": "Household",
+    "price": 1700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "262",
+    "name": "Harpic Toilet Cleaner 500ml",
+    "category": "Household",
+    "price": 1800,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "263",
+    "name": "Domestos Bleach 750ml",
+    "category": "Household",
+    "price": 15900,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "264",
+    "name": "Flash Multi-Surface Cleaner 500ml",
+    "category": "Household",
+    "price": 15900,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "265",
+    "name": "Mr Muscle Kitchen 500ml",
+    "category": "Household",
+    "price": 15900,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "266",
+    "name": "Fairy Liquid Original 500ml",
+    "category": "Household",
+    "price": 7600,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "267",
+    "name": "Sunlight Dish Liquid 500ml",
+    "category": "Household",
+    "price": 14000,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "268",
+    "name": "Vim Powder 500g",
+    "category": "Household",
+    "price": 14700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "269",
+    "name": "Finish Dishwasher Tabs 30-pack",
+    "category": "Household",
+    "price": 8200,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "270",
+    "name": "Pledge Furniture Polish 250ml",
+    "category": "Household",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "271",
+    "name": "Handy Andy 500ml",
+    "category": "Household",
+    "price": 2700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "272",
+    "name": "Febreze Air Freshener 370ml",
+    "category": "Household",
+    "price": 19400,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "273",
+    "name": "Glade Spray Lavender 300ml",
+    "category": "Household",
+    "price": 11200,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "274",
+    "name": "Air Wick Freshener 300ml",
+    "category": "Household",
+    "price": 14300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "275",
+    "name": "Raid Fly Spray 300ml",
+    "category": "Household",
+    "price": 11700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "276",
+    "name": "Doom Flying Insect 300ml",
+    "category": "Household",
+    "price": 5600,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "277",
+    "name": "Mortein Coil 10-pack",
+    "category": "Household",
+    "price": 14700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "278",
+    "name": "Baygon Cockroach Spray 300ml",
+    "category": "Household",
+    "price": 2600,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "279",
+    "name": "Doom Cockroach Gel 30g",
+    "category": "Household",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "280",
+    "name": "Rat Poison Bait 200g",
+    "category": "Household",
+    "price": 14600,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "281",
+    "name": "Gladwrap Cling Film 30m",
+    "category": "Household",
+    "price": 15300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "282",
+    "name": "Glad Bake Baking Paper 15m",
+    "category": "Household",
+    "price": 15700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "283",
+    "name": "Aluminium Foil 10m",
+    "category": "Household",
+    "price": 7500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "284",
+    "name": "Garbage Bags 20L 30-pack",
+    "category": "Household",
+    "price": 12700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "285",
+    "name": "Freezer Bags 50-pack",
+    "category": "Household",
+    "price": 3300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "286",
+    "name": "Sandwich Bags 50-pack",
+    "category": "Household",
+    "price": 17800,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "287",
+    "name": "Paper Plates 25-pack",
+    "category": "Household",
+    "price": 14500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "288",
+    "name": "Paper Cups 50-pack",
+    "category": "Household",
+    "price": 15700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "289",
+    "name": "Plastic Forks 50-pack",
+    "category": "Household",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "290",
+    "name": "Napkins White 100-pack",
+    "category": "Household",
+    "price": 15100,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "291",
+    "name": "Kitchen Towel 2-roll",
+    "category": "Household",
+    "price": 17300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "292",
+    "name": "Toilet Paper 9-roll",
+    "category": "Household",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "293",
+    "name": "Toilet Paper 18-roll",
+    "category": "Household",
+    "price": 9500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "294",
+    "name": "Facial Tissue 3-pack",
+    "category": "Household",
+    "price": 1900,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "295",
+    "name": "Baby Wipes 80-pack",
+    "category": "Household",
+    "price": 12400,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "296",
+    "name": "Dishcloth 5-pack",
+    "category": "Household",
+    "price": 13800,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "297",
+    "name": "Sponge Scour 3-pack",
+    "category": "Household",
+    "price": 2300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "298",
+    "name": "Steel Wool 10-pack",
+    "category": "Household",
+    "price": 2400,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "299",
+    "name": "Mop Head Replacement",
+    "category": "Household",
+    "price": 3500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "300",
+    "name": "Broom Indoor",
+    "category": "Household",
+    "price": 19600,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "301",
+    "name": "Dustpan & Brush Set",
+    "category": "Household",
+    "price": 17400,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "302",
+    "name": "Storage Basket Medium",
+    "category": "Household",
+    "price": 8600,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "303",
+    "name": "Storage Basket Large",
+    "category": "Household",
+    "price": 19700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "304",
+    "name": "Laundry Basket",
+    "category": "Household",
+    "price": 13500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "305",
+    "name": "Clothes Pegs 30-pack",
+    "category": "Household",
+    "price": 17300,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "306",
+    "name": "Hanger 10-pack",
+    "category": "Household",
+    "price": 9500,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "307",
+    "name": "Shoe Organizer",
+    "category": "Household",
+    "price": 1400,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "308",
+    "name": "Candles White 6-pack",
+    "category": "Household",
+    "price": 3800,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "309",
+    "name": "LED Bulb 10W",
+    "category": "Household",
+    "price": 14700,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "310",
+    "name": "AA Batteries 4-pack",
+    "category": "Household",
+    "price": 5200,
+    "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=200&fit=crop",
+    "description": "Essential household product for a clean and comfortable home."
+  },
+  {
+    "id": "311",
+    "name": "Colgate Total Toothpaste 100ml",
+    "category": "Personal Care",
+    "price": 5600,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "312",
+    "name": "Oral-B Whitening Toothpaste 100ml",
+    "category": "Personal Care",
+    "price": 13700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "313",
+    "name": "Aquafresh Triple 100ml",
+    "category": "Personal Care",
+    "price": 12100,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "314",
+    "name": "Sensodyne Repair 75ml",
+    "category": "Personal Care",
+    "price": 18000,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "315",
+    "name": "Pepsodent Toothpaste 100ml",
+    "category": "Personal Care",
+    "price": 3200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "316",
+    "name": "Signal White 100ml",
+    "category": "Personal Care",
+    "price": 13800,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "317",
+    "name": "Colgate Toothbrush Medium",
+    "category": "Personal Care",
+    "price": 8200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "318",
+    "name": "Oral-B Advantage 3D 1-pack",
+    "category": "Personal Care",
+    "price": 15200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "319",
+    "name": "Electric Toothbrush Head 2-pack",
+    "category": "Personal Care",
+    "price": 11700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "320",
+    "name": "Listerine Cool Mint 250ml",
+    "category": "Personal Care",
+    "price": 2300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "321",
+    "name": "Listerine Whitening 250ml",
+    "category": "Personal Care",
+    "price": 3700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "322",
+    "name": "Corsodyl Mouthwash 300ml",
+    "category": "Personal Care",
+    "price": 13200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "323",
+    "name": "Head & Shoulders Classic 400ml",
+    "category": "Personal Care",
+    "price": 15900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "324",
+    "name": "Pantene Smooth 400ml",
+    "category": "Personal Care",
+    "price": 13400,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "325",
+    "name": "Dove Moisturising 400ml",
+    "category": "Personal Care",
+    "price": 6000,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "326",
+    "name": "Garnier Fructis 400ml",
+    "category": "Personal Care",
+    "price": 10700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "327",
+    "name": "Tresemmé Keratin 400ml",
+    "category": "Personal Care",
+    "price": 11900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "328",
+    "name": "L'Oréal Elvive 400ml",
+    "category": "Personal Care",
+    "price": 8700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "329",
+    "name": "Sunsilk Soft & Smooth 400ml",
+    "category": "Personal Care",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "330",
+    "name": "Palmolive Naturals 400ml",
+    "category": "Personal Care",
+    "price": 3900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "331",
+    "name": "Herbal Essences 400ml",
+    "category": "Personal Care",
+    "price": 5800,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "332",
+    "name": "Conditioner Pantene 300ml",
+    "category": "Personal Care",
+    "price": 6300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "333",
+    "name": "Conditioner Dove 300ml",
+    "category": "Personal Care",
+    "price": 8000,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "334",
+    "name": "Hair Mask Garnier 300ml",
+    "category": "Personal Care",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "335",
+    "name": "Dark & Lovely Relaxer Kit",
+    "category": "Personal Care",
+    "price": 3500,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "336",
+    "name": "Cantu Leave-In Conditioner 400ml",
+    "category": "Personal Care",
+    "price": 6700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "337",
+    "name": "Shea Moisture Curl Cream",
+    "category": "Personal Care",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "338",
+    "name": "Dove Body Wash 400ml",
+    "category": "Personal Care",
+    "price": 11900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "339",
+    "name": "Nivea Body Wash 400ml",
+    "category": "Personal Care",
+    "price": 11900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "340",
+    "name": "Lux Creamy 400ml",
+    "category": "Personal Care",
+    "price": 2600,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "341",
+    "name": "Dettol Body Wash 250ml",
+    "category": "Personal Care",
+    "price": 6800,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "342",
+    "name": "Palmolive Aroma 400ml",
+    "category": "Personal Care",
+    "price": 11300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "343",
+    "name": "Imperial Leather 250ml",
+    "category": "Personal Care",
+    "price": 12300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "344",
+    "name": "Dove Original Bar Soap 100g",
+    "category": "Personal Care",
+    "price": 12800,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "345",
+    "name": "Lifebuoy Total 100g",
+    "category": "Personal Care",
+    "price": 15100,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "346",
+    "name": "Lux Orchid 100g",
+    "category": "Personal Care",
+    "price": 13500,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "347",
+    "name": "Safeguard White 100g",
+    "category": "Personal Care",
+    "price": 6900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "348",
+    "name": "Imperial Leather Bar 100g",
+    "category": "Personal Care",
+    "price": 7200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "349",
+    "name": "Nivea Creme Bar 100g",
+    "category": "Personal Care",
+    "price": 12300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "350",
+    "name": "Nivea Body Lotion 400ml",
+    "category": "Personal Care",
+    "price": 13800,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "351",
+    "name": "Vaseline Total Moisture 400ml",
+    "category": "Personal Care",
+    "price": 12600,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "352",
+    "name": "Jergens Ultra 400ml",
+    "category": "Personal Care",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "353",
+    "name": "Palmer's Cocoa Butter 400ml",
+    "category": "Personal Care",
+    "price": 4000,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "354",
+    "name": "Shea Butter Pure 200g",
+    "category": "Personal Care",
+    "price": 8200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "355",
+    "name": "Bio Oil 60ml",
+    "category": "Personal Care",
+    "price": 9100,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "356",
+    "name": "Deodorant Dove 150ml",
+    "category": "Personal Care",
+    "price": 4200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "357",
+    "name": "Deodorant Rexona 150ml",
+    "category": "Personal Care",
+    "price": 13000,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "358",
+    "name": "Lynx Africa 150ml",
+    "category": "Personal Care",
+    "price": 13900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "359",
+    "name": "Sure Antiperspirant 150ml",
+    "category": "Personal Care",
+    "price": 11200,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "360",
+    "name": "Gillette Venus Razor 2-pack",
+    "category": "Personal Care",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "361",
+    "name": "Gillette Mach3 Razor",
+    "category": "Personal Care",
+    "price": 7500,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "362",
+    "name": "Schick Hydro 2-pack",
+    "category": "Personal Care",
+    "price": 8100,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "363",
+    "name": "Veet Hair Removal 100ml",
+    "category": "Personal Care",
+    "price": 16700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "364",
+    "name": "Nair Cream 100ml",
+    "category": "Personal Care",
+    "price": 6300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "365",
+    "name": "Always Ultra Thin 10-pack",
+    "category": "Personal Care",
+    "price": 17900,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "366",
+    "name": "Kotex Maxi 10-pack",
+    "category": "Personal Care",
+    "price": 17300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "367",
+    "name": "Carefree Pantyliners 40-pack",
+    "category": "Personal Care",
+    "price": 14300,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "368",
+    "name": "Tampax Regular 20-pack",
+    "category": "Personal Care",
+    "price": 17700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "369",
+    "name": "Clearasil Ultra Gel 50ml",
+    "category": "Personal Care",
+    "price": 16400,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "370",
+    "name": "Neutrogena Face Wash 200ml",
+    "category": "Personal Care",
+    "price": 2700,
+    "image": "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=300&h=200&fit=crop",
+    "description": "Quality personal care product for your daily hygiene routine."
+  },
+  {
+    "id": "371",
+    "name": "Tomatoes 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "372",
+    "name": "Onions Red 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 1300,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "373",
+    "name": "Onions White 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 1000,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "374",
+    "name": "Garlic Bulb 200g",
+    "category": "Fruits & Vegetables",
+    "price": 2400,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "375",
+    "name": "Ginger Fresh 200g",
+    "category": "Fruits & Vegetables",
+    "price": 4400,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "376",
+    "name": "Carrots 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 1000,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "377",
+    "name": "Potatoes 2kg",
+    "category": "Fruits & Vegetables",
+    "price": 700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "378",
+    "name": "Sweet Potatoes 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 1800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "379",
+    "name": "Irish Potatoes 2kg",
+    "category": "Fruits & Vegetables",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "380",
+    "name": "Cassava Fresh 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "381",
+    "name": "Yam 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 4500,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "382",
+    "name": "Plantain Green 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "383",
+    "name": "Plantain Ripe 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 1700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "384",
+    "name": "Avocado Hass 3-pack",
+    "category": "Fruits & Vegetables",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "385",
+    "name": "Avocado Fuerte 3-pack",
+    "category": "Fruits & Vegetables",
+    "price": 2700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "386",
+    "name": "Cabbage Green 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 3700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "387",
+    "name": "Cabbage Red 500g",
+    "category": "Fruits & Vegetables",
+    "price": 3400,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "388",
+    "name": "Broccoli 500g",
+    "category": "Fruits & Vegetables",
+    "price": 1500,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "389",
+    "name": "Cauliflower 500g",
+    "category": "Fruits & Vegetables",
+    "price": 1300,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "390",
+    "name": "Spinach 500g",
+    "category": "Fruits & Vegetables",
+    "price": 1600,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "391",
+    "name": "Kale 500g",
+    "category": "Fruits & Vegetables",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "392",
+    "name": "Swiss Chard 500g",
+    "category": "Fruits & Vegetables",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "393",
+    "name": "Lettuce Iceberg 1 head",
+    "category": "Fruits & Vegetables",
+    "price": 1700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "394",
+    "name": "Lettuce Romaine 1 head",
+    "category": "Fruits & Vegetables",
+    "price": 1500,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "395",
+    "name": "Cucumber 500g",
+    "category": "Fruits & Vegetables",
+    "price": 4300,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "396",
+    "name": "Zucchini 500g",
+    "category": "Fruits & Vegetables",
+    "price": 3600,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "397",
+    "name": "Eggplant 500g",
+    "category": "Fruits & Vegetables",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "398",
+    "name": "Bell Pepper Red 500g",
+    "category": "Fruits & Vegetables",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "399",
+    "name": "Bell Pepper Green 500g",
+    "category": "Fruits & Vegetables",
+    "price": 2800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "400",
+    "name": "Bell Pepper Yellow 500g",
+    "category": "Fruits & Vegetables",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "401",
+    "name": "Chilli Pepper 100g",
+    "category": "Fruits & Vegetables",
+    "price": 800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "402",
+    "name": "Spring Onions 200g",
+    "category": "Fruits & Vegetables",
+    "price": 3700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "403",
+    "name": "Leek 500g",
+    "category": "Fruits & Vegetables",
+    "price": 700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "404",
+    "name": "Celery 400g",
+    "category": "Fruits & Vegetables",
+    "price": 5000,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "405",
+    "name": "Beetroot 500g",
+    "category": "Fruits & Vegetables",
+    "price": 4500,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "406",
+    "name": "Turnip 500g",
+    "category": "Fruits & Vegetables",
+    "price": 1100,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "407",
+    "name": "Radish 200g",
+    "category": "Fruits & Vegetables",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "408",
+    "name": "Butternut Squash 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 4000,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "409",
+    "name": "Pumpkin 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "410",
+    "name": "Green Beans 500g",
+    "category": "Fruits & Vegetables",
+    "price": 1800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "411",
+    "name": "Snow Peas 300g",
+    "category": "Fruits & Vegetables",
+    "price": 3700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "412",
+    "name": "Baby Corn 300g",
+    "category": "Fruits & Vegetables",
+    "price": 1200,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "413",
+    "name": "Sweetcorn 500g",
+    "category": "Fruits & Vegetables",
+    "price": 3400,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "414",
+    "name": "Mushroom Button 250g",
+    "category": "Fruits & Vegetables",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "415",
+    "name": "Mushroom Oyster 250g",
+    "category": "Fruits & Vegetables",
+    "price": 2300,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "416",
+    "name": "Banana Cavendish 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 3800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "417",
+    "name": "Banana Sugar 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 4700,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "418",
+    "name": "Mango Tommy 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "419",
+    "name": "Mango Kent 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "420",
+    "name": "Pineapple Whole",
+    "category": "Fruits & Vegetables",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "421",
+    "name": "Pineapple Sliced 500g",
+    "category": "Fruits & Vegetables",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "422",
+    "name": "Watermelon 1/2",
+    "category": "Fruits & Vegetables",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "423",
+    "name": "Papaya 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 2600,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "424",
+    "name": "Passion Fruit 500g",
+    "category": "Fruits & Vegetables",
+    "price": 4900,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "425",
+    "name": "Guava 500g",
+    "category": "Fruits & Vegetables",
+    "price": 1400,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "426",
+    "name": "Orange Navel 1kg",
+    "category": "Fruits & Vegetables",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "427",
+    "name": "Lemon 500g",
+    "category": "Fruits & Vegetables",
+    "price": 1400,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "428",
+    "name": "Lime 500g",
+    "category": "Fruits & Vegetables",
+    "price": 2800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "429",
+    "name": "Grape Red 500g",
+    "category": "Fruits & Vegetables",
+    "price": 800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "430",
+    "name": "Grape White 500g",
+    "category": "Fruits & Vegetables",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "431",
+    "name": "Strawberry 250g",
+    "category": "Fruits & Vegetables",
+    "price": 800,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "432",
+    "name": "Tomatoes 1kg (2)",
+    "category": "Fruits & Vegetables",
+    "price": 1200,
+    "image": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=200&fit=crop",
+    "description": "Fresh produce sourced daily. Rich in vitamins and minerals."
+  },
+  {
+    "id": "433",
+    "name": "Beef Minced 500g",
+    "category": "Meat & Fish",
+    "price": 9600,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "434",
+    "name": "Beef Steak 500g",
+    "category": "Meat & Fish",
+    "price": 5900,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "435",
+    "name": "Beef Ribs 1kg",
+    "category": "Meat & Fish",
+    "price": 3100,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "436",
+    "name": "Beef Brisket 500g",
+    "category": "Meat & Fish",
+    "price": 8900,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "437",
+    "name": "Beef Liver 500g",
+    "category": "Meat & Fish",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "438",
+    "name": "Beef Kidney 500g",
+    "category": "Meat & Fish",
+    "price": 18600,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "439",
+    "name": "Beef Oxtail 500g",
+    "category": "Meat & Fish",
+    "price": 19300,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "440",
+    "name": "Beef Sausage 500g",
+    "category": "Meat & Fish",
+    "price": 21900,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "441",
+    "name": "Beef Frankfurters 500g",
+    "category": "Meat & Fish",
+    "price": 22800,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "442",
+    "name": "Beef Salami 200g",
+    "category": "Meat & Fish",
+    "price": 23100,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "443",
+    "name": "Beef Pepperoni 200g",
+    "category": "Meat & Fish",
+    "price": 12600,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "444",
+    "name": "Chicken Whole 1.5kg",
+    "category": "Meat & Fish",
+    "price": 14800,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "445",
+    "name": "Chicken Breast 500g",
+    "category": "Meat & Fish",
+    "price": 24100,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "446",
+    "name": "Chicken Thighs 500g",
+    "category": "Meat & Fish",
+    "price": 4600,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "447",
+    "name": "Chicken Drumsticks 500g",
+    "category": "Meat & Fish",
+    "price": 19000,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "448",
+    "name": "Chicken Wings 500g",
+    "category": "Meat & Fish",
+    "price": 2900,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "449",
+    "name": "Chicken Liver 500g",
+    "category": "Meat & Fish",
+    "price": 6600,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "450",
+    "name": "Chicken Sausage 500g",
+    "category": "Meat & Fish",
+    "price": 17700,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "451",
+    "name": "Chicken Nuggets 400g",
+    "category": "Meat & Fish",
+    "price": 21200,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "452",
+    "name": "Chicken Strips 400g",
+    "category": "Meat & Fish",
+    "price": 19500,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "453",
+    "name": "Pork Chops 500g",
+    "category": "Meat & Fish",
+    "price": 2200,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "454",
+    "name": "Pork Ribs 1kg",
+    "category": "Meat & Fish",
+    "price": 17000,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "455",
+    "name": "Pork Sausage 500g",
+    "category": "Meat & Fish",
+    "price": 10100,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "456",
+    "name": "Pork Bacon 200g",
+    "category": "Meat & Fish",
+    "price": 10200,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "457",
+    "name": "Lamb Chops 500g",
+    "category": "Meat & Fish",
+    "price": 18300,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "458",
+    "name": "Lamb Mince 500g",
+    "category": "Meat & Fish",
+    "price": 8400,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "459",
+    "name": "Lamb Shank 1kg",
+    "category": "Meat & Fish",
+    "price": 18800,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "460",
+    "name": "Tilapia Whole 1kg",
+    "category": "Meat & Fish",
+    "price": 8800,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "461",
+    "name": "Tilapia Fillet 500g",
+    "category": "Meat & Fish",
+    "price": 20400,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "462",
+    "name": "Nile Perch Fillet 500g",
+    "category": "Meat & Fish",
+    "price": 8900,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "463",
+    "name": "Salmon Fillet 300g",
+    "category": "Meat & Fish",
+    "price": 12300,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "464",
+    "name": "Tuna Steak 300g",
+    "category": "Meat & Fish",
+    "price": 19600,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "465",
+    "name": "Sardines Fresh 500g",
+    "category": "Meat & Fish",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "466",
+    "name": "Mackerel Fillet 400g",
+    "category": "Meat & Fish",
+    "price": 20100,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "467",
+    "name": "Prawns Peeled 300g",
+    "category": "Meat & Fish",
+    "price": 12200,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "468",
+    "name": "Shrimp Large 300g",
+    "category": "Meat & Fish",
+    "price": 18200,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "469",
+    "name": "Squid Rings 300g",
+    "category": "Meat & Fish",
+    "price": 12700,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "470",
+    "name": "Crab Sticks 200g",
+    "category": "Meat & Fish",
+    "price": 6500,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "471",
+    "name": "Fish Fingers Frozen 400g",
+    "category": "Meat & Fish",
+    "price": 21700,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "472",
+    "name": "Smoked Salmon 100g",
+    "category": "Meat & Fish",
+    "price": 23500,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "473",
+    "name": "Tuna Canned 185g",
+    "category": "Meat & Fish",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "474",
+    "name": "Sardines Canned 125g",
+    "category": "Meat & Fish",
+    "price": 5400,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "475",
+    "name": "Mackerel Canned Tomato 125g",
+    "category": "Meat & Fish",
+    "price": 12500,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "476",
+    "name": "Corned Beef 340g",
+    "category": "Meat & Fish",
+    "price": 22300,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "477",
+    "name": "Spam Luncheon 340g",
+    "category": "Meat & Fish",
+    "price": 15600,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "478",
+    "name": "Mortadella 200g",
+    "category": "Meat & Fish",
+    "price": 15000,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "479",
+    "name": "Ham Sliced 200g",
+    "category": "Meat & Fish",
+    "price": 21800,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "480",
+    "name": "Turkey Breast Sliced 200g",
+    "category": "Meat & Fish",
+    "price": 13800,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "481",
+    "name": "Beef Minced 500g (2)",
+    "category": "Meat & Fish",
+    "price": 22900,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "482",
+    "name": "Beef Steak 500g (3)",
+    "category": "Meat & Fish",
+    "price": 5200,
+    "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&h=200&fit=crop",
+    "description": "Premium quality meat and fish. Fresh and hygienically processed."
+  },
+  {
+    "id": "483",
+    "name": "Pampers Newborn 30-pack",
+    "category": "Baby Products",
+    "price": 7200,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "484",
+    "name": "Pampers Size 1 30-pack",
+    "category": "Baby Products",
+    "price": 27400,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "485",
+    "name": "Pampers Size 2 30-pack",
+    "category": "Baby Products",
+    "price": 7000,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "486",
+    "name": "Pampers Size 3 30-pack",
+    "category": "Baby Products",
+    "price": 4100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "487",
+    "name": "Pampers Size 4 24-pack",
+    "category": "Baby Products",
+    "price": 14600,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "488",
+    "name": "Pampers Size 5 22-pack",
+    "category": "Baby Products",
+    "price": 6100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "489",
+    "name": "Huggies Newborn 30-pack",
+    "category": "Baby Products",
+    "price": 23400,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "490",
+    "name": "Huggies Gold Size 1 30-pack",
+    "category": "Baby Products",
+    "price": 2800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "491",
+    "name": "Huggies Gold Size 2 30-pack",
+    "category": "Baby Products",
+    "price": 17700,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "492",
+    "name": "Huggies Gold Size 3 24-pack",
+    "category": "Baby Products",
+    "price": 33900,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "493",
+    "name": "Huggies Gold Size 4 22-pack",
+    "category": "Baby Products",
+    "price": 22500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "494",
+    "name": "Huggies Gold Size 5 20-pack",
+    "category": "Baby Products",
+    "price": 20700,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "495",
+    "name": "Mamia Nappies Size 3 30-pack",
+    "category": "Baby Products",
+    "price": 31100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "496",
+    "name": "Libero Up&Go Size 4 26-pack",
+    "category": "Baby Products",
+    "price": 22800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "497",
+    "name": "Pampers Baby Wipes 80-pack",
+    "category": "Baby Products",
+    "price": 19500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "498",
+    "name": "Huggies Wipes Aloe 80-pack",
+    "category": "Baby Products",
+    "price": 7200,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "499",
+    "name": "WaterWipes 60-pack",
+    "category": "Baby Products",
+    "price": 25300,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "500",
+    "name": "Johnson's Baby Wash 500ml",
+    "category": "Baby Products",
+    "price": 4500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "501",
+    "name": "Johnson's Baby Shampoo 500ml",
+    "category": "Baby Products",
+    "price": 17100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "502",
+    "name": "Johnson's Baby Oil 200ml",
+    "category": "Baby Products",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "503",
+    "name": "Johnson's Baby Powder 200g",
+    "category": "Baby Products",
+    "price": 14800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "504",
+    "name": "Johnson's Baby Lotion 400ml",
+    "category": "Baby Products",
+    "price": 4400,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "505",
+    "name": "Mustela Cleansing Gel 200ml",
+    "category": "Baby Products",
+    "price": 11100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "506",
+    "name": "Aveeno Baby Wash 354ml",
+    "category": "Baby Products",
+    "price": 11300,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "507",
+    "name": "Cetaphil Baby Wash 400ml",
+    "category": "Baby Products",
+    "price": 23200,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "508",
+    "name": "Dove Baby Wash 400ml",
+    "category": "Baby Products",
+    "price": 11100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "509",
+    "name": "Burt's Bees Baby Lotion 200ml",
+    "category": "Baby Products",
+    "price": 4800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "510",
+    "name": "Earth Mama Baby Lotion 250ml",
+    "category": "Baby Products",
+    "price": 25800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "511",
+    "name": "Baby Vaseline 100ml",
+    "category": "Baby Products",
+    "price": 20500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "512",
+    "name": "Sudocrem 125g",
+    "category": "Baby Products",
+    "price": 34400,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "513",
+    "name": "Bepanthen 30g",
+    "category": "Baby Products",
+    "price": 34700,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "514",
+    "name": "Lansinoh HPA 40g",
+    "category": "Baby Products",
+    "price": 21500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "515",
+    "name": "NUK Soother 0-6m 2-pack",
+    "category": "Baby Products",
+    "price": 29600,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "516",
+    "name": "Tommee Tippee Soother 6-18m",
+    "category": "Baby Products",
+    "price": 28900,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "517",
+    "name": "Mam Soother 0-6m 2-pack",
+    "category": "Baby Products",
+    "price": 25800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "518",
+    "name": "NUK Bottle 150ml",
+    "category": "Baby Products",
+    "price": 32100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "519",
+    "name": "Tommee Tippee Bottle 260ml",
+    "category": "Baby Products",
+    "price": 7100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "520",
+    "name": "Philips Avent Bottle 260ml",
+    "category": "Baby Products",
+    "price": 7500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "521",
+    "name": "Dr Brown's Bottle 150ml",
+    "category": "Baby Products",
+    "price": 11700,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "522",
+    "name": "Mam Feeding Bottle 330ml",
+    "category": "Baby Products",
+    "price": 17000,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "523",
+    "name": "Aptamil Stage 1 400g",
+    "category": "Baby Products",
+    "price": 4600,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "524",
+    "name": "SMA Pro Stage 1 400g",
+    "category": "Baby Products",
+    "price": 28700,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "525",
+    "name": "Nan Optipro 400g",
+    "category": "Baby Products",
+    "price": 2300,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "526",
+    "name": "Similac Stage 1 400g",
+    "category": "Baby Products",
+    "price": 4900,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "527",
+    "name": "Cow & Gate Stage 1 400g",
+    "category": "Baby Products",
+    "price": 3200,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "528",
+    "name": "HiPP Organic Stage 1 400g",
+    "category": "Baby Products",
+    "price": 16100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "529",
+    "name": "Nestle Cerelac Rice 250g",
+    "category": "Baby Products",
+    "price": 30400,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "530",
+    "name": "Cerelac Wheat 250g",
+    "category": "Baby Products",
+    "price": 14500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "531",
+    "name": "Cerelac Honey 250g",
+    "category": "Baby Products",
+    "price": 9800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "532",
+    "name": "Gerber Oatmeal 227g",
+    "category": "Baby Products",
+    "price": 2100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "533",
+    "name": "Ella's Kitchen Pouch 120g",
+    "category": "Baby Products",
+    "price": 32400,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "534",
+    "name": "Heinz Baby Jar 120g",
+    "category": "Baby Products",
+    "price": 15400,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "535",
+    "name": "Organix Baby Rice 100g",
+    "category": "Baby Products",
+    "price": 9800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "536",
+    "name": "Plum Baby Pouch 130g",
+    "category": "Baby Products",
+    "price": 19300,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "537",
+    "name": "Happy Baby Puffs 60g",
+    "category": "Baby Products",
+    "price": 2500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "538",
+    "name": "Baby Monitor Audio",
+    "category": "Baby Products",
+    "price": 10500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "539",
+    "name": "Baby Thermometer Digital",
+    "category": "Baby Products",
+    "price": 19000,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "540",
+    "name": "Nasal Aspirator",
+    "category": "Baby Products",
+    "price": 26700,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "541",
+    "name": "Nail Clippers Baby Set",
+    "category": "Baby Products",
+    "price": 12600,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "542",
+    "name": "Teething Ring Chilled",
+    "category": "Baby Products",
+    "price": 14100,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "543",
+    "name": "Baby Food Processor",
+    "category": "Baby Products",
+    "price": 28900,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "544",
+    "name": "Playmat Baby Gym",
+    "category": "Baby Products",
+    "price": 20500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "545",
+    "name": "Rattle & Teether Set",
+    "category": "Baby Products",
+    "price": 27900,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "546",
+    "name": "Soft Toy Plush Bear",
+    "category": "Baby Products",
+    "price": 7500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "547",
+    "name": "Board Book Pack 3",
+    "category": "Baby Products",
+    "price": 24800,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "548",
+    "name": "Baby Sunscreen SPF50 100ml",
+    "category": "Baby Products",
+    "price": 32300,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "549",
+    "name": "Pampers Newborn 30-pack (2)",
+    "category": "Baby Products",
+    "price": 16200,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "550",
+    "name": "Pampers Size 1 30-pack (3)",
+    "category": "Baby Products",
+    "price": 27200,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "551",
+    "name": "Pampers Size 2 30-pack (3)",
+    "category": "Baby Products",
+    "price": 30500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  },
+  {
+    "id": "552",
+    "name": "Pampers Size 3 30-pack (3)",
+    "category": "Baby Products",
+    "price": 18500,
+    "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=300&h=200&fit=crop",
+    "description": "Safe and gentle baby product trusted by parents everywhere."
+  }
+]
