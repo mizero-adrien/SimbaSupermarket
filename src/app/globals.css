@@ -51,15 +51,6 @@
   }
 }
 
-/* Hero section: green gradient in light, dark navy in dark */
-.hero-section {
-  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 60%, #bbf7d0 100%);
-}
-
-.dark .hero-section {
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 60%, #0f172a 100%);
-}
-
 /* Smooth page transitions */
 .page-transition {
   animation: fadeIn 0.3s ease-in-out;

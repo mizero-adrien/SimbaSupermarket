@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useMemo } from 'react';
-import { ShoppingBag, Grid3X3 } from 'lucide-react';
+import { Truck, ShieldCheck, CreditCard, ArrowRight } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import CategoryGrid from '@/components/CategoryGrid';
 import { useLanguage } from '@/context/LanguageContext';
@@ -23,74 +23,81 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="page-transition">
-      {/* Hero Section */}
-      <section className="relative hero-section py-20 px-4 overflow-hidden">
-        {/* Light mode blobs */}
-        <div className="absolute inset-0 opacity-40 dark:hidden">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-[#16a34a] rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#f59e0b] rounded-full blur-3xl" />
-        </div>
-        {/* Dark mode blobs */}
-        <div className="absolute inset-0 opacity-10 hidden dark:block">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-[#16a34a] rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#f59e0b] rounded-full blur-3xl" />
-        </div>
+    <div className="page-transition bg-light-bg dark:bg-dark-bg">
 
-        <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-[#16a34a]/20 dark:bg-[#16a34a]/20 border border-[#16a34a]/40 dark:border-[#16a34a]/30 rounded-full px-4 py-1 text-[#166534] dark:text-[#4ade80] text-sm font-medium mb-6">
-            🇷🇼 Rwanda&apos;s Premier Online Supermarket
-          </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6 text-balance text-[#0f172a] dark:text-white">
-            Rwanda&apos;s Freshest{' '}
-            <span className="text-[#16a34a]">Online Supermarket</span>
+      {/* Top trust bar */}
+      <div className="bg-[#16a34a] text-white text-xs font-medium">
+        <div className="max-w-7xl mx-auto px-4 h-9 flex items-center justify-between gap-4">
+          <span className="flex items-center gap-1.5">
+            <Truck size={13} />
+            Free delivery over 50,000 RWF
+          </span>
+          <span className="hidden sm:flex items-center gap-1.5">
+            <ShieldCheck size={13} />
+            Verified products
+          </span>
+          <span className="flex items-center gap-1.5">
+            <CreditCard size={13} />
+            MTN &amp; Airtel MoMo
+          </span>
+        </div>
+      </div>
+
+      {/* Page header */}
+      <div className="max-w-7xl mx-auto px-4 pt-8 pb-2 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
+        <div>
+          <p className="text-xs font-semibold text-[#16a34a] uppercase tracking-widest mb-1">🇷🇼 Kigali&apos;s Online Supermarket</p>
+          <h1 className="text-2xl md:text-3xl font-extrabold text-light-text dark:text-dark-text">
+            What are you shopping for today?
           </h1>
-          <p className="text-lg md:text-xl text-[#166534] dark:text-gray-300 mb-8 max-w-2xl mx-auto font-medium">
-            552 products delivered to your door in Kigali. Shop groceries, fresh produce, and more with ease.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/products"
-              className="flex items-center justify-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold px-8 py-3 rounded-btn transition-colors shadow-lg"
-            >
-              <ShoppingBag size={18} />
-              {t('Shop Now')}
-            </Link>
-            <Link
-              href="/products"
-              className="flex items-center justify-center gap-2 border-2 border-[#0f172a] dark:border-white/40 hover:border-[#16a34a] dark:hover:border-white text-[#0f172a] dark:text-white font-semibold px-8 py-3 rounded-btn transition-colors"
-            >
-              <Grid3X3 size={18} />
-              {t('Browse Categories')}
-            </Link>
-          </div>
-
-          {/* Trust badges */}
-          <div className="flex flex-wrap justify-center gap-6 mt-10 text-sm text-[#166534] dark:text-gray-400 font-medium">
-            <span className="flex items-center gap-2">🚚 Fast Delivery</span>
-            <span className="flex items-center gap-2">✅ Verified Products</span>
-            <span className="flex items-center gap-2">💳 MoMo Payment</span>
-          </div>
         </div>
-      </section>
+        <Link
+          href="/products"
+          className="flex items-center gap-1.5 text-sm font-semibold text-[#16a34a] hover:underline shrink-0"
+        >
+          Browse all 552 products <ArrowRight size={14} />
+        </Link>
+      </div>
 
       {/* Category Grid */}
       <div className="bg-light-bg dark:bg-dark-bg">
         <CategoryGrid categories={categories} />
       </div>
 
+      {/* Delivery promo strip */}
+      <div className="mx-4 lg:mx-auto max-w-7xl my-2">
+        <div className="rounded-card bg-gradient-to-r from-[#0f172a] to-[#1e3a5f] dark:from-[#1e293b] dark:to-[#0f172a] px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div className="flex items-center gap-3 text-white">
+            <span className="text-2xl">🚚</span>
+            <div>
+              <p className="font-bold text-sm">Free delivery on your first order</p>
+              <p className="text-white/60 text-xs">Use code <span className="font-mono font-bold text-[#f59e0b]">SIMBA1</span> at checkout</p>
+            </div>
+          </div>
+          <Link
+            href="/products"
+            className="shrink-0 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold text-sm px-5 py-2 rounded-btn transition-colors"
+          >
+            {t('Shop Now')}
+          </Link>
+        </div>
+      </div>
+
       {/* Featured Products */}
-      <section className="py-12 px-4 bg-white dark:bg-dark-card">
+      <section className="py-8 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">
-              {t('Featured Products')}
-            </h2>
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <h2 className="text-xl font-bold text-light-text dark:text-dark-text">
+                {t('Featured Products')}
+              </h2>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Hand-picked for you today</p>
+            </div>
             <Link
               href="/products"
-              className="text-sm text-[#16a34a] font-semibold hover:underline"
+              className="flex items-center gap-1 text-sm text-[#16a34a] font-semibold hover:underline"
             >
-              View All →
+              View All <ArrowRight size={13} />
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -101,20 +108,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Promo Banner */}
-      <section className="py-10 px-4 bg-[#16a34a]">
-        <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
-          <p className="text-lg font-semibold text-center sm:text-left">
-            🚚 Free delivery on orders over <strong>50,000 RWF</strong>
-          </p>
-          <Link
-            href="/products"
-            className="bg-white text-[#16a34a] font-bold px-6 py-2 rounded-btn hover:bg-gray-100 transition-colors shrink-0"
-          >
-            {t('Shop Now')}
-          </Link>
+      {/* Bottom value props */}
+      <section className="px-4 pb-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {[
+            { icon: '🚚', title: 'Fast Delivery', desc: 'Same-day delivery across Kigali' },
+            { icon: '✅', title: 'Verified Products', desc: '552 quality-checked items' },
+            { icon: '💳', title: 'Easy Payment', desc: 'MTN MoMo, Airtel & cash' },
+          ].map(({ icon, title, desc }) => (
+            <div
+              key={title}
+              className="flex items-center gap-4 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card px-5 py-4"
+            >
+              <span className="text-3xl">{icon}</span>
+              <div>
+                <p className="font-semibold text-sm text-light-text dark:text-dark-text">{title}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">{desc}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
+
     </div>
   );
 }
