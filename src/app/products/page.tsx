@@ -6,17 +6,17 @@ import { Search, SlidersHorizontal, X } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import Pagination from '@/components/Pagination';
 import { useLanguage } from '@/context/LanguageContext';
+import { getMasterProducts } from '@/lib/productData';
 import { getCategories } from '@/lib/products';
+import { translateCategory } from '@/lib/translations';
 import { Product, SortOption } from '@/types';
-import productsData from '../../../public/simba_products.json';
-
-const allProducts = productsData as Product[];
-const allCategories = getCategories(allProducts);
 const PER_PAGE = 24;
 
 function ProductsContent() {
   const searchParams = useSearchParams();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const allCategories = useMemo(() => getCategories(allProducts), [allProducts]);
 
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') ?? '');
   const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
@@ -28,6 +28,10 @@ function ProductsContent() {
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [currentPage, setCurrentPage] = useState(1);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  useEffect(() => {
+    setAllProducts(getMasterProducts());
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedQuery(searchQuery), 300);
@@ -55,7 +59,7 @@ function ProductsContent() {
       case 'name-desc': result.sort((a, b) => b.name.localeCompare(a.name)); break;
     }
     return result;
-  }, [debouncedQuery, selectedCategories, minPrice, maxPrice, sortBy]);
+  }, [allProducts, debouncedQuery, selectedCategories, minPrice, maxPrice, sortBy]);
 
   const totalPages = Math.ceil(filtered.length / PER_PAGE);
   const paginated = filtered.slice((currentPage - 1) * PER_PAGE, currentPage * PER_PAGE);
@@ -115,7 +119,7 @@ function ProductsContent() {
                 onChange={() => toggleCategory(name)}
                 className="w-4 h-4 accent-[#16a34a] rounded"
               />
-              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#16a34a] transition-colors flex-1">{name}</span>
+              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#16a34a] transition-colors flex-1">{translateCategory(name, language)}</span>
               <span className="text-xs text-gray-400">({count})</span>
             </label>
           ))}
@@ -192,7 +196,7 @@ function ProductsContent() {
                 )}
                 {selectedCategories.map(cat => (
                   <span key={cat} className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
-                    {cat}
+                    {translateCategory(cat, language)}
                     <button onClick={() => toggleCategory(cat)}><X size={12} /></button>
                   </span>
                 ))}
@@ -227,10 +231,10 @@ function ProductsContent() {
             ) : (
               <div className="text-center py-20">
                 <p className="text-4xl mb-4">🔍</p>
-                <p className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">No products found</p>
-                <p className="text-gray-500 text-sm mb-4">Try adjusting your filters or search terms.</p>
+                <p className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">{t('No products found')}</p>
+                <p className="text-gray-500 text-sm mb-4">{t('Try adjusting your filters or search terms.')}</p>
                 <button onClick={resetFilters} className="bg-[#16a34a] text-white px-6 py-2 rounded-btn text-sm font-semibold hover:bg-green-700 transition-colors">
-                  Clear Filters
+                  {t('Clear Filters')}
                 </button>
               </div>
             )}

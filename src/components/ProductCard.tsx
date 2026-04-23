@@ -7,6 +7,7 @@ import { ShoppingCart, Eye } from 'lucide-react';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage, getSaleInfo } from '@/lib/products';
+import { translateCategory } from '@/lib/translations';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import QuickViewModal from './QuickViewModal';
@@ -17,7 +18,7 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
   const { addItem } = useCart();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const image = getProductImage(product);
   const [showModal, setShowModal] = useState(false);
   const { onSale, originalPrice, salePrice, savePct } = getSaleInfo(product);
@@ -39,7 +40,7 @@ export default function ProductCard({ product }: Props) {
 
             {/* Badges */}
             <span className="absolute top-2 left-2 bg-[#16a34a] text-white text-xs font-medium px-2 py-0.5 rounded-full">
-              {product.category}
+              {translateCategory(product.category, language)}
             </span>
             {onSale && (
               <span className="absolute top-2 right-2 bg-[#f59e0b] text-white text-xs font-bold px-2 py-0.5 rounded-full">
@@ -55,7 +56,7 @@ export default function ProductCard({ product }: Props) {
             >
               <span className="flex items-center gap-1.5 bg-white text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-full shadow-md hover:bg-[#16a34a] hover:text-white transition-colors">
                 <Eye size={13} />
-                Quick View
+                {t('Quick View')}
               </span>
             </button>
           </div>

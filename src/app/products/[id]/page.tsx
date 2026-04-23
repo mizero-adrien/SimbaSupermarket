@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -8,25 +8,28 @@ import { Minus, Plus, ShoppingCart, ArrowLeft, CheckCircle, Truck, RotateCcw } f
 import ProductCard from '@/components/ProductCard';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { getMasterProducts } from '@/lib/productData';
 import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage } from '@/lib/products';
 import { Product } from '@/types';
-import productsData from '../../../../public/simba_products.json';
-
-const allProducts = productsData as Product[];
 
 export default function ProductDetailPage() {
   const { id } = useParams<{ id: string }>();
   const { addItem } = useCart();
   const { t } = useLanguage();
+  const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [quantity, setQuantity] = useState(1);
 
-  const product = useMemo(() => allProducts.find(p => String(p.id) === id), [id]);
+  useEffect(() => {
+    setAllProducts(getMasterProducts());
+  }, []);
+
+  const product = useMemo(() => allProducts.find(p => String(p.id) === id), [allProducts, id]);
 
   const related = useMemo(() => {
     if (!product) return [];
     return allProducts.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
-  }, [product]);
+  }, [product, allProducts]);
 
   if (!product) {
     return (

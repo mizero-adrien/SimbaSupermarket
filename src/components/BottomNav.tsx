@@ -5,21 +5,29 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { Home, Grid2X2, Search, ShoppingCart, User, X } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useAuth } from '@/context/AuthContext';
+import { useLanguage } from '@/context/LanguageContext';
+import { getMasterProducts } from '@/lib/productData';
+import { translateCategory } from '@/lib/translations';
 import { Product } from '@/types';
-import productsData from '../../public/simba_products.json';
-
-const products = productsData as Product[];
 
 export default function BottomNav() {
   const pathname = usePathname();
   const router = useRouter();
   const { totalItems } = useCart();
+  const { user } = useAuth();
+  const { t, language } = useLanguage();
+  const [products, setProducts] = useState<Product[]>([]);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Debounce search
+  useEffect(() => {
+    setProducts(getMasterProducts());
+  }, []);
+
   useEffect(() => {
     const t = setTimeout(() => {
       if (query.trim().length > 1) {
@@ -34,7 +42,7 @@ export default function BottomNav() {
       }
     }, 300);
     return () => clearTimeout(t);
-  }, [query]);
+  }, [query, products]);
 
   useEffect(() => {
     if (searchOpen) inputRef.current?.focus();
@@ -65,11 +73,15 @@ export default function BottomNav() {
     path === '/' ? pathname === '/' : pathname.startsWith(path);
 
   const navItems = [
-    { label: 'Home', icon: Home, href: '/' },
-    { label: 'Products', icon: Grid2X2, href: '/products' },
-    { label: 'Search', icon: Search, href: null },
-    { label: 'Cart', icon: ShoppingCart, href: '/cart' },
-    { label: 'Profile', icon: User, href: '/about' },
+    { label: t('Home'), icon: Home, href: '/' },
+    { label: t('Products'), icon: Grid2X2, href: '/products' },
+    { label: t('Search'), icon: Search, href: null },
+    { label: t('Cart'), icon: ShoppingCart, href: '/cart' },
+    {
+      label: user ? (user.role === 'customer' ? t('Profile') : t('Dashboard')) : t('Login'),
+      icon: User,
+      href: user ? (user.role === 'customer' ? '/about' : '/dashboard') : '/auth/login',
+    },
   ];
 
   return (
@@ -89,7 +101,7 @@ export default function BottomNav() {
                 type="text"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder="Search 552 products..."
+                placeholder={`${t('Search')} 552 ${t('products')}...`}
                 className="flex-1 text-base bg-transparent text-light-text dark:text-dark-text placeholder-gray-400 focus:outline-none"
               />
               <button type="button" onClick={closeSearch} className="p-1 text-gray-400 hover:text-gray-600">
@@ -123,7 +135,7 @@ export default function BottomNav() {
                       onClick={closeSearch}
                       className="block px-4 py-3 text-sm text-[#16a34a] font-semibold bg-gray-50 dark:bg-slate-800 text-center"
                     >
-                      See all results for &ldquo;{query}&rdquo; →
+                        {t('View All')} &ldquo;{query}&rdquo; →
                     </Link>
                   </li>
                 )}
@@ -131,12 +143,12 @@ export default function BottomNav() {
             )}
 
             {query.trim().length > 1 && results.length === 0 && (
-              <p className="px-4 py-5 text-sm text-center text-gray-400">No results found for &ldquo;{query}&rdquo;</p>
+                <p className="px-4 py-5 text-sm text-center text-gray-400">{t('No results found')} &ldquo;{query}&rdquo;</p>
             )}
 
             {query.trim().length === 0 && (
               <div className="px-4 py-4">
-                <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wide">Popular Categories</p>
+                  <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wide">{t('Popular Categories')}</p>
                 <div className="flex flex-wrap gap-2">
                   {['Beverages', 'Dairy', 'Snacks', 'Fruits & Vegetables', 'Meat & Fish'].map(cat => (
                     <Link
@@ -145,7 +157,7 @@ export default function BottomNav() {
                       onClick={closeSearch}
                       className="text-xs bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 px-3 py-1.5 rounded-full hover:bg-[#16a34a] hover:text-white transition-colors"
                     >
-                      {cat}
+                        {translateCategory(cat, language)}
                     </Link>
                   ))}
                 </div>

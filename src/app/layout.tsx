@@ -4,10 +4,12 @@ import './globals.css';
 import { ThemeProvider } from 'next-themes';
 import { CartProvider } from '@/context/CartContext';
 import { LanguageProvider } from '@/context/LanguageContext';
+import { AuthProvider } from '@/context/AuthContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
 import BottomNav from '@/components/BottomNav';
+import FloatingAiAssistant from '@/components/FloatingAiAssistant';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -22,15 +24,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased font-sans bg-light-bg dark:bg-dark-bg min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <AuthProvider>
           <LanguageProvider>
             <CartProvider>
               <Navbar />
               <main>{children}</main>
               <Footer />
+              <FloatingAiAssistant />
               <BackToTop />
               <BottomNav />
             </CartProvider>
           </LanguageProvider>
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

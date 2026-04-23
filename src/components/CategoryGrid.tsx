@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import { translateCategory } from '@/lib/translations';
 
 interface CategoryItem {
   name: string;
@@ -28,7 +29,7 @@ const categoryMeta: Record<string, { emoji: string; image: string; color: string
 const fallback = { emoji: '🛒', image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop', color: '#16a34a' };
 
 export default function CategoryGrid({ categories }: Props) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <section className="py-12 px-4">
@@ -38,7 +39,7 @@ export default function CategoryGrid({ categories }: Props) {
             {t('Shop by Category')}
           </h2>
           <Link href="/products" className="text-sm text-[#16a34a] font-semibold hover:underline hidden sm:block">
-            View All →
+            {t('View All')} →
           </Link>
         </div>
 
@@ -55,7 +56,7 @@ export default function CategoryGrid({ categories }: Props) {
                 <div className="relative h-36 sm:h-44 overflow-hidden">
                   <Image
                     src={meta.image}
-                    alt={cat.name}
+                    alt={translateCategory(cat.name, language)}
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
@@ -76,10 +77,10 @@ export default function CategoryGrid({ categories }: Props) {
                     <div className="flex items-end justify-between">
                       <div>
                         <p className="text-white font-bold text-sm leading-tight line-clamp-1">
-                          {cat.name}
+                          {translateCategory(cat.name, language)}
                         </p>
                         <p className="text-white/70 text-xs mt-0.5">
-                          {cat.count} products
+                          {cat.count} {t('products')}
                         </p>
                       </div>
                       <span className="text-2xl leading-none">{meta.emoji}</span>
