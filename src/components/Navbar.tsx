@@ -2,7 +2,22 @@
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
-import { ShoppingCart, Search, X, Sun, Moon, ChevronDown, Globe, Loader2 } from 'lucide-react';
+import {
+  ShoppingCart,
+  Search,
+  X,
+  Sun,
+  Moon,
+  ChevronDown,
+  Globe,
+  Loader2,
+  UserRound,
+  LayoutDashboard,
+  Package,
+  CreditCard,
+  LifeBuoy,
+  LogOut,
+} from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
@@ -12,6 +27,7 @@ import { formatPrice } from '@/lib/formatPrice';
 import { translateCategory } from '@/lib/translations';
 import { Language } from '@/types';
 import { Product } from '@/types';
+import FloatingAiAssistant from '@/components/FloatingAiAssistant';
 
 export default function Navbar() {
   const { totalItems } = useCart();
@@ -31,7 +47,9 @@ export default function Navbar() {
   const searchRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setProducts(getMasterProducts());
@@ -50,20 +68,20 @@ export default function Navbar() {
         setLangOpen(false);
       }
     }
+
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
   const categories = Array.from(new Set(products.map(p => p.category)));
-
   const langs: { code: Language; label: string; full: string }[] = [
     { code: 'en', label: 'EN', full: 'English' },
     { code: 'fr', label: 'FR', full: 'Français' },
     { code: 'rw', label: 'RW', full: 'Kinyarwanda' },
   ];
-
   const currentLang = langs.find(l => l.code === language)!;
   const quickCategories = categories.slice(0, 10);
+  const profileInitial = user?.name?.trim()?.charAt(0).toUpperCase() ?? '';
 
   async function runAiSearch(query: string) {
     const clean = query.trim();
@@ -80,9 +98,7 @@ export default function Navbar() {
     try {
       const response = await fetch('/api/ai/search', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ message: clean }),
       });
 
@@ -105,201 +121,165 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-40 bg-white/90 dark:bg-navy/90 backdrop-blur-md border-b border-light-border dark:border-dark-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center gap-8">
-        {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-xl text-[#16a34a] shrink-0">
-          🛒 Simba
+          Simba
         </Link>
 
-        {/* Desktop nav */}
-        <div className="hidden md:flex items-center gap-6 flex-1 justify-center">
-          <Link href="/" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors">
+        {/* Desktop nav links */}
+        <div className="hidden md:flex items-center gap-5 shrink-0">
+          <Link href="/" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors whitespace-nowrap">
             {t('Home')}
           </Link>
-          <Link href="/products" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors">
+          <Link href="/products" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors whitespace-nowrap">
             {t('Products')}
           </Link>
-          <Link href="/about" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors">
+          <Link href="/about" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors whitespace-nowrap">
             {t('About Us')}
           </Link>
-          <Link href="/branches" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors">
+          <Link href="/branches" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors whitespace-nowrap">
             {t('Branches')}
           </Link>
-
-          {/* Categories — hover to open */}
-          <div className="relative group">
-            <button className="flex items-center gap-1 text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors py-5">
-              {t('Categories')}
-              <ChevronDown size={14} className="group-hover:rotate-180 transition-transform duration-200" />
-            </button>
-            {/* Dropdown: visible on group hover */}
-            <div className="absolute top-full left-0 pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-150">
-              <div className="bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card shadow-xl py-2 min-w-[200px]">
-                {categories.map(cat => (
-                  <Link
-                    key={cat}
-                    href={`/products?category=${encodeURIComponent(cat)}`}
-                    className="block px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors"
-                  >
-                    {translateCategory(cat, language)}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
 
-        {/* Right side */}
+        {/* Persistent search bar — desktop */}
+        <div ref={searchRef} className="hidden md:block flex-1 max-w-xl relative">
+          <div className="relative">
+            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
+            <input
+              type="text"
+              value={aiQuery}
+              onChange={e => setAiQuery(e.target.value)}
+              onFocus={() => setSearchOpen(true)}
+              onKeyDown={e => {
+                if (e.key === 'Enter') { e.preventDefault(); void runAiSearch(aiQuery); }
+                if (e.key === 'Escape') { setSearchOpen(false); setAiQuery(''); setAiReply(''); setAiError(''); setAiResults([]); }
+              }}
+              placeholder={t('Search products...')}
+              className="w-full pl-9 pr-20 py-2 text-sm border border-light-border dark:border-dark-border rounded-full bg-gray-50 dark:bg-slate-800 text-light-text dark:text-dark-text placeholder-gray-400 focus:outline-none focus:border-[#16a34a] focus:bg-white dark:focus:bg-dark-card transition-colors"
+              aria-label="Search products"
+            />
+            {aiQuery && (
+              <button
+                onClick={() => { setAiQuery(''); setAiReply(''); setAiError(''); setAiResults([]); setSearchOpen(false); }}
+                className="absolute right-14 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-gray-600"
+              >
+                <X size={14} />
+              </button>
+            )}
+            <button
+              onClick={() => void runAiSearch(aiQuery)}
+              disabled={aiLoading}
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1 text-xs font-semibold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-100 disabled:opacity-60 transition-colors"
+            >
+              {aiLoading ? <Loader2 size={12} className="animate-spin" /> : 'Search'}
+            </button>
+          </div>
+
+          {/* Search dropdown */}
+          {searchOpen && (
+            <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card shadow-xl z-50 overflow-hidden">
+              {/* AI suggestions row */}
+              {!aiQuery && (
+                <div className="px-4 py-3 border-b border-light-border dark:border-dark-border">
+                  <p className="text-xs font-semibold text-gray-400 mb-2 uppercase tracking-wide">Try asking</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {['Fresh milk', 'Baby products', 'Breakfast options', 'Snacks under 2000'].map(s => (
+                      <button key={s} onClick={() => { setAiQuery(s); void runAiSearch(s); }}
+                        className="text-[11px] px-2.5 py-1 rounded-full border border-light-border dark:border-dark-border text-gray-600 dark:text-gray-300 hover:border-[#16a34a] hover:text-[#16a34a] transition-colors">
+                        {s}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {aiLoading && (
+                <div className="flex items-center gap-2 px-4 py-3 text-xs text-gray-500">
+                  <Loader2 size={13} className="animate-spin text-[#16a34a]" /> Searching…
+                </div>
+              )}
+
+              {aiError && <p className="px-4 py-3 text-xs text-red-500">{aiError}</p>}
+              {aiReply && <p className="px-4 py-2 text-xs text-gray-600 dark:text-gray-400 border-b border-light-border dark:border-dark-border">{aiReply}</p>}
+
+              {aiResults.length > 0 && (
+                <ul className="max-h-64 overflow-y-auto divide-y divide-light-border dark:divide-dark-border">
+                  {aiResults.map(product => (
+                    <li key={product.id}>
+                      <Link href={`/products/${product.id}`}
+                        onClick={() => { setSearchOpen(false); setAiQuery(''); setAiReply(''); setAiError(''); setAiResults([]); }}
+                        className="flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
+                        <div>
+                          <p className="text-sm font-medium text-light-text dark:text-dark-text line-clamp-1">{product.name}</p>
+                          <p className="text-xs text-gray-400">{translateCategory(product.category, language)}</p>
+                        </div>
+                        <span className="text-xs font-semibold text-[#f59e0b] shrink-0 ml-3">{formatPrice(product.price)}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {!aiLoading && aiReply && aiResults.length === 0 && (
+                <p className="px-4 py-3 text-xs text-gray-400">No exact matches. Try different keywords.</p>
+              )}
+            </div>
+          )}
+        </div>
+
         <div className="flex items-center gap-1 ml-auto">
-          {/* Auth actions */}
           <div className="hidden md:flex items-center gap-2 mr-1">
             {user ? (
-              <>
-                {user.role !== 'customer' && (
-                  <Link
-                    href="/dashboard"
-                    className="px-3 py-1.5 text-xs font-semibold rounded-btn text-[#16a34a] border border-[#16a34a]/40 hover:bg-[#16a34a]/10 transition-colors"
-                  >
-                    {t('Dashboard')}
-                  </Link>
-                )}
+              <div className="relative group">
                 <button
-                  onClick={logout}
-                  className="px-3 py-1.5 text-xs font-semibold rounded-btn text-red-500 border border-red-200 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
+                  className="h-10 w-10 rounded-full border border-light-border dark:border-dark-border bg-white dark:bg-dark-card shadow-sm flex items-center justify-center overflow-hidden hover:border-[#16a34a] transition-colors"
+                  aria-label="Open profile menu"
                 >
-                  {t('Logout')}
+                  {profileInitial ? (
+                    <span className="text-sm font-bold text-[#16a34a]">{profileInitial}</span>
+                  ) : (
+                    <UserRound size={18} className="text-gray-500" />
+                  )}
                 </button>
-              </>
+
+                <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50">
+                  <div className="w-56 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card shadow-xl py-2">
+                    <div className="px-4 pb-2 mb-1 border-b border-light-border dark:border-dark-border">
+                      <p className="text-sm font-semibold text-light-text dark:text-dark-text line-clamp-1">{user.name}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">{user.email}</p>
+                    </div>
+
+                    <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
+                      <LayoutDashboard size={15} /> {t('Dashboard')}
+                    </Link>
+                    <Link href="/dashboard/orders" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
+                      <Package size={15} /> {t('My Orders')}
+                    </Link>
+                    <Link href="/dashboard/settings" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
+                      <CreditCard size={15} /> {t('Payment Settings')}
+                    </Link>
+                    <Link href="/about" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
+                      <LifeBuoy size={15} /> {t('Help Center')}
+                    </Link>
+                    <button onClick={logout} className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors">
+                      <LogOut size={15} /> {t('Logout')}
+                    </button>
+                  </div>
+                </div>
+              </div>
             ) : (
               <>
-                <Link
-                  href="/auth/login"
-                  className="px-3 py-1.5 text-xs font-semibold rounded-btn text-light-text dark:text-dark-text border border-light-border dark:border-dark-border hover:border-[#16a34a] hover:text-[#16a34a] transition-colors"
-                >
+                <Link href="/auth/login" className="px-3 py-1.5 text-xs font-semibold rounded-btn text-light-text dark:text-dark-text border border-light-border dark:border-dark-border hover:border-[#16a34a] hover:text-[#16a34a] transition-colors">
                   {t('Login')}
                 </Link>
-                <Link
-                  href="/auth/signup"
-                  className="px-3 py-1.5 text-xs font-semibold rounded-btn text-white bg-[#16a34a] hover:bg-[#15803d] transition-colors"
-                >
+                <Link href="/auth/signup" className="px-3 py-1.5 text-xs font-semibold rounded-btn text-white bg-black hover:bg-gray-900 transition-colors">
                   {t('Sign Up')}
                 </Link>
               </>
             )}
           </div>
 
-          {/* Search */}
-          <div ref={searchRef} className="relative">
-            {searchOpen ? (
-              <div className="absolute top-0 right-0 w-[340px] md:w-[420px] bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card shadow-xl p-3 z-50">
-                <div className="flex items-center justify-between mb-2">
-                  <p className="text-xs font-semibold text-[#16a34a]">AI Product Assistant</p>
-                  <button
-                    onClick={() => {
-                      setSearchOpen(false);
-                      setAiQuery('');
-                      setAiReply('');
-                      setAiError('');
-                      setAiResults([]);
-                    }}
-                    className="p-1 text-gray-500"
-                  >
-                    <X size={16} />
-                  </button>
-                </div>
 
-                <div className="flex items-center gap-2">
-                  <input
-                    autoFocus
-                    type="text"
-                    value={aiQuery}
-                    onChange={e => setAiQuery(e.target.value)}
-                    onKeyDown={e => {
-                      if (e.key === 'Enter') {
-                        e.preventDefault();
-                        void runAiSearch(aiQuery);
-                      }
-                    }}
-                    placeholder="Ask naturally: Do you have fresh milk?"
-                    className="flex-1 px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
-                    aria-label="Conversational product search"
-                  />
-                  <button
-                    onClick={() => void runAiSearch(aiQuery)}
-                    disabled={aiLoading}
-                    className="px-3 py-2 text-xs font-semibold rounded-btn bg-[#16a34a] text-white hover:bg-[#15803d] disabled:opacity-60"
-                  >
-                    {aiLoading ? 'Searching...' : 'Ask'}
-                  </button>
-                </div>
-
-                <div className="mt-2 flex flex-wrap gap-1.5">
-                  {['I need breakfast options', 'Do you have fresh milk?', 'Show baby products'].map(suggestion => (
-                    <button
-                      key={suggestion}
-                      onClick={() => {
-                        setAiQuery(suggestion);
-                        void runAiSearch(suggestion);
-                      }}
-                      className="text-[11px] px-2 py-1 rounded-full border border-light-border dark:border-dark-border text-gray-600 dark:text-gray-300 hover:border-[#16a34a] hover:text-[#16a34a]"
-                    >
-                      {suggestion}
-                    </button>
-                  ))}
-                </div>
-
-                {aiLoading && (
-                  <div className="mt-3 flex items-center gap-2 text-xs text-gray-500">
-                    <Loader2 size={14} className="animate-spin" />
-                    Thinking through your request...
-                  </div>
-                )}
-
-                {aiError && (
-                  <p className="mt-3 text-xs text-red-600 dark:text-red-400">{aiError}</p>
-                )}
-
-                {aiReply && (
-                  <p className="mt-3 text-sm text-light-text dark:text-dark-text">{aiReply}</p>
-                )}
-
-                {aiResults.length > 0 && (
-                  <div className="mt-3 border border-light-border dark:border-dark-border rounded-btn overflow-hidden">
-                    {aiResults.map(product => (
-                      <Link
-                        key={product.id}
-                        href={`/products/${product.id}`}
-                        onClick={() => {
-                          setSearchOpen(false);
-                          setAiQuery('');
-                          setAiReply('');
-                          setAiError('');
-                          setAiResults([]);
-                        }}
-                        className="block px-3 py-2 border-b last:border-b-0 border-light-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-slate-700"
-                      >
-                        <p className="text-sm font-medium text-light-text dark:text-dark-text line-clamp-1">{product.name}</p>
-                        <p className="text-xs text-gray-500">{translateCategory(product.category, language)} • {formatPrice(product.price)}</p>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-
-                {!aiLoading && aiReply && aiResults.length === 0 && (
-                  <p className="mt-3 text-xs text-gray-500">No exact products found. Try another request.</p>
-                )}
-              </div>
-            ) : (
-              <button
-                onClick={() => setSearchOpen(true)}
-                className="p-2 text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors"
-                aria-label="Open AI product search"
-              >
-                <Search size={18} />
-              </button>
-            )}
-          </div>
-
-          {/* Language dropdown */}
           <div ref={langRef} className="relative hidden sm:block">
             <button
               onClick={() => setLangOpen(v => !v)}
@@ -316,7 +296,10 @@ export default function Navbar() {
                 {langs.map(({ code, label, full }) => (
                   <button
                     key={code}
-                    onClick={() => { setLanguage(code); setLangOpen(false); }}
+                    onClick={() => {
+                      setLanguage(code);
+                      setLangOpen(false);
+                    }}
                     className={`w-full flex items-center justify-between px-4 py-2 text-sm transition-colors ${
                       language === code
                         ? 'text-[#16a34a] font-semibold bg-[#16a34a]/5'
@@ -331,7 +314,6 @@ export default function Navbar() {
             )}
           </div>
 
-          {/* Dark mode toggle */}
           {mounted && (
             <button
               onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
@@ -342,7 +324,6 @@ export default function Navbar() {
             </button>
           )}
 
-          {/* Cart icon — desktop only; mobile uses BottomNav */}
           <Link href="/cart" className="hidden md:flex relative p-2 text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors" aria-label={`Cart, ${totalItems} items`}>
             <ShoppingCart size={20} />
             {totalItems > 0 && (
@@ -354,14 +335,10 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Category quick links bar */}
       <div className="hidden md:block border-t border-light-border dark:border-dark-border bg-white/80 dark:bg-navy/80">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-11 flex items-center gap-2 overflow-x-auto scrollbar-hide">
-            <Link
-              href="/products"
-              className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f59e0b] text-white hover:bg-[#d97706] transition-colors"
-            >
+            <Link href="/products" className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f59e0b] text-white hover:bg-[#d97706] transition-colors">
               {t('All Categories')}
             </Link>
             {quickCategories.map(cat => (
@@ -377,7 +354,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile drawer */}
       {menuOpen && (
         <div className="md:hidden bg-white dark:bg-dark-card border-t border-light-border dark:border-dark-border shadow-lg">
           <div className="px-4 py-4 flex flex-col gap-4">
@@ -398,7 +374,7 @@ export default function Navbar() {
                 <Link href="/auth/login" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-light-text dark:text-dark-text">
                   {t('Login')}
                 </Link>
-                <Link href="/auth/signup" onClick={() => setMenuOpen(false)} className="text-sm font-semibold text-[#16a34a]">
+                <Link href="/auth/signup" onClick={() => setMenuOpen(false)} className="inline-flex w-fit px-3 py-1.5 rounded-btn text-sm font-semibold text-white bg-black hover:bg-gray-900 transition-colors">
                   {t('Sign Up')}
                 </Link>
               </>
@@ -444,6 +420,8 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      <FloatingAiAssistant />
     </nav>
   );
 }

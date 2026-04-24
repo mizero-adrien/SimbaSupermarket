@@ -7,9 +7,11 @@ import { MapPin, Phone, Clock, ChevronRight, Store, Star, Quote } from 'lucide-r
 import { Branch } from '@/types';
 import { getAllBranches } from '@/lib/branches';
 import { getBranchReviewSummary } from '@/lib/reviewData';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function BranchesPage() {
   const [branches, setBranches] = useState<Branch[]>([]);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setBranches(getAllBranches());
@@ -25,11 +27,11 @@ export default function BranchesPage() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-4 py-1.5 rounded-full text-sm font-medium mb-4">
             <Store size={14} />
-            {branches.length} Locations Across Rwanda
+            {branches.length} {t('Locations Across Rwanda')}
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold mb-3">Our Branches</h1>
+          <h1 className="text-3xl md:text-4xl font-extrabold mb-3">{t('Our Branches')}</h1>
           <p className="text-white/80 text-base max-w-xl mx-auto">
-            Find a Simba Supermarket near you. We&apos;re in Kigali and expanding across Rwanda.
+            {t("Find a Simba Supermarket near you. We're in Kigali and expanding across Rwanda.")}
           </p>
         </div>
       </div>
@@ -38,11 +40,11 @@ export default function BranchesPage() {
         {/* Open branches */}
         <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-5 flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-[#16a34a] inline-block" />
-          Open Now — {openBranches.length} branches
+          {t('Open Now')} — {openBranches.length} {t('branches')}
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
           {openBranches.map(branch => (
-            <BranchCard key={branch.id} branch={branch} />
+            <BranchCard key={branch.id} branch={branch} t={t} />
           ))}
         </div>
 
@@ -50,11 +52,11 @@ export default function BranchesPage() {
           <>
             <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-5 flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-gray-400 inline-block" />
-              Temporarily Closed
+              {t('Temporarily Closed')}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {closedBranches.map(branch => (
-                <BranchCard key={branch.id} branch={branch} />
+                <BranchCard key={branch.id} branch={branch} t={t} />
               ))}
             </div>
           </>
@@ -64,7 +66,7 @@ export default function BranchesPage() {
   );
 }
 
-function BranchCard({ branch }: { branch: Branch }) {
+function BranchCard({ branch, t }: { branch: Branch; t: (key: string) => string }) {
   const spotlightReview = branch.testimonials[0];
   const [rating, setRating] = useState(branch.rating);
   const [reviewCount, setReviewCount] = useState(branch.reviewCount);
@@ -97,7 +99,7 @@ function BranchCard({ branch }: { branch: Branch }) {
           <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${
             branch.isOpen ? 'bg-[#16a34a] text-white' : 'bg-gray-500 text-white'
           }`}>
-            {branch.isOpen ? 'Open' : 'Closed'}
+            {branch.isOpen ? t('Open') : t('Closed')}
           </span>
         </div>
       </div>
@@ -109,7 +111,7 @@ function BranchCard({ branch }: { branch: Branch }) {
             <Star size={14} fill="currentColor" />
             <span className="text-sm font-semibold text-light-text dark:text-dark-text">{rating.toFixed(1)}</span>
           </div>
-          <span className="text-xs text-gray-500">{reviewCount}+ reviews</span>
+          <span className="text-xs text-gray-500">{reviewCount}+ {t('reviews')}</span>
         </div>
 
         <div className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
@@ -145,7 +147,7 @@ function BranchCard({ branch }: { branch: Branch }) {
             {branch.location}
           </span>
           <span className="flex items-center gap-0.5 text-xs text-[#16a34a] font-semibold group-hover:gap-1 transition-all">
-            View branch <ChevronRight size={13} />
+            {t('View branch')} <ChevronRight size={13} />
           </span>
         </div>
       </div>

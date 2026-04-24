@@ -18,10 +18,10 @@ function ProductsContent() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const allCategories = useMemo(() => getCategories(allProducts), [allProducts]);
 
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') ?? '');
+  const [searchQuery, setSearchQuery] = useState(searchParams?.get('search') ?? '');
   const [debouncedQuery, setDebouncedQuery] = useState(searchQuery);
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
-    searchParams.get('category') ? [searchParams.get('category')!] : []
+    searchParams?.get('category') ? [searchParams.get('category')!] : []
   );
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');

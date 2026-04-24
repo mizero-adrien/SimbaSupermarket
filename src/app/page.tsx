@@ -1,14 +1,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
-import { ArrowRight, MapPin, ShieldCheck, ShoppingCart, Truck, CreditCard } from 'lucide-react';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { ArrowRight, MapPin, ShieldCheck, ShoppingCart, Truck, CreditCard, Clock3, ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import CategoryGrid from '@/components/CategoryGrid';
 import { useLanguage } from '@/context/LanguageContext';
-import { getCategories, deterministicShuffle } from '@/lib/products';
+import { getCategories, deterministicShuffle, getSaleInfo, getProductImage } from '@/lib/products';
+import { formatPrice } from '@/lib/formatPrice';
 import { getMasterProducts } from '@/lib/productData';
 import { getAllBranches } from '@/lib/branches';
+import Image from 'next/image';
 import { Product } from '@/types';
 
 export default function HomePage() {
@@ -17,6 +19,8 @@ export default function HomePage() {
     language === 'fr' ? fr : language === 'rw' ? rw : en;
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [branchCount, setBranchCount] = useState(0);
+  const [countdown, setCountdown] = useState('00:00:00');
+  const dealsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setAllProducts(getMasterProducts());
@@ -27,8 +31,29 @@ export default function HomePage() {
 
   const featuredProducts = useMemo(() => {
     const shuffled = deterministicShuffle(allProducts, 42);
-    return shuffled.slice(0, 12);
+    return shuffled.slice(0, 20);
   }, [allProducts]);
+
+  const dealProducts = useMemo(() => {
+    const deals = featuredProducts.filter(product => getSaleInfo(product).onSale);
+    return deals.length >= 4 ? deals.slice(0, 8) : featuredProducts.slice(0, 8);
+  }, [featuredProducts]);
+
+  useEffect(() => {
+    const computeCountdown = () => {
+      const nextMidnight = new Date();
+      nextMidnight.setHours(23, 59, 59, 999);
+      const diff = Math.max(0, nextMidnight.getTime() - Date.now());
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+      setCountdown([hours, minutes, seconds].map(value => String(value).padStart(2, '0')).join(':'));
+    };
+
+    computeCountdown();
+    const timer = window.setInterval(computeCountdown, 1000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <div className="page-transition bg-light-bg dark:bg-dark-bg">
@@ -44,19 +69,19 @@ export default function HomePage() {
         <div className="absolute inset-0 dark:hidden bg-[linear-gradient(135deg,rgba(15,23,42,0.58)_0%,rgba(30,41,59,0.50)_48%,rgba(15,23,42,0.62)_100%)]" />
         <div className="absolute inset-0 hidden dark:block bg-[linear-gradient(135deg,rgba(2,6,23,0.82)_0%,rgba(15,23,42,0.72)_48%,rgba(17,24,39,0.88)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_30%)]" />
-        <div className="relative max-w-7xl mx-auto px-4 py-16 md:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <div className="space-y-6">
+        <div className="relative max-w-7xl mx-auto px-4 py-10 md:py-14">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur">
                 <ShieldCheck size={13} className="text-amber-400" />
                 {tr("Rwanda's trusted supermarket network", 'Réseau de supermarchés de confiance au Rwanda', 'Urusobe rwa supermarket rwizewe mu Rwanda')}
               </div>
 
               <div className="space-y-3">
-                <h1 className="text-4xl md:text-5xl font-black leading-tight text-balance">
+                <h1 className="max-w-xl text-3xl md:text-4xl font-black leading-tight text-balance">
                   {tr('Simba Supermarket, built for fast shopping across Kigali.', 'Simba Supermarket, conçu pour des achats rapides à Kigali.', 'Simba Supermarket, yubakiwe guhaha vuba i Kigali.')}
                 </h1>
-                <p className="max-w-xl text-base md:text-lg text-slate-300">
+                <p className="max-w-lg text-sm md:text-base text-slate-300">
                   {tr('Fresh groceries, everyday essentials, branch pickup, and fast delivery in one place. Start with the brand people already trust.', 'Produits frais, essentiels du quotidien, retrait en succursale et livraison rapide en un seul endroit. Commencez avec une marque déjà fiable.', 'Ibiribwa bishya, ibikenerwa buri munsi, gufatira ku ishami no koherezwa vuba byose hamwe. Tangira n\'ikirango abantu basanzwe bizeye.')}
                 </p>
               </div>
@@ -64,21 +89,21 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/products"
-                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-[#d97706]"
+                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#d97706]"
                 >
                   <ShoppingCart size={16} />
                   {tr('Start Shopping', 'Commencer vos achats', 'Tangira guhaha')}
                 </Link>
                 <Link
                   href="/branches"
-                  className="inline-flex items-center justify-center gap-2 rounded-btn border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                  className="inline-flex items-center justify-center gap-2 rounded-btn border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
                 >
                   <MapPin size={16} />
                   {tr('Find a Branch', 'Trouver une succursale', 'Shaka ishami')}
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
                 {[
                   { value: `${branchCount}+`, label: tr('Branches across Rwanda', 'Succursales à travers le Rwanda', 'Amashami hirya no hino mu Rwanda') },
                   { value: '45 min', label: tr('Fast Kigali delivery', 'Livraison rapide à Kigali', 'Kohereza vuba i Kigali') },
@@ -92,7 +117,7 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative hidden lg:block">
               <div className="absolute -left-8 -top-8 h-28 w-28 rounded-full bg-amber-400/20 blur-2xl" />
               <div className="absolute -right-6 bottom-0 h-32 w-32 rounded-full bg-sky-400/10 blur-2xl" />
               <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur">
@@ -132,6 +157,89 @@ export default function HomePage() {
           <span className="flex items-center gap-1.5"><CreditCard size={13} className="text-[#f59e0b]" /> MTN &amp; Airtel MoMo</span>
         </div>
       </div>
+
+      {/* Today's deals */}
+      <section className="px-4 pt-8 pb-2">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex items-center justify-between mb-5">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-black text-light-text dark:text-dark-text">
+                {tr("Today's deals", 'Offres du jour', 'Imyanya y\'uyu munsi')}
+              </h2>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{tr('Top picks, limited time', 'Meilleurs choix, offre limitée', 'Ibyiza byatoranyijwe, igihe gito')}</p>
+            </div>
+            <Link href="/products" className="text-sm font-semibold text-[#16a34a] hover:underline hidden sm:inline-flex">
+              {t('Shop now')}
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 xl:grid-cols-[320px_minmax(0,1fr)] gap-4">
+            <div className="rounded-[1.75rem] border border-light-border dark:border-dark-border bg-white dark:bg-dark-card p-6 text-light-text dark:text-dark-text shadow-sm overflow-hidden relative">
+              <p className="text-xs uppercase tracking-[0.3em] text-[#f59e0b] font-semibold">{t('Limited offer')}</p>
+              <h3 className="mt-3 text-3xl font-black leading-tight">{t('SuperDeals')}</h3>
+              <p className="mt-3 text-sm text-gray-600 dark:text-gray-300 max-w-xs">{tr('Save big on selected products', 'Économisez sur une sélection de produits', 'Uzigame cyane ku bicuruzwa byatoranyijwe')}</p>
+
+              <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-light-border dark:border-dark-border px-4 py-2 text-light-text dark:text-dark-text">
+                <Clock3 size={16} className="text-red-500" />
+                <span className="text-sm font-semibold">{t('Ends in')} {countdown}</span>
+              </div>
+
+              <Link href="/products" className="mt-6 inline-flex items-center justify-center rounded-btn bg-[#16a34a] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#15803d]">
+                {t('Shop now')}
+              </Link>
+            </div>
+
+            <div className="relative">
+              <button
+                onClick={() => dealsRef.current?.scrollBy({ left: -320, behavior: 'smooth' })}
+                className="hidden xl:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 items-center justify-center rounded-full bg-white/90 dark:bg-dark-card shadow-lg border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-105"
+                aria-label="Scroll deals left"
+              >
+                <ChevronLeft size={22} />
+              </button>
+              <button
+                onClick={() => dealsRef.current?.scrollBy({ left: 320, behavior: 'smooth' })}
+                className="hidden xl:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 h-12 w-12 items-center justify-center rounded-full bg-white/90 dark:bg-dark-card shadow-lg border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:scale-105"
+                aria-label="Scroll deals right"
+              >
+                <ChevronRight size={22} />
+              </button>
+
+              <div
+                ref={dealsRef}
+                className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory"
+              >
+                {dealProducts.map(product => {
+                  const sale = getSaleInfo(product);
+                  const image = getProductImage(product);
+                  return (
+                    <Link
+                      key={product.id}
+                      href={`/products/${product.id}`}
+                      className="min-w-[230px] max-w-[230px] sm:min-w-[250px] sm:max-w-[250px] snap-start group bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-[1.35rem] overflow-hidden shadow-sm hover:shadow-xl transition-all"
+                    >
+                      <div className="relative h-52 bg-gray-50 dark:bg-slate-800 overflow-hidden">
+                        <Image src={image} alt={product.name} fill className="object-cover group-hover:scale-105 transition-transform duration-300" sizes="250px" />
+                        <span className="absolute top-3 left-3 bg-[#f43f5e] text-white text-xs font-bold px-2.5 py-1 rounded-full">
+                          -{sale.savePct}%
+                        </span>
+                      </div>
+                      <div className="p-4">
+                        <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1">{tr(product.category, product.category, product.category)}</p>
+                        <h4 className="mt-1 text-base font-semibold text-light-text dark:text-dark-text line-clamp-2 min-h-[3rem]">{product.name}</h4>
+                        <div className="mt-3 flex items-baseline gap-2">
+                          <span className="text-xl font-black text-[#f59e0b]">{formatPrice(sale.salePrice)}</span>
+                          <span className="text-xs text-gray-400 line-through">{formatPrice(sale.originalPrice)}</span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-4 pt-8 pb-2 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">

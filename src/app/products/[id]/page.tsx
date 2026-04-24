@@ -14,7 +14,8 @@ import { getProductImage } from '@/lib/products';
 import { Product } from '@/types';
 
 export default function ProductDetailPage() {
-  const { id } = useParams<{ id: string }>();
+  const params = useParams();
+  const id = params?.id as string;
   const { addItem } = useCart();
   const { t } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);

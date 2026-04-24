@@ -70,7 +70,7 @@ export default function BottomNav() {
   }
 
   const isActive = (path: string) =>
-    path === '/' ? pathname === '/' : pathname.startsWith(path);
+    path === '/' ? pathname === '/' : (pathname ?? '').startsWith(path);
 
   const navItems = [
     { label: t('Home'), icon: Home, href: '/' },

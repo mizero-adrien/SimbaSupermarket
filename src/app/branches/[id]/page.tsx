@@ -10,9 +10,12 @@ import ProductCard from '@/components/ProductCard';
 import { getMasterProducts } from '@/lib/productData';
 import { deterministicShuffle } from '@/lib/products';
 import { addBranchReview, getBranchReviewSummary, getBranchReviews } from '@/lib/reviewData';
+import { useLanguage } from '@/context/LanguageContext';
+import { translateCategory } from '@/lib/translations';
 
 export default function BranchDetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
+  const { t, language } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [allBranches, setAllBranches] = useState<Branch[]>([]);
   const [reviews, setReviews] = useState(getBranchReviews(id));
@@ -54,9 +57,9 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
       <div className="min-h-screen bg-light-bg dark:bg-dark-bg flex items-center justify-center">
         <div className="text-center">
           <Store size={48} className="mx-auto text-gray-300 mb-3" />
-          <h1 className="text-xl font-bold text-light-text dark:text-dark-text">Branch not found</h1>
+          <h1 className="text-xl font-bold text-light-text dark:text-dark-text">{t('Branch not found')}</h1>
           <Link href="/branches" className="mt-4 inline-block text-[#16a34a] hover:underline text-sm">
-            ← Back to branches
+            ← {t('Back to branches')}
           </Link>
         </div>
       </div>
@@ -83,7 +86,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
         <div className="absolute bottom-0 left-0 right-0 p-6 max-w-7xl mx-auto">
           <Link href="/branches" className="inline-flex items-center gap-1.5 text-white/80 hover:text-white text-sm mb-3 transition-colors">
             <ArrowLeft size={14} />
-            All Branches
+            {t('Back to branches')}
           </Link>
           <div className="flex items-end justify-between gap-4">
             <div>
@@ -92,13 +95,13 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
               <div className="mt-2 inline-flex items-center gap-1.5 bg-black/30 backdrop-blur px-2.5 py-1 rounded-full">
                 <Star size={13} className="text-amber-400" fill="currentColor" />
                 <span className="text-sm font-semibold text-white">{displayedRating.toFixed(1)}</span>
-                <span className="text-xs text-white/75">({displayedReviewCount}+ reviews)</span>
+                <span className="text-xs text-white/75">({displayedReviewCount}+ {t('reviews')})</span>
               </div>
             </div>
             <span className={`shrink-0 text-sm font-bold px-3 py-1 rounded-full ${
               branch.isOpen ? 'bg-[#16a34a] text-white' : 'bg-gray-500 text-white'
             }`}>
-              {branch.isOpen ? '🟢 Open Now' : '🔴 Closed'}
+              {branch.isOpen ? `🟢 ${t('Open Now')}` : `🔴 ${t('Closed')}`}
             </span>
           </div>
         </div>
@@ -107,7 +110,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
       <div className="max-w-7xl mx-auto px-4 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mb-8">
           <div className="lg:col-span-2 bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-5">
-            <h2 className="text-base font-bold text-light-text dark:text-dark-text mb-2">Branch Profile</h2>
+            <h2 className="text-base font-bold text-light-text dark:text-dark-text mb-2">{t('Branch Profile')}</h2>
             <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{branch.description}</p>
 
             <div className="space-y-2">
@@ -121,7 +124,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
           </div>
 
           <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-5">
-            <h2 className="text-base font-bold text-light-text dark:text-dark-text mb-2">Services</h2>
+            <h2 className="text-base font-bold text-light-text dark:text-dark-text mb-2">{t('Services')}</h2>
             <div className="flex flex-wrap gap-2">
               {branch.services.map(service => (
                 <span
@@ -139,7 +142,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
               rel="noreferrer"
               className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-[#16a34a] hover:underline"
             >
-              Open in Google Maps <ExternalLink size={14} />
+              {t('Open in Google Maps')} <ExternalLink size={14} />
             </Link>
           </div>
         </div>
@@ -147,9 +150,9 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
         {/* Info strip */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-8">
           {[
-            { icon: MapPin, label: 'Address', value: branch.address },
-            { icon: Phone, label: 'Phone', value: branch.phone },
-            { icon: Clock, label: 'Hours', value: branch.hours },
+            { icon: MapPin, label: t('Address'), value: branch.address },
+            { icon: Phone, label: t('Phone'), value: branch.phone },
+            { icon: Clock, label: t('Hours'), value: branch.hours },
           ].map(({ icon: Icon, label, value }) => (
             <div key={label} className="flex items-start gap-3 bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-4">
               <Icon size={18} className="text-[#16a34a] shrink-0 mt-0.5" />
@@ -163,20 +166,38 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
 
         {/* Category pills */}
         <div className="flex items-center gap-2 overflow-x-auto scrollbar-hide pb-1 mb-6">
-          <span className="text-sm font-semibold text-light-text dark:text-dark-text shrink-0">Categories:</span>
+          <span className="text-sm font-semibold text-light-text dark:text-dark-text shrink-0">{t('Categories')}:</span>
           {categories.map(cat => (
             <Link
               key={cat}
               href={`/products?category=${encodeURIComponent(cat)}`}
               className="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border bg-white dark:bg-dark-card text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a] transition-colors"
             >
-              {cat}
+              {translateCategory(cat, language)}
             </Link>
           ))}
         </div>
 
-        <div className="mb-10">
-          <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-4">Customer Reviews</h2>
+        {/* Products */}
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="text-lg font-bold text-light-text dark:text-dark-text flex items-center gap-2">
+            <ShoppingBag size={18} className="text-[#16a34a]" />
+            {t('Products at this branch')}
+          </h2>
+          <span className="text-sm text-gray-500">{branchProducts.length} {t('items')}</span>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {branchProducts.map(product => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-light-border dark:border-dark-border">
+          <div className="mb-5">
+            <h2 className="text-lg font-bold text-light-text dark:text-dark-text">{t('Customer Reviews')}</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('Recent customer feedback and pickup experiences from this branch.')}</p>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             {branch.testimonials.map((review, index) => (
               <article
@@ -219,14 +240,14 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
             ))}
           </div>
 
-          <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-4">
-            <h3 className="font-bold text-light-text dark:text-dark-text mb-3">Rate your pickup experience</h3>
+          <div className="bg-slate-50 dark:bg-slate-800/40 rounded-card border border-light-border dark:border-dark-border p-4 md:p-5">
+            <h3 className="font-bold text-light-text dark:text-dark-text mb-3">{t('Rate your pickup experience')}</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
               <input
                 type="text"
                 value={reviewName}
                 onChange={e => setReviewName(e.target.value)}
-                placeholder="Your name"
+                placeholder={t('Your name')}
                 className="px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
               />
               <select
@@ -234,43 +255,29 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
                 onChange={e => setReviewRating(Number(e.target.value))}
                 className="px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
               >
-                {[5, 4, 3, 2, 1].map(value => <option key={value} value={value}>{value} stars</option>)}
+                {[5, 4, 3, 2, 1].map(value => <option key={value} value={value}>{value} {t('stars')}</option>)}
               </select>
               <button
                 onClick={submitReview}
                 className="px-3 py-2 text-sm font-semibold text-white bg-[#f59e0b] rounded-btn hover:bg-[#d97706]"
               >
-                Submit Review
+                {t('Submit Review')}
               </button>
             </div>
             <textarea
               value={reviewComment}
               onChange={e => setReviewComment(e.target.value)}
               rows={3}
-              placeholder="Tell others what the pickup experience was like..."
+              placeholder={t('Tell others what the pickup experience was like...')}
               className="w-full px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
             />
-            <p className="mt-2 text-xs text-gray-500">Demo review form. In a full rollout, this can be shown after a completed pickup or verified order.</p>
+            <p className="mt-2 text-xs text-gray-500">{t('Demo review form. In a full rollout, this can be shown after a completed pickup or verified order.')}</p>
           </div>
-        </div>
-
-        {/* Products */}
-        <div className="flex items-center justify-between mb-4">
-          <h2 className="text-lg font-bold text-light-text dark:text-dark-text flex items-center gap-2">
-            <ShoppingBag size={18} className="text-[#16a34a]" />
-            Products at this branch
-          </h2>
-          <span className="text-sm text-gray-500">{branchProducts.length} items</span>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {branchProducts.map(product => (
-            <ProductCard key={product.id} product={product} />
-          ))}
         </div>
 
         {/* Other branches */}
         <div className="mt-12 pt-8 border-t border-light-border dark:border-dark-border">
-          <h3 className="text-base font-bold text-light-text dark:text-dark-text mb-4">Other branches</h3>
+          <h3 className="text-base font-bold text-light-text dark:text-dark-text mb-4">{t('Other branches')}</h3>
           <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2">
             {allBranches.filter(b => b.id !== id).slice(0, 5).map(b => (
               <Link

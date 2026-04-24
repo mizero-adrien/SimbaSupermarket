@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Bot, Send, X, Loader2, Sparkles } from 'lucide-react';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
@@ -29,8 +30,13 @@ export default function FloatingAiAssistant() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [result, setResult] = useState<AiSearchResult | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   const title = tr('AI Product Assistant', 'Assistant produit IA', 'Umufasha wa AI mu bicuruzwa');
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   async function handleAsk(message: string) {
     const clean = message.trim();
@@ -67,10 +73,12 @@ export default function FloatingAiAssistant() {
     }
   }
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <>
       {open && (
-        <div className="fixed bottom-24 right-4 md:right-6 z-50 w-[min(92vw,370px)] rounded-2xl border border-light-border dark:border-dark-border bg-white/95 dark:bg-dark-card/95 backdrop-blur shadow-2xl overflow-hidden">
+        <div className="fixed bottom-[6.25rem] right-3 sm:right-4 md:bottom-6 md:right-6 z-[70] w-[min(92vw,370px)] rounded-2xl border border-light-border dark:border-dark-border bg-white/95 dark:bg-dark-card/95 backdrop-blur shadow-2xl overflow-hidden">
           <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#16a34a] to-[#15803d] text-white">
             <div className="flex items-center gap-2">
               <Sparkles size={16} />
@@ -166,11 +174,12 @@ export default function FloatingAiAssistant() {
 
       <button
         onClick={() => setOpen(v => !v)}
-        className="fixed bottom-24 right-4 md:right-6 z-50 w-14 h-14 rounded-full shadow-2xl bg-gradient-to-r from-[#16a34a] to-[#15803d] text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+        className="fixed bottom-[5rem] right-3 sm:right-4 md:bottom-6 md:right-6 z-[70] w-14 h-14 rounded-full shadow-2xl bg-gradient-to-r from-[#16a34a] to-[#15803d] text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
         aria-label={title}
       >
         <Bot size={24} />
       </button>
-    </>
+    </>,
+    document.body
   );
 }
