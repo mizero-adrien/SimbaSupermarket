@@ -57,9 +57,10 @@ const translations: Record<string, Record<Language, string>> = {
   'Address': { en: 'Address', fr: 'Adresse', rw: 'Aderesi' },
   'Phone': { en: 'Phone', fr: 'Téléphone', rw: 'Terefone' },
   'Hours': { en: 'Hours', fr: 'Heures', rw: 'Amasaha' },
-  'Categories': { en: 'Categories', fr: 'Catégories', rw: 'Ibyiciro' },
   'Products at this branch': { en: 'Products at this branch', fr: 'Produits dans cette succursale', rw: 'Ibicuruzwa muri iri shami' },
   'items': { en: 'items', fr: 'articles', rw: 'ibikoresho' },
+  'branches': { en: 'branches', fr: 'succursales', rw: 'amashami' },
+  'reviews': { en: 'reviews', fr: 'avis', rw: 'ibitekerezo' },
   'Customer Reviews': { en: 'Customer Reviews', fr: 'Avis clients', rw: 'Ibitekerezo by’abakiriya' },
   'Recent customer feedback and pickup experiences from this branch.': {
     en: 'Recent customer feedback and pickup experiences from this branch.',
@@ -104,6 +105,94 @@ const translations: Record<string, Record<Language, string>> = {
   'Save big on selected products': { en: 'Save big on selected products', fr: 'Économisez sur une sélection de produits', rw: 'Uzigame cyane ku bicuruzwa byatoranyijwe' },
   'Limited offer': { en: 'Limited offer', fr: 'Offre limitée', rw: 'Igihe gito' },
   'Fresh deal drops': { en: 'Fresh deal drops', fr: 'Nouvelles offres', rw: 'Ibiciro bishya' },
+
+  // Cart page
+  'Your cart is empty': { en: 'Your cart is empty', fr: 'Votre panier est vide', rw: 'Igitebo cyawe kirimo ubusa' },
+  'Add some products to get started.': { en: 'Add some products to get started.', fr: 'Ajoutez des produits pour commencer.', rw: 'Shyira ibicuruzwa kugira ngo utangire.' },
+  'Start Shopping': { en: 'Start Shopping', fr: 'Commencer vos achats', rw: 'Tangira Kugura' },
+  'Clear Cart': { en: 'Clear Cart', fr: 'Vider le panier', rw: 'Siba Igitebo' },
+  'item': { en: 'item', fr: 'article', rw: 'igicuruzwa' },
+  'Subtotal': { en: 'Subtotal', fr: 'Sous-total', rw: 'Igiteranyo cya mbere' },
+  'Secure checkout': { en: 'Secure checkout', fr: 'Paiement sécurisé', rw: 'Kwishyura byizewe' },
+  'Easy returns': { en: 'Easy returns', fr: 'Retours faciles', rw: 'Gusubiza byoroshye' },
+  'Add {amount} more for free delivery': { en: 'Add {amount} more for free delivery', fr: 'Ajoutez {amount} pour la livraison gratuite', rw: 'Ongeraho {amount} kugira ubone kohereza ubuntu' },
+
+  // Product detail page
+  'Product not found': { en: 'Product not found', fr: 'Produit introuvable', rw: 'Igicuruzwa ntigibonetse' },
+  'Quantity': { en: 'Quantity', fr: 'Quantité', rw: 'Ingano' },
+  'Description': { en: 'Description', fr: 'Description', rw: 'Ibisobanuro' },
+  'Delivery in 1-2 days': { en: 'Delivery in 1-2 days', fr: 'Livraison en 1-2 jours', rw: 'Kugeza mu minsi 1-2' },
+  'More from': { en: 'More from', fr: 'Plus de', rw: 'Ibindi biva mu' },
+
+  // About page
+  'About Us label': { en: '🇷🇼 About Us', fr: '🇷🇼 À propos', rw: '🇷🇼 Abo Turi Bo' },
+  'Feeding Kigali with': { en: 'Feeding Kigali with', fr: 'Nourrir Kigali avec', rw: 'Gutunga Kigali hamwe na' },
+  'Freshness & Pride': { en: 'Freshness & Pride', fr: 'Fraîcheur & Fierté', rw: 'Ubwiza & Icyubahiro' },
+  'Simba Supermarket is Rwanda\'s premier online grocery store — bringing quality products and reliable delivery to your doorstep.': {
+    en: 'Simba Supermarket is Rwanda\'s premier online grocery store — bringing quality products and reliable delivery to your doorstep.',
+    fr: 'Simba Supermarket est la première épicerie en ligne du Rwanda — apportant des produits de qualité et une livraison fiable à votre porte.',
+    rw: 'Simba Supermarket ni isoko ry\'ibiribwa ry\'interineti rya mbere mu Rwanda — rigeza ibicuruzwa by\'igihe cyose n\'ubutumwa bwizewe ku rugi rwawe.',
+  },
+  'Our Story': { en: 'Our Story', fr: 'Notre histoire', rw: 'Inkuru yacu' },
+  'Founded in Kigali, Simba Supermarket was born out of a simple idea: every Rwandan family deserves fast, affordable access to fresh groceries and daily essentials without leaving home. We started with a small catalog and a big dream — today we offer over 552 products across dozens of categories, all delivered across Kigali.': {
+    en: 'Founded in Kigali, Simba Supermarket was born out of a simple idea: every Rwandan family deserves fast, affordable access to fresh groceries and daily essentials without leaving home. We started with a small catalog and a big dream — today we offer over 552 products across dozens of categories, all delivered across Kigali.',
+    fr: 'Fondé à Kigali, Simba Supermarket est né d\'une idée simple : chaque famille rwandaise mérite un accès rapide et abordable à des épiceries fraîches et des produits essentiels quotidiens sans quitter la maison. Nous avons commencé avec un petit catalogue et un grand rêve — aujourd\'hui nous offrons plus de 552 produits dans des dizaines de catégories, tous livrés à travers Kigali.',
+    rw: 'Yashinzwe i Kigali, Simba Supermarket yavutse mu gitekerezo cyoroshye: umuryango wose w\'u Rwanda ukwiye kubona vuba kandi ku giciro gito ibiribwa bishya n\'ibikenewe bya buri munsi utava mu rugo. Tangiye twigitebo gito n\'inzozi nini — uyu munsi dutanga ibicuruzwa birenze 552 mu byiciro byinshi, byose bigezwa ku Kigali hose.',
+  },
+  'What We Stand For': { en: 'What We Stand For', fr: 'Nos valeurs', rw: 'Ivyo dushyigikira' },
+  'Quality Guaranteed': { en: 'Quality Guaranteed', fr: 'Qualité garantie', rw: 'Ubwiza bugabiwe' },
+  'Every product is verified for freshness and quality before it reaches your basket.': {
+    en: 'Every product is verified for freshness and quality before it reaches your basket.',
+    fr: 'Chaque produit est vérifié pour la fraîcheur et la qualité avant d\'atteindre votre panier.',
+    rw: 'Buri gicuruzwa gisuzumwa ubwiza n\'imiterere mbere yo kugera mu gitebo cyawe.',
+  },
+  'Fast Delivery': { en: 'Fast Delivery', fr: 'Livraison rapide', rw: 'Gutanga byihuse' },
+  'Same-day delivery across Kigali so your groceries arrive when you need them.': {
+    en: 'Same-day delivery across Kigali so your groceries arrive when you need them.',
+    fr: 'Livraison le jour même à travers Kigali pour que vos courses arrivent quand vous en avez besoin.',
+    rw: 'Gutanga uwo munsi uwose i Kigali kugira ngo ibiribwa byawe bigere igihe ubikeneye.',
+  },
+  'Community First': { en: 'Community First', fr: 'La communauté avant tout', rw: 'Umuryango ni wa mbere' },
+  'We partner with local Rwandan farmers and suppliers to support the local economy.': {
+    en: 'We partner with local Rwandan farmers and suppliers to support the local economy.',
+    fr: 'Nous travaillons avec des agriculteurs et fournisseurs rwandais locaux pour soutenir l\'économie locale.',
+    rw: 'Dukorana n\'abahinzi n\'abanatsi bo mu Rwanda gufasha ubukungu bw\'igihugu.',
+  },
+  'Best Prices': { en: 'Best Prices', fr: 'Meilleurs prix', rw: 'Ibiciro byiza' },
+  'Competitive pricing on all 552 products, with regular deals and discounts.': {
+    en: 'Competitive pricing on all 552 products, with regular deals and discounts.',
+    fr: 'Prix compétitifs sur les 552 produits, avec des offres et réductions régulières.',
+    rw: 'Ibiciro bihanganye ku bicuruzwa byose 552, hamwe n\'amasezerano n\'igabanywa ry\'ibiciro.',
+  },
+  'Customer Focused': { en: 'Customer Focused', fr: 'Axé sur le client', rw: 'Abakiriya ni bo mbere' },
+  'Our team is always ready to help — in English, French, or Kinyarwanda.': {
+    en: 'Our team is always ready to help — in English, French, or Kinyarwanda.',
+    fr: 'Notre équipe est toujours prête à vous aider — en anglais, en français ou en kinyarwanda.',
+    rw: 'Itsinda ryacu riba rigiteguye gufasha — mu Cyongereza, Igifaransa, cyangwa Ikinyarwanda.',
+  },
+  'Rooted in Rwanda': { en: 'Rooted in Rwanda', fr: 'Enraciné au Rwanda', rw: 'Imizi iri mu Rwanda' },
+  'Proudly Kigali-based, we understand the needs of Rwandan households.': {
+    en: 'Proudly Kigali-based, we understand the needs of Rwandan households.',
+    fr: 'Fièrement basés à Kigali, nous comprenons les besoins des ménages rwandais.',
+    rw: 'Twubatse mu Kigali dushimira, tuzi ibikenewe n\'imiryango y\'u Rwanda.',
+  },
+  'Happy Customers': { en: 'Happy Customers', fr: 'Clients satisfaits', rw: 'Abakiriya baryohewe' },
+  'Meet Our Team': { en: 'Meet Our Team', fr: 'Notre équipe', rw: 'Itsinda ryacu' },
+  'A passionate group of Rwandans dedicated to making grocery shopping simple, affordable, and enjoyable.': {
+    en: 'A passionate group of Rwandans dedicated to making grocery shopping simple, affordable, and enjoyable.',
+    fr: 'Un groupe passionné de Rwandais dédiés à rendre les courses simples, abordables et agréables.',
+    rw: 'Itsinda ry\'Abanyarwanda bashishikajwe guha abantu uburyo bworoshye, butagura cyane kandi bushimishije bwo kugura.',
+  },
+  'CEO & Co-Founder': { en: 'CEO & Co-Founder', fr: 'PDG & Co-Fondateur', rw: 'Umuyobozi mukuru' },
+  'Head of Logistics': { en: 'Head of Logistics', fr: 'Chef de la logistique', rw: 'Umuyobozi w\'inyamazwa' },
+  'Customer Experience': { en: 'Customer Experience', fr: 'Expérience client', rw: 'Uburambe bw\'abakiriya' },
+  'Ready to start shopping?': { en: 'Ready to start shopping?', fr: 'Prêt à commencer vos achats ?', rw: 'Witeguye gutangira kugura?' },
+  'Join thousands of Kigali families who trust Simba Supermarket.': {
+    en: 'Join thousands of Kigali families who trust Simba Supermarket.',
+    fr: 'Rejoignez des milliers de familles de Kigali qui font confiance à Simba Supermarket.',
+    rw: 'Injira mu miryango ibihumbi by\'i Kigali ikizera Simba Supermarket.',
+  },
+  'Shop Now →': { en: 'Shop Now →', fr: 'Acheter →', rw: 'Gura Ubu →' },
 };
 
 const categoryTranslations: Record<string, Record<Language, string>> = {

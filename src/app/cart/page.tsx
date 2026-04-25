@@ -22,13 +22,13 @@ export default function CartPage() {
     return (
       <div className="min-h-screen bg-light-bg dark:bg-dark-bg flex flex-col items-center justify-center gap-4 px-4 page-transition">
         <div className="text-6xl">🛒</div>
-        <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">Your cart is empty</h2>
-        <p className="text-gray-500 text-sm">Add some products to get started.</p>
+        <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">{t('Your cart is empty')}</h2>
+        <p className="text-gray-500 text-sm">{t('Add some products to get started.')}</p>
         <Link
           href="/products"
           className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold px-8 py-3 rounded-btn transition-colors mt-2"
         >
-          Start Shopping
+          {t('Start Shopping')}
         </Link>
       </div>
     );
@@ -39,14 +39,14 @@ export default function CartPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-6">
           <h1 className="text-2xl font-bold text-light-text dark:text-dark-text">
-            {t('Your Cart')} ({totalItems} {totalItems === 1 ? 'item' : 'items'})
+            {t('Your Cart')} ({totalItems} {totalItems === 1 ? t('item') : t('items')})
           </h1>
           <button
             onClick={clearCart}
             className="text-sm text-red-500 hover:text-red-700 font-medium flex items-center gap-1 transition-colors"
           >
             <Trash2 size={14} />
-            Clear Cart
+            {t('Clear Cart')}
           </button>
         </div>
 
@@ -125,7 +125,7 @@ export default function CartPage() {
 
               <div className="space-y-3 mb-4">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-600 dark:text-gray-400">Subtotal ({totalItems} items)</span>
+                  <span className="text-gray-600 dark:text-gray-400">{t('Subtotal')} ({totalItems} {t('items')})</span>
                   <span className="font-medium text-light-text dark:text-dark-text">{formatPrice(totalPrice)}</span>
                 </div>
                 <div className="flex justify-between text-sm">
@@ -138,7 +138,7 @@ export default function CartPage() {
                 </div>
                 {deliveryFee > 0 && (
                   <p className="text-xs text-gray-400">
-                    Add {formatPrice(FREE_DELIVERY_THRESHOLD - totalPrice)} more for free delivery
+                    {t('Add {amount} more for free delivery').replace('{amount}', formatPrice(FREE_DELIVERY_THRESHOLD - totalPrice))}
                   </p>
                 )}
               </div>
@@ -160,11 +160,11 @@ export default function CartPage() {
               <div className="mt-4 space-y-2">
                 <div className="flex items-center gap-2 text-xs text-gray-500">
                   <Shield size={12} className="text-[#16a34a]" />
-                  Secure checkout
+                  {t('Secure checkout')}
                 </div>
                 <div className="flex items-center gap-2 text-xs text-gray-500">
                   <RotateCcw size={12} className="text-[#16a34a]" />
-                  Easy returns
+                  {t('Easy returns')}
                 </div>
               </div>
             </div>

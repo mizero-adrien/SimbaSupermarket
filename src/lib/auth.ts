@@ -4,10 +4,15 @@ import GoogleProvider from 'next-auth/providers/google';
 const hasGoogleConfig =
   !!process.env.GOOGLE_CLIENT_ID && !!process.env.GOOGLE_CLIENT_SECRET;
 
-const ALLOWED_REDIRECT_HOSTS = new Set([
+const productionHost = process.env.NEXTAUTH_URL
+  ? new URL(process.env.NEXTAUTH_URL).host
+  : null;
+
+const ALLOWED_REDIRECT_HOSTS = new Set<string>([
   'localhost:3000',
   'localhost:3001',
   'localhost:3002',
+  ...(productionHost ? [productionHost] : []),
 ]);
 
 export const authOptions: NextAuthOptions = {
