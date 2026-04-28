@@ -16,12 +16,24 @@ interface Props {
   product: Product;
 }
 
+
 export default function ProductCard({ product }: Props) {
-  const { addItem } = useCart();
+  const { addItem, updateQuantity, items } = useCart();
   const { t, language } = useLanguage();
   const image = getProductImage(product);
   const [showModal, setShowModal] = useState(false);
   const { onSale, originalPrice, salePrice, savePct } = getSaleInfo(product);
+  const cartItem = items?.find(i => i.product.id === product.id);
+  const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
+
+  const handleAddToCart = () => {
+    // If already in cart, update quantity, else add item with quantity
+    if (cartItem) {
+      updateQuantity(product.id, quantity);
+    } else {
+      for (let i = 0; i < quantity; i++) addItem(product);
+    }
+  };
 
   return (
     <>
@@ -81,8 +93,34 @@ export default function ProductCard({ product }: Props) {
             )}
           </div>
 
+          <div className="flex items-center gap-2 mb-2">
+            <button
+              type="button"
+              className="px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-l-btn text-lg font-bold border border-light-border dark:border-dark-border"
+              onClick={() => setQuantity(q => Math.max(1, q - 1))}
+              aria-label="Decrease quantity"
+            >
+              -
+            </button>
+            <input
+              type="number"
+              min={1}
+              value={quantity}
+              onChange={e => setQuantity(Math.max(1, Number(e.target.value)))}
+              className="w-12 text-center border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text"
+              aria-label="Quantity"
+            />
+            <button
+              type="button"
+              className="px-2 py-1 bg-gray-100 dark:bg-slate-700 rounded-r-btn text-lg font-bold border border-light-border dark:border-dark-border"
+              onClick={() => setQuantity(q => q + 1)}
+              aria-label="Increase quantity"
+            >
+              +
+            </button>
+          </div>
           <button
-            onClick={() => addItem(product)}
+            onClick={handleAddToCart}
             className="w-full flex items-center justify-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold text-sm py-2 rounded-btn transition-colors duration-150"
             aria-label={`Add ${product.name} to cart`}
           >

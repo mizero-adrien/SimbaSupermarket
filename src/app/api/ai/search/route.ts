@@ -9,7 +9,7 @@ interface SearchResponse {
   products: Product[];
 }
 
-const catalog = productsSeed as Product[];
+const catalog = productsSeed.products as Product[];
 
 function tokenize(input: string): string[] {
   return input

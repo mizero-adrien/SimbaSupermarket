@@ -22,6 +22,7 @@ export default function BottomNav() {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState<Product[]>([]);
   const inputRef = useRef<HTMLInputElement>(null);
+  const popularCategories = Array.from(new Set(products.map(product => product.category))).slice(0, 5);
 
   // Debounce search
   useEffect(() => {
@@ -101,7 +102,7 @@ export default function BottomNav() {
                 type="text"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder={`${t('Search')} 552 ${t('products')}...`}
+                placeholder={`${t('Search')} ${products.length} ${t('products')}...`}
                 className="flex-1 text-base bg-transparent text-light-text dark:text-dark-text placeholder-gray-400 focus:outline-none"
               />
               <button type="button" onClick={closeSearch} className="p-1 text-gray-400 hover:text-gray-600">
@@ -150,7 +151,7 @@ export default function BottomNav() {
               <div className="px-4 py-4">
                   <p className="text-xs text-gray-400 font-medium mb-2 uppercase tracking-wide">{t('Popular Categories')}</p>
                 <div className="flex flex-wrap gap-2">
-                  {['Beverages', 'Dairy', 'Snacks', 'Fruits & Vegetables', 'Meat & Fish'].map(cat => (
+                  {popularCategories.map(cat => (
                     <Link
                       key={cat}
                       href={`/products?category=${encodeURIComponent(cat)}`}

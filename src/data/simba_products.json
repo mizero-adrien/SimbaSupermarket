@@ -1,0 +1,60 @@
+{
+  "store": {
+    "name": "Simba Supermarket",
+    "tagline": "Rwanda's Online Supermarket",
+    "location": "Kigali, Rwanda",
+    "currency": "RWF"
+  },
+  "products": [
+    {
+      "id": 13001,
+      "name": "Lentz Radiant Heater 80036",
+      "price": 83600.0,
+      "category": "Cosmetics & Personal Care",
+      "subcategoryId": 13,
+      "inStock": true,
+      "image": "https://res.cloudinary.com/eskalate/image/upload/v1776507692/simba_contest/product_13001.jpg",
+      "unit": "Pcs"
+    },
+    {
+      "id": 13002,
+      "name": "Simba SS Icecream Scoop 24SL07P-885",
+      "price": 3000.0,
+      "category": "Cosmetics & Personal Care",
+      "subcategoryId": 13,
+      "inStock": true,
+      "image": "https://res.cloudinary.com/eskalate/image/upload/v1776507692/simba_contest/product_13002.jpg",
+      "unit": "Pcs"
+    },
+    {
+      "id": 13003,
+      "name": "Simba SS Shovel 24SL07P-829",
+      "price": 3000.0,
+      "category": "Cosmetics & Personal Care",
+      "subcategoryId": 13,
+      "inStock": true,
+      "image": "https://res.cloudinary.com/eskalate/image/upload/v1776507692/simba_contest/product_13003.jpg",
+      "unit": "Pcs"
+    },
+    {
+      "id": 15001,
+      "name": "Plastic Massage Roller 23SL12H-1867 55cm",
+      "price": 8136.0,
+      "category": "Sports & Wellness",
+      "subcategoryId": 15,
+      "inStock": true,
+      "image": "https://res.cloudinary.com/eskalate/image/upload/v1776507692/simba_contest/product_15001.jpg",
+      "unit": "Pcs"
+    },
+    {
+      "id": 16001,
+      "name": "Aviation Remote Controlled Plane 163-6688-55",
+      "price": 15500.0,
+      "category": "Baby Products",
+      "subcategoryId": 16,
+      "inStock": true,
+      "image": "https://res.cloudinary.com/eskalate/image/upload/v1776507693/simba_contest/product_16001.jpg",
+      "unit": "Pcs"
+    }
+  ]
+}

@@ -2,7 +2,24 @@ import productsSeed from '../../public/simba_products.json';
 import { Product } from '@/types';
 
 const PRODUCTS_STORAGE_KEY = 'simba_products_master';
-const seedProducts = productsSeed as Product[];
+// Support new structure: { store: {...}, products: [...] }
+const seedProducts = Array.isArray(productsSeed)
+  ? (productsSeed as Product[])
+  : (productsSeed.products as Product[]);
+
+function mergeProducts(stored: Product[]): Product[] {
+  const merged = new Map<string, Product>();
+
+  for (const product of seedProducts) {
+    merged.set(String(product.id), product);
+  }
+
+  for (const product of stored) {
+    merged.set(String(product.id), product);
+  }
+
+  return Array.from(merged.values());
+}
 
 export function getMasterProducts(): Product[] {
   if (typeof window === 'undefined') return seedProducts;
@@ -10,7 +27,18 @@ export function getMasterProducts(): Product[] {
   try {
     const raw = localStorage.getItem(PRODUCTS_STORAGE_KEY);
     const stored: Product[] = raw ? JSON.parse(raw) : [];
-    return stored.length > 0 ? stored : seedProducts;
+
+    if (stored.length === 0) {
+      return seedProducts;
+    }
+
+    if (stored.length < seedProducts.length) {
+      const merged = mergeProducts(stored);
+      saveMasterProducts(merged);
+      return merged;
+    }
+
+    return stored;
   } catch {
     return seedProducts;
   }

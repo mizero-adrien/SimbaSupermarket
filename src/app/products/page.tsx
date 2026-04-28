@@ -34,6 +34,13 @@ function ProductsContent() {
   }, []);
 
   useEffect(() => {
+    if (allProducts.length === 0 || selectedCategories.length === 0) return;
+
+    const validCategories = new Set(allProducts.map(product => product.category));
+    setSelectedCategories(prev => prev.filter(category => validCategories.has(category)));
+  }, [allProducts, selectedCategories.length]);
+
+  useEffect(() => {
     const timer = setTimeout(() => setDebouncedQuery(searchQuery), 300);
     return () => clearTimeout(timer);
   }, [searchQuery]);

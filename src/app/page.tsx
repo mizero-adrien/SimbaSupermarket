@@ -70,7 +70,7 @@ export default function HomePage() {
         <div className="absolute inset-0 hidden dark:block bg-[linear-gradient(135deg,rgba(2,6,23,0.82)_0%,rgba(15,23,42,0.72)_48%,rgba(17,24,39,0.88)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_30%)]" />
         <div className="relative max-w-7xl mx-auto px-4 py-10 md:py-14">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          <div className="grid grid-cols-1 gap-8 items-center">
             <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur">
                 <ShieldCheck size={13} className="text-amber-400" />
@@ -114,35 +114,6 @@ export default function HomePage() {
                     <p className="text-xs text-slate-300">{item.label}</p>
                   </div>
                 ))}
-              </div>
-            </div>
-
-            <div className="relative hidden lg:block">
-              <div className="absolute -left-8 -top-8 h-28 w-28 rounded-full bg-amber-400/20 blur-2xl" />
-              <div className="absolute -right-6 bottom-0 h-32 w-32 rounded-full bg-sky-400/10 blur-2xl" />
-              <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-4 shadow-2xl backdrop-blur">
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="rounded-2xl bg-slate-900/80 p-4">
-                    <p className="text-xs uppercase tracking-wide text-slate-400">{tr('Trusted by', 'Approuvé par', 'Byizewe na')}</p>
-                    <p className="mt-2 text-2xl font-black text-white">{tr('Shoppers', 'Clients', 'Abaguzi')}</p>
-                    <p className="mt-1 text-sm text-slate-300">{tr('From city center to neighborhood branches.', 'Du centre-ville aux succursales de quartier.', 'Kuva hagati mu mujyi kugera ku mashami yo mu duce.')}</p>
-                  </div>
-                  <div className="rounded-2xl bg-amber-500/15 p-4 border border-amber-400/20">
-                    <p className="text-xs uppercase tracking-wide text-amber-300">{tr('Quick start', 'Démarrage rapide', 'Gutangira vuba')}</p>
-                    <p className="mt-2 text-2xl font-black text-white">1 click</p>
-                    <p className="mt-1 text-sm text-slate-300">{tr('Browse, choose, and checkout fast.', 'Parcourez, choisissez et payez rapidement.', 'Reba, hitamo kandi wishyure vuba.')}</p>
-                  </div>
-                  <div className="col-span-2 rounded-2xl bg-slate-900/80 p-4 flex items-center justify-between gap-4">
-                    <div>
-                      <p className="text-xs uppercase tracking-wide text-slate-400">{tr('Best for', 'Idéal pour', 'Bikwiriye')}</p>
-                      <p className="mt-1 text-lg font-bold text-white">{tr('Fresh products, pickup, and home delivery', 'Produits frais, retrait et livraison à domicile', 'Ibiribwa bishya, gufata no kohereza mu rugo')}</p>
-                    </div>
-                    <div className="hidden sm:flex items-center gap-2 rounded-full bg-white/10 px-3 py-2 text-xs text-slate-200">
-                      <CreditCard size={14} className="text-amber-400" />
-                      MTN / Airtel MoMo
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
