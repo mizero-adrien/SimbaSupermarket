@@ -7,7 +7,6 @@ import { X, ShoppingCart, Plus, Minus } from 'lucide-react';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage, getSaleInfo } from '@/lib/products';
-import { translateCategory } from '@/lib/translations';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -18,7 +17,7 @@ interface Props {
 
 export default function QuickViewModal({ product, onClose }: Props) {
   const { addItem } = useCart();
-  const { t, language } = useLanguage();
+  const { t, translateCategory } = useLanguage();
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
   const image = getProductImage(product);
@@ -68,7 +67,7 @@ export default function QuickViewModal({ product, onClose }: Props) {
 
           {/* Info */}
           <div className="p-5 flex flex-col flex-1 min-w-0">
-            <span className="text-xs text-[#16a34a] font-semibold uppercase tracking-wide mb-1">{translateCategory(product.category, language)}</span>
+            <span className="text-xs text-[#16a34a] font-semibold uppercase tracking-wide mb-1">{translateCategory(product.category)}</span>
             <h2 className="text-base font-bold text-light-text dark:text-dark-text leading-snug mb-3">{product.name}</h2>
 
             {/* Price */}

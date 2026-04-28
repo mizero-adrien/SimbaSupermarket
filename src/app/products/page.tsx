@@ -8,13 +8,12 @@ import Pagination from '@/components/Pagination';
 import { useLanguage } from '@/context/LanguageContext';
 import { getMasterProducts } from '@/lib/productData';
 import { getCategories } from '@/lib/products';
-import { translateCategory } from '@/lib/translations';
 import { Product, SortOption } from '@/types';
 const PER_PAGE = 24;
 
 function ProductsContent() {
   const searchParams = useSearchParams();
-  const { t, language } = useLanguage();
+  const { t, translateCategory } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const allCategories = useMemo(() => getCategories(allProducts), [allProducts]);
 
@@ -126,7 +125,7 @@ function ProductsContent() {
                 onChange={() => toggleCategory(name)}
                 className="w-4 h-4 accent-[#16a34a] rounded"
               />
-              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#16a34a] transition-colors flex-1">{translateCategory(name, language)}</span>
+              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#16a34a] transition-colors flex-1">{translateCategory(name)}</span>
               <span className="text-xs text-gray-400">({count})</span>
             </label>
           ))}
@@ -203,7 +202,7 @@ function ProductsContent() {
                 )}
                 {selectedCategories.map(cat => (
                   <span key={cat} className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
-                    {translateCategory(cat, language)}
+                    {translateCategory(cat)}
                     <button onClick={() => toggleCategory(cat)}><X size={12} /></button>
                   </span>
                 ))}

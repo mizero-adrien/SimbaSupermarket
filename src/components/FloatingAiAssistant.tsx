@@ -7,7 +7,6 @@ import { Bot, Send, X, Loader2, Sparkles } from 'lucide-react';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
 import { useLanguage } from '@/context/LanguageContext';
-import { translateCategory } from '@/lib/translations';
 
 interface AiSearchResult {
   reply: string;
@@ -21,7 +20,7 @@ const STARTER_PROMPTS = [
 ];
 
 export default function FloatingAiAssistant() {
-  const { language } = useLanguage();
+  const { language, translateCategory } = useLanguage();
   const tr = (en: string, fr: string, rw: string) =>
     language === 'fr' ? fr : language === 'rw' ? rw : en;
 
@@ -156,7 +155,7 @@ export default function FloatingAiAssistant() {
                     >
                       <p className="text-sm font-semibold text-light-text dark:text-dark-text line-clamp-1">{product.name}</p>
                       <p className="text-xs text-gray-500 dark:text-gray-400">
-                        {translateCategory(product.category, language)} • {formatPrice(product.price)}
+                        {translateCategory(product.category)} • {formatPrice(product.price)}
                       </p>
                     </Link>
                   ))}

@@ -1,6 +1,6 @@
 import { Language } from '@/types';
 
-const translations: Record<string, Record<Language, string>> = {
+export const translations: Record<string, Record<Language, string>> = {
   'Shop Now': { en: 'Shop Now', fr: 'Acheter', rw: 'Gura Ubu' },
   'Add to Cart': { en: 'Add to Cart', fr: 'Ajouter au panier', rw: 'Shyira mu Gitebo' },
   'Cart': { en: 'Cart', fr: 'Panier', rw: 'Gitebo' },
@@ -195,7 +195,7 @@ const translations: Record<string, Record<Language, string>> = {
   'Shop Now →': { en: 'Shop Now →', fr: 'Acheter →', rw: 'Gura Ubu →' },
 };
 
-const categoryTranslations: Record<string, Record<Language, string>> = {
+export const categoryTranslations: Record<string, Record<Language, string>> = {
   'Beverages': { en: 'Beverages', fr: 'Boissons', rw: 'Ibinyobwa' },
   'Dairy': { en: 'Dairy', fr: 'Produits laitiers', rw: 'Ibikomoka ku mata' },
   'Snacks': { en: 'Snacks', fr: 'Snacks', rw: 'Ibiryo byoroheje' },
@@ -214,5 +214,8 @@ export function t(key: string, lang: Language): string {
 export function translateCategory(category: string, lang: Language): string {
   return categoryTranslations[category]?.[lang] ?? category;
 }
+
+export const translationKeys = Object.keys(translations);
+export const categoryTranslationKeys = Object.keys(categoryTranslations);
 
 export default translations;

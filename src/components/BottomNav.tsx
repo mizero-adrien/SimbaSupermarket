@@ -8,7 +8,6 @@ import { useCart } from '@/context/CartContext';
 import { useAuth } from '@/context/AuthContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { getMasterProducts } from '@/lib/productData';
-import { translateCategory } from '@/lib/translations';
 import { Product } from '@/types';
 
 export default function BottomNav() {
@@ -16,7 +15,7 @@ export default function BottomNav() {
   const router = useRouter();
   const { totalItems } = useCart();
   const { user } = useAuth();
-  const { t, language } = useLanguage();
+  const { t, translateCategory } = useLanguage();
   const [products, setProducts] = useState<Product[]>([]);
   const [searchOpen, setSearchOpen] = useState(false);
   const [query, setQuery] = useState('');
@@ -158,7 +157,7 @@ export default function BottomNav() {
                       onClick={closeSearch}
                       className="text-xs bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 px-3 py-1.5 rounded-full hover:bg-[#16a34a] hover:text-white transition-colors"
                     >
-                        {translateCategory(cat, language)}
+                        {translateCategory(cat)}
                     </Link>
                   ))}
                 </div>

@@ -11,11 +11,10 @@ import { getMasterProducts } from '@/lib/productData';
 import { deterministicShuffle } from '@/lib/products';
 import { addBranchReview, getBranchReviewSummary, getBranchReviews } from '@/lib/reviewData';
 import { useLanguage } from '@/context/LanguageContext';
-import { translateCategory } from '@/lib/translations';
 
 export default function BranchDetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
-  const { t, language } = useLanguage();
+  const { t, translateCategory } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [allBranches, setAllBranches] = useState<Branch[]>([]);
   const [reviews, setReviews] = useState(getBranchReviews(id));
@@ -173,7 +172,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
               href={`/products?category=${encodeURIComponent(cat)}`}
               className="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border bg-white dark:bg-dark-card text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a] transition-colors"
             >
-              {translateCategory(cat, language)}
+              {translateCategory(cat)}
             </Link>
           ))}
         </div>

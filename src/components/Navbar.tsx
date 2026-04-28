@@ -24,14 +24,13 @@ import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
 import { getMasterProducts } from '@/lib/productData';
 import { formatPrice } from '@/lib/formatPrice';
-import { translateCategory } from '@/lib/translations';
 import { Language } from '@/types';
 import { Product } from '@/types';
 import FloatingAiAssistant from '@/components/FloatingAiAssistant';
 
 export default function Navbar() {
   const { totalItems } = useCart();
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage, t, translateCategory } = useLanguage();
   const { user, logout } = useAuth();
   const { theme, setTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -211,7 +210,7 @@ export default function Navbar() {
                         className="flex items-center justify-between px-4 py-2.5 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
                         <div>
                           <p className="text-sm font-medium text-light-text dark:text-dark-text line-clamp-1">{product.name}</p>
-                          <p className="text-xs text-gray-400">{translateCategory(product.category, language)}</p>
+                          <p className="text-xs text-gray-400">{translateCategory(product.category)}</p>
                         </div>
                         <span className="text-xs font-semibold text-[#f59e0b] shrink-0 ml-3">{formatPrice(product.price)}</span>
                       </Link>
@@ -347,7 +346,7 @@ export default function Navbar() {
                 href={`/products?category=${encodeURIComponent(cat)}`}
                 className="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a] hover:bg-[#16a34a]/5 transition-colors"
               >
-                {translateCategory(cat, language)}
+                {translateCategory(cat)}
               </Link>
             ))}
           </div>

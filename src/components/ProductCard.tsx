@@ -7,7 +7,6 @@ import { ShoppingCart, Eye } from 'lucide-react';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage, getSaleInfo } from '@/lib/products';
-import { translateCategory } from '@/lib/translations';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import QuickViewModal from './QuickViewModal';
@@ -19,7 +18,7 @@ interface Props {
 
 export default function ProductCard({ product }: Props) {
   const { addItem, updateQuantity, items } = useCart();
-  const { t, language } = useLanguage();
+  const { t, translateCategory } = useLanguage();
   const image = getProductImage(product);
   const [showModal, setShowModal] = useState(false);
   const { onSale, originalPrice, salePrice, savePct } = getSaleInfo(product);
@@ -52,7 +51,7 @@ export default function ProductCard({ product }: Props) {
 
             {/* Badges */}
             <span className="absolute top-2 left-2 bg-[#16a34a] text-white text-xs font-medium px-2 py-0.5 rounded-full">
-              {translateCategory(product.category, language)}
+              {translateCategory(product.category)}
             </span>
             {onSale && (
               <span className="absolute top-2 right-2 bg-[#f59e0b] text-white text-xs font-bold px-2 py-0.5 rounded-full">
