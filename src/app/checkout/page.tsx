@@ -100,11 +100,12 @@ function StepIndicator({ currentStep, labels }: { currentStep: number; labels: R
 
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart();
-  const { t, language } = useLanguage();
+  const { t } = useLanguage();
   const branches = useMemo(() => getAllBranches().filter(branch => branch.isOpen), []);
 
-  const tr = (en: string, fr: string, rw: string) =>
-    language === 'fr' ? fr : language === 'rw' ? rw : en;
+  // All translations go through Groq via t(); static FR/RW args are unused.
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const tr = (en: string, _fr: string, _rw: string) => t(en);
 
   const [step, setStep] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>('mtn');

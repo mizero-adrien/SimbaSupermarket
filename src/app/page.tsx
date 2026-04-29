@@ -14,9 +14,7 @@ import Image from 'next/image';
 import { Product } from '@/types';
 
 export default function HomePage() {
-  const { t, language } = useLanguage();
-  const tr = (en: string, fr: string, rw: string) =>
-    language === 'fr' ? fr : language === 'rw' ? rw : en;
+  const { t } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [branchCount, setBranchCount] = useState(0);
   const [countdown, setCountdown] = useState('00:00:00');
@@ -116,8 +114,8 @@ export default function HomePage() {
       {/* Trust strip */}
       <div className="border-b border-light-border dark:border-dark-border bg-white/80 dark:bg-slate-900/80 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3 text-xs text-slate-600 dark:text-slate-300">
-          <span className="flex items-center gap-1.5"><Truck size={13} className="text-[#f59e0b]" /> {tr('Free delivery over 50,000 RWF', 'Livraison gratuite au-delà de 50 000 RWF', 'Kohereza ubuntu hejuru ya 50,000 RWF')}</span>
-          <span className="flex items-center gap-1.5"><ShieldCheck size={13} className="text-[#f59e0b]" /> {tr('Verified products', 'Produits vérifiés', 'Ibicuruzwa byagenzuwe')}</span>
+          <span className="flex items-center gap-1.5"><Truck size={13} className="text-[#f59e0b]" /> {t('Free delivery over 50,000 RWF')}</span>
+          <span className="flex items-center gap-1.5"><ShieldCheck size={13} className="text-[#f59e0b]" /> {t('Verified products')}</span>
           <span className="flex items-center gap-1.5"><CreditCard size={13} className="text-[#f59e0b]" /> MTN &amp; Airtel MoMo</span>
         </div>
       </div>
@@ -128,9 +126,9 @@ export default function HomePage() {
           <div className="flex items-center justify-between mb-5">
             <div>
               <h2 className="text-2xl md:text-3xl font-black text-light-text dark:text-dark-text">
-                {tr("Today's deals", 'Offres du jour', 'Imyanya y\'uyu munsi')}
+                {t("Today's deals")}
               </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{tr('Top picks, limited time', 'Meilleurs choix, offre limitée', 'Ibyiza byatoranyijwe, igihe gito')}</p>
+              <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('Top picks, limited time')}</p>
             </div>
             <Link href="/products" className="text-sm font-semibold text-[#16a34a] hover:underline hidden sm:inline-flex">
               {t('Shop now')}
@@ -141,7 +139,7 @@ export default function HomePage() {
             <div className="rounded-[1.75rem] border border-light-border dark:border-dark-border bg-white dark:bg-dark-card p-6 text-light-text dark:text-dark-text shadow-sm overflow-hidden relative">
               <p className="text-xs uppercase tracking-[0.3em] text-[#f59e0b] font-semibold">{t('Limited offer')}</p>
               <h3 className="mt-3 text-3xl font-black leading-tight">{t('SuperDeals')}</h3>
-              <p className="mt-3 text-sm text-gray-600 dark:text-gray-300 max-w-xs">{tr('Save big on selected products', 'Économisez sur une sélection de produits', 'Uzigame cyane ku bicuruzwa byatoranyijwe')}</p>
+              <p className="mt-3 text-sm text-gray-600 dark:text-gray-300 max-w-xs">{t('Save big on selected products')}</p>
 
               <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-light-border dark:border-dark-border px-4 py-2 text-light-text dark:text-dark-text">
                 <Clock3 size={16} className="text-red-500" />
@@ -189,7 +187,7 @@ export default function HomePage() {
                         </span>
                       </div>
                       <div className="p-4">
-                        <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1">{tr(product.category, product.category, product.category)}</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-1">{t(product.category)}</p>
                         <h4 className="mt-1 text-base font-semibold text-light-text dark:text-dark-text line-clamp-2 min-h-[3rem]">{product.name}</h4>
                         <div className="mt-3 flex items-baseline gap-2">
                           <span className="text-xl font-black text-[#f59e0b]">{formatPrice(sale.salePrice)}</span>
@@ -208,16 +206,16 @@ export default function HomePage() {
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-4 pt-8 pb-2 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
         <div>
-          <p className="text-xs font-semibold text-[#f59e0b] uppercase tracking-widest mb-1">{tr("🇷🇼 Kigali's Online Supermarket", '🇷🇼 Supermarché en ligne de Kigali', '🇷🇼 Supermarket yo kuri internet i Kigali')}</p>
+          <p className="text-xs font-semibold text-[#f59e0b] uppercase tracking-widest mb-1">{t("🇷🇼 Kigali's Online Supermarket")}</p>
           <h2 className="text-2xl md:text-3xl font-extrabold text-light-text dark:text-dark-text">
-            {tr('Featured categories and top products', 'Catégories vedettes et meilleurs produits', 'Ibyiciro byihariye n\'ibicuruzwa byatoranyijwe')}
+            {t('Featured categories and top products')}
           </h2>
         </div>
         <Link
           href="/products"
           className="flex items-center gap-1.5 text-sm font-semibold text-[#f59e0b] hover:underline shrink-0"
         >
-          {tr('Browse products', 'Parcourir les produits', 'Reba ibicuruzwa')} <ArrowRight size={14} />
+          {t('Browse products')} <ArrowRight size={14} />
         </Link>
       </div>
 
@@ -232,15 +230,15 @@ export default function HomePage() {
           <div className="flex items-center gap-3 text-white">
             <span className="text-2xl">🚚</span>
             <div>
-              <p className="font-bold text-sm">{tr('Free delivery on your first order', 'Livraison gratuite sur votre première commande', 'Kohereza ubuntu ku itegeko ryawe rya mbere')}</p>
-              <p className="text-white/60 text-xs">{tr('Use code', 'Utilisez le code', 'Koresha kode')} <span className="font-mono font-bold text-[#f59e0b]">SIMBA1</span> {tr('at checkout', 'au paiement', 'kuri checkout')}</p>
+              <p className="font-bold text-sm">{t('Free delivery on your first order')}</p>
+              <p className="text-white/60 text-xs">{t('Use code')} <span className="font-mono font-bold text-[#f59e0b]">SIMBA1</span> {t('at checkout')}</p>
             </div>
           </div>
           <Link
             href="/products"
             className="shrink-0 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold text-sm px-5 py-2 rounded-btn transition-colors"
           >
-            {tr('Start Shopping', 'Commencer vos achats', 'Tangira guhaha')}
+            {t('Start Shopping')}
           </Link>
         </div>
       </div>
@@ -253,7 +251,7 @@ export default function HomePage() {
               <h2 className="text-xl font-bold text-light-text dark:text-dark-text">
                 {t('Featured Products')}
               </h2>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{tr('Hand-picked for you today', 'Sélectionnés pour vous aujourd\'hui', 'Byatoranyijwe ku bwawe uyu munsi')}</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">{t('Hand-picked for you today')}</p>
             </div>
             <Link
               href="/products"
@@ -274,9 +272,9 @@ export default function HomePage() {
       <section className="px-4 pb-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { icon: '🚚', title: tr('Fast Delivery', 'Livraison rapide', 'Kohereza vuba'), desc: tr('Same-day delivery across Kigali', 'Livraison le jour même à Kigali', 'Kohereza uwo munsi muri Kigali') },
-            { icon: '✅', title: tr('Verified Products', 'Produits vérifiés', 'Ibicuruzwa byagenzuwe'), desc: tr('552 quality-checked items', '552 articles contrôlés', 'Ibicuruzwa 552 byagenzuwe') },
-            { icon: '💳', title: tr('Easy Payment', 'Paiement facile', 'Kwishyura byoroshye'), desc: tr('MTN MoMo, Airtel & cash', 'MTN MoMo, Airtel et espèces', 'MTN MoMo, Airtel n\'amafaranga') },
+            { icon: '🚚', title: t('Fast Delivery'), desc: t('Same-day delivery across Kigali') },
+            { icon: '✅', title: t('Verified Products'), desc: t('552 quality-checked items') },
+            { icon: '💳', title: t('Easy Payment'), desc: t('MTN MoMo, Airtel & cash') },
           ].map(({ icon, title, desc }) => (
             <div
               key={title}

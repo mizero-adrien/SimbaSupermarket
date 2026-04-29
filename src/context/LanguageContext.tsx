@@ -1,8 +1,7 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Language } from '@/types';
-
 
 interface LanguageContextValue {
   language: Language;
@@ -19,137 +18,140 @@ const LanguageContext = createContext<LanguageContextValue>({
 });
 
 const LANGUAGE_STORAGE_KEY = 'simba_language';
-const LANGUAGE_TEXT_CACHE_KEY = 'simba_language_text_cache';
-const LANGUAGE_CATEGORY_CACHE_KEY = 'simba_language_category_cache';
+const CACHE_STORAGE_KEY = 'simba_groq_cache';
 
-type TranslationCache = Partial<Record<Language, Record<string, string>>>;
+type LangCache = Record<string, string>;
+type AllCache = Partial<Record<Language, LangCache>>;
 
-function readCache(key: string): TranslationCache {
+function readCache(): AllCache {
   try {
-    const raw = localStorage.getItem(key);
-    return raw ? JSON.parse(raw) as TranslationCache : {};
+    const raw = localStorage.getItem(CACHE_STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as AllCache) : {};
   } catch {
     return {};
   }
 }
 
-function writeCache(key: string, cache: TranslationCache) {
+function writeCache(cache: AllCache) {
   try {
-    localStorage.setItem(key, JSON.stringify(cache));
+    localStorage.setItem(CACHE_STORAGE_KEY, JSON.stringify(cache));
   } catch {}
 }
 
-async function fetchTranslations(texts: string[], language: Language): Promise<Record<string, string>> {
-  if (language === 'en' || texts.length === 0) return {};
-
-  const response = await fetch('/api/ai/translate', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ language, texts }),
-  });
-
-  if (!response.ok) {
-    throw new Error('Translation request failed.');
+async function groqTranslateBatch(
+  texts: string[],
+  language: Language
+): Promise<Record<string, string>> {
+  if (texts.length === 0) return {};
+  try {
+    const res = await fetch('/api/ai/translate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ language, texts }),
+    });
+    if (!res.ok) return {};
+    const data = (await res.json()) as { translations?: string[] };
+    const arr = Array.isArray(data.translations) ? data.translations : [];
+    return Object.fromEntries(texts.map((text, i) => [text, arr[i] ?? text]));
+  } catch {
+    return {};
   }
-
-  const data = await response.json() as { translations?: string[] };
-  const translated = Array.isArray(data.translations) ? data.translations : [];
-
-  return texts.reduce<Record<string, string>>((acc, text, index) => {
-    acc[text] = translated[index] ?? text;
-    return acc;
-  }, {});
 }
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>('en');
-  const [runtimeTextTranslations, setRuntimeTextTranslations] = useState<Record<string, string>>({});
-  const [runtimeCategoryTranslations, setRuntimeCategoryTranslations] = useState<Record<string, string>>({});
+  const [cache, setCache] = useState<AllCache>({});
+  const pendingRef = useRef<Set<string>>(new Set());
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const inFlightRef = useRef(false);
+  const langRef = useRef<Language>('en');
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem(LANGUAGE_STORAGE_KEY) as Language;
       if (saved && ['en', 'fr', 'rw'].includes(saved)) {
         setLanguageState(saved);
+        langRef.current = saved;
       }
+      setCache(readCache());
     } catch {}
   }, []);
 
+  const flushPending = useCallback(async (lang: Language) => {
+    if (inFlightRef.current || pendingRef.current.size === 0) return;
+    const batch = Array.from(pendingRef.current);
+    pendingRef.current.clear();
+    inFlightRef.current = true;
+
+    const result = await groqTranslateBatch(batch, lang);
+
+    inFlightRef.current = false;
+
+    if (Object.keys(result).length > 0) {
+      setCache(prev => {
+        const next: AllCache = {
+          ...prev,
+          [lang]: { ...(prev[lang] ?? {}), ...result },
+        };
+        writeCache(next);
+        return next;
+      });
+    }
+
+    // More strings queued while request was in flight — flush again
+    if (pendingRef.current.size > 0 && langRef.current === lang) {
+      void flushPending(lang);
+    }
+  }, []);
+
+  const scheduleFlush = useCallback(
+    (lang: Language) => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => void flushPending(lang), 350);
+    },
+    [flushPending]
+  );
+
+  // Reset queue when language changes
   useEffect(() => {
-    let cancelled = false;
-
-    const loadLanguageRuntime = async () => {
-      if (language === 'en') {
-        setRuntimeTextTranslations({});
-        setRuntimeCategoryTranslations({});
-        return;
-      }
-
-      const textCache = readCache(LANGUAGE_TEXT_CACHE_KEY);
-      const categoryCache = readCache(LANGUAGE_CATEGORY_CACHE_KEY);
-      const cachedTexts = textCache[language] ?? {};
-      const cachedCategories = categoryCache[language] ?? {};
-
-      if (!cancelled) {
-        setRuntimeTextTranslations(cachedTexts);
-        setRuntimeCategoryTranslations(cachedCategories);
-      }
-
-      // No static translation keys; always use Groq
-      const missingTextKeys: string[] = [];
-      const missingCategoryKeys: string[] = [];
-
-      if (missingTextKeys.length === 0 && missingCategoryKeys.length === 0) {
-        return;
-      }
-
-      try {
-        const [freshTexts, freshCategories] = await Promise.all([
-          fetchTranslations(missingTextKeys, language),
-          fetchTranslations(missingCategoryKeys, language),
-        ]);
-
-        if (cancelled) return;
-
-        const mergedTexts = { ...cachedTexts, ...freshTexts };
-        const mergedCategories = { ...cachedCategories, ...freshCategories };
-
-        setRuntimeTextTranslations(mergedTexts);
-        setRuntimeCategoryTranslations(mergedCategories);
-
-        writeCache(LANGUAGE_TEXT_CACHE_KEY, {
-          ...textCache,
-          [language]: mergedTexts,
-        });
-        writeCache(LANGUAGE_CATEGORY_CACHE_KEY, {
-          ...categoryCache,
-          [language]: mergedCategories,
-        });
-      } catch {
-        // Keep static fallback translations if Groq is unavailable.
-      }
-    };
-
-    void loadLanguageRuntime();
-
-    return () => {
-      cancelled = true;
-    };
+    langRef.current = language;
+    pendingRef.current.clear();
+    if (timerRef.current) clearTimeout(timerRef.current);
   }, [language]);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
+    langRef.current = lang;
     try {
       localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
     } catch {}
+    // Reload cache so newly cached strings are immediately available
+    setCache(readCache());
   };
 
-  const translate = (key: string) => runtimeTextTranslations[key] ?? key;
-  const translateCategory = (category: string) =>
-    runtimeCategoryTranslations[category] ?? category;
+  const t = useCallback(
+    (key: string): string => {
+      if (!key) return key;
+      if (language === 'en') return key;
+
+      const langCache = cache[language] ?? {};
+      const hit = langCache[key];
+      if (hit) return hit;
+
+      // Queue this key for the next Groq batch call
+      pendingRef.current.add(key);
+      scheduleFlush(language);
+
+      // Return English while Groq processes the translation
+      return key;
+    },
+    [language, cache, scheduleFlush]
+  );
+
+  const translateCategory = useCallback((category: string) => t(category), [t]);
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t: translate, translateCategory }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t, translateCategory }}>
       {children}
     </LanguageContext.Provider>
   );

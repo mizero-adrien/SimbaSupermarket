@@ -20,9 +20,9 @@ const STARTER_PROMPTS = [
 ];
 
 export default function FloatingAiAssistant() {
-  const { language, translateCategory } = useLanguage();
-  const tr = (en: string, fr: string, rw: string) =>
-    language === 'fr' ? fr : language === 'rw' ? rw : en;
+  const { t, translateCategory } = useLanguage();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const tr = (en: string, _fr: string, _rw: string) => t(en);
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
