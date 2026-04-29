@@ -19,7 +19,7 @@ export default function HomePage() {
     language === 'fr' ? fr : language === 'rw' ? rw : en;
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [branchCount, setBranchCount] = useState(0);
-  const [countdown, setCountdown] = useState('00:00:00');
+  // const [countdown, setCountdown] = useState('00:00:00');
   const dealsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
