@@ -26,7 +26,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     );
   }
 
-  if (!user || user.role === 'customer') return null;
+  const ALLOWED_ROLES = ['branch_representative', 'branch_manager', 'branch_staff', 'admin', 'system_admin'];
+  if (!user || !ALLOWED_ROLES.includes(user.role)) return null;
 
   return (
     <div className="flex min-h-screen bg-light-bg dark:bg-dark-bg">

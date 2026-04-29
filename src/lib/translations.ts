@@ -1,5 +1,6 @@
-// All static translation mappings and helpers have been removed.
-// All translations are now handled by Groq via the LanguageContext.
+export type Language = 'en' | 'fr' | 'rw';
+
+const translations: Record<string, Record<Language, string>> = {
   'Delivery': { en: 'Delivery', fr: 'Livraison', rw: 'Gutanga' },
   'Free': { en: 'Free', fr: 'Gratuit', rw: 'Ubuntu' },
   'Remove': { en: 'Remove', fr: 'Supprimer', rw: 'Kuvaho' },

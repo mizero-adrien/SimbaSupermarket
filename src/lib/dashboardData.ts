@@ -1,4 +1,5 @@
-import { BranchOrder, BranchProduct, OrderStatus } from '@/types';
+import { BranchOrder, BranchProduct, CartItem, OrderStatus } from '@/types';
+import { getMasterProducts } from '@/lib/productData';
 
 export function getBranchOrders(branchId: string): BranchOrder[] {
   try {
@@ -33,6 +34,68 @@ export function updateOrderStatus(branchId: string, orderId: string, status: Ord
   );
   saveBranchOrders(branchId, updated);
   return updated;
+}
+
+export function assignOrder(branchId: string, orderId: string, staffId: string, staffName: string) {
+  const orders = getBranchOrders(branchId);
+  const updated = orders.map(o =>
+    o.id === orderId
+      ? { ...o, assignedStaffId: staffId, assignedStaffName: staffName, status: 'confirmed' as OrderStatus, updatedAt: new Date().toISOString() }
+      : o
+  );
+  saveBranchOrders(branchId, updated);
+  return updated;
+}
+
+// ── Inventory ──────────────────────────────────────────────────────────────
+
+export function getOrInitBranchInventory(branchId: string): BranchProduct[] {
+  try {
+    const raw = localStorage.getItem(`simba_products_${branchId}`);
+    if (raw) return JSON.parse(raw) as BranchProduct[];
+    // Seed from master catalog with default stock of 50
+    const seeded: BranchProduct[] = getMasterProducts().map(p => ({
+      ...p,
+      branchId,
+      stock: 50,
+      isAvailable: true,
+      addedAt: new Date().toISOString(),
+    }));
+    saveBranchProducts(branchId, seeded);
+    return seeded;
+  } catch {
+    return [];
+  }
+}
+
+export function updateProductStock(branchId: string, productId: string | number, stock: number) {
+  const products = getOrInitBranchInventory(branchId);
+  const updated = products.map(p =>
+    p.id === productId
+      ? { ...p, stock: Math.max(0, stock), isAvailable: stock > 0 }
+      : p
+  );
+  saveBranchProducts(branchId, updated);
+  return updated;
+}
+
+export function markProductOutOfStock(branchId: string, productId: string | number) {
+  return updateProductStock(branchId, productId, 0);
+}
+
+export function decrementStockForOrder(branchId: string, items: CartItem[]) {
+  const products = getOrInitBranchInventory(branchId);
+  const map = new Map(products.map(p => [String(p.id), p]));
+  for (const item of items) {
+    const key = String(item.product.id);
+    const p = map.get(key);
+    if (p) {
+      const newStock = Math.max(0, p.stock - item.quantity);
+      map.set(key, { ...p, stock: newStock, isAvailable: newStock > 0 });
+    }
+  }
+  const updated = Array.from(map.values());
+  saveBranchProducts(branchId, updated);
 }
 
 const CUSTOMER_NAMES = [

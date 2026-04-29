@@ -19,12 +19,28 @@ export default function HomePage() {
     language === 'fr' ? fr : language === 'rw' ? rw : en;
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [branchCount, setBranchCount] = useState(0);
-  // const [countdown, setCountdown] = useState('00:00:00');
+  const [countdown, setCountdown] = useState('00:00:00');
   const dealsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setAllProducts(getMasterProducts());
     setBranchCount(getAllBranches().length);
+  }, []);
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const end = new Date();
+      end.setHours(23, 59, 59, 0);
+      const diff = Math.max(0, end.getTime() - now.getTime());
+      const h = Math.floor(diff / 3600000).toString().padStart(2, '0');
+      const m = Math.floor((diff % 3600000) / 60000).toString().padStart(2, '0');
+      const s = Math.floor((diff % 60000) / 1000).toString().padStart(2, '0');
+      setCountdown(`${h}:${m}:${s}`);
+    };
+    tick();
+    const id = setInterval(tick, 1000);
+    return () => clearInterval(id);
   }, []);
 
   const categories = useMemo(() => getCategories(allProducts), [allProducts]);
@@ -247,7 +263,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {featuredProducts.map(product => (
+            {featuredProducts.slice(0, 20).map(product => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

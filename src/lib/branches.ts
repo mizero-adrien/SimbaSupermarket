@@ -323,6 +323,38 @@ export const DEMO_USERS: User[] = [
     createdAt: '2024-06-01T00:00:00.000Z',
     phone: '+250 788 000 010',
   },
+  // Branch staff — UTC branch
+  {
+    id: 'staff-utc-1',
+    name: 'Patrick Mugisha',
+    email: 'patrick@simba.rw',
+    password: 'Staff@2024',
+    role: 'branch_staff',
+    branchId: 'utc-kigali',
+    createdAt: '2024-01-15T00:00:00.000Z',
+    phone: '+250 788 100 001',
+  },
+  {
+    id: 'staff-utc-2',
+    name: 'Diane Uwimana',
+    email: 'diane@simba.rw',
+    password: 'Staff@2024',
+    role: 'branch_staff',
+    branchId: 'utc-kigali',
+    createdAt: '2024-01-15T00:00:00.000Z',
+    phone: '+250 788 100 002',
+  },
+  // Branch staff — Kacyiru branch
+  {
+    id: 'staff-kac-1',
+    name: 'Eric Nzeyimana',
+    email: 'eric@simba.rw',
+    password: 'Staff@2024',
+    role: 'branch_staff',
+    branchId: 'kacyiru',
+    createdAt: '2024-01-15T00:00:00.000Z',
+    phone: '+250 788 100 003',
+  },
 ];
 
 export function getBranchById(id: string): Branch | undefined {

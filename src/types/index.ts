@@ -31,7 +31,7 @@ export interface Order {
 }
 
 export type OrderStatus = 'pending' | 'confirmed' | 'preparing' | 'ready' | 'delivered' | 'cancelled';
-export type UserRole = 'customer' | 'branch_representative' | 'branch_manager' | 'admin' | 'system_admin';
+export type UserRole = 'customer' | 'branch_representative' | 'branch_manager' | 'branch_staff' | 'admin' | 'system_admin';
 
 export type Language = 'en' | 'fr' | 'rw';
 
@@ -116,6 +116,8 @@ export interface BranchOrder {
   deliveryType: string;
   address: string;
   notes?: string;
+  assignedStaffId?: string;
+  assignedStaffName?: string;
   createdAt: string;
   updatedAt: string;
 }

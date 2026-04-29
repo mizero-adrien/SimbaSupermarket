@@ -20,7 +20,7 @@ import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage } from '@/lib/products';
 import { getDepositRequirement } from '@/lib/reviewData';
 import { getAllBranches } from '@/lib/branches';
-import { getBranchOrders, saveBranchOrders } from '@/lib/dashboardData';
+import { getBranchOrders, saveBranchOrders, decrementStockForOrder } from '@/lib/dashboardData';
 import { BranchOrder } from '@/types';
 
 const DELIVERY_FEE_STANDARD = 2000;
@@ -221,6 +221,7 @@ export default function CheckoutPage() {
     };
 
     saveBranchOrders(form.branchId, [nextOrder, ...previousOrders]);
+    decrementStockForOrder(form.branchId, items);
 
     await new Promise(resolve => setTimeout(resolve, 2000));
     clearCart();

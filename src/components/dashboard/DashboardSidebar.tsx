@@ -14,17 +14,11 @@ import {
   Menu,
   Store,
   ShoppingBag,
+  Boxes,
+  ClipboardList,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { getBranchById } from '@/lib/branches';
-
-const NAV_ITEMS = [
-  { href: '/dashboard', label: 'Overview', icon: LayoutDashboard, exact: true },
-  { href: '/dashboard/products', label: 'Products', icon: Package },
-  { href: '/dashboard/orders', label: 'Orders', icon: ShoppingCart },
-  { href: '/dashboard/categories', label: 'Categories', icon: Tag },
-  { href: '/dashboard/settings', label: 'Settings', icon: Settings },
-];
 
 export default function DashboardSidebar() {
   const pathname = usePathname();
@@ -35,13 +29,39 @@ export default function DashboardSidebar() {
 
   const branch = user?.branchId ? getBranchById(user.branchId) : null;
   const isSystemAdmin = user?.role === 'system_admin' || user?.role === 'admin';
+  const isStaff = user?.role === 'branch_staff';
+  const isManager = user?.role === 'branch_manager' || user?.role === 'branch_representative';
+
+  const roleLabel = isSystemAdmin
+    ? 'System Admin'
+    : isStaff
+    ? 'Branch Staff'
+    : isManager
+    ? 'Branch Manager'
+    : branch?.name ?? 'Dashboard';
+
+  // Nav items filtered by role
+  type NavItem = { href: string; label: string; icon: React.ElementType; exact?: boolean };
+  const NAV_ITEMS: NavItem[] = isStaff
+    ? [
+        { href: '/dashboard/staff',     label: 'My Orders',  icon: ClipboardList },
+        { href: '/dashboard/inventory', label: 'Inventory',  icon: Boxes },
+      ]
+    : [
+        { href: '/dashboard',           label: 'Overview',   icon: LayoutDashboard, exact: true },
+        { href: '/dashboard/orders',    label: 'Orders',     icon: ShoppingCart },
+        { href: '/dashboard/inventory', label: 'Inventory',  icon: Boxes },
+        { href: '/dashboard/products',  label: 'Products',   icon: Package },
+        { href: '/dashboard/categories',label: 'Categories', icon: Tag },
+        { href: '/dashboard/settings',  label: 'Settings',   icon: Settings },
+      ];
 
   function handleLogout() {
     logout();
     router.push('/');
   }
 
-  function isActive(item: typeof NAV_ITEMS[0]) {
+  function isActive(item: NavItem) {
     if (item.exact) return pathname === item.href;
     return (pathname ?? '').startsWith(item.href);
   }
@@ -56,7 +76,7 @@ export default function DashboardSidebar() {
         {!collapsed && (
           <div className="min-w-0">
             <p className="font-bold text-sm text-light-text dark:text-dark-text truncate">Simba Dashboard</p>
-            <p className="text-xs text-gray-500 truncate">{isSystemAdmin ? 'System Admin' : branch?.name ?? 'Branch Representative'}</p>
+            <p className="text-xs text-gray-500 truncate">{roleLabel}</p>
           </div>
         )}
       </div>

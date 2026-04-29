@@ -3,12 +3,13 @@
 import { useEffect, useState } from 'react';
 import {
   Clock, CheckCircle, AlertCircle, XCircle,
-  Search, Filter, Eye, ChevronDown,
+  Search, Filter, Eye, ChevronDown, UserCheck,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
-import { getBranchOrders, updateOrderStatus } from '@/lib/dashboardData';
+import { getBranchOrders, updateOrderStatus, assignOrder } from '@/lib/dashboardData';
 import { getAllBranches } from '@/lib/branches';
-import { Branch, BranchOrder, OrderStatus } from '@/types';
+import { getAllUsers } from '@/lib/userData';
+import { Branch, BranchOrder, OrderStatus, User } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
 import { addNoShowFlag, getNoShowFlagsByPhone } from '@/lib/reviewData';
 
@@ -31,8 +32,12 @@ export default function OrdersPage() {
   const [branchFilter, setBranchFilter] = useState<string>('all');
   const [selectedOrder, setSelectedOrder] = useState<BranchOrder | null>(null);
   const [allBranches, setAllBranches] = useState<Branch[]>([]);
+  const [branchStaff, setBranchStaff] = useState<User[]>([]);
   const [flagMessage, setFlagMessage] = useState('');
+  const [assigningOrderId, setAssigningOrderId] = useState<string | null>(null);
+
   const isSystemAdmin = user?.role === 'system_admin' || user?.role === 'admin';
+  const isManager = user?.role === 'branch_manager' || user?.role === 'branch_representative';
 
   useEffect(() => {
     setAllBranches(getAllBranches());
@@ -45,23 +50,42 @@ export default function OrdersPage() {
       setOrders(all);
       return;
     }
-    if (user.branchId) setOrders(getBranchOrders(user.branchId));
+    if (user.branchId) {
+      setOrders(getBranchOrders(user.branchId));
+      // Load staff for this branch
+      const staff = getAllUsers().filter(
+        u => u.role === 'branch_staff' && u.branchId === user.branchId
+      );
+      setBranchStaff(staff);
+    }
   }, [user, isSystemAdmin, allBranches]);
+
+  function reload() {
+    if (isSystemAdmin) {
+      setOrders(allBranches.flatMap(b => getBranchOrders(b.id)));
+    } else if (user?.branchId) {
+      setOrders(getBranchOrders(user.branchId));
+    }
+  }
 
   function handleStatusChange(orderId: string, newStatus: OrderStatus) {
     const target = orders.find(o => o.id === orderId);
     if (!target) return;
-
     updateOrderStatus(target.branchId, orderId, newStatus);
-    if (isSystemAdmin) {
-      const all = allBranches.flatMap(b => getBranchOrders(b.id));
-      setOrders(all);
-    } else if (user?.branchId) {
-      setOrders(getBranchOrders(user.branchId));
-    }
-
+    reload();
     if (selectedOrder?.id === orderId) {
       setSelectedOrder(prev => prev ? { ...prev, status: newStatus } : null);
+    }
+  }
+
+  function handleAssign(order: BranchOrder, staffId: string) {
+    const staff = branchStaff.find(s => s.id === staffId);
+    if (!staff) return;
+    assignOrder(order.branchId, order.id, staff.id, staff.name);
+    reload();
+    setAssigningOrderId(null);
+    if (selectedOrder?.id === order.id) {
+      setSelectedOrder(prev => prev ? { ...prev, assignedStaffId: staff.id, assignedStaffName: staff.name, status: 'confirmed' } : null);
     }
   }
 
@@ -171,12 +195,16 @@ export default function OrdersPage() {
                   <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden md:table-cell">Items</th>
                   <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Total</th>
                   <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
+                  {isManager && branchStaff.length > 0 && (
+                    <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase tracking-wider hidden lg:table-cell">Assigned</th>
+                  )}
                   <th className="px-5 py-3" />
                 </tr>
               </thead>
               <tbody className="divide-y divide-light-border dark:divide-dark-border">
                 {filtered.map(order => {
                   const cfg = STATUS_CONFIG[order.status];
+                  const isAssigning = assigningOrderId === order.id;
                   return (
                     <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
                       <td className="px-5 py-3.5">
@@ -195,7 +223,7 @@ export default function OrdersPage() {
                         <p className="font-semibold text-light-text dark:text-dark-text">{formatPrice(order.total)}</p>
                       </td>
                       <td className="px-5 py-3.5">
-                        <div className="relative group">
+                        <div className="relative">
                           <select
                             value={order.status}
                             onChange={e => handleStatusChange(order.id, e.target.value as OrderStatus)}
@@ -208,9 +236,46 @@ export default function OrdersPage() {
                           <ChevronDown size={10} className="absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none" />
                         </div>
                       </td>
+                      {/* Assign column — managers only */}
+                      {isManager && branchStaff.length > 0 && (
+                        <td className="px-5 py-3.5 hidden lg:table-cell">
+                          {isAssigning ? (
+                            <div className="flex items-center gap-2">
+                              <select
+                                autoFocus
+                                defaultValue=""
+                                onChange={e => { if (e.target.value) handleAssign(order, e.target.value); }}
+                                className="text-xs border border-light-border dark:border-dark-border rounded-btn px-2 py-1 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
+                              >
+                                <option value="" disabled>Select staff…</option>
+                                {branchStaff.map(s => (
+                                  <option key={s.id} value={s.id}>{s.name}</option>
+                                ))}
+                              </select>
+                              <button onClick={() => setAssigningOrderId(null)} className="text-xs text-gray-400 hover:text-gray-600">✕</button>
+                            </div>
+                          ) : order.assignedStaffName ? (
+                            <button
+                              onClick={() => setAssigningOrderId(order.id)}
+                              className="flex items-center gap-1 text-xs text-[#16a34a] hover:underline"
+                            >
+                              <UserCheck size={12} />
+                              {order.assignedStaffName}
+                            </button>
+                          ) : (
+                            <button
+                              onClick={() => setAssigningOrderId(order.id)}
+                              className="flex items-center gap-1 text-xs text-gray-400 hover:text-[#16a34a] border border-dashed border-gray-300 dark:border-gray-600 rounded-btn px-2 py-1 transition-colors"
+                            >
+                              <UserCheck size={12} />
+                              Assign
+                            </button>
+                          )}
+                        </td>
+                      )}
                       <td className="px-5 py-3.5">
                         <button
-                          onClick={() => setSelectedOrder(order)}
+                          onClick={() => { setSelectedOrder(order); setFlagMessage(''); }}
                           className="p-1.5 text-gray-400 hover:text-[#16a34a] hover:bg-[#16a34a]/10 rounded-btn transition-colors"
                         >
                           <Eye size={15} />
@@ -261,6 +326,14 @@ export default function OrdersPage() {
                   <p className="text-xs text-gray-500">Delivery</p>
                   <p className="font-medium text-light-text dark:text-dark-text capitalize">{selectedOrder.deliveryType}</p>
                 </div>
+                {selectedOrder.assignedStaffName && (
+                  <div className="col-span-2">
+                    <p className="text-xs text-gray-500">Assigned Staff</p>
+                    <p className="font-medium text-[#16a34a] flex items-center gap-1">
+                      <UserCheck size={13} /> {selectedOrder.assignedStaffName}
+                    </p>
+                  </div>
+                )}
               </div>
 
               <div>
@@ -279,6 +352,28 @@ export default function OrdersPage() {
                 <span>Total</span>
                 <span>{formatPrice(selectedOrder.total)}</span>
               </div>
+
+              {/* Assign to staff — inside modal */}
+              {isManager && branchStaff.length > 0 && (
+                <div className="rounded-btn border border-blue-200 bg-blue-50 dark:bg-blue-900/20 dark:border-blue-900/30 p-3">
+                  <p className="text-xs font-semibold text-blue-700 dark:text-blue-300 mb-2">Assign to Staff</p>
+                  <div className="flex gap-2">
+                    {branchStaff.map(s => (
+                      <button
+                        key={s.id}
+                        onClick={() => handleAssign(selectedOrder, s.id)}
+                        className={`px-3 py-1.5 text-xs font-semibold rounded-btn border transition-colors ${
+                          selectedOrder.assignedStaffId === s.id
+                            ? 'bg-blue-600 text-white border-blue-600'
+                            : 'border-blue-300 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-800/40'
+                        }`}
+                      >
+                        {s.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               <div>
                 <p className="text-xs text-gray-500 mb-1">Update Status</p>
