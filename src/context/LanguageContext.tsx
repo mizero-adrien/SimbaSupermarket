@@ -2,12 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Language } from '@/types';
-import {
-  categoryTranslationKeys,
-  t as staticTranslate,
-  translateCategory as staticTranslateCategory,
-  translationKeys,
-} from '@/lib/translations';
+
 
 interface LanguageContextValue {
   language: Language;
@@ -100,8 +95,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         setRuntimeCategoryTranslations(cachedCategories);
       }
 
-      const missingTextKeys = translationKeys.filter(key => !cachedTexts[key]);
-      const missingCategoryKeys = categoryTranslationKeys.filter(key => !cachedCategories[key]);
+      // No static translation keys; always use Groq
+      const missingTextKeys: string[] = [];
+      const missingCategoryKeys: string[] = [];
 
       if (missingTextKeys.length === 0 && missingCategoryKeys.length === 0) {
         return;
@@ -148,9 +144,9 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     } catch {}
   };
 
-  const translate = (key: string) => runtimeTextTranslations[key] ?? staticTranslate(key, language);
+  const translate = (key: string) => runtimeTextTranslations[key] ?? key;
   const translateCategory = (category: string) =>
-    runtimeCategoryTranslations[category] ?? staticTranslateCategory(category, language);
+    runtimeCategoryTranslations[category] ?? category;
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t: translate, translateCategory }}>

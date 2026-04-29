@@ -85,7 +85,7 @@ export default function Navbar() {
   async function runAiSearch(query: string) {
     const clean = query.trim();
     if (clean.length < 2) {
-      setAiError('Type a bit more so I can help you find products.');
+      setAiError(t('Type a bit more so I can help you find products.'));
       return;
     }
 
@@ -104,14 +104,14 @@ export default function Navbar() {
       const data = await response.json();
 
       if (!response.ok) {
-        setAiError(data?.error ?? 'Search failed. Please try again.');
+        setAiError(data?.error ?? t('Search failed. Please try again.'));
         return;
       }
 
       setAiReply(data.reply ?? 'Here are your best product matches.');
       setAiResults(Array.isArray(data.products) ? data.products : []);
     } catch {
-      setAiError('I could not reach AI search right now. Please try again.');
+      setAiError(t('I could not reach AI search right now. Please try again.'));
     } finally {
       setAiLoading(false);
     }
@@ -170,7 +170,7 @@ export default function Navbar() {
               disabled={aiLoading}
               className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1 text-xs font-semibold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-100 disabled:opacity-60 transition-colors"
             >
-              {aiLoading ? <Loader2 size={12} className="animate-spin" /> : 'Search'}
+              {aiLoading ? <><Loader2 size={12} className="animate-spin" /> {t('Searching…')}</> : t('Search')}
             </button>
           </div>
 

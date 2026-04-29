@@ -1,3 +1,29 @@
+// All static translation mappings and helpers have been removed.
+// All translations are now handled by Groq via the LanguageContext.
+
+import { Language } from '@/types';
+
+export const translations: Record<string, Record<Language, string>> = {
+  'Type a bit more so I can help you find products.': {
+    en: 'Type a bit more so I can help you find products.',
+    fr: 'Tapez un peu plus pour que je puisse vous aider à trouver des produits.',
+    rw: 'Andika byinshi kugira ngo ngufashe kubona ibicuruzwa.'
+  },
+  'Search failed. Please try again.': {
+    en: 'Search failed. Please try again.',
+    fr: 'La recherche a échoué. Veuillez réessayer.',
+    rw: 'Gushakisha byanze. Ongera ugerageze.'
+  },
+  'I could not reach AI search right now. Please try again.': {
+    en: 'I could not reach AI search right now. Please try again.',
+    fr: 'Impossible d’atteindre la recherche AI pour le moment. Veuillez réessayer.',
+    rw: 'Sinabashije kugera kuri AI search ubu. Ongera ugerageze.'
+  },
+  'Searching…': {
+    en: 'Searching…',
+    fr: 'Recherche…',
+    rw: 'Birimo gushakishwa…'
+  },
 import { Language } from '@/types';
 
 export const translations: Record<string, Record<Language, string>> = {
