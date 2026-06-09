@@ -16,6 +16,7 @@ import {
 } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { useAuth } from '@/context/AuthContext';
 import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage } from '@/lib/products';
 import { getDepositRequirement } from '@/lib/reviewData';
@@ -101,6 +102,7 @@ function StepIndicator({ currentStep, labels }: { currentStep: number; labels: R
 export default function CheckoutPage() {
   const { items, totalPrice, clearCart } = useCart();
   const { t } = useLanguage();
+  const { user } = useAuth();
   const branches = useMemo(() => getAllBranches().filter(branch => branch.isOpen), []);
 
   // All translations go through Groq via t(); static FR/RW args are unused.
@@ -134,6 +136,17 @@ export default function CheckoutPage() {
       setForm(prev => ({ ...prev, branchId: branches[0].id }));
     }
   }, [branches, form.branchId]);
+
+  // Pre-fill form from logged-in user profile
+  useEffect(() => {
+    if (!user) return;
+    setForm(prev => ({
+      ...prev,
+      fullName: prev.fullName || user.name || '',
+      phone: prev.phone || user.phone || '',
+      email: prev.email || user.email || '',
+    }));
+  }, [user]);
 
   const deliveryFee = (() => {
     if (form.fulfillmentMethod === 'pickup') return 0;
@@ -205,7 +218,7 @@ export default function CheckoutPage() {
     const nextOrder: BranchOrder = {
       id: orderId,
       branchId: form.branchId,
-      customerId: `guest-${customerKey}`,
+      customerId: user?.id ?? `guest-${customerKey}`,
       customerName: form.fullName,
       customerPhone: form.phone,
       customerEmail: form.email || undefined,
@@ -309,6 +322,16 @@ export default function CheckoutPage() {
                 <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-5 flex items-center gap-2">
                   <Truck size={18} className="text-[#16a34a]" /> {tr('Checkout Details (Pick-up First)', 'Détails de paiement (Retrait d\'abord)', 'Ibisobanuro bya checkout (Fata mbere)')}
                 </h2>
+
+                {user && (
+                  <div className="mb-4 p-3 rounded-btn border border-[#16a34a]/30 bg-[#16a34a]/5 text-xs text-[#16a34a] dark:text-green-400 flex items-center gap-2">
+                    <CheckCircle size={14} className="shrink-0" />
+                    <span>
+                      {tr('Checking out as', 'Paiement en tant que', 'Wishyura nk\'uwari')} <span className="font-semibold">{user.name}</span>
+                      {' — '}{tr('your details have been pre-filled below.', 'vos informations ont été pré-remplies ci-dessous.', 'amakuru yawe yuzurijwe hepfo.')}
+                    </span>
+                  </div>
+                )}
 
                 <div className="mb-4 p-3 rounded-btn border border-amber-200 dark:border-amber-900/30 bg-amber-50 dark:bg-amber-900/20 text-xs text-amber-700 dark:text-amber-300">
                   {tr('Simba checkout is pick-up first: choose your branch and time, pay a small refundable deposit, and your branch starts preparing immediately.', 'Le checkout Simba commence par le retrait : choisissez la succursale et l\'heure, payez un petit acompte remboursable et la préparation démarre immédiatement.', 'Checkout ya Simba itangirana no gufata: hitamo ishami n\'igihe, wishyure ubwishyu bw\'ibanze busubizwa kandi ishami ritangire gutegura ako kanya.')}

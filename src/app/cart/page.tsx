@@ -1,12 +1,16 @@
 'use client';
 
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Minus, Plus, Trash2, ShoppingBag, Shield, RotateCcw } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { useAuth } from '@/context/AuthContext';
 import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage } from '@/lib/products';
+import CheckoutAuthModal from '@/components/CheckoutAuthModal';
 
 const DELIVERY_FEE = 2000;
 const FREE_DELIVERY_THRESHOLD = 50000;
@@ -14,6 +18,17 @@ const FREE_DELIVERY_THRESHOLD = 50000;
 export default function CartPage() {
   const { items, removeItem, updateQuantity, clearCart, totalItems, totalPrice } = useCart();
   const { t } = useLanguage();
+  const { user } = useAuth();
+  const router = useRouter();
+  const [showAuthModal, setShowAuthModal] = useState(false);
+
+  function handleCheckout() {
+    if (user) {
+      router.push('/checkout');
+    } else {
+      setShowAuthModal(true);
+    }
+  }
 
   const deliveryFee = totalPrice >= FREE_DELIVERY_THRESHOLD ? 0 : DELIVERY_FEE;
   const grandTotal = totalPrice + deliveryFee;
@@ -150,12 +165,12 @@ export default function CartPage() {
                 </div>
               </div>
 
-              <Link
-                href="/checkout"
+              <button
+                onClick={handleCheckout}
                 className="block w-full text-center bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold py-3 rounded-btn transition-colors"
               >
                 {t('Proceed to Checkout')}
-              </Link>
+              </button>
 
               <div className="mt-4 space-y-2">
                 <div className="flex items-center gap-2 text-xs text-gray-500">
@@ -171,6 +186,13 @@ export default function CartPage() {
           </div>
         </div>
       </div>
+
+      {showAuthModal && (
+        <CheckoutAuthModal
+          onClose={() => setShowAuthModal(false)}
+          onSuccess={() => router.push('/checkout')}
+        />
+      )}
     </div>
   );
 }
