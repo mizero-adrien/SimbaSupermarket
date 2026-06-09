@@ -106,7 +106,7 @@ export default function DashboardSidebar() {
               onClick={() => setMobileOpen(false)}
               className={`flex items-center gap-3 px-3 py-2.5 rounded-btn text-sm font-medium transition-colors ${
                 active
-                  ? 'bg-[#16a34a] text-white'
+                  ? 'bg-[#f59e0b] text-white'
                   : 'text-light-text dark:text-dark-text hover:bg-gray-100 dark:hover:bg-slate-700'
               } ${collapsed ? 'justify-center' : ''}`}
               title={collapsed ? item.label : undefined}

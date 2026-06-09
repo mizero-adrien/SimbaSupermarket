@@ -162,7 +162,7 @@ export default function DashboardProductsPage() {
               <button
                 type="submit"
                 disabled={!isSystemAdmin}
-                className="flex-1 flex items-center justify-center gap-1.5 bg-[#16a34a] text-white text-sm font-semibold py-2 rounded-btn disabled:opacity-60"
+                className="flex-1 flex items-center justify-center gap-1.5 bg-[#f59e0b] hover:bg-[#d97706] text-white text-sm font-semibold py-2 rounded-btn disabled:opacity-60 transition-colors"
               >
                 <Plus size={14} />
                 {editingId ? 'Update Product' : 'Add Product'}

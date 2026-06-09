@@ -41,7 +41,7 @@ export default function HomePage() {
     return () => clearInterval(id);
   }, []);
 
-  const categories = useMemo(() => getCategories(allProducts), [allProducts]);
+  const categories = useMemo(() => getCategories(allProducts).slice(0, 10), [allProducts]);
   const featuredProducts = useMemo(() => deterministicShuffle(allProducts, 42), [allProducts]);
   const dealProducts = featuredProducts.slice(0, 8);
 

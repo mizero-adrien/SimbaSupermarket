@@ -227,7 +227,7 @@ export default function DashboardSettingsPage() {
               </select>
             </div>
 
-            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#16a34a] rounded-btn disabled:opacity-60">
+            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-[#d97706] rounded-btn disabled:opacity-60 transition-colors">
               Create Account
             </button>
           </form>
@@ -291,7 +291,7 @@ export default function DashboardSettingsPage() {
               className="w-full px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
             />
 
-            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#16a34a] rounded-btn disabled:opacity-60 flex items-center justify-center gap-2">
+            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-[#d97706] rounded-btn disabled:opacity-60 flex items-center justify-center gap-2 transition-colors">
               <Save size={14} /> Save Branch
             </button>
           </form>

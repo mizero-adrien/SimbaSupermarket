@@ -85,7 +85,7 @@ export default function DashboardCategoriesPage() {
           <button
             type="submit"
             disabled={!isSystemAdmin}
-            className="px-4 py-2 text-sm font-semibold text-white bg-[#16a34a] rounded-btn disabled:opacity-60"
+            className="px-4 py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-[#d97706] rounded-btn disabled:opacity-60 transition-colors"
           >
             Add Category
           </button>

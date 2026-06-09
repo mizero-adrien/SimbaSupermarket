@@ -100,7 +100,7 @@ export default function StaffOrdersPage() {
                   {order.status === 'preparing' && (
                     <button
                       onClick={() => markReady(order)}
-                      className="px-4 py-2 text-xs font-bold rounded-btn bg-[#16a34a] text-white hover:bg-[#15803d] transition-colors"
+                      className="px-4 py-2 text-xs font-bold rounded-btn bg-[#f59e0b] text-white hover:bg-[#d97706] transition-colors"
                     >
                       Mark Ready for Pickup
                     </button>

@@ -168,8 +168,8 @@ export default function OrdersPage() {
               onClick={() => setStatusFilter(s)}
               className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                 statusFilter === s
-                  ? 'bg-[#16a34a] text-white border-[#16a34a]'
-                  : 'bg-white dark:bg-dark-card border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a]'
+                  ? 'bg-[#f59e0b] text-white border-[#f59e0b]'
+                  : 'bg-white dark:bg-dark-card border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b]'
               }`}
             >
               {s === 'all' ? 'All' : STATUS_CONFIG[s].label}
@@ -384,8 +384,8 @@ export default function OrdersPage() {
                       onClick={() => handleStatusChange(selectedOrder.id, s)}
                       className={`px-2 py-1.5 text-xs font-semibold rounded-btn border transition-colors ${
                         selectedOrder.status === s
-                          ? 'bg-[#16a34a] text-white border-[#16a34a]'
-                          : 'border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a]'
+                          ? 'bg-[#f59e0b] text-white border-[#f59e0b]'
+                          : 'border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b]'
                       }`}
                     >
                       {STATUS_CONFIG[s].label}
