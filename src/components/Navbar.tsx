@@ -122,7 +122,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-40 bg-white/90 dark:bg-navy/90 backdrop-blur-md border-b border-light-border dark:border-dark-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center gap-8">
         <Link href="/" className="flex items-center shrink-0">
-          <Image src="/images/logo.png" alt="Simba Supermarket" height={40} width={120} className="h-10 w-auto object-contain" priority />
+          <Image src="/images/logo.png" alt="Simba Supermarket" height={40} width={40} className="h-10 w-10 object-cover rounded-full" priority />
         </Link>
 
         {/* Desktop nav links */}
