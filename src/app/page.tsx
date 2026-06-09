@@ -60,49 +60,49 @@ export default function HomePage() {
         <div className="absolute inset-0 dark:hidden bg-[linear-gradient(135deg,rgba(15,23,42,0.58)_0%,rgba(30,41,59,0.50)_48%,rgba(15,23,42,0.62)_100%)]" />
         <div className="absolute inset-0 hidden dark:block bg-[linear-gradient(135deg,rgba(2,6,23,0.82)_0%,rgba(15,23,42,0.72)_48%,rgba(17,24,39,0.88)_100%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(245,158,11,0.20),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(59,130,246,0.12),transparent_30%)]" />
-        <div className="relative max-w-7xl mx-auto px-4 py-10 md:py-20">
-          <div className="grid grid-cols-1 gap-8 items-center">
-            <div className="space-y-7">
+        <div className="relative max-w-7xl mx-auto px-4 py-7 md:py-12">
+          <div className="grid grid-cols-1 gap-5 items-center">
+            <div className="space-y-5">
               <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/80 backdrop-blur">
                 <ShieldCheck size={13} className="text-amber-400" />
                 {t("Rwanda's trusted supermarket network")}
               </div>
 
-              <div className="space-y-4">
-                <h1 className="max-w-xl text-4xl md:text-5xl font-black leading-tight text-balance drop-shadow-lg">
+              <div className="space-y-3">
+                <h1 className="max-w-xl text-3xl md:text-4xl font-black leading-tight text-balance drop-shadow-lg">
                   {t('Simba Supermarket, built for fast shopping across Kigali.')}
                 </h1>
-                <p className="max-w-lg text-base md:text-lg text-slate-200">
+                <p className="max-w-lg text-sm md:text-base text-slate-200">
                   {t('Fresh groceries, everyday essentials, branch pickup, and fast delivery in one place. Start with the brand people already trust.')}
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-2">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/products"
-                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-7 py-3 text-lg font-extrabold shadow-lg hover:bg-[#d97706] focus:outline-none focus:ring-2 focus:ring-[#f59e0b]/60 transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-6 py-2.5 text-base font-extrabold shadow-lg hover:bg-[#d97706] focus:outline-none focus:ring-2 focus:ring-[#f59e0b]/60 transition-all"
                 >
-                  <ShoppingCart size={20} />
+                  <ShoppingCart size={18} />
                   {t('Start Shopping')}
                 </Link>
                 <Link
                   href="/branches"
-                  className="inline-flex items-center justify-center gap-2 rounded-btn border border-white/15 bg-white/10 px-7 py-3 text-lg font-semibold text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-btn border border-white/15 bg-white/10 px-6 py-2.5 text-base font-semibold text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-white/40 transition-all"
                 >
-                  <MapPin size={20} />
+                  <MapPin size={18} />
                   {t('Find a Branch')}
                 </Link>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {[
                   { value: `${branchCount}+`, label: t('Branches across Rwanda') },
                   { value: '45 min', label: t('Fast Kigali delivery') },
                   { value: 'MoMo', label: t('Easy payment options') },
                 ].map(item => (
-                  <div key={item.label} className="rounded-card border border-white/10 bg-white/10 px-6 py-4 backdrop-blur shadow">
-                    <p className="text-2xl font-extrabold text-white drop-shadow">{item.value}</p>
-                    <p className="text-sm text-slate-200">{item.label}</p>
+                  <div key={item.label} className="rounded-card border border-white/10 bg-white/10 px-4 py-3 backdrop-blur shadow">
+                    <p className="text-xl font-extrabold text-white drop-shadow">{item.value}</p>
+                    <p className="text-xs text-slate-200">{item.label}</p>
                   </div>
                 ))}
               </div>
