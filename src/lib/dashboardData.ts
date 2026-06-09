@@ -1,5 +1,13 @@
 import { BranchOrder, BranchProduct, CartItem, OrderStatus } from '@/types';
 import { getMasterProducts } from '@/lib/productData';
+import { getAllBranches } from '@/lib/branches';
+
+export function getCustomerOrders(customerId: string): BranchOrder[] {
+  return getAllBranches()
+    .flatMap(b => getBranchOrders(b.id))
+    .filter(o => o.customerId === customerId)
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+}
 
 export function getBranchOrders(branchId: string): BranchOrder[] {
   try {

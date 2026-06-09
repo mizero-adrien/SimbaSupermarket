@@ -249,14 +249,13 @@ export default function Navbar() {
                       <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">{user.email}</p>
                     </div>
 
-                    <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
-                      <LayoutDashboard size={15} /> {t('Dashboard')}
-                    </Link>
-                    <Link href="/dashboard/orders" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
+                    {user.role !== 'customer' ? (
+                      <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#f59e0b] transition-colors">
+                        <LayoutDashboard size={15} /> {t('Dashboard')}
+                      </Link>
+                    ) : null}
+                    <Link href="/account" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#f59e0b] transition-colors">
                       <Package size={15} /> {t('My Orders')}
-                    </Link>
-                    <Link href="/dashboard/settings" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
-                      <CreditCard size={15} /> {t('Payment Settings')}
                     </Link>
                     <Link href="/about" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#16a34a] transition-colors">
                       <LifeBuoy size={15} /> {t('Help Center')}

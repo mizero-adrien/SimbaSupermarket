@@ -80,7 +80,7 @@ export default function BottomNav() {
     {
       label: user ? (user.role === 'customer' ? t('Profile') : t('Dashboard')) : t('Login'),
       icon: User,
-      href: user ? (user.role === 'customer' ? '/about' : '/dashboard') : '/auth/login',
+      href: user ? (user.role === 'customer' ? '/account' : '/dashboard') : '/auth/login',
     },
   ];
 
