@@ -407,7 +407,7 @@ export default function Navbar() {
                     onClick={() => setLanguage(code)}
                     className={`px-3 py-1 text-xs font-semibold rounded-btn border ${
                       language === code
-                        ? 'bg-[#16a34a] text-white border-[#16a34a]'
+                        ? 'bg-[#f59e0b] text-white border-[#f59e0b]'
                         : 'border-light-border dark:border-dark-border text-light-text dark:text-dark-text'
                     }`}
                   >

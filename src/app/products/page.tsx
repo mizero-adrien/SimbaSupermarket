@@ -195,25 +195,25 @@ function ProductsContent() {
             {hasActiveFilters && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {debouncedQuery && (
-                  <span className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
+                  <span className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
                     Search: {debouncedQuery}
                     <button onClick={() => setSearchQuery('')}><X size={12} /></button>
                   </span>
                 )}
                 {selectedCategories.map(cat => (
-                  <span key={cat} className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
+                  <span key={cat} className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
                     {translateCategory(cat)}
                     <button onClick={() => toggleCategory(cat)}><X size={12} /></button>
                   </span>
                 ))}
                 {minPrice && (
-                  <span className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
+                  <span className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
                     Min: {minPrice} RWF
                     <button onClick={() => setMinPrice('')}><X size={12} /></button>
                   </span>
                 )}
                 {maxPrice && (
-                  <span className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
+                  <span className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
                     Max: {maxPrice} RWF
                     <button onClick={() => setMaxPrice('')}><X size={12} /></button>
                   </span>
@@ -239,7 +239,7 @@ function ProductsContent() {
                 <p className="text-4xl mb-4">🔍</p>
                 <p className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">{t('No products found')}</p>
                 <p className="text-gray-500 text-sm mb-4">{t('Try adjusting your filters or search terms.')}</p>
-                <button onClick={resetFilters} className="bg-[#16a34a] text-white px-6 py-2 rounded-btn text-sm font-semibold hover:bg-green-700 transition-colors">
+                <button onClick={resetFilters} className="bg-[#f59e0b] text-white px-6 py-2 rounded-btn text-sm font-semibold hover:bg-[#d97706] transition-colors">
                   {t('Clear Filters')}
                 </button>
               </div>
@@ -262,7 +262,7 @@ function ProductsContent() {
             <Sidebar />
             <button
               onClick={() => setSidebarOpen(false)}
-              className="w-full mt-4 bg-[#16a34a] text-white py-3 rounded-btn font-semibold hover:bg-green-700 transition-colors"
+              className="w-full mt-4 bg-[#f59e0b] text-white py-3 rounded-btn font-semibold hover:bg-[#d97706] transition-colors"
             >
               Apply Filters ({filtered.length} results)
             </button>

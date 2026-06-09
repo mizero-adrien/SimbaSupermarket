@@ -146,7 +146,7 @@ export default function HomePage() {
                 <span className="text-sm font-semibold">{t('Ends in')} {countdown}</span>
               </div>
 
-              <Link href="/products" className="mt-6 inline-flex items-center justify-center rounded-btn bg-[#16a34a] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#15803d]">
+              <Link href="/products" className="mt-6 inline-flex items-center justify-center rounded-btn bg-[#f59e0b] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#d97706]">
                 {t('Shop now')}
               </Link>
             </div>

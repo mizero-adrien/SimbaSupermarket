@@ -38,7 +38,7 @@ export default function ProductDetailPage() {
       <div className="min-h-screen flex flex-col items-center justify-center gap-4 text-center px-4">
         <p className="text-5xl">🔍</p>
         <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">Product not found</h2>
-        <Link href="/products" className="bg-[#16a34a] text-white px-6 py-2 rounded-btn font-semibold hover:bg-green-700 transition-colors">
+        <Link href="/products" className="bg-[#f59e0b] text-white px-6 py-2 rounded-btn font-semibold hover:bg-[#d97706] transition-colors">
           {t('Continue Shopping')}
         </Link>
       </div>
@@ -85,7 +85,7 @@ export default function ProductDetailPage() {
 
           {/* Details */}
           <div className="flex flex-col">
-            <span className="inline-block bg-[#16a34a] text-white text-xs font-semibold px-3 py-1 rounded-full w-fit mb-4">
+            <span className="inline-block bg-[#f59e0b] text-white text-xs font-semibold px-3 py-1 rounded-full w-fit mb-4">
               {product.category}
             </span>
             <h1 className="text-2xl md:text-3xl font-bold text-light-text dark:text-dark-text mb-3 leading-tight">
