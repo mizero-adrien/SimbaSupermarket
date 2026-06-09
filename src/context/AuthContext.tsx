@@ -3,13 +3,14 @@
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { getSession, signOut } from 'next-auth/react';
 import { User } from '@/types';
-import { createUser, getAllUsers, getUserByEmail } from '@/lib/userData';
+import { createUser, getAllUsers, getUserByEmail, updateUser } from '@/lib/userData';
 
 interface AuthContextValue {
   user: User | null;
   login: (email: string, password: string) => Promise<{ ok: boolean; user?: User; error?: string }>;
   loginWithGoogle: (profile: { email: string; name?: string }) => Promise<{ ok: boolean; user?: User; error?: string }>;
   signup: (data: SignupData) => Promise<{ ok: boolean; user?: User; error?: string }>;
+  updateProfile: (patch: { name?: string; phone?: string; email?: string; password?: string }) => { ok: boolean; error?: string };
   logout: () => void;
   isLoading: boolean;
 }
@@ -127,6 +128,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return { ok: true, user: newUser };
   }, []);
 
+  const updateProfile = useCallback((patch: { name?: string; phone?: string; email?: string; password?: string }) => {
+    if (!user) return { ok: false, error: 'Not logged in.' };
+    if (patch.email && patch.email !== user.email) {
+      const existing = getUserByEmail(patch.email);
+      if (existing && existing.id !== user.id) return { ok: false, error: 'That email is already in use.' };
+    }
+    const updated = updateUser(user.id, patch);
+    if (!updated) return { ok: false, error: 'Update failed.' };
+    setUser(updated);
+    localStorage.setItem('simba_session', JSON.stringify(updated));
+    return { ok: true };
+  }, [user]);
+
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('simba_session');
@@ -134,7 +148,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, login, loginWithGoogle, signup, logout, isLoading }}>
+    <AuthContext.Provider value={{ user, login, loginWithGoogle, signup, updateProfile, logout, isLoading }}>
       {children}
     </AuthContext.Provider>
   );
