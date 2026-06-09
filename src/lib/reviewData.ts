@@ -1,7 +1,8 @@
-import { BranchReview, NoShowFlag } from '@/types';
+import { BranchReview, NoShowFlag, ProductReview } from '@/types';
 
 const REVIEWS_KEY = 'simba_branch_reviews';
 const FLAGS_KEY = 'simba_no_show_flags';
+const PRODUCT_REVIEWS_KEY = 'simba_product_reviews';
 
 function readJson<T>(key: string, fallback: T): T {
   if (typeof window === 'undefined') return fallback;
@@ -45,6 +46,34 @@ export function getBranchReviewSummary(branchId: string) {
     count,
     average,
   };
+}
+
+export function getProductReviews(productId: string | number): ProductReview[] {
+  return readJson<ProductReview[]>(PRODUCT_REVIEWS_KEY, []).filter(
+    r => String(r.productId) === String(productId)
+  );
+}
+
+export function addProductReview(review: Omit<ProductReview, 'id' | 'createdAt'>): ProductReview {
+  const all = readJson<ProductReview[]>(PRODUCT_REVIEWS_KEY, []);
+  const next: ProductReview = {
+    ...review,
+    id: `prod-review-${Date.now()}`,
+    createdAt: new Date().toISOString(),
+  };
+  writeJson(PRODUCT_REVIEWS_KEY, [next, ...all]);
+  return next;
+}
+
+export function getProductRatingSummary(productId: string | number): { count: number; average: number } {
+  const reviews = getProductReviews(productId);
+  const count = reviews.length;
+  const average = count > 0 ? reviews.reduce((sum, r) => sum + r.rating, 0) / count : 0;
+  return { count, average };
+}
+
+export function hasUserReviewedProduct(productId: string | number, userId: string): boolean {
+  return getProductReviews(productId).some(r => r.userId === userId);
 }
 
 export function getAllNoShowFlags(): NoShowFlag[] {

@@ -54,6 +54,16 @@ export interface BranchReview {
   createdAt: string;
 }
 
+export interface ProductReview {
+  id: string;
+  productId: string | number;
+  userId: string;
+  userName: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}
+
 export interface NoShowFlag {
   id: string;
   customerPhone: string;
