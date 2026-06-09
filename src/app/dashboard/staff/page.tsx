@@ -26,6 +26,7 @@ export default function StaffOrdersPage() {
     setOrders(all.filter(o => o.assignedStaffId === user.id));
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { loadOrders(); }, [user]);
 
   function markPreparing(order: BranchOrder) {

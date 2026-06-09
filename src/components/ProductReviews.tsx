@@ -57,6 +57,7 @@ export default function ProductReviews({ productId }: Props) {
     if (user) setAlreadyReviewed(hasUserReviewedProduct(productId, user.id));
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { refresh(); }, [productId, user]);
 
   function handleSubmit(e: React.FormEvent) {

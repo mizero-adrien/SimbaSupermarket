@@ -21,12 +21,10 @@ export default function InventoryPage() {
   const [editStock, setEditStock] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('all');
 
-  function load() {
+  useEffect(() => {
     if (!user?.branchId) return;
     setProducts(getOrInitBranchInventory(user.branchId));
-  }
-
-  useEffect(() => { load(); }, [user]);
+  }, [user]);
 
   function handleResetInventory() {
     if (!user?.branchId) return;
