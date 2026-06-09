@@ -91,7 +91,7 @@ function ProductsContent() {
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-bold text-light-text dark:text-dark-text">{t('Filter')}</h3>
         {hasActiveFilters && (
-          <button onClick={resetFilters} className="text-xs text-[#16a34a] hover:underline font-medium">
+          <button onClick={resetFilters} className="text-xs text-[#f59e0b] hover:underline font-medium">
             Reset all
           </button>
         )}
@@ -103,7 +103,7 @@ function ProductsContent() {
         <select
           value={sortBy}
           onChange={e => setSortBy(e.target.value as SortOption)}
-          className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-3 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
+          className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-3 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
         >
           <option value="featured">Featured</option>
           <option value="price-asc">Price: Low to High</option>
@@ -123,9 +123,9 @@ function ProductsContent() {
                 type="checkbox"
                 checked={selectedCategories.includes(name)}
                 onChange={() => toggleCategory(name)}
-                className="w-4 h-4 accent-[#16a34a] rounded"
+                className="w-4 h-4 accent-[#f59e0b] rounded"
               />
-              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#16a34a] transition-colors flex-1">{translateCategory(name)}</span>
+              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#d97706] transition-colors flex-1">{translateCategory(name)}</span>
               <span className="text-xs text-gray-400">({count})</span>
             </label>
           ))}
@@ -141,14 +141,14 @@ function ProductsContent() {
             placeholder="Min"
             value={minPrice}
             onChange={e => setMinPrice(e.target.value)}
-            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
+            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
           />
           <input
             type="number"
             placeholder="Max"
             value={maxPrice}
             onChange={e => setMaxPrice(e.target.value)}
-            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
+            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
           />
         </div>
       </div>
@@ -158,7 +158,34 @@ function ProductsContent() {
   return (
     <div className="min-h-screen bg-light-bg dark:bg-dark-bg page-transition">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h1 className="text-2xl font-bold text-light-text dark:text-dark-text mb-6">{t('All Products')}</h1>
+        <h1 className="text-2xl font-bold text-light-text dark:text-dark-text mb-4">{t('All Products')}</h1>
+
+        {/* Category tab strip */}
+        <div className="flex gap-2 overflow-x-auto pb-2 mb-6" style={{ scrollbarWidth: 'none' }}>
+          <button
+            onClick={() => setSelectedCategories([])}
+            className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+              selectedCategories.length === 0
+                ? 'bg-[#f59e0b] text-white'
+                : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b] hover:text-[#d97706]'
+            }`}
+          >
+            {t('All Products')}
+          </button>
+          {allCategories.map(({ name }) => (
+            <button
+              key={name}
+              onClick={() => toggleCategory(name)}
+              className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
+                selectedCategories.includes(name)
+                  ? 'bg-[#f59e0b] text-white'
+                  : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b] hover:text-[#d97706]'
+              }`}
+            >
+              {translateCategory(name)}
+            </button>
+          ))}
+        </div>
 
         <div className="flex gap-8">
           {/* Desktop Sidebar */}
@@ -179,7 +206,7 @@ function ProductsContent() {
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   placeholder={`Search ${allProducts.length} products...`}
-                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
+                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
                 />
               </div>
               <button
