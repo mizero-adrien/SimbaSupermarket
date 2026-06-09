@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Minus, Plus, ShoppingCart, ArrowLeft, CheckCircle, Truck, RotateCcw } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
+import ProductReviews from '@/components/ProductReviews';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { getMasterProducts } from '@/lib/productData';
@@ -168,9 +169,12 @@ export default function ProductDetailPage() {
           </div>
         </div>
 
+        {/* Reviews */}
+        <ProductReviews productId={product.id} />
+
         {/* Related Products */}
         {related.length > 0 && (
-          <section>
+          <section className="mt-12">
             <h2 className="text-xl font-bold text-light-text dark:text-dark-text mb-6">
               More from {product.category}
             </h2>

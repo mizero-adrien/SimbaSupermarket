@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ShoppingCart, Eye } from 'lucide-react';
@@ -9,6 +9,8 @@ import { formatPrice } from '@/lib/formatPrice';
 import { getProductImage, getSaleInfo } from '@/lib/products';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
+import { getProductRatingSummary } from '@/lib/reviewData';
+import StarRating from './StarRating';
 import QuickViewModal from './QuickViewModal';
 
 interface Props {
@@ -24,6 +26,11 @@ export default function ProductCard({ product }: Props) {
   const { onSale, originalPrice, salePrice, savePct } = getSaleInfo(product);
   const cartItem = items?.find(i => i.product.id === product.id);
   const [quantity, setQuantity] = useState(cartItem ? cartItem.quantity : 1);
+  const [ratingSummary, setRatingSummary] = useState({ count: 0, average: 0 });
+
+  useEffect(() => {
+    setRatingSummary(getProductRatingSummary(product.id));
+  }, [product.id]);
 
   const handleAddToCart = () => {
     // If already in cart, update quantity, else add item with quantity
@@ -79,6 +86,10 @@ export default function ProductCard({ product }: Props) {
               {product.name}
             </h3>
           </Link>
+
+          <div className="mb-1">
+            <StarRating rating={ratingSummary.average} count={ratingSummary.count} size="xs" showEmpty />
+          </div>
 
           {/* Price */}
           <div className="mt-auto mb-3">
