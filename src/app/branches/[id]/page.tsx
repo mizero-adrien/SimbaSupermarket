@@ -11,15 +11,18 @@ import { getMasterProducts } from '@/lib/productData';
 import { deterministicShuffle } from '@/lib/products';
 import { addBranchReview, getBranchReviewSummary, getBranchReviews } from '@/lib/reviewData';
 import { useLanguage } from '@/context/LanguageContext';
+import { useAuth } from '@/context/AuthContext';
+import StarRating from '@/components/StarRating';
 
 export default function BranchDetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
   const { t, translateCategory } = useLanguage();
+  const { user } = useAuth();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [allBranches, setAllBranches] = useState<Branch[]>([]);
   const [reviews, setReviews] = useState(getBranchReviews(id));
   const [reviewRating, setReviewRating] = useState(5);
-  const [reviewName, setReviewName] = useState('');
+  const [reviewHover, setReviewHover] = useState(0);
   const [reviewComment, setReviewComment] = useState('');
   const branch = getBranchById(id);
   const reviewSummary = getBranchReviewSummary(id);
@@ -37,16 +40,15 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
   }, [id, branch, allProducts]);
 
   function submitReview() {
-    if (!reviewName.trim() || !reviewComment.trim()) return;
+    if (!user || !reviewComment.trim()) return;
     addBranchReview({
       branchId: id,
-      customerName: reviewName.trim(),
+      customerName: user.name,
       rating: reviewRating,
       comment: reviewComment.trim(),
       pickupType: 'pickup',
     });
     setReviews(getBranchReviews(id));
-    setReviewName('');
     setReviewComment('');
     setReviewRating(5);
   }
@@ -230,9 +232,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
                     <p className="text-sm font-semibold text-light-text dark:text-dark-text">{review.customerName}</p>
                     <p className="text-xs text-gray-500">{new Date(review.createdAt).toLocaleDateString()}</p>
                   </div>
-                  <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300">
-                    {review.rating}/5
-                  </span>
+                  <StarRating rating={review.rating} size="sm" />
                 </div>
                 <p className="text-sm text-gray-700 dark:text-gray-300">{review.comment}</p>
               </article>
@@ -241,36 +241,48 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
 
           <div className="bg-slate-50 dark:bg-slate-800/40 rounded-card border border-light-border dark:border-dark-border p-4 md:p-5">
             <h3 className="font-bold text-light-text dark:text-dark-text mb-3">{t('Rate your pickup experience')}</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
-              <input
-                type="text"
-                value={reviewName}
-                onChange={e => setReviewName(e.target.value)}
-                placeholder={t('Your name')}
-                className="px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
-              />
-              <select
-                value={reviewRating}
-                onChange={e => setReviewRating(Number(e.target.value))}
-                className="px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
-              >
-                {[5, 4, 3, 2, 1].map(value => <option key={value} value={value}>{value} {t('stars')}</option>)}
-              </select>
-              <button
-                onClick={submitReview}
-                className="px-3 py-2 text-sm font-semibold text-white bg-[#f59e0b] rounded-btn hover:bg-[#d97706]"
-              >
-                {t('Submit Review')}
-              </button>
-            </div>
-            <textarea
-              value={reviewComment}
-              onChange={e => setReviewComment(e.target.value)}
-              rows={3}
-              placeholder={t('Tell others what the pickup experience was like...')}
-              className="w-full px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
-            />
-            <p className="mt-2 text-xs text-gray-500">{t('Demo review form. In a full rollout, this can be shown after a completed pickup or verified order.')}</p>
+            {!user ? (
+              <div className="flex items-center gap-3 py-2">
+                <p className="text-sm text-gray-600 dark:text-gray-400">
+                  <a href="/auth/login" className="font-semibold text-[#16a34a] hover:underline">{t('Sign in')}</a>
+                  {' '}{t('to leave a review for this branch.')}
+                </p>
+              </div>
+            ) : (
+              <>
+                <div className="flex items-center gap-4 mb-3">
+                  <div className="flex gap-0.5">
+                    {[1, 2, 3, 4, 5].map(star => (
+                      <button
+                        key={star}
+                        type="button"
+                        onClick={() => setReviewRating(star)}
+                        onMouseEnter={() => setReviewHover(star)}
+                        onMouseLeave={() => setReviewHover(0)}
+                        className="text-2xl leading-none transition-colors"
+                      >
+                        <span className={(reviewHover || reviewRating) >= star ? 'text-amber-400' : 'text-gray-300 dark:text-gray-600'}>★</span>
+                      </button>
+                    ))}
+                  </div>
+                  <span className="text-xs text-gray-500">{t('Reviewing as')} <span className="font-medium text-light-text dark:text-dark-text">{user.name}</span></span>
+                </div>
+                <textarea
+                  value={reviewComment}
+                  onChange={e => setReviewComment(e.target.value)}
+                  rows={3}
+                  placeholder={t('Tell others what the pickup experience was like...')}
+                  className="w-full px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg mb-3 resize-none focus:outline-none focus:border-[#16a34a]"
+                />
+                <button
+                  onClick={submitReview}
+                  disabled={!reviewComment.trim()}
+                  className="px-5 py-2 text-sm font-bold text-white bg-[#f59e0b] rounded-btn hover:bg-[#d97706] disabled:opacity-50 transition-colors"
+                >
+                  {t('Submit Review')}
+                </button>
+              </>
+            )}
           </div>
         </div>
 
