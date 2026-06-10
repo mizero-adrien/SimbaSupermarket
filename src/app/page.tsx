@@ -83,7 +83,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/products"
-                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-6 py-2.5 text-base font-extrabold shadow-lg hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-[#f59e0b]/60 transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-6 py-2.5 text-base font-extrabold shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-[#f59e0b]/60 transition-all"
                 >
                   <ShoppingCart size={18} />
                   {t('Start Shopping')}
@@ -251,7 +251,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/products"
-            className="shrink-0 bg-[#f59e0b] hover:bg-amber-400 text-white font-bold text-sm px-5 py-2 rounded-btn transition-colors"
+            className="shrink-0 bg-[#16a34a] hover:bg-green-700 text-white font-bold text-sm px-5 py-2 rounded-btn transition-colors"
           >
             {t('Start Shopping')}
           </Link>

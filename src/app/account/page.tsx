@@ -4,27 +4,17 @@ import { useEffect, useMemo, useState, FormEvent } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import {
-  ShoppingBag, Clock, CheckCircle, AlertCircle, XCircle,
+  ShoppingBag, CheckCircle, Clock,
   Package, Truck, CreditCard, MapPin, ChevronDown, ChevronUp,
   User, LogOut, Save, Eye, EyeOff, ShieldCheck,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import OrderCardSkeleton from '@/components/skeletons/OrderCardSkeleton';
+import StatusBadge from '@/components/StatusBadge';
 import { getAllBranches } from '@/lib/branches';
 import { getCustomerOrders } from '@/lib/dashboardData';
 import { BranchOrder, OrderStatus } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
-
-// â”€â”€â”€ Status config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-
-const STATUS_CONFIG: Record<OrderStatus, { label: string; color: string; icon: React.ElementType }> = {
-  pending:   { label: 'Pending',          color: 'text-amber-600 bg-amber-50 dark:bg-amber-900/20 border-amber-200',     icon: Clock },
-  confirmed: { label: 'Confirmed',        color: 'text-blue-600 bg-blue-50 dark:bg-blue-900/20 border-blue-200',         icon: CheckCircle },
-  preparing: { label: 'Preparing',        color: 'text-purple-600 bg-purple-50 dark:bg-purple-900/20 border-purple-200', icon: AlertCircle },
-  ready:     { label: 'Ready for Pickup', color: 'text-green-600 bg-green-50 dark:bg-green-900/20 border-green-200',     icon: CheckCircle },
-  delivered: { label: 'Delivered',        color: 'text-gray-600 bg-gray-100 dark:bg-gray-700 border-gray-200',           icon: CheckCircle },
-  cancelled: { label: 'Cancelled',        color: 'text-red-500 bg-red-50 dark:bg-red-900/20 border-red-200',             icon: XCircle },
-};
 
 const TIMELINE: OrderStatus[] = ['pending', 'confirmed', 'preparing', 'ready', 'delivered'];
 
@@ -50,7 +40,7 @@ function OrderTimeline({ status }: { status: OrderStatus }) {
           <div key={s} className="flex items-center flex-1 last:flex-none">
             <div className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-bold border-2 transition-colors ${
               done
-                ? active ? 'bg-[#f59e0b] border-[#f59e0b] text-white' : 'bg-green-500 border-green-500 text-white'
+                ? active ? 'bg-[#16a34a] border-[#16a34a] text-white' : 'bg-green-500 border-green-500 text-white'
                 : 'bg-gray-100 dark:bg-slate-700 border-gray-200 dark:border-slate-600 text-gray-400'
             }`}>
               {done && !active ? <CheckCircle size={13} /> : i + 1}
@@ -69,8 +59,6 @@ function OrderTimeline({ status }: { status: OrderStatus }) {
 
 function OrderCard({ order, branchName }: { order: BranchOrder; branchName: string }) {
   const [expanded, setExpanded] = useState(false);
-  const cfg = STATUS_CONFIG[order.status];
-  const Icon = cfg.icon;
   const date = new Date(order.createdAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
 
   return (
@@ -79,9 +67,7 @@ function OrderCard({ order, branchName }: { order: BranchOrder; branchName: stri
         <div className="min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-sm font-bold text-light-text dark:text-dark-text font-mono">{order.id}</span>
-            <span className={`inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-0.5 rounded-full border ${cfg.color}`}>
-              <Icon size={10} /> {cfg.label}
-            </span>
+            <StatusBadge status={order.status} />
           </div>
           <div className="flex items-center gap-3 mt-1 text-xs text-gray-500 flex-wrap">
             <span className="flex items-center gap-1"><MapPin size={11} />{branchName}</span>
@@ -218,7 +204,7 @@ function ProfileTab() {
             </p>
           )}
 
-          <button type="submit" disabled={infoSaving} className="flex items-center gap-2 bg-[#f59e0b] hover:bg-amber-400 text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
+          <button type="submit" disabled={infoSaving} className="flex items-center gap-2 bg-[#16a34a] hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
             <Save size={15} /> {infoSaving ? 'Savingâ€¦' : 'Save Changes'}
           </button>
         </form>
@@ -256,7 +242,7 @@ function ProfileTab() {
               </p>
             )}
 
-            <button type="submit" disabled={pwdSaving} className="flex items-center gap-2 bg-[#f59e0b] hover:bg-amber-400 text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
+            <button type="submit" disabled={pwdSaving} className="flex items-center gap-2 bg-[#16a34a] hover:bg-green-700 text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
               <ShieldCheck size={15} /> {pwdSaving ? 'Updatingâ€¦' : 'Update Password'}
             </button>
           </form>
@@ -377,7 +363,7 @@ export default function AccountPage() {
                 onClick={() => setPageTab(t.key)}
                 className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors ${
                   pageTab === t.key
-                    ? 'border-[#f59e0b] text-[#f59e0b]'
+                    ? 'border-[#16a34a] text-[#16a34a]'
                     : 'border-transparent text-gray-500 hover:text-light-text dark:hover:text-dark-text'
                 }`}
               >
@@ -398,7 +384,7 @@ export default function AccountPage() {
                   onClick={() => setOrderTab(t.key)}
                   className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
                     orderTab === t.key
-                      ? 'bg-[#f59e0b] text-white'
+                      ? 'bg-[#16a34a] text-white'
                       : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b]'
                   }`}
                 >
@@ -416,7 +402,7 @@ export default function AccountPage() {
               <div className="text-center py-16 bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border">
                 <ShoppingBag size={40} className="mx-auto text-gray-300 mb-3" />
                 <p className="text-gray-500 font-medium">No orders here yet</p>
-                <Link href="/products" className="mt-4 inline-flex items-center gap-2 bg-[#f59e0b] text-white px-5 py-2 rounded-btn text-sm font-semibold hover:bg-amber-400 transition-colors">
+                <Link href="/products" className="mt-4 inline-flex items-center gap-2 bg-[#16a34a] text-white px-5 py-2 rounded-btn text-sm font-semibold hover:bg-amber-400 transition-colors">
                   Start Shopping
                 </Link>
               </div>

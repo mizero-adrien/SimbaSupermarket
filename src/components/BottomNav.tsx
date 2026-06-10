@@ -155,7 +155,7 @@ export default function BottomNav() {
                       key={cat}
                       href={`/products?category=${encodeURIComponent(cat)}`}
                       onClick={closeSearch}
-                      className="text-xs bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 px-3 py-1.5 rounded-full hover:bg-[#16a34a] hover:text-white transition-colors"
+                      className="text-xs bg-gray-100 dark:bg-slate-700 text-gray-600 dark:text-gray-300 px-3 py-1.5 rounded-full hover:bg-[#f59e0b] hover:text-white transition-colors"
                     >
                         {translateCategory(cat)}
                     </Link>
@@ -187,7 +187,7 @@ export default function BottomNav() {
                   }`}>
                     <Icon size={20} />
                   </div>
-                  <span className={`text-[10px] font-medium leading-none ${searchOpen ? 'text-[#16a34a]' : 'text-gray-400'}`}>
+                  <span className={`text-[10px] font-medium leading-none ${searchOpen ? 'text-[#f59e0b]' : 'text-gray-400'}`}>
                     {label}
                   </span>
                 </button>
@@ -208,11 +208,11 @@ export default function BottomNav() {
                   </span>
                 )}
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
-                  active ? 'bg-[#16a34a]/10 text-[#16a34a]' : 'text-gray-400'
+                  active ? 'bg-[#f59e0b]/10 text-[#d97706]' : 'text-gray-400'
                 }`}>
                   <Icon size={20} />
                 </div>
-                <span className={`text-[10px] font-medium leading-none ${active ? 'text-[#16a34a]' : 'text-gray-400'}`}>
+                <span className={`text-[10px] font-medium leading-none ${active ? 'text-[#d97706]' : 'text-gray-400'}`}>
                   {label}
                 </span>
               </Link>

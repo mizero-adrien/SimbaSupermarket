@@ -14,7 +14,7 @@ function PasswordStrength({ password }: { password: string }) {
     { label: 'Contains number', ok: /\d/.test(password) },
   ];
   const score = checks.filter(c => c.ok).length;
-  const colors = ['bg-red-400', 'bg-amber-400', 'bg-[#16a34a]'];
+  const colors = ['bg-red-400', 'bg-green-700', 'bg-[#16a34a]'];
 
   return (
     <div className="mt-2 space-y-1.5">
@@ -123,7 +123,7 @@ export default function SignupPage() {
       <div className="w-full max-w-md">
         <div className="bg-white dark:bg-dark-card rounded-2xl shadow-2xl border border-light-border dark:border-dark-border overflow-hidden">
           {/* Gradient header */}
-          <div className="bg-gradient-to-r from-[#f59e0b] to-[#d97706] px-8 py-6 text-white text-center">
+          <div className="bg-[#16a34a] px-8 py-6 text-white text-center">
             <Link href="/" className="inline-flex items-center gap-2 text-white font-bold text-2xl mb-2">
               <ShoppingCart size={28} />
               Simba
@@ -149,7 +149,7 @@ export default function SignupPage() {
                   onChange={e => setName(e.target.value)}
                   autoComplete="name"
                   placeholder="Jean Pierre Uwimana"
-                  className="w-full px-4 py-3 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/20 transition-all"
+                  className="w-full px-4 py-3 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#16a34a] focus:ring-2 focus:ring-[#16a34a]/20 transition-all"
                 />
               </div>
 
@@ -162,7 +162,7 @@ export default function SignupPage() {
                   onChange={e => setEmail(e.target.value)}
                   autoComplete="email"
                   placeholder="you@example.com"
-                  className="w-full px-4 py-3 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/20 transition-all"
+                  className="w-full px-4 py-3 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#16a34a] focus:ring-2 focus:ring-[#16a34a]/20 transition-all"
                 />
               </div>
 
@@ -174,7 +174,7 @@ export default function SignupPage() {
                   onChange={e => setPhone(e.target.value)}
                   autoComplete="tel"
                   placeholder="+250 7XX XXX XXX"
-                  className="w-full px-4 py-3 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/20 transition-all"
+                  className="w-full px-4 py-3 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#16a34a] focus:ring-2 focus:ring-[#16a34a]/20 transition-all"
                 />
               </div>
 
@@ -188,7 +188,7 @@ export default function SignupPage() {
                     onChange={e => setPassword(e.target.value)}
                     autoComplete="new-password"
                     placeholder="••••••••"
-                    className="w-full px-4 py-3 pr-10 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#f59e0b] focus:ring-2 focus:ring-[#f59e0b]/20 transition-all"
+                    className="w-full px-4 py-3 pr-10 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#16a34a] focus:ring-2 focus:ring-[#16a34a]/20 transition-all"
                   />
                   <button
                     type="button"
@@ -213,7 +213,7 @@ export default function SignupPage() {
                   className={`w-full px-4 py-3 text-sm border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:ring-2 transition-all ${
                     confirm && confirm !== password
                       ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20'
-                      : 'border-light-border dark:border-dark-border focus:border-[#f59e0b] focus:ring-[#f59e0b]/20'
+                      : 'border-light-border dark:border-dark-border focus:border-[#16a34a] focus:ring-[#16a34a]/20'
                   }`}
                 />
               </div>
@@ -221,7 +221,7 @@ export default function SignupPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#f59e0b] to-[#d97706] hover:from-[#d97706] hover:to-[#b45309] disabled:opacity-60 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95 mt-2"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r bg-[#16a34a] hover:bg-green-700 disabled:opacity-60 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95 mt-2"
               >
                 {loading ? (
                   <>
@@ -240,7 +240,7 @@ export default function SignupPage() {
                 type="button"
                 onClick={handleGoogleSignup}
                 disabled={googleLoading}
-                className="w-full flex items-center justify-center gap-3 border border-light-border dark:border-dark-border bg-white dark:bg-dark-bg text-light-text dark:text-dark-text font-semibold py-3 rounded-lg hover:border-[#f59e0b] hover:bg-[#f59e0b]/5 disabled:opacity-60 transition-all"
+                className="w-full flex items-center justify-center gap-3 border border-light-border dark:border-dark-border bg-white dark:bg-dark-bg text-light-text dark:text-dark-text font-semibold py-3 rounded-lg hover:border-[#16a34a] hover:bg-[#16a34a]/5 disabled:opacity-60 transition-all"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.7 3.5 14.5 2.7 12 2.7 6.9 2.7 2.7 6.9 2.7 12S6.9 21.3 12 21.3c6.9 0 9.1-4.8 9.1-7.3 0-.5-.1-.9-.1-1.3H12z"/>
@@ -258,7 +258,7 @@ export default function SignupPage() {
               </div>
             </div>
 
-            <Link href="/auth/login" className="w-full flex items-center justify-center gap-2 border-2 border-light-border dark:border-dark-border text-light-text dark:text-dark-text font-semibold py-3 rounded-lg hover:border-[#f59e0b] hover:text-[#f59e0b] transition-all">
+            <Link href="/auth/login" className="w-full flex items-center justify-center gap-2 border-2 border-light-border dark:border-dark-border text-light-text dark:text-dark-text font-semibold py-3 rounded-lg hover:border-[#16a34a] hover:text-[#16a34a] transition-all">
               Sign In Instead
             </Link>
           </div>

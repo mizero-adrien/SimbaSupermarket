@@ -1,10 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import {
-  Clock, CheckCircle, AlertCircle, XCircle,
-  Search, Filter, Eye, ChevronDown, UserCheck,
-} from 'lucide-react';
+import { Search, Filter, Eye, ChevronDown, UserCheck } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { getBranchOrders, updateOrderStatus, assignOrder } from '@/lib/dashboardData';
 import { getAllBranches } from '@/lib/branches';
@@ -12,14 +9,20 @@ import { getAllUsers } from '@/lib/userData';
 import { Branch, BranchOrder, OrderStatus, User } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
 import { addNoShowFlag, getNoShowFlagsByPhone } from '@/lib/reviewData';
+import StatusBadge from '@/components/StatusBadge';
 
-const STATUS_CONFIG: Record<OrderStatus, { label: string; color: string; icon: React.ElementType }> = {
-  pending:   { label: 'Pending',   color: 'text-amber-600 bg-amber-50 dark:bg-amber-900/20',     icon: Clock },
-  confirmed: { label: 'Confirmed', color: 'text-blue-600 bg-blue-50 dark:bg-blue-900/20',       icon: CheckCircle },
-  preparing: { label: 'Preparing', color: 'text-purple-600 bg-purple-50 dark:bg-purple-900/20', icon: AlertCircle },
-  ready:     { label: 'Ready',     color: 'text-[#16a34a] bg-green-50 dark:bg-green-900/20',    icon: CheckCircle },
-  delivered: { label: 'Delivered', color: 'text-gray-600 bg-gray-100 dark:bg-gray-700',          icon: CheckCircle },
-  cancelled: { label: 'Cancelled', color: 'text-red-500 bg-red-50 dark:bg-red-900/20',           icon: XCircle },
+const STATUS_LABELS: Record<OrderStatus, string> = {
+  pending: 'Pending', confirmed: 'Confirmed', preparing: 'Preparing',
+  ready: 'Ready', delivered: 'Delivered', cancelled: 'Cancelled',
+};
+
+const STATUS_COLOR: Record<OrderStatus, string> = {
+  pending:   'text-amber-600 bg-amber-50 dark:bg-amber-900/20',
+  confirmed: 'text-blue-600 bg-blue-50 dark:bg-blue-900/20',
+  preparing: 'text-purple-600 bg-purple-50 dark:bg-purple-900/20',
+  ready:     'text-[#16a34a] bg-green-50 dark:bg-green-900/20',
+  delivered: 'text-gray-600 bg-gray-100 dark:bg-gray-700',
+  cancelled: 'text-red-500 bg-red-50 dark:bg-red-900/20',
 };
 
 const ALL_STATUSES: OrderStatus[] = ['pending', 'confirmed', 'preparing', 'ready', 'delivered', 'cancelled'];
@@ -136,7 +139,7 @@ export default function OrdersPage() {
           >
             <option value="all">All Statuses</option>
             {ALL_STATUSES.map(s => (
-              <option key={s} value={s}>{STATUS_CONFIG[s].label}</option>
+              <option key={s} value={s}>{STATUS_LABELS[s]}</option>
             ))}
           </select>
           <ChevronDown size={14} className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
@@ -168,11 +171,11 @@ export default function OrdersPage() {
               onClick={() => setStatusFilter(s)}
               className={`shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                 statusFilter === s
-                  ? 'bg-[#f59e0b] text-white border-[#f59e0b]'
-                  : 'bg-white dark:bg-dark-card border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b]'
+                  ? 'bg-[#16a34a] text-white border-[#16a34a]'
+                  : 'bg-white dark:bg-dark-card border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a]'
               }`}
             >
-              {s === 'all' ? 'All' : STATUS_CONFIG[s].label}
+              {s === 'all' ? 'All' : STATUS_LABELS[s]}
               <span className={`text-xs px-1.5 py-0.5 rounded-full ${statusFilter === s ? 'bg-white/20' : 'bg-gray-100 dark:bg-gray-700'}`}>{count}</span>
             </button>
           );
@@ -203,7 +206,7 @@ export default function OrdersPage() {
               </thead>
               <tbody className="divide-y divide-light-border dark:divide-dark-border">
                 {filtered.map(order => {
-                  const cfg = STATUS_CONFIG[order.status];
+                  const cfg = { color: STATUS_COLOR[order.status] };
                   const isAssigning = assigningOrderId === order.id;
                   return (
                     <tr key={order.id} className="hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors">
@@ -230,7 +233,7 @@ export default function OrdersPage() {
                             className={`text-xs font-semibold px-2.5 py-1 rounded-full border-0 cursor-pointer appearance-none pr-6 ${cfg.color}`}
                           >
                             {ALL_STATUSES.map(s => (
-                              <option key={s} value={s}>{STATUS_CONFIG[s].label}</option>
+                              <option key={s} value={s}>{STATUS_LABELS[s]}</option>
                             ))}
                           </select>
                           <ChevronDown size={10} className="absolute right-1.5 top-1/2 -translate-y-1/2 pointer-events-none" />
@@ -304,9 +307,7 @@ export default function OrdersPage() {
                   <p className="text-xs text-gray-500">Order ID</p>
                   <p className="font-mono text-sm font-semibold text-light-text dark:text-dark-text">{selectedOrder.id}</p>
                 </div>
-                <span className={`self-start text-xs font-semibold px-2.5 py-1 rounded-full ${STATUS_CONFIG[selectedOrder.status].color}`}>
-                  {STATUS_CONFIG[selectedOrder.status].label}
-                </span>
+                <StatusBadge status={selectedOrder.status} size="sm" />
               </div>
 
               <div className="grid grid-cols-2 gap-3 text-sm">
@@ -384,11 +385,11 @@ export default function OrdersPage() {
                       onClick={() => handleStatusChange(selectedOrder.id, s)}
                       className={`px-2 py-1.5 text-xs font-semibold rounded-btn border transition-colors ${
                         selectedOrder.status === s
-                          ? 'bg-[#f59e0b] text-white border-[#f59e0b]'
-                          : 'border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b]'
+                          ? 'bg-[#16a34a] text-white border-[#16a34a]'
+                          : 'border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a]'
                       }`}
                     >
-                      {STATUS_CONFIG[s].label}
+                      {STATUS_LABELS[s]}
                     </button>
                   ))}
                 </div>

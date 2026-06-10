@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -57,7 +57,7 @@ export default function ProductCard({ product }: Props) {
             />
 
             {/* Badges */}
-            <span className="absolute top-2 left-2 bg-[#16a34a] text-white text-xs font-medium px-2 py-0.5 rounded-full">
+            <span className="absolute top-2 left-2 bg-slate-700 text-white text-xs font-medium px-2 py-0.5 rounded-full">
               {translateCategory(product.category)}
             </span>
             {onSale && (
@@ -72,7 +72,7 @@ export default function ProductCard({ product }: Props) {
               className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/20"
               aria-label={`Quick view ${product.name}`}
             >
-              <span className="flex items-center gap-1.5 bg-white text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-full shadow-md hover:bg-[#16a34a] hover:text-white transition-colors">
+              <span className="flex items-center gap-1.5 bg-white text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-full shadow-md hover:bg-[#f59e0b] hover:text-white transition-colors">
                 <Eye size={13} />
                 {t('Quick View')}
               </span>
@@ -131,7 +131,7 @@ export default function ProductCard({ product }: Props) {
           </div>
           <button
             onClick={handleAddToCart}
-            className="w-full flex items-center justify-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold text-sm py-2 rounded-btn transition-colors duration-150"
+            className="w-full flex items-center justify-center gap-2 bg-[#16a34a] hover:bg-green-700 text-white font-semibold text-sm py-2 rounded-btn transition-colors duration-150"
             aria-label={`Add ${product.name} to cart`}
           >
             <ShoppingCart size={14} />

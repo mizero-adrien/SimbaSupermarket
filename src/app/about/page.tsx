@@ -127,7 +127,7 @@ export default function AboutPage() {
         <p className="text-gray-500 dark:text-gray-400 mb-6">{t('Join thousands of Kigali families who trust Simba Supermarket.')}</p>
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-amber-400 text-white font-bold px-8 py-3 rounded-btn transition-colors shadow-lg"
+          className="inline-flex items-center gap-2 bg-[#16a34a] hover:bg-green-700 text-white font-bold px-8 py-3 rounded-btn transition-colors shadow-lg"
         >
           {t('Shop Now')} &rarr;
         </Link>

@@ -328,7 +328,7 @@ export default function Navbar() {
           <Link href="/cart" className="hidden md:flex relative p-2 text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors" aria-label={`Cart, ${totalItems} items`}>
             <ShoppingCart size={20} />
             {totalItems > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 bg-[#f59e0b] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 bg-[#16a34a] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {totalItems > 9 ? '9+' : totalItems}
               </span>
             )}
@@ -339,7 +339,7 @@ export default function Navbar() {
       <div className="hidden md:block border-t border-light-border dark:border-dark-border bg-white/80 dark:bg-navy/80">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-11 flex items-center gap-2 overflow-x-auto scrollbar-hide">
-            <Link href="/products" className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f59e0b] text-white hover:bg-amber-400 transition-colors">
+            <Link href="/products" className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f59e0b] text-white hover:bg-green-700 transition-colors">
               {t('All Categories')}
             </Link>
             {quickCategories.map(cat => (

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -36,12 +36,12 @@ export default function CartPage() {
   if (items.length === 0) {
     return (
       <div className="min-h-screen bg-light-bg dark:bg-dark-bg flex flex-col items-center justify-center gap-4 px-4 page-transition">
-        <div className="text-6xl">🛒</div>
+        <div className="text-6xl">ðŸ›’</div>
         <h2 className="text-2xl font-bold text-light-text dark:text-dark-text">{t('Your cart is empty')}</h2>
         <p className="text-gray-500 text-sm">{t('Add some products to get started.')}</p>
         <Link
           href="/products"
-          className="bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold px-8 py-3 rounded-btn transition-colors mt-2"
+          className="bg-[#16a34a] hover:bg-green-700 text-white font-bold px-8 py-3 rounded-btn transition-colors mt-2"
         >
           {t('Start Shopping')}
         </Link>
@@ -167,7 +167,7 @@ export default function CartPage() {
 
               <button
                 onClick={handleCheckout}
-                className="block w-full text-center bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold py-3 rounded-btn transition-colors"
+                className="block w-full text-center bg-[#16a34a] hover:bg-green-700 text-white font-bold py-3 rounded-btn transition-colors"
               >
                 {t('Proceed to Checkout')}
               </button>

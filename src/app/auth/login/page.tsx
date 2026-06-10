@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, FormEvent, useEffect } from 'react';
 import Link from 'next/link';
@@ -72,12 +72,12 @@ export default function LoginPage() {
       <div className="w-full max-w-md">
         <div className="bg-white dark:bg-dark-card rounded-2xl shadow-2xl border border-light-border dark:border-dark-border overflow-hidden">
           {/* Gradient header */}
-          <div className="bg-gradient-to-r from-[#16a34a] to-[#15803d] px-8 py-6 text-white text-center">
+          <div className="bg-slate-900 px-8 py-6 text-white text-center">
             <Link href="/" className="inline-flex items-center gap-2 text-white font-bold text-2xl mb-2">
-              <ShoppingCart size={28} />
+              <ShoppingCart size={28} className="text-[#f59e0b]" />
               Simba
             </Link>
-            <p className="text-sm text-white/80">Welcome back to your account</p>
+            <p className="text-sm text-white/70">Welcome back to your account</p>
           </div>
 
           <div className="p-8">
@@ -93,7 +93,7 @@ export default function LoginPage() {
             <form onSubmit={handleSubmit} className="space-y-5">
               {error && (
                 <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg text-sm text-red-600 dark:text-red-400 flex items-start gap-2">
-                  <span className="text-lg mt-0.5">⚠️</span>
+                  <span className="text-lg mt-0.5">âš ï¸</span>
                   <span>{error}</span>
                 </div>
               )}
@@ -129,7 +129,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     autoComplete="current-password"
-                    placeholder="••••••••"
+                    placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                     className="w-full px-4 py-3 pr-10 text-sm border border-light-border dark:border-dark-border rounded-lg bg-white dark:bg-dark-bg text-light-text dark:text-dark-text placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#16a34a] focus:ring-2 focus:ring-[#16a34a]/20 transition-all"
                   />
                   <button
@@ -145,7 +145,7 @@ export default function LoginPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-[#16a34a] to-[#15803d] hover:from-[#15803d] hover:to-[#127a3d] disabled:opacity-60 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95"
+                className="w-full flex items-center justify-center gap-2 bg-[#16a34a] hover:bg-green-700 disabled:opacity-60 text-white font-bold py-3 rounded-lg transition-all transform hover:scale-105 active:scale-95"
               >
                 {loading ? (
                   <>

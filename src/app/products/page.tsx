@@ -94,7 +94,7 @@ function ProductsContent() {
       <div className="flex items-center justify-between mb-4">
         <h3 className="font-bold text-light-text dark:text-dark-text">{t('Filter')}</h3>
         {hasActiveFilters && (
-          <button onClick={resetFilters} className="text-xs text-[#f59e0b] hover:underline font-medium">
+          <button onClick={resetFilters} className="text-xs text-[#16a34a] hover:underline font-medium">
             Reset all
           </button>
         )}
@@ -106,7 +106,7 @@ function ProductsContent() {
         <select
           value={sortBy}
           onChange={e => setSortBy(e.target.value as SortOption)}
-          className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-3 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
+          className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-3 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
         >
           <option value="featured">Featured</option>
           <option value="price-asc">Price: Low to High</option>
@@ -126,9 +126,9 @@ function ProductsContent() {
                 type="checkbox"
                 checked={selectedCategories.includes(name)}
                 onChange={() => toggleCategory(name)}
-                className="w-4 h-4 accent-[#f59e0b] rounded"
+                className="w-4 h-4 accent-[#16a34a] rounded"
               />
-              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#d97706] transition-colors flex-1">{translateCategory(name)}</span>
+              <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#16a34a] transition-colors flex-1">{translateCategory(name)}</span>
               <span className="text-xs text-gray-400">({count})</span>
             </label>
           ))}
@@ -144,14 +144,14 @@ function ProductsContent() {
             placeholder="Min"
             value={minPrice}
             onChange={e => setMinPrice(e.target.value)}
-            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
+            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
           />
           <input
             type="number"
             placeholder="Max"
             value={maxPrice}
             onChange={e => setMaxPrice(e.target.value)}
-            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
+            className="w-full text-sm border border-light-border dark:border-dark-border rounded-btn px-2 py-2 bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
           />
         </div>
       </div>
@@ -169,8 +169,8 @@ function ProductsContent() {
             onClick={() => setSelectedCategories([])}
             className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
               selectedCategories.length === 0
-                ? 'bg-[#f59e0b] text-white'
-                : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b] hover:text-[#d97706]'
+                ? 'bg-[#16a34a] text-white'
+                : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a]'
             }`}
           >
             {t('All Products')}
@@ -181,8 +181,8 @@ function ProductsContent() {
               onClick={() => toggleCategory(name)}
               className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
                 selectedCategories.includes(name)
-                  ? 'bg-[#f59e0b] text-white'
-                  : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b] hover:text-[#d97706]'
+                  ? 'bg-[#16a34a] text-white'
+                  : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a]'
               }`}
             >
               {translateCategory(name)}
@@ -209,7 +209,7 @@ function ProductsContent() {
                   value={searchQuery}
                   onChange={e => setSearchQuery(e.target.value)}
                   placeholder={`Search ${allProducts.length} products...`}
-                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#f59e0b]"
+                  className="w-full pl-9 pr-4 py-2.5 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
                 />
               </div>
               <button
@@ -225,25 +225,25 @@ function ProductsContent() {
             {hasActiveFilters && (
               <div className="flex flex-wrap gap-2 mb-4">
                 {debouncedQuery && (
-                  <span className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
+                  <span className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
                     Search: {debouncedQuery}
                     <button onClick={() => setSearchQuery('')}><X size={12} /></button>
                   </span>
                 )}
                 {selectedCategories.map(cat => (
-                  <span key={cat} className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
+                  <span key={cat} className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
                     {translateCategory(cat)}
                     <button onClick={() => toggleCategory(cat)}><X size={12} /></button>
                   </span>
                 ))}
                 {minPrice && (
-                  <span className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
+                  <span className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
                     Min: {minPrice} RWF
                     <button onClick={() => setMinPrice('')}><X size={12} /></button>
                   </span>
                 )}
                 {maxPrice && (
-                  <span className="flex items-center gap-1 bg-[#f59e0b]/10 text-[#d97706] text-xs font-medium px-3 py-1 rounded-full">
+                  <span className="flex items-center gap-1 bg-[#16a34a]/10 text-[#16a34a] text-xs font-medium px-3 py-1 rounded-full">
                     Max: {maxPrice} RWF
                     <button onClick={() => setMaxPrice('')}><X size={12} /></button>
                   </span>
@@ -273,7 +273,7 @@ function ProductsContent() {
                 <Search size={40} className="mx-auto mb-4 text-gray-300 dark:text-gray-600" />
                 <p className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">{t('No products found')}</p>
                 <p className="text-gray-500 text-sm mb-4">{t('Try adjusting your filters or search terms.')}</p>
-                <button onClick={resetFilters} className="bg-[#f59e0b] text-white px-6 py-2 rounded-btn text-sm font-semibold hover:bg-amber-400 transition-colors">
+                <button onClick={resetFilters} className="bg-[#16a34a] text-white px-6 py-2 rounded-btn text-sm font-semibold hover:bg-green-700 transition-colors">
                   {t('Clear Filters')}
                 </button>
               </div>
@@ -296,7 +296,7 @@ function ProductsContent() {
             <Sidebar />
             <button
               onClick={() => setSidebarOpen(false)}
-              className="w-full mt-4 bg-[#f59e0b] text-white py-3 rounded-btn font-semibold hover:bg-amber-400 transition-colors"
+              className="w-full mt-4 bg-[#16a34a] text-white py-3 rounded-btn font-semibold hover:bg-green-700 transition-colors"
             >
               Apply Filters ({filtered.length} results)
             </button>

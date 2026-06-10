@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
@@ -71,7 +71,7 @@ function StepIndicator({ currentStep, labels }: { currentStep: number; labels: R
                   isCompleted
                     ? 'bg-[#16a34a] text-white'
                     : isActive
-                      ? 'bg-[#f59e0b] text-white'
+                      ? 'bg-[#16a34a] text-white'
                       : 'bg-gray-200 dark:bg-slate-700 text-gray-400'
                 }`}
               >
@@ -79,7 +79,7 @@ function StepIndicator({ currentStep, labels }: { currentStep: number; labels: R
               </div>
               <span
                 className={`text-xs font-medium mt-1 ${
-                  isActive ? 'text-[#f59e0b]' : isCompleted ? 'text-[#16a34a]' : 'text-gray-400'
+                  isActive ? 'text-[#f59e0b]' : isCompleted ? 'text-[#f59e0b]' : 'text-gray-400'
                 }`}
               >
                 {labels[step.id]}
@@ -88,7 +88,7 @@ function StepIndicator({ currentStep, labels }: { currentStep: number; labels: R
             {i < steps.length - 1 && (
               <div
                 className={`w-16 sm:w-24 h-0.5 mx-2 mb-4 ${
-                  currentStep > step.id ? 'bg-[#16a34a]' : 'bg-gray-200 dark:bg-slate-700'
+                  currentStep > step.id ? 'bg-[#f59e0b]' : 'bg-gray-200 dark:bg-slate-700'
                 }`}
               />
             )}
@@ -162,15 +162,15 @@ export default function CheckoutPage() {
   function validateDetails(): boolean {
     const errs: Errors = {};
 
-    if (form.fullName.trim().length < 3) errs.fullName = tr('Full name must be at least 3 characters', 'Le nom complet doit contenir au moins 3 caractères', 'Amazina yuzuye agomba kuba nibura inyuguti 3');
+    if (form.fullName.trim().length < 3) errs.fullName = tr('Full name must be at least 3 characters', 'Le nom complet doit contenir au moins 3 caractÃ¨res', 'Amazina yuzuye agomba kuba nibura inyuguti 3');
     if (!/^\+?250\d{9}$/.test(form.phone.replace(/\s/g, ''))) {
-      errs.phone = tr('Enter a valid Rwandan phone number (+250 followed by 9 digits)', 'Entrez un numéro rwandais valide (+250 suivi de 9 chiffres)', 'Andika nimero yo mu Rwanda yemewe (+250 ikurikiwe n\'imibare 9)');
+      errs.phone = tr('Enter a valid Rwandan phone number (+250 followed by 9 digits)', 'Entrez un numÃ©ro rwandais valide (+250 suivi de 9 chiffres)', 'Andika nimero yo mu Rwanda yemewe (+250 ikurikiwe n\'imibare 9)');
     }
     if (form.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
       errs.email = tr('Enter a valid email address', 'Entrez une adresse e-mail valide', 'Andika imeli yemewe');
     }
 
-    if (!form.branchId) errs.branchId = tr('Please select a branch', 'Veuillez sélectionner une succursale', 'Hitamo ishami');
+    if (!form.branchId) errs.branchId = tr('Please select a branch', 'Veuillez sÃ©lectionner une succursale', 'Hitamo ishami');
 
     if (form.fulfillmentMethod === 'pickup') {
       if (!form.pickupDate) errs.pickupDate = tr('Pick-up date is required', 'La date de retrait est requise', 'Itariki yo gufata irakenewe');
@@ -178,7 +178,7 @@ export default function CheckoutPage() {
     }
 
     if (form.fulfillmentMethod === 'delivery' && form.address.trim().length < 8) {
-      errs.address = tr('Address must be at least 8 characters', 'L\'adresse doit contenir au moins 8 caractères', 'Aderesi igomba kuba nibura inyuguti 8');
+      errs.address = tr('Address must be at least 8 characters', 'L\'adresse doit contenir au moins 8 caractÃ¨res', 'Aderesi igomba kuba nibura inyuguti 8');
     }
 
     setErrors(errs);
@@ -198,12 +198,12 @@ export default function CheckoutPage() {
     }
 
     if ((paymentMethod === 'mtn' || paymentMethod === 'airtel') && !momoPhone.trim()) {
-      setPaymentError(tr('Enter your MoMo phone number to continue.', 'Entrez votre numéro MoMo pour continuer.', 'Andika nimero yawe ya MoMo kugira ngo ukomeze.'));
+      setPaymentError(tr('Enter your MoMo phone number to continue.', 'Entrez votre numÃ©ro MoMo pour continuer.', 'Andika nimero yawe ya MoMo kugira ngo ukomeze.'));
       return;
     }
 
     if (!form.branchId) {
-      setPaymentError(tr('Select a branch before placing order.', 'Sélectionnez une succursale avant de passer commande.', 'Hitamo ishami mbere yo kohereza itegeko.'));
+      setPaymentError(tr('Select a branch before placing order.', 'SÃ©lectionnez une succursale avant de passer commande.', 'Hitamo ishami mbere yo kohereza itegeko.'));
       return;
     }
 
@@ -284,7 +284,7 @@ export default function CheckoutPage() {
         </p>
       </div>
       <div className="mt-2 rounded-btn border border-amber-200 dark:border-amber-900/30 bg-amber-50 dark:bg-amber-900/20 px-3 py-2 text-xs text-amber-700 dark:text-amber-300">
-        <p className="font-semibold">{tr('Payable now', 'À payer maintenant', 'Bigomba kwishyurwa ubu')}</p>
+        <p className="font-semibold">{tr('Payable now', 'Ã€ payer maintenant', 'Bigomba kwishyurwa ubu')}</p>
         <p>{formatPrice(payableNow)} {form.fulfillmentMethod === 'pickup' ? tr('deposit', 'acompte', 'ubwishyu bw\'ibanze') : tr('total payment', 'paiement total', 'ubwishyu bwose')}.</p>
       </div>
     </div>
@@ -293,9 +293,9 @@ export default function CheckoutPage() {
   if (items.length === 0 && step !== 3) {
     return (
       <div className="min-h-screen bg-light-bg dark:bg-dark-bg flex flex-col items-center justify-center gap-4 px-4">
-        <div className="text-5xl">🛒</div>
+        <div className="text-5xl">ðŸ›’</div>
         <h2 className="text-xl font-bold text-light-text dark:text-dark-text">{tr('Your cart is empty', 'Votre panier est vide', 'Igitebo cyawe kirimo ubusa')}</h2>
-        <Link href="/products" className="bg-[#f59e0b] text-white font-bold px-6 py-2 rounded-btn hover:bg-[#d97706] transition-colors">
+        <Link href="/products" className="bg-[#f59e0b] text-white font-bold px-6 py-2 rounded-btn hover:bg-green-700 transition-colors">
           {tr('Start Shopping', 'Commencer vos achats', 'Tangira guhaha')}
         </Link>
       </div>
@@ -309,7 +309,7 @@ export default function CheckoutPage() {
         <StepIndicator
           currentStep={step}
           labels={{
-            1: tr('Details', 'Détails', 'Ibisobanuro'),
+            1: tr('Details', 'DÃ©tails', 'Ibisobanuro'),
             2: tr('Payment', 'Paiement', 'Kwishyura'),
             3: tr('Confirmation', 'Confirmation', 'Kwemeza'),
           }}
@@ -320,21 +320,21 @@ export default function CheckoutPage() {
             <div className="lg:col-span-2">
               <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-6">
                 <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-5 flex items-center gap-2">
-                  <Truck size={18} className="text-[#16a34a]" /> {tr('Checkout Details (Pick-up First)', 'Détails de paiement (Retrait d\'abord)', 'Ibisobanuro bya checkout (Fata mbere)')}
+                  <Truck size={18} className="text-[#16a34a]" /> {tr('Checkout Details (Pick-up First)', 'DÃ©tails de paiement (Retrait d\'abord)', 'Ibisobanuro bya checkout (Fata mbere)')}
                 </h2>
 
                 {user && (
-                  <div className="mb-4 p-3 rounded-btn border border-[#16a34a]/30 bg-[#16a34a]/5 text-xs text-[#16a34a] dark:text-green-400 flex items-center gap-2">
+                  <div className="mb-4 p-3 rounded-btn border border-[#f59e0b]/30 bg-[#f59e0b]/5 text-xs text-[#d97706] dark:text-[#f59e0b] flex items-center gap-2">
                     <CheckCircle size={14} className="shrink-0" />
                     <span>
                       {tr('Checking out as', 'Paiement en tant que', 'Wishyura nk\'uwari')} <span className="font-semibold">{user.name}</span>
-                      {' — '}{tr('your details have been pre-filled below.', 'vos informations ont été pré-remplies ci-dessous.', 'amakuru yawe yuzurijwe hepfo.')}
+                      {' â€” '}{tr('your details have been pre-filled below.', 'vos informations ont Ã©tÃ© prÃ©-remplies ci-dessous.', 'amakuru yawe yuzurijwe hepfo.')}
                     </span>
                   </div>
                 )}
 
                 <div className="mb-4 p-3 rounded-btn border border-amber-200 dark:border-amber-900/30 bg-amber-50 dark:bg-amber-900/20 text-xs text-amber-700 dark:text-amber-300">
-                  {tr('Simba checkout is pick-up first: choose your branch and time, pay a small refundable deposit, and your branch starts preparing immediately.', 'Le checkout Simba commence par le retrait : choisissez la succursale et l\'heure, payez un petit acompte remboursable et la préparation démarre immédiatement.', 'Checkout ya Simba itangirana no gufata: hitamo ishami n\'igihe, wishyure ubwishyu bw\'ibanze busubizwa kandi ishami ritangire gutegura ako kanya.')}
+                  {tr('Simba checkout is pick-up first: choose your branch and time, pay a small refundable deposit, and your branch starts preparing immediately.', 'Le checkout Simba commence par le retrait : choisissez la succursale et l\'heure, payez un petit acompte remboursable et la prÃ©paration dÃ©marre immÃ©diatement.', 'Checkout ya Simba itangirana no gufata: hitamo ishami n\'igihe, wishyure ubwishyu bw\'ibanze busubizwa kandi ishami ritangire gutegura ako kanya.')}
                 </div>
 
                 <div className="space-y-4">
@@ -351,7 +351,7 @@ export default function CheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-1">{tr('Phone Number', 'Numéro de téléphone', 'Nimero ya telefoni')} <span className="text-red-500">*</span></label>
+                    <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-1">{tr('Phone Number', 'NumÃ©ro de tÃ©lÃ©phone', 'Nimero ya telefoni')} <span className="text-red-500">*</span></label>
                     <input
                       type="tel"
                       value={form.phone}
@@ -385,20 +385,20 @@ export default function CheckoutPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-2">{tr('Fulfillment method', 'Mode de réception', 'Uburyo bwo kwakira')}</label>
+                    <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-2">{tr('Fulfillment method', 'Mode de rÃ©ception', 'Uburyo bwo kwakira')}</label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <label className={`flex items-start gap-3 p-3 rounded-card border cursor-pointer transition-colors ${form.fulfillmentMethod === 'pickup' ? 'border-[#f59e0b] bg-[#f59e0b]/5' : 'border-light-border dark:border-dark-border'}`}>
                         <input type="radio" checked={form.fulfillmentMethod === 'pickup'} onChange={() => setForm(prev => ({ ...prev, fulfillmentMethod: 'pickup' }))} className="mt-0.5 accent-[#f59e0b]" />
                         <div>
-                          <p className="text-sm font-semibold text-light-text dark:text-dark-text">{tr('Pick-up (Recommended)', 'Retrait (Recommandé)', 'Fata (Byiza)')}</p>
-                          <p className="text-xs text-gray-500">{tr('Faster prep and branch collection', 'Préparation plus rapide et retrait en succursale', 'Gutegura vuba no gufatira ku ishami')}</p>
+                          <p className="text-sm font-semibold text-light-text dark:text-dark-text">{tr('Pick-up (Recommended)', 'Retrait (RecommandÃ©)', 'Fata (Byiza)')}</p>
+                          <p className="text-xs text-gray-500">{tr('Faster prep and branch collection', 'PrÃ©paration plus rapide et retrait en succursale', 'Gutegura vuba no gufatira ku ishami')}</p>
                         </div>
                       </label>
-                      <label className={`flex items-start gap-3 p-3 rounded-card border cursor-pointer transition-colors ${form.fulfillmentMethod === 'delivery' ? 'border-[#16a34a] bg-[#16a34a]/5' : 'border-light-border dark:border-dark-border'}`}>
+                      <label className={`flex items-start gap-3 p-3 rounded-card border cursor-pointer transition-colors ${form.fulfillmentMethod === 'delivery' ? 'border-[#f59e0b] bg-[#f59e0b]/5' : 'border-light-border dark:border-dark-border'}`}>
                         <input type="radio" checked={form.fulfillmentMethod === 'delivery'} onChange={() => setForm(prev => ({ ...prev, fulfillmentMethod: 'delivery' }))} className="mt-0.5 accent-[#16a34a]" />
                         <div>
                           <p className="text-sm font-semibold text-light-text dark:text-dark-text">{t('Delivery')}</p>
-                          <p className="text-xs text-gray-500">{tr('Home delivery option', 'Option de livraison à domicile', 'Uburyo bwo kugeza mu rugo')}</p>
+                          <p className="text-xs text-gray-500">{tr('Home delivery option', 'Option de livraison Ã  domicile', 'Uburyo bwo kugeza mu rugo')}</p>
                         </div>
                       </label>
                     </div>
@@ -436,7 +436,7 @@ export default function CheckoutPage() {
                         {errors.pickupDate && <p className="text-red-500 text-xs mt-1">{errors.pickupDate}</p>}
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-1">{tr('Pick-up slot', 'Créneau de retrait', 'Igihe cyo gufata')} <span className="text-red-500">*</span></label>
+                        <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-1">{tr('Pick-up slot', 'CrÃ©neau de retrait', 'Igihe cyo gufata')} <span className="text-red-500">*</span></label>
                         <div className="relative">
                           <Clock3 size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
                           <select
@@ -479,20 +479,20 @@ export default function CheckoutPage() {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-2">{tr('Delivery Time', 'Délai de livraison', 'Igihe cyo kugeza')}</label>
+                        <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-2">{tr('Delivery Time', 'DÃ©lai de livraison', 'Igihe cyo kugeza')}</label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                          <label className={`flex items-start gap-3 p-3 rounded-card border cursor-pointer transition-colors ${form.deliveryType === 'standard' ? 'border-[#16a34a] bg-[#16a34a]/5' : 'border-light-border dark:border-dark-border'}`}>
+                          <label className={`flex items-start gap-3 p-3 rounded-card border cursor-pointer transition-colors ${form.deliveryType === 'standard' ? 'border-[#f59e0b] bg-[#f59e0b]/5' : 'border-light-border dark:border-dark-border'}`}>
                             <input type="radio" checked={form.deliveryType === 'standard'} onChange={() => setForm(prev => ({ ...prev, deliveryType: 'standard' }))} className="mt-0.5 accent-[#16a34a]" />
                             <div>
                               <p className="text-sm font-semibold text-light-text dark:text-dark-text">{tr('Standard (1-2 days)', 'Standard (1-2 jours)', 'Bisanzwe (iminsi 1-2)')}</p>
-                              <p className="text-xs text-gray-500">{totalPrice >= FREE_DELIVERY_THRESHOLD ? tr('Free delivery', 'Livraison gratuite', 'Kohereza ubuntu') : `${formatPrice(DELIVERY_FEE_STANDARD)} - ${tr('Free over 50k', 'Gratuit au-delà de 50k', 'Ubuntu hejuru ya 50k')}`}</p>
+                              <p className="text-xs text-gray-500">{totalPrice >= FREE_DELIVERY_THRESHOLD ? tr('Free delivery', 'Livraison gratuite', 'Kohereza ubuntu') : `${formatPrice(DELIVERY_FEE_STANDARD)} - ${tr('Free over 50k', 'Gratuit au-delÃ  de 50k', 'Ubuntu hejuru ya 50k')}`}</p>
                             </div>
                           </label>
                           <label className={`flex items-start gap-3 p-3 rounded-card border cursor-pointer transition-colors ${form.deliveryType === 'express' ? 'border-[#f59e0b] bg-[#f59e0b]/5' : 'border-light-border dark:border-dark-border'}`}>
                             <input type="radio" checked={form.deliveryType === 'express'} onChange={() => setForm(prev => ({ ...prev, deliveryType: 'express' }))} className="mt-0.5 accent-[#f59e0b]" />
                             <div>
-                              <p className="text-sm font-semibold text-light-text dark:text-dark-text">{tr('Express (same day)', 'Express (même jour)', 'Byihuse (uwo munsi)')}</p>
-                              <p className="text-xs text-gray-500">+{formatPrice(EXPRESS_FEE)} {tr('extra', 'supplément', 'inyongera')}</p>
+                              <p className="text-sm font-semibold text-light-text dark:text-dark-text">{tr('Express (same day)', 'Express (mÃªme jour)', 'Byihuse (uwo munsi)')}</p>
+                              <p className="text-xs text-gray-500">+{formatPrice(EXPRESS_FEE)} {tr('extra', 'supplÃ©ment', 'inyongera')}</p>
                             </div>
                           </label>
                         </div>
@@ -501,7 +501,7 @@ export default function CheckoutPage() {
                   )}
 
                   <div>
-                    <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-1">{tr('Additional Notes', 'Notes supplémentaires', 'Andi makuru')} <span className="text-gray-400 font-normal">({tr('optional', 'optionnel', 'si ngombwa')})</span></label>
+                    <label className="block text-sm font-medium text-light-text dark:text-dark-text mb-1">{tr('Additional Notes', 'Notes supplÃ©mentaires', 'Andi makuru')} <span className="text-gray-400 font-normal">({tr('optional', 'optionnel', 'si ngombwa')})</span></label>
                     <textarea
                       value={form.notes}
                       onChange={e => setForm(prev => ({ ...prev, notes: e.target.value }))}
@@ -511,7 +511,7 @@ export default function CheckoutPage() {
                     />
                   </div>
 
-                  <button onClick={handleDetailsSubmit} className="w-full bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold py-3 rounded-btn transition-colors mt-2">
+                  <button onClick={handleDetailsSubmit} className="w-full bg-[#16a34a] hover:bg-green-700 text-white font-bold py-3 rounded-btn transition-colors mt-2">
                     {tr('Continue to Payment', 'Continuer vers le paiement', 'Komeza ujye kwishyura')} {'->'}
                   </button>
                 </div>
@@ -528,7 +528,7 @@ export default function CheckoutPage() {
             <div className="lg:col-span-2">
               <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-6">
                 <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-5 flex items-center gap-2">
-                  <CreditCard size={18} className="text-[#16a34a]" /> {tr('Payment Method', 'Méthode de paiement', 'Uburyo bwo kwishyura')}
+                  <CreditCard size={18} className="text-[#16a34a]" /> {tr('Payment Method', 'MÃ©thode de paiement', 'Uburyo bwo kwishyura')}
                 </h2>
 
                 <div className="mb-4 p-3 rounded-btn border border-amber-200 dark:border-amber-900/30 bg-amber-50 dark:bg-amber-900/20 text-xs text-amber-700 dark:text-amber-300">
@@ -563,7 +563,7 @@ export default function CheckoutPage() {
                             className="w-full px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-yellow-400"
                           />
                           <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-btn p-3 text-xs text-yellow-800 dark:text-yellow-300">
-                            {tr('After clicking Place Order, you will receive a USSD prompt on your phone.', 'Après avoir cliqué sur Commander, vous recevrez une invite USSD sur votre téléphone.', 'Nukanda Ohereza Itegeko, urabona ubutumwa bwa USSD kuri telefoni yawe.')}
+                            {tr('After clicking Place Order, you will receive a USSD prompt on your phone.', 'AprÃ¨s avoir cliquÃ© sur Commander, vous recevrez une invite USSD sur votre tÃ©lÃ©phone.', 'Nukanda Ohereza Itegeko, urabona ubutumwa bwa USSD kuri telefoni yawe.')}
                           </div>
                         </div>
                       )}
@@ -587,14 +587,14 @@ export default function CheckoutPage() {
                             className="w-full px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-light-text dark:text-dark-text focus:outline-none focus:border-red-400"
                           />
                           <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-btn p-3 text-xs text-red-800 dark:text-red-300">
-                            {tr('After clicking Place Order, you will receive a payment prompt on your phone.', 'Après avoir cliqué sur Commander, vous recevrez une invite de paiement sur votre téléphone.', 'Nukanda Ohereza Itegeko, urabona ubutumwa bwo kwishyura kuri telefoni yawe.')}
+                            {tr('After clicking Place Order, you will receive a payment prompt on your phone.', 'AprÃ¨s avoir cliquÃ© sur Commander, vous recevrez une invite de paiement sur votre tÃ©lÃ©phone.', 'Nukanda Ohereza Itegeko, urabona ubutumwa bwo kwishyura kuri telefoni yawe.')}
                           </div>
                         </div>
                       )}
                     </div>
                   </label>
 
-                  <label className={`flex items-start gap-3 p-4 rounded-card border transition-colors ${paymentMethod === 'cod' ? 'border-[#16a34a] bg-[#16a34a]/5' : 'border-light-border dark:border-dark-border'} ${form.fulfillmentMethod === 'pickup' ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}>
+                  <label className={`flex items-start gap-3 p-4 rounded-card border transition-colors ${paymentMethod === 'cod' ? 'border-[#f59e0b] bg-[#f59e0b]/5' : 'border-light-border dark:border-dark-border'} ${form.fulfillmentMethod === 'pickup' ? 'opacity-60 cursor-not-allowed' : 'cursor-pointer'}`}>
                     <input
                       type="radio"
                       disabled={form.fulfillmentMethod === 'pickup'}
@@ -605,12 +605,12 @@ export default function CheckoutPage() {
                     <div>
                       <div className="flex items-center gap-2">
                         <Banknote size={16} className="text-[#16a34a]" />
-                        <p className="font-semibold text-sm text-light-text dark:text-dark-text">{tr('Cash on Delivery', 'Paiement à la livraison', 'Kwishyura wakiriye')}</p>
+                        <p className="font-semibold text-sm text-light-text dark:text-dark-text">{tr('Cash on Delivery', 'Paiement Ã  la livraison', 'Kwishyura wakiriye')}</p>
                       </div>
                       <p className="text-xs text-gray-500 mt-1">
                         {form.fulfillmentMethod === 'pickup'
                           ? tr('Not available for pick-up deposit orders.', 'Non disponible pour les commandes retrait avec acompte.', 'Ntiboneka ku mategeko yo gufata asaba ubwishyu bw\'ibanze.')
-                          : tr('Pay when your order arrives.', 'Payez à la réception de votre commande.', 'Wishyura igihe itegeko rigeze.')}
+                          : tr('Pay when your order arrives.', 'Payez Ã  la rÃ©ception de votre commande.', 'Wishyura igihe itegeko rigeze.')}
                       </p>
                     </div>
                   </label>
@@ -632,7 +632,7 @@ export default function CheckoutPage() {
                   <button
                     onClick={handlePlaceOrder}
                     disabled={placing}
-                    className="flex-1 flex items-center justify-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] disabled:opacity-70 text-white font-bold py-3 rounded-btn transition-colors"
+                    className="flex-1 flex items-center justify-center gap-2 bg-[#16a34a] hover:bg-green-700 disabled:opacity-70 text-white font-bold py-3 rounded-btn transition-colors"
                   >
                     {placing ? (
                       <>
@@ -653,10 +653,10 @@ export default function CheckoutPage() {
             <div className="lg:col-span-1">
               <OrderSummaryWidget />
               <div className="mt-3 bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-4 text-xs text-gray-500">
-                <p className="font-semibold text-light-text dark:text-dark-text mb-1">{form.fulfillmentMethod === 'pickup' ? tr('Pickup details:', 'Détails du retrait :', 'Ibisobanuro byo gufata:') : tr('Delivery to:', 'Livraison à :', 'Gezwa kuri:')}</p>
+                <p className="font-semibold text-light-text dark:text-dark-text mb-1">{form.fulfillmentMethod === 'pickup' ? tr('Pickup details:', 'DÃ©tails du retrait :', 'Ibisobanuro byo gufata:') : tr('Delivery to:', 'Livraison Ã  :', 'Gezwa kuri:')}</p>
                 <p>{form.fullName}</p>
                 {form.fulfillmentMethod === 'pickup'
-                  ? <p>{selectedBranch?.name ?? tr('Selected branch', 'Succursale sélectionnée', 'Ishami ryatoranyijwe')} - {selectedBranch?.location ?? ''}</p>
+                  ? <p>{selectedBranch?.name ?? tr('Selected branch', 'Succursale sÃ©lectionnÃ©e', 'Ishami ryatoranyijwe')} - {selectedBranch?.location ?? ''}</p>
                   : <p>{form.address}, {form.district}</p>}
                 {form.fulfillmentMethod === 'pickup' && <p>{form.pickupDate || tr('Date pending', 'Date en attente', 'Itariki itaratangwa')} - {form.pickupSlot || tr('Time pending', 'Heure en attente', 'Igihe kitaratangwa')}</p>}
                 <p>{form.phone}</p>
@@ -669,7 +669,7 @@ export default function CheckoutPage() {
           <div className="max-w-lg mx-auto text-center">
             <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-8">
               <div className="flex items-center justify-center mb-6">
-                <div className="w-20 h-20 bg-[#16a34a] rounded-full flex items-center justify-center">
+                <div className="w-20 h-20 bg-[#f59e0b] rounded-full flex items-center justify-center">
                   <svg viewBox="0 0 52 52" className="w-12 h-12">
                     <circle cx="26" cy="26" r="25" fill="none" stroke="white" strokeWidth="2" opacity="0.3" />
                     <path fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="animate-checkmark" d="M14 27l8 8 16-16" />
@@ -677,18 +677,18 @@ export default function CheckoutPage() {
                 </div>
               </div>
 
-              <h2 className="text-2xl font-extrabold text-light-text dark:text-dark-text mb-2">{tr('Order Placed Successfully!', 'Commande passée avec succès !', 'Itegeko ryoherejwe neza!')}</h2>
-              <p className="text-gray-500 text-sm mb-6">{tr('Your selected branch has received the order and will start preparing it.', 'La succursale sélectionnée a reçu la commande et commence la préparation.', 'Ishami wahisemo ryakiriye itegeko kandi ritangira kuritegura.')}</p>
+              <h2 className="text-2xl font-extrabold text-light-text dark:text-dark-text mb-2">{tr('Order Placed Successfully!', 'Commande passÃ©e avec succÃ¨s !', 'Itegeko ryoherejwe neza!')}</h2>
+              <p className="text-gray-500 text-sm mb-6">{tr('Your selected branch has received the order and will start preparing it.', 'La succursale sÃ©lectionnÃ©e a reÃ§u la commande et commence la prÃ©paration.', 'Ishami wahisemo ryakiriye itegeko kandi ritangira kuritegura.')}</p>
 
               <div className="bg-gray-50 dark:bg-slate-800 rounded-card p-4 mb-6 text-left space-y-2">
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">{tr('Order Number', 'Numéro de commande', 'Nimero y\'itegeko')}</span>
+                  <span className="text-gray-500">{tr('Order Number', 'NumÃ©ro de commande', 'Nimero y\'itegeko')}</span>
                   <span className="font-bold text-[#16a34a]">#{orderId}</span>
                 </div>
                 <div className="flex justify-between text-sm">
-                  <span className="text-gray-500">{tr('Method', 'Méthode', 'Uburyo')}</span>
+                  <span className="text-gray-500">{tr('Method', 'MÃ©thode', 'Uburyo')}</span>
                   <span className="font-medium text-light-text dark:text-dark-text">
-                    {form.fulfillmentMethod === 'pickup' ? tr('Branch Pick-up', 'Retrait en succursale', 'Fatira ku ishami') : (form.deliveryType === 'express' ? tr('Same day delivery', 'Livraison le jour même', 'Kugeza uwo munsi') : tr('1-2 business days delivery', 'Livraison en 1-2 jours ouvrés', 'Kugeza mu minsi 1-2 y\'akazi'))}
+                    {form.fulfillmentMethod === 'pickup' ? tr('Branch Pick-up', 'Retrait en succursale', 'Fatira ku ishami') : (form.deliveryType === 'express' ? tr('Same day delivery', 'Livraison le jour mÃªme', 'Kugeza uwo munsi') : tr('1-2 business days delivery', 'Livraison en 1-2 jours ouvrÃ©s', 'Kugeza mu minsi 1-2 y\'akazi'))}
                   </span>
                 </div>
                 {form.fulfillmentMethod === 'pickup' && (
@@ -702,7 +702,7 @@ export default function CheckoutPage() {
                       <span className="font-medium text-light-text dark:text-dark-text">{form.pickupDate} {form.pickupSlot}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                      <span className="text-gray-500">{tr('Deposit paid now', 'Acompte payé maintenant', 'Ubwishyu bw\'ibanze bwishyuwe ubu')}</span>
+                      <span className="text-gray-500">{tr('Deposit paid now', 'Acompte payÃ© maintenant', 'Ubwishyu bw\'ibanze bwishyuwe ubu')}</span>
                       <span className="font-medium text-light-text dark:text-dark-text">{formatPrice(payableNow)}</span>
                     </div>
                   </>
@@ -714,7 +714,7 @@ export default function CheckoutPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3">
-                <Link href="/" className="flex-1 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold py-3 rounded-btn transition-colors text-center">
+                <Link href="/" className="flex-1 bg-[#16a34a] hover:bg-green-700 text-white font-bold py-3 rounded-btn transition-colors text-center">
                   {t('Continue Shopping')}
                 </Link>
                 <Link href="/branches" className="flex-1 border border-light-border dark:border-dark-border text-light-text dark:text-dark-text font-semibold py-3 rounded-btn hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors text-center">
