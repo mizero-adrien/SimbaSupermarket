@@ -5,6 +5,7 @@ import { ThemeProvider } from 'next-themes';
 import { CartProvider } from '@/context/CartContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { AuthProvider } from '@/context/AuthContext';
+import { ToastProvider } from '@/context/ToastContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" suppressHydrationWarning>
       <body className={`${geistSans.variable} antialiased font-sans bg-light-bg dark:bg-dark-bg min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <ToastProvider>
           <AuthProvider>
           <LanguageProvider>
             <CartProvider>
@@ -38,6 +40,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </CartProvider>
           </LanguageProvider>
           </AuthProvider>
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>

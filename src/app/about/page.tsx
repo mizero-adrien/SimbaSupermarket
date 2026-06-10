@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Users, MapPin, ShieldCheck, Truck, Heart, Star } from 'lucide-react';
+import { Users, MapPin, ShieldCheck, Truck, Heart, Star, UserRound, Briefcase, Wrench, Monitor } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function AboutPage() {
@@ -24,9 +24,9 @@ export default function AboutPage() {
   ];
 
   const team = [
-    { name: 'Amina Uwimana', roleKey: 'CEO & Co-Founder', emoji: '👩🏾‍💼' },
-    { name: 'Jean-Paul Habimana', roleKey: 'Head of Logistics', emoji: '👨🏾‍🔧' },
-    { name: 'Grace Mutesi', roleKey: 'Customer Experience', emoji: '👩🏾‍💻' },
+    { name: 'Amina Uwimana', roleKey: 'CEO & Co-Founder', icon: Briefcase, color: '#16a34a', initials: 'AU' },
+    { name: 'Jean-Paul Habimana', roleKey: 'Head of Logistics', icon: Wrench, color: '#f59e0b', initials: 'JH' },
+    { name: 'Grace Mutesi', roleKey: 'Customer Experience', icon: Monitor, color: '#6366f1', initials: 'GM' },
   ];
 
   return (
@@ -34,19 +34,19 @@ export default function AboutPage() {
       {/* Hero */}
       <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-64 h-64 bg-[#16a34a] rounded-full blur-3xl" />
+          <div className="absolute top-10 left-10 w-64 h-64 bg-[#f59e0b] rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#f59e0b] rounded-full blur-3xl" />
         </div>
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-block bg-[#16a34a]/20 border border-[#16a34a]/30 rounded-full px-4 py-1 text-[#4ade80] text-sm font-medium mb-6">
-            {t('About Us label')}
+          <div className="inline-block bg-[#f59e0b]/20 border border-[#f59e0b]/30 rounded-full px-4 py-1 text-[#fbbf24] text-sm font-medium mb-6">
+            {t('About Us')}
           </div>
           <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
             {t('Feeding Kigali with')}{' '}
-            <span className="text-[#16a34a]">{t('Freshness & Pride')}</span>
+            <span className="text-[#f59e0b]">{t('Freshness & Pride')}</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-            {t('Simba Supermarket is Rwanda\'s premier online grocery store — bringing quality products and reliable delivery to your doorstep.')}
+            {t("Simba Supermarket is Rwanda's premier online grocery store — bringing quality products and reliable delivery to your doorstep.")}
           </p>
         </div>
       </section>
@@ -80,12 +80,12 @@ export default function AboutPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-14 px-4 bg-[#16a34a]">
+      <section className="py-14 px-4 bg-slate-900">
         <div className="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 text-center text-white">
           {stats.map(({ value, labelKey }) => (
             <div key={labelKey}>
-              <div className="text-4xl font-extrabold mb-1">{value}</div>
-              <div className="text-green-200 text-sm font-medium">{t(labelKey)}</div>
+              <div className="text-4xl font-extrabold mb-1 text-[#f59e0b]">{value}</div>
+              <div className="text-white/70 text-sm font-medium">{t(labelKey)}</div>
             </div>
           ))}
         </div>
@@ -99,11 +99,22 @@ export default function AboutPage() {
             {t('A passionate group of Rwandans dedicated to making grocery shopping simple, affordable, and enjoyable.')}
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            {team.map(({ name, roleKey, emoji }) => (
+            {team.map(({ name, roleKey, icon: RoleIcon, color, initials }) => (
               <div key={name} className="bg-light-bg dark:bg-dark-bg rounded-card border border-light-border dark:border-dark-border p-6">
-                <div className="text-5xl mb-3">{emoji}</div>
+                {/* Avatar */}
+                <div className="relative w-20 h-20 mx-auto mb-4">
+                  <div
+                    className="w-20 h-20 rounded-full flex items-center justify-center text-white text-2xl font-bold"
+                    style={{ backgroundColor: color }}
+                  >
+                    {initials}
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center bg-white dark:bg-dark-card border border-light-border dark:border-dark-border shadow-sm">
+                    <RoleIcon size={14} style={{ color }} />
+                  </div>
+                </div>
                 <h3 className="font-bold text-light-text dark:text-dark-text">{name}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400">{t(roleKey)}</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{t(roleKey)}</p>
               </div>
             ))}
           </div>
@@ -116,9 +127,9 @@ export default function AboutPage() {
         <p className="text-gray-500 dark:text-gray-400 mb-6">{t('Join thousands of Kigali families who trust Simba Supermarket.')}</p>
         <Link
           href="/products"
-          className="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold px-8 py-3 rounded-btn transition-colors shadow-lg"
+          className="inline-flex items-center gap-2 bg-[#f59e0b] hover:bg-amber-400 text-white font-bold px-8 py-3 rounded-btn transition-colors shadow-lg"
         >
-          {t('Shop Now →')}
+          {t('Shop Now')} &rarr;
         </Link>
       </section>
     </div>

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useMemo, useState, FormEvent } from 'react';
 import Link from 'next/link';
@@ -9,12 +9,13 @@ import {
   User, LogOut, Save, Eye, EyeOff, ShieldCheck,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
+import OrderCardSkeleton from '@/components/skeletons/OrderCardSkeleton';
 import { getAllBranches } from '@/lib/branches';
 import { getCustomerOrders } from '@/lib/dashboardData';
 import { BranchOrder, OrderStatus } from '@/types';
 import { formatPrice } from '@/lib/formatPrice';
 
-// ─── Status config ───────────────────────────────────────────────────────────
+// â”€â”€â”€ Status config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const STATUS_CONFIG: Record<OrderStatus, { label: string; color: string; icon: React.ElementType }> = {
   pending:   { label: 'Pending',          color: 'text-amber-600 bg-amber-50 dark:bg-amber-900/20 border-amber-200',     icon: Clock },
@@ -35,7 +36,7 @@ const ORDER_TABS = [
 ] as const;
 type OrderTabKey = typeof ORDER_TABS[number]['key'];
 
-// ─── Order timeline ───────────────────────────────────────────────────────────
+// â”€â”€â”€ Order timeline â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function OrderTimeline({ status }: { status: OrderStatus }) {
   if (status === 'cancelled') return null;
@@ -64,7 +65,7 @@ function OrderTimeline({ status }: { status: OrderStatus }) {
   );
 }
 
-// ─── Order card ───────────────────────────────────────────────────────────────
+// â”€â”€â”€ Order card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function OrderCard({ order, branchName }: { order: BranchOrder; branchName: string }) {
   const [expanded, setExpanded] = useState(false);
@@ -107,7 +108,7 @@ function OrderCard({ order, branchName }: { order: BranchOrder; branchName: stri
             <div className="space-y-1.5">
               {order.items.map((item, i) => (
                 <div key={i} className="flex items-center justify-between text-sm">
-                  <span className="text-light-text dark:text-dark-text">{item.product.name} <span className="text-gray-400">×{item.quantity}</span></span>
+                  <span className="text-light-text dark:text-dark-text">{item.product.name} <span className="text-gray-400">Ã—{item.quantity}</span></span>
                   <span className="font-semibold">{formatPrice(item.product.price * item.quantity)}</span>
                 </div>
               ))}
@@ -143,7 +144,7 @@ function OrderCard({ order, branchName }: { order: BranchOrder; branchName: stri
   );
 }
 
-// ─── Profile / Settings tab ───────────────────────────────────────────────────
+// â”€â”€â”€ Profile / Settings tab â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function ProfileTab() {
   const { user, updateProfile } = useAuth();
@@ -203,7 +204,7 @@ function ProfileTab() {
             <label className="block text-xs font-semibold text-gray-500 mb-1">Email Address</label>
             <input type="email" value={info.email} onChange={e => setInfo(p => ({ ...p, email: e.target.value }))} placeholder="you@example.com" className={inputCls} />
             {isGoogleAccount && (
-              <p className="text-xs text-amber-600 mt-1 flex items-center gap-1"><ShieldCheck size={12} />Signed in with Google — email changes apply to your Simba profile only.</p>
+              <p className="text-xs text-amber-600 mt-1 flex items-center gap-1"><ShieldCheck size={12} />Signed in with Google â€” email changes apply to your Simba profile only.</p>
             )}
           </div>
           <div>
@@ -217,8 +218,8 @@ function ProfileTab() {
             </p>
           )}
 
-          <button type="submit" disabled={infoSaving} className="flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
-            <Save size={15} /> {infoSaving ? 'Saving…' : 'Save Changes'}
+          <button type="submit" disabled={infoSaving} className="flex items-center gap-2 bg-[#f59e0b] hover:bg-amber-400 text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
+            <Save size={15} /> {infoSaving ? 'Savingâ€¦' : 'Save Changes'}
           </button>
         </form>
       </div>
@@ -238,7 +239,7 @@ function ProfileTab() {
                       type={showPwd[field] ? 'text' : 'password'}
                       value={pwd[field]}
                       onChange={e => setPwd(p => ({ ...p, [field]: e.target.value }))}
-                      placeholder="••••••••"
+                      placeholder="â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢"
                       className={inputCls + ' pr-10'}
                     />
                     <button type="button" onClick={() => setShowPwd(p => ({ ...p, [field]: !p[field] }))} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
@@ -255,8 +256,8 @@ function ProfileTab() {
               </p>
             )}
 
-            <button type="submit" disabled={pwdSaving} className="flex items-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
-              <ShieldCheck size={15} /> {pwdSaving ? 'Updating…' : 'Update Password'}
+            <button type="submit" disabled={pwdSaving} className="flex items-center gap-2 bg-[#f59e0b] hover:bg-amber-400 text-white font-semibold px-5 py-2.5 rounded-btn text-sm disabled:opacity-60 transition-colors">
+              <ShieldCheck size={15} /> {pwdSaving ? 'Updatingâ€¦' : 'Update Password'}
             </button>
           </form>
         </div>
@@ -265,14 +266,14 @@ function ProfileTab() {
       {isGoogleAccount && (
         <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-card p-4 text-sm text-blue-700 dark:text-blue-300 flex items-start gap-2">
           <ShieldCheck size={16} className="shrink-0 mt-0.5" />
-          <span>Your account is linked to Google. Password management is handled by Google — you can sign in with Google at any time.</span>
+          <span>Your account is linked to Google. Password management is handled by Google â€” you can sign in with Google at any time.</span>
         </div>
       )}
     </div>
   );
 }
 
-// ─── Main page ────────────────────────────────────────────────────────────────
+// â”€â”€â”€ Main page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const PAGE_TABS = [
   { key: 'orders',  label: 'My Orders', icon: ShoppingBag },
@@ -284,6 +285,7 @@ export default function AccountPage() {
   const { user, logout } = useAuth();
   const router = useRouter();
   const [orders, setOrders] = useState<BranchOrder[]>([]);
+  const [ordersLoaded, setOrdersLoaded] = useState(false);
   const [pageTab, setPageTab] = useState<PageTab>('orders');
   const [orderTab, setOrderTab] = useState<OrderTabKey>('all');
   const [mounted, setMounted] = useState(false);
@@ -299,6 +301,7 @@ export default function AccountPage() {
     if (!user) { router.push('/auth/login'); return; }
     if (user.role !== 'customer') { router.push('/dashboard'); return; }
     setOrders(getCustomerOrders(user.id));
+    setOrdersLoaded(true);
   }, [user, router]);
 
   // Keep orders in sync after profile tab edits (user could have changed nothing but good practice)
@@ -407,11 +410,13 @@ export default function AccountPage() {
               ))}
             </div>
 
-            {filtered.length === 0 ? (
+            {!ordersLoaded ? (
+              Array.from({ length: 3 }).map((_, i) => <OrderCardSkeleton key={i} />)
+            ) : filtered.length === 0 ? (
               <div className="text-center py-16 bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border">
                 <ShoppingBag size={40} className="mx-auto text-gray-300 mb-3" />
                 <p className="text-gray-500 font-medium">No orders here yet</p>
-                <Link href="/products" className="mt-4 inline-flex items-center gap-2 bg-[#f59e0b] text-white px-5 py-2 rounded-btn text-sm font-semibold hover:bg-[#d97706] transition-colors">
+                <Link href="/products" className="mt-4 inline-flex items-center gap-2 bg-[#f59e0b] text-white px-5 py-2 rounded-btn text-sm font-semibold hover:bg-amber-400 transition-colors">
                   Start Shopping
                 </Link>
               </div>

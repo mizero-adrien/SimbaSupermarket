@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
@@ -75,7 +75,7 @@ export default function Navbar() {
   const categories = Array.from(new Set(products.map(p => p.category)));
   const langs: { code: Language; label: string; full: string }[] = [
     { code: 'en', label: 'EN', full: 'English' },
-    { code: 'fr', label: 'FR', full: 'Français' },
+    { code: 'fr', label: 'FR', full: 'FranÃ§ais' },
     { code: 'rw', label: 'RW', full: 'Kinyarwanda' },
   ];
   const currentLang = langs.find(l => l.code === language)!;
@@ -138,9 +138,12 @@ export default function Navbar() {
           <Link href="/branches" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors whitespace-nowrap">
             {t('Branches')}
           </Link>
+          <Link href="/contact" className="text-sm font-medium text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors whitespace-nowrap">
+            {t('Contact')}
+          </Link>
         </div>
 
-        {/* Persistent search bar — desktop */}
+        {/* Persistent search bar â€” desktop */}
         <div ref={searchRef} className="hidden md:block flex-1 max-w-xl relative">
           <div className="relative">
             <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none" />
@@ -170,7 +173,7 @@ export default function Navbar() {
               disabled={aiLoading}
               className="absolute right-1.5 top-1/2 -translate-y-1/2 px-3 py-1 text-xs font-semibold rounded-full bg-black dark:bg-white text-white dark:text-black hover:bg-gray-900 dark:hover:bg-gray-100 disabled:opacity-60 transition-colors"
             >
-              {aiLoading ? <><Loader2 size={12} className="animate-spin" /> {t('Searching…')}</> : t('Search')}
+              {aiLoading ? <><Loader2 size={12} className="animate-spin" /> {t('Searchingâ€¦')}</> : t('Search')}
             </button>
           </div>
 
@@ -194,7 +197,7 @@ export default function Navbar() {
 
               {aiLoading && (
                 <div className="flex items-center gap-2 px-4 py-3 text-xs text-gray-500">
-                  <Loader2 size={13} className="animate-spin text-[#16a34a]" /> Searching…
+                  <Loader2 size={13} className="animate-spin text-[#16a34a]" /> Searchingâ€¦
                 </div>
               )}
 
@@ -300,7 +303,7 @@ export default function Navbar() {
                     }}
                     className={`w-full flex items-center justify-between px-4 py-2 text-sm transition-colors ${
                       language === code
-                        ? 'text-[#16a34a] font-semibold bg-[#16a34a]/5'
+                        ? 'text-[#d97706] font-semibold bg-[#f59e0b]/5'
                         : 'text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700'
                     }`}
                   >
@@ -336,14 +339,14 @@ export default function Navbar() {
       <div className="hidden md:block border-t border-light-border dark:border-dark-border bg-white/80 dark:bg-navy/80">
         <div className="max-w-7xl mx-auto px-4">
           <div className="h-11 flex items-center gap-2 overflow-x-auto scrollbar-hide">
-            <Link href="/products" className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f59e0b] text-white hover:bg-[#d97706] transition-colors">
+            <Link href="/products" className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f59e0b] text-white hover:bg-amber-400 transition-colors">
               {t('All Categories')}
             </Link>
             {quickCategories.map(cat => (
               <Link
                 key={cat}
                 href={`/products?category=${encodeURIComponent(cat)}`}
-                className="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a] hover:bg-[#16a34a]/5 transition-colors"
+                className="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b] hover:text-[#d97706] hover:bg-[#f59e0b]/5 transition-colors"
               >
                 {translateCategory(cat)}
               </Link>
@@ -366,6 +369,9 @@ export default function Navbar() {
             </Link>
             <Link href="/branches" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-light-text dark:text-dark-text">
               {t('Branches')}
+            </Link>
+            <Link href="/contact" onClick={() => setMenuOpen(false)} className="text-sm font-medium text-light-text dark:text-dark-text">
+              {t('Contact')}
             </Link>
             {!user ? (
               <>

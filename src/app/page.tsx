@@ -1,9 +1,10 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { ArrowRight, MapPin, ShieldCheck, ShoppingCart, Truck, CreditCard, Clock3, ChevronLeft, ChevronRight } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
+import ProductCardSkeleton from '@/components/skeletons/ProductCardSkeleton';
 import CategoryGrid from '@/components/CategoryGrid';
 import { useLanguage } from '@/context/LanguageContext';
 import { getCategories, deterministicShuffle, getSaleInfo, getProductImage } from '@/lib/products';
@@ -16,6 +17,7 @@ import { Product } from '@/types';
 export default function HomePage() {
   const { t } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const [branchCount, setBranchCount] = useState(0);
   const [countdown, setCountdown] = useState('00:00:00');
   const dealsRef = useRef<HTMLDivElement>(null);
@@ -23,6 +25,7 @@ export default function HomePage() {
   useEffect(() => {
     setAllProducts(getMasterProducts());
     setBranchCount(getAllBranches().length);
+    setLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -80,7 +83,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/products"
-                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-6 py-2.5 text-base font-extrabold shadow-lg hover:bg-[#d97706] focus:outline-none focus:ring-2 focus:ring-[#f59e0b]/60 transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-btn bg-[#f59e0b] px-6 py-2.5 text-base font-extrabold shadow-lg hover:bg-amber-400 focus:outline-none focus:ring-2 focus:ring-[#f59e0b]/60 transition-all"
                 >
                   <ShoppingCart size={18} />
                   {t('Start Shopping')}
@@ -130,7 +133,7 @@ export default function HomePage() {
               </h2>
               <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{t('Top picks, limited time')}</p>
             </div>
-            <Link href="/products" className="text-sm font-semibold text-[#16a34a] hover:underline hidden sm:inline-flex">
+            <Link href="/products" className="text-sm font-semibold text-gray-500 hover:text-gray-800 dark:hover:text-gray-200 hover:underline hidden sm:inline-flex">
               {t('Shop now')}
             </Link>
           </div>
@@ -146,7 +149,7 @@ export default function HomePage() {
                 <span className="text-sm font-semibold">{t('Ends in')} {countdown}</span>
               </div>
 
-              <Link href="/products" className="mt-6 inline-flex items-center justify-center rounded-btn bg-[#f59e0b] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#d97706]">
+              <Link href="/products" className="mt-6 inline-flex items-center justify-center rounded-btn bg-gray-900 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-gray-700 dark:bg-slate-800 dark:hover:bg-slate-600">
                 {t('Shop now')}
               </Link>
             </div>
@@ -171,7 +174,19 @@ export default function HomePage() {
                 ref={dealsRef}
                 className="flex gap-4 overflow-x-auto scroll-smooth pb-2 pr-1 snap-x snap-mandatory"
               >
-                {dealProducts.map(product => {
+                {!loaded
+                  ? Array.from({ length: 6 }).map((_, i) => (
+                      <div key={i} className="min-w-[230px] max-w-[230px] sm:min-w-[250px] sm:max-w-[250px] shrink-0 rounded-[1.35rem] overflow-hidden border border-light-border dark:border-dark-border">
+                        <div className="h-52 skeleton-shimmer" />
+                        <div className="p-4 space-y-2">
+                          <div className="h-3 w-20 rounded skeleton-shimmer" />
+                          <div className="h-4 w-full rounded skeleton-shimmer" />
+                          <div className="h-4 w-3/4 rounded skeleton-shimmer" />
+                          <div className="h-5 w-28 rounded skeleton-shimmer mt-2" />
+                        </div>
+                      </div>
+                    ))
+                  : dealProducts.map(product => {
                   const sale = getSaleInfo(product);
                   const image = getProductImage(product);
                   return (
@@ -195,8 +210,8 @@ export default function HomePage() {
                         </div>
                       </div>
                     </Link>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </div>
           </div>
@@ -206,7 +221,7 @@ export default function HomePage() {
       {/* Page header */}
       <div className="max-w-7xl mx-auto px-4 pt-8 pb-2 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2">
         <div>
-          <p className="text-xs font-semibold text-[#f59e0b] uppercase tracking-widest mb-1">{t("🇷🇼 Kigali's Online Supermarket")}</p>
+          <p className="text-xs font-semibold text-[#f59e0b] uppercase tracking-widest mb-1">{t("Kigali's Online Supermarket")}</p>
           <h2 className="text-2xl md:text-3xl font-extrabold text-light-text dark:text-dark-text">
             {t('Featured categories and top products')}
           </h2>
@@ -228,7 +243,7 @@ export default function HomePage() {
       <div className="mx-4 lg:mx-auto max-w-7xl my-2">
         <div className="rounded-card bg-gradient-to-r from-slate-900 to-slate-800 dark:from-slate-800 dark:to-slate-900 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-3 text-white">
-            <span className="text-2xl">🚚</span>
+            <Truck size={28} className="text-[#f59e0b] shrink-0" />
             <div>
               <p className="font-bold text-sm">{t('Free delivery on your first order')}</p>
               <p className="text-white/60 text-xs">{t('Use code')} <span className="font-mono font-bold text-[#f59e0b]">SIMBA1</span> {t('at checkout')}</p>
@@ -236,7 +251,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/products"
-            className="shrink-0 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold text-sm px-5 py-2 rounded-btn transition-colors"
+            className="shrink-0 bg-[#f59e0b] hover:bg-amber-400 text-white font-bold text-sm px-5 py-2 rounded-btn transition-colors"
           >
             {t('Start Shopping')}
           </Link>
@@ -261,9 +276,12 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {featuredProducts.slice(0, 20).map(product => (
-              <ProductCard key={product.id} product={product} />
-            ))}
+            {!loaded
+              ? Array.from({ length: 20 }).map((_, i) => <ProductCardSkeleton key={i} />)
+              : featuredProducts.slice(0, 20).map(product => (
+                  <ProductCard key={product.id} product={product} />
+                ))
+            }
           </div>
         </div>
       </section>
@@ -272,15 +290,17 @@ export default function HomePage() {
       <section className="px-4 pb-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
           {[
-            { icon: '🚚', title: t('Fast Delivery'), desc: t('Same-day delivery across Kigali') },
-            { icon: '✅', title: t('Verified Products'), desc: t('552 quality-checked items') },
-            { icon: '💳', title: t('Easy Payment'), desc: t('MTN MoMo, Airtel & cash') },
-          ].map(({ icon, title, desc }) => (
+            { Icon: Truck, title: t('Fast Delivery'), desc: t('Same-day delivery across Kigali'), color: '#f59e0b' },
+            { Icon: ShieldCheck, title: t('Verified Products'), desc: t('552 quality-checked items'), color: '#16a34a' },
+            { Icon: CreditCard, title: t('Easy Payment'), desc: t('MTN MoMo, Airtel & cash'), color: '#6366f1' },
+          ].map(({ Icon, title, desc, color }) => (
             <div
               key={title}
               className="flex items-center gap-4 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card px-5 py-4"
             >
-              <span className="text-3xl">{icon}</span>
+              <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}18` }}>
+                <Icon size={20} style={{ color }} />
+              </div>
               <div>
                 <p className="font-semibold text-sm text-light-text dark:text-dark-text">{title}</p>
                 <p className="text-xs text-gray-500 dark:text-gray-400">{desc}</p>

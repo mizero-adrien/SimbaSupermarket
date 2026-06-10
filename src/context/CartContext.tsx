@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useReducer, useCallback } from 'react';
 import { CartItem, Product } from '@/types';
+import { useToast } from '@/context/ToastContext';
 
 interface CartState {
   items: CartItem[];
@@ -62,28 +63,14 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-interface ToastItem {
-  id: number;
-  message: string;
-}
-
-interface ToastContextValue {
-  toasts: ToastItem[];
-  addToast: (message: string) => void;
-}
-
-const ToastContext = createContext<ToastContextValue>({ toasts: [], addToast: () => {} });
-
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [state, dispatch] = useReducer(cartReducer, { items: [] });
-  const [toasts, setToasts] = React.useState<ToastItem[]>([]);
+  const toast = useToast();
 
   useEffect(() => {
     try {
       const saved = localStorage.getItem('simba_cart');
-      if (saved) {
-        dispatch({ type: 'LOAD_CART', items: JSON.parse(saved) });
-      }
+      if (saved) dispatch({ type: 'LOAD_CART', items: JSON.parse(saved) });
     } catch {}
   }, []);
 
@@ -93,16 +80,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     } catch {}
   }, [state.items]);
 
-  const addToast = useCallback((message: string) => {
-    const id = Date.now();
-    setToasts(prev => [...prev, { id, message }]);
-    setTimeout(() => setToasts(prev => prev.filter(t => t.id !== id)), 3000);
-  }, []);
-
   const addItem = useCallback((product: Product) => {
     dispatch({ type: 'ADD_ITEM', product });
-    addToast(`✅ ${product.name} added to cart`);
-  }, [addToast]);
+    toast.success(`${product.name} added to cart`);
+  }, [toast]);
 
   const removeItem = useCallback((productId: string | number) => {
     dispatch({ type: 'REMOVE_ITEM', productId });
@@ -120,27 +101,9 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const totalPrice = state.items.reduce((sum, i) => sum + i.product.price * i.quantity, 0);
 
   return (
-    <ToastContext.Provider value={{ toasts, addToast }}>
-      <CartContext.Provider value={{ items: state.items, addItem, removeItem, updateQuantity, clearCart, totalItems, totalPrice }}>
-        {children}
-        <ToastContainer toasts={toasts} />
-      </CartContext.Provider>
-    </ToastContext.Provider>
-  );
-}
-
-function ToastContainer({ toasts }: { toasts: ToastItem[] }) {
-  return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 pointer-events-none">
-      {toasts.map(toast => (
-        <div
-          key={toast.id}
-          className="toast-enter bg-[#16a34a] text-white px-4 py-3 rounded-btn shadow-lg text-sm font-medium max-w-xs"
-        >
-          {toast.message}
-        </div>
-      ))}
-    </div>
+    <CartContext.Provider value={{ items: state.items, addItem, removeItem, updateQuantity, clearCart, totalItems, totalPrice }}>
+      {children}
+    </CartContext.Provider>
   );
 }
 

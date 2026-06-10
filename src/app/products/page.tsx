@@ -1,9 +1,10 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useMemo, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
+import ProductCardSkeleton from '@/components/skeletons/ProductCardSkeleton';
 import Pagination from '@/components/Pagination';
 import { useLanguage } from '@/context/LanguageContext';
 import { getMasterProducts } from '@/lib/productData';
@@ -15,6 +16,7 @@ function ProductsContent() {
   const searchParams = useSearchParams();
   const { t, translateCategory } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const allCategories = useMemo(() => getCategories(allProducts), [allProducts]);
 
   const [searchQuery, setSearchQuery] = useState(searchParams?.get('search') ?? '');
@@ -30,6 +32,7 @@ function ProductsContent() {
 
   useEffect(() => {
     setAllProducts(getMasterProducts());
+    setLoaded(true);
   }, []);
 
   useEffect(() => {
@@ -255,7 +258,11 @@ function ProductsContent() {
             </p>
 
             {/* Product grid */}
-            {paginated.length > 0 ? (
+            {!loaded ? (
+              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                {Array.from({ length: 24 }).map((_, i) => <ProductCardSkeleton key={i} />)}
+              </div>
+            ) : paginated.length > 0 ? (
               <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {paginated.map(product => (
                   <ProductCard key={product.id} product={product} />
@@ -263,10 +270,10 @@ function ProductsContent() {
               </div>
             ) : (
               <div className="text-center py-20">
-                <p className="text-4xl mb-4">🔍</p>
+                <Search size={40} className="mx-auto mb-4 text-gray-300 dark:text-gray-600" />
                 <p className="text-lg font-semibold text-light-text dark:text-dark-text mb-2">{t('No products found')}</p>
                 <p className="text-gray-500 text-sm mb-4">{t('Try adjusting your filters or search terms.')}</p>
-                <button onClick={resetFilters} className="bg-[#f59e0b] text-white px-6 py-2 rounded-btn text-sm font-semibold hover:bg-[#d97706] transition-colors">
+                <button onClick={resetFilters} className="bg-[#f59e0b] text-white px-6 py-2 rounded-btn text-sm font-semibold hover:bg-amber-400 transition-colors">
                   {t('Clear Filters')}
                 </button>
               </div>
@@ -289,7 +296,7 @@ function ProductsContent() {
             <Sidebar />
             <button
               onClick={() => setSidebarOpen(false)}
-              className="w-full mt-4 bg-[#f59e0b] text-white py-3 rounded-btn font-semibold hover:bg-[#d97706] transition-colors"
+              className="w-full mt-4 bg-[#f59e0b] text-white py-3 rounded-btn font-semibold hover:bg-amber-400 transition-colors"
             >
               Apply Filters ({filtered.length} results)
             </button>
@@ -300,9 +307,34 @@ function ProductsContent() {
   );
 }
 
+function ProductsPageSkeleton() {
+  return (
+    <div className="min-h-screen bg-light-bg dark:bg-dark-bg">
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="h-8 w-36 rounded skeleton-shimmer mb-4" />
+        <div className="flex gap-2 mb-6">
+          {Array.from({ length: 6 }).map((_, i) => (
+            <div key={i} className="h-8 w-24 rounded-full skeleton-shimmer shrink-0" />
+          ))}
+        </div>
+        <div className="flex gap-8">
+          <div className="hidden lg:block w-64 shrink-0 space-y-3">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <div key={i} className="h-4 rounded skeleton-shimmer" style={{ width: `${60 + (i % 3) * 15}%` }} />
+            ))}
+          </div>
+          <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {Array.from({ length: 24 }).map((_, i) => <ProductCardSkeleton key={i} />)}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function ProductsPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-gray-500">Loading products...</div>}>
+    <Suspense fallback={<ProductsPageSkeleton />}>
       <ProductsContent />
     </Suspense>
   );
