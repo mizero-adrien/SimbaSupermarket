@@ -1,8 +1,8 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { LogIn } from 'lucide-react';
+import { LogIn, Star } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import {
   getProductReviews,
@@ -28,12 +28,14 @@ function InteractiveStars({ value, onChange }: { value: number; onChange: (v: nu
           onClick={() => onChange(star)}
           onMouseEnter={() => setHover(star)}
           onMouseLeave={() => setHover(0)}
-          className="text-2xl leading-none transition-colors"
+          className="transition-colors"
           aria-label={`${star} star`}
         >
-          <span className={(hover || value) >= star ? 'text-amber-400' : 'text-gray-300 dark:text-gray-600'}>
-            ★
-          </span>
+          <Star
+            size={26}
+            fill={(hover || value) >= star ? 'currentColor' : 'none'}
+            className={(hover || value) >= star ? 'text-amber-400' : 'text-gray-300 dark:text-gray-600'}
+          />
         </button>
       ))}
     </div>
@@ -107,7 +109,7 @@ export default function ProductReviews({ productId }: Props) {
               return (
                 <div key={star} className="flex items-center gap-2 text-xs text-gray-500">
                   <span className="w-3 text-right">{star}</span>
-                  <span className="text-amber-400 text-[10px]">★</span>
+                  <Star size={10} className="text-amber-400 shrink-0" fill="currentColor" />
                   <div className="flex-1 h-2 bg-gray-200 dark:bg-slate-700 rounded-full overflow-hidden">
                     <div className="h-full bg-amber-400 rounded-full transition-all" style={{ width: `${pct}%` }} />
                   </div>
@@ -125,21 +127,21 @@ export default function ProductReviews({ productId }: Props) {
           <div className="flex items-center gap-3 p-4 rounded-card border border-light-border dark:border-dark-border bg-gray-50 dark:bg-slate-800/40">
             <LogIn size={18} className="text-[#16a34a] shrink-0" />
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              <Link href="/auth/login" className="font-semibold text-[#16a34a] hover:underline">Sign in</Link>
+              <Link href="/auth/login" className="font-semibold text-[#d97706] hover:underline">Sign in</Link>
               {' '}to leave a review for this product.
             </p>
           </div>
         ) : alreadyReviewed ? (
-          <div className="p-4 rounded-card border border-[#16a34a]/30 bg-[#16a34a]/5 text-sm text-[#16a34a] dark:text-green-400">
-            ✓ You have already reviewed this product. Thank you for your feedback!
+          <div className="p-4 rounded-card border border-[#f59e0b]/30 bg-[#f59e0b]/5 text-sm text-[#d97706] dark:text-[#f59e0b]">
+            âœ“ You have already reviewed this product. Thank you for your feedback!
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="bg-gray-50 dark:bg-slate-800/40 rounded-card border border-light-border dark:border-dark-border p-5 space-y-4">
             <h3 className="font-semibold text-light-text dark:text-dark-text">Rate this product</h3>
 
             {success && (
-              <div className="p-3 rounded-btn bg-[#16a34a]/10 border border-[#16a34a]/30 text-sm text-[#16a34a] dark:text-green-400">
-                ✓ Review submitted! Thank you.
+              <div className="p-3 rounded-btn bg-[#f59e0b]/10 border border-[#f59e0b]/30 text-sm text-[#d97706] dark:text-[#f59e0b]">
+                âœ“ Review submitted! Thank you.
               </div>
             )}
 
@@ -171,7 +173,7 @@ export default function ProductReviews({ productId }: Props) {
               <p className="text-xs text-gray-500">Reviewing as <span className="font-medium">{user.name}</span></p>
               <button
                 type="submit"
-                className="px-5 py-2 bg-[#f59e0b] hover:bg-[#d97706] text-white text-sm font-bold rounded-btn transition-colors"
+                className="px-5 py-2 bg-[#f59e0b] hover:bg-amber-400 text-white text-sm font-bold rounded-btn transition-colors"
               >
                 Submit Review
               </button>

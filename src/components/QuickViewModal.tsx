@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
@@ -60,7 +60,7 @@ export default function QuickViewModal({ product, onClose }: Props) {
             <Image src={image} alt={product.name} fill className="object-cover" sizes="224px" />
             {onSale && (
               <span className="absolute top-2 left-2 bg-[#f59e0b] text-white text-xs font-bold px-2 py-0.5 rounded-full">
-                SALE −{savePct}%
+                SALE âˆ’{savePct}%
               </span>
             )}
           </div>
@@ -104,19 +104,19 @@ export default function QuickViewModal({ product, onClose }: Props) {
               onClick={handleAdd}
               className={`w-full flex items-center justify-center gap-2 font-semibold text-sm py-2.5 rounded-btn transition-colors duration-150 mb-2 ${
                 added
-                  ? 'bg-[#16a34a] text-white'
-                  : 'bg-[#f59e0b] hover:bg-[#d97706] text-white'
+                  ? 'bg-[#d97706] text-white'
+                  : 'bg-[#f59e0b] hover:bg-amber-400 text-white'
               }`}
             >
               <ShoppingCart size={15} />
-              {added ? '✓ Added!' : t('Add to Cart')}
+              {added ? 'âœ“ Added!' : t('Add to Cart')}
             </button>
             <Link
               href={`/products/${product.id}`}
               onClick={onClose}
-              className="text-center text-xs text-[#16a34a] hover:underline"
+              className="text-center text-xs text-[#d97706] hover:underline"
             >
-              {t('View full details')} →
+              {t('View full details')} â†’
             </Link>
           </div>
         </div>

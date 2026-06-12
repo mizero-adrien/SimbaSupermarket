@@ -17,7 +17,7 @@ import { Product } from '@/types';
 export default function ProductDetailPage() {
   const params = useParams();
   const id = params?.id as string;
-  const { addItem } = useCart();
+  const { addItem, updateQuantity, items } = useCart();
   const { t } = useLanguage();
   const [allProducts, setAllProducts] = useState<Product[]>([]);
   const [quantity, setQuantity] = useState(1);
@@ -27,6 +27,7 @@ export default function ProductDetailPage() {
   }, []);
 
   const product = useMemo(() => allProducts.find(p => String(p.id) === id), [allProducts, id]);
+  const cartItem = useMemo(() => items.find(item => String(item.product.id) === id), [items, id]);
 
   const related = useMemo(() => {
     if (!product) return [];
@@ -48,7 +49,14 @@ export default function ProductDetailPage() {
   const image = getProductImage(product);
 
   const handleAddToCart = () => {
-    for (let i = 0; i < quantity; i++) addItem(product);
+    if (cartItem) {
+      updateQuantity(product.id, quantity);
+    } else {
+      addItem(product);
+      if (quantity > 1) {
+        updateQuantity(product.id, quantity);
+      }
+    }
   };
 
   return (
@@ -102,32 +110,34 @@ export default function ProductDetailPage() {
             <hr className="border-light-border dark:border-dark-border mb-6" />
 
             {/* Quantity selector */}
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-sm font-medium text-light-text dark:text-dark-text">Quantity:</span>
-              <div className="flex items-center border border-light-border dark:border-dark-border rounded-btn overflow-hidden">
-                <button
-                  onClick={() => setQuantity(q => Math.max(1, q - 1))}
-                  className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
-                  aria-label="Decrease quantity"
-                >
-                  <Minus size={14} />
-                </button>
-                <input
-                  type="number"
-                  value={quantity}
-                  onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
-                  className="w-12 text-center text-sm font-semibold bg-transparent text-light-text dark:text-dark-text border-x border-light-border dark:border-dark-border focus:outline-none"
-                  min={1}
-                />
-                <button
-                  onClick={() => setQuantity(q => q + 1)}
-                  className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
-                  aria-label="Increase quantity"
-                >
-                  <Plus size={14} />
-                </button>
+            {cartItem && (
+              <div className="flex items-center gap-4 mb-6">
+                <span className="text-sm font-medium text-light-text dark:text-dark-text">Quantity:</span>
+                <div className="flex items-center border border-light-border dark:border-dark-border rounded-btn overflow-hidden">
+                  <button
+                    onClick={() => setQuantity(q => Math.max(1, q - 1))}
+                    className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                    aria-label="Decrease quantity"
+                  >
+                    <Minus size={14} />
+                  </button>
+                  <input
+                    type="number"
+                    value={quantity}
+                    onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                    className="w-12 text-center text-sm font-semibold bg-transparent text-light-text dark:text-dark-text border-x border-light-border dark:border-dark-border focus:outline-none"
+                    min={1}
+                  />
+                  <button
+                    onClick={() => setQuantity(q => q + 1)}
+                    className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors"
+                    aria-label="Increase quantity"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Action buttons */}
             <button
@@ -135,7 +145,7 @@ export default function ProductDetailPage() {
               className="w-full flex items-center justify-center gap-2 bg-[#f59e0b] hover:bg-[#d97706] text-white font-bold py-3 rounded-btn transition-colors mb-3 text-base"
             >
               <ShoppingCart size={18} />
-              {t('Add to Cart')}
+              {cartItem ? t('Update Cart') : t('Add to Cart')}
             </button>
             <Link
               href="/products"
@@ -178,7 +188,7 @@ export default function ProductDetailPage() {
             <h2 className="text-xl font-bold text-light-text dark:text-dark-text mb-6">
               More from {product.category}
             </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {related.map(p => (
                 <ProductCard key={p.id} product={p} />
               ))}

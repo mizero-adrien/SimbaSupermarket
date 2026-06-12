@@ -1,14 +1,14 @@
 ﻿'use client';
 
-import { useState, useEffect, useMemo, useCallback, Suspense } from 'react';
+import { useState, useEffect, useRef, useMemo, useCallback, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Search, SlidersHorizontal, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X, ChevronDown, LayoutGrid } from 'lucide-react';
 import ProductCard from '@/components/ProductCard';
 import ProductCardSkeleton from '@/components/skeletons/ProductCardSkeleton';
 import Pagination from '@/components/Pagination';
 import { useLanguage } from '@/context/LanguageContext';
 import { getMasterProducts } from '@/lib/productData';
-import { getCategories } from '@/lib/products';
+import { getCategories, categoryEmojis } from '@/lib/products';
 import { Product, SortOption } from '@/types';
 const PER_PAGE = 24;
 
@@ -29,6 +29,8 @@ function ProductsContent() {
   const [sortBy, setSortBy] = useState<SortOption>('featured');
   const [currentPage, setCurrentPage] = useState(1);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [categoryOpen, setCategoryOpen] = useState(false);
+  const categoryPopoverRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setAllProducts(getMasterProducts());
@@ -48,6 +50,16 @@ function ProductsContent() {
   }, [searchQuery]);
 
   useEffect(() => { setCurrentPage(1); }, [debouncedQuery, selectedCategories, minPrice, maxPrice, sortBy]);
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (categoryPopoverRef.current && !categoryPopoverRef.current.contains(e.target as Node)) {
+        setCategoryOpen(false);
+      }
+    }
+    if (categoryOpen) document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [categoryOpen]);
 
   const filtered = useMemo(() => {
     let result = [...allProducts];
@@ -88,6 +100,7 @@ function ProductsContent() {
   }, []);
 
   const hasActiveFilters = selectedCategories.length > 0 || minPrice || maxPrice || debouncedQuery;
+  const activeFilterCount = selectedCategories.length + (minPrice ? 1 : 0) + (maxPrice ? 1 : 0) + (debouncedQuery ? 1 : 0);
 
   const Sidebar = () => (
     <div className="w-full">
@@ -126,7 +139,7 @@ function ProductsContent() {
                 type="checkbox"
                 checked={selectedCategories.includes(name)}
                 onChange={() => toggleCategory(name)}
-                className="w-4 h-4 accent-[#16a34a] rounded"
+                className="w-4 h-4 accent-[#f59e0b] rounded"
               />
               <span className="text-sm text-light-text dark:text-dark-text group-hover:text-[#16a34a] transition-colors flex-1">{translateCategory(name)}</span>
               <span className="text-xs text-gray-400">({count})</span>
@@ -163,37 +176,88 @@ function ProductsContent() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <h1 className="text-2xl font-bold text-light-text dark:text-dark-text mb-4">{t('All Products')}</h1>
 
-        {/* Category tab strip */}
-        <div className="flex gap-2 overflow-x-auto pb-2 mb-6" style={{ scrollbarWidth: 'none' }}>
+        {/* Browse Categories popover */}
+        <div className="relative mb-6" ref={categoryPopoverRef}>
           <button
-            onClick={() => setSelectedCategories([])}
-            className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
-              selectedCategories.length === 0
-                ? 'bg-[#16a34a] text-white'
-                : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a]'
+            onClick={() => setCategoryOpen(o => !o)}
+            className={`flex items-center gap-2 px-4 py-2 rounded-btn border text-sm font-semibold transition-colors ${
+              categoryOpen || selectedCategories.length > 0
+                ? 'bg-[#16a34a] text-white border-[#16a34a]'
+                : 'bg-white dark:bg-dark-card border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a]'
             }`}
           >
-            {t('All Products')}
+            <LayoutGrid size={16} />
+            {selectedCategories.length > 0
+              ? `${selectedCategories.length} categor${selectedCategories.length > 1 ? 'ies' : 'y'} selected`
+              : 'Browse Categories'}
+            <ChevronDown size={14} className={`transition-transform ${categoryOpen ? 'rotate-180' : ''}`} />
           </button>
-          {allCategories.map(({ name }) => (
-            <button
-              key={name}
-              onClick={() => toggleCategory(name)}
-              className={`shrink-0 px-4 py-1.5 rounded-full text-sm font-semibold transition-colors ${
-                selectedCategories.includes(name)
-                  ? 'bg-[#16a34a] text-white'
-                  : 'bg-white dark:bg-dark-card border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#16a34a] hover:text-[#16a34a]'
-              }`}
-            >
-              {translateCategory(name)}
-            </button>
-          ))}
+
+          {categoryOpen && (
+            <div className="absolute left-0 top-full mt-2 z-30 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card shadow-xl p-4 w-[480px] max-w-[calc(100vw-2rem)]">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Select categories</span>
+                {selectedCategories.length > 0 && (
+                  <button onClick={() => setSelectedCategories([])} className="text-xs text-[#16a34a] hover:underline font-medium">
+                    Clear all
+                  </button>
+                )}
+              </div>
+
+              {/* All Products card */}
+              <button
+                onClick={() => { setSelectedCategories([]); setCategoryOpen(false); }}
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg mb-2 text-left transition-colors ${
+                  selectedCategories.length === 0
+                    ? 'bg-[#16a34a] text-white'
+                    : 'bg-gray-50 dark:bg-dark-bg hover:bg-[#16a34a]/10 text-light-text dark:text-dark-text'
+                }`}
+              >
+                <span className="text-xl">🛒</span>
+                <span className="flex-1 font-semibold text-sm">All Products</span>
+                <span className={`text-xs font-medium ${selectedCategories.length === 0 ? 'text-white/80' : 'text-gray-400'}`}>
+                  {allProducts.length}
+                </span>
+              </button>
+
+              {/* Category grid */}
+              <div className="grid grid-cols-3 gap-2">
+                {allCategories.map(({ name, count }) => {
+                  const active = selectedCategories.includes(name);
+                  return (
+                    <button
+                      key={name}
+                      onClick={() => toggleCategory(name)}
+                      className={`flex flex-col items-center gap-1.5 px-2 py-3 rounded-lg border transition-colors text-center ${
+                        active
+                          ? 'bg-[#16a34a]/10 border-[#16a34a] text-[#16a34a]'
+                          : 'bg-gray-50 dark:bg-dark-bg border-transparent hover:border-[#16a34a]/40 hover:bg-[#16a34a]/5 text-light-text dark:text-dark-text'
+                      }`}
+                    >
+                      <span className="text-2xl">{categoryEmojis[name] ?? '📦'}</span>
+                      <span className="text-xs font-semibold leading-tight">{translateCategory(name)}</span>
+                      <span className={`text-xs ${active ? 'text-[#16a34a]/70' : 'text-gray-400'}`}>{count} items</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {selectedCategories.length > 0 && (
+                <button
+                  onClick={() => setCategoryOpen(false)}
+                  className="w-full mt-3 bg-[#16a34a] text-white py-2 rounded-btn text-sm font-semibold hover:bg-green-700 transition-colors"
+                >
+                  Show {filtered.length} results
+                </button>
+              )}
+            </div>
+          )}
         </div>
 
-        <div className="flex gap-8">
+        <div className="flex flex-col lg:flex-row gap-4 lg:gap-8">
           {/* Desktop Sidebar */}
           <aside className="hidden lg:block w-64 shrink-0">
-            <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-5 sticky top-20">
+            <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-5 lg:sticky lg:top-20">
               <Sidebar />
             </div>
           </aside>
@@ -214,10 +278,19 @@ function ProductsContent() {
               </div>
               <button
                 onClick={() => setSidebarOpen(true)}
-                className="lg:hidden flex items-center gap-2 px-4 py-2 border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-card text-sm font-medium text-light-text dark:text-dark-text"
+                className={`lg:hidden flex items-center gap-2 px-4 py-2 border rounded-btn text-sm font-medium transition-colors ${
+                  activeFilterCount > 0
+                    ? 'border-[#16a34a] bg-[#16a34a]/5 text-[#16a34a]'
+                    : 'border-light-border dark:border-dark-border bg-white dark:bg-dark-card text-light-text dark:text-dark-text'
+                }`}
               >
                 <SlidersHorizontal size={16} />
                 {t('Filter')}
+                {activeFilterCount > 0 && (
+                  <span className="w-5 h-5 rounded-full bg-[#16a34a] text-white text-xs font-bold flex items-center justify-center leading-none">
+                    {activeFilterCount}
+                  </span>
+                )}
               </button>
             </div>
 
@@ -259,11 +332,11 @@ function ProductsContent() {
 
             {/* Product grid */}
             {!loaded ? (
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {Array.from({ length: 24 }).map((_, i) => <ProductCardSkeleton key={i} />)}
               </div>
             ) : paginated.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {paginated.map(product => (
                   <ProductCard key={product.id} product={product} />
                 ))}
@@ -323,7 +396,7 @@ function ProductsPageSkeleton() {
               <div key={i} className="h-4 rounded skeleton-shimmer" style={{ width: `${60 + (i % 3) * 15}%` }} />
             ))}
           </div>
-          <div className="flex-1 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {Array.from({ length: 24 }).map((_, i) => <ProductCardSkeleton key={i} />)}
           </div>
         </div>

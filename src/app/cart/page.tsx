@@ -65,7 +65,7 @@ export default function CartPage() {
           </button>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-8">
           {/* Cart items */}
           <div className="lg:col-span-2 space-y-4">
             {items.map(({ product, quantity }) => {
@@ -73,10 +73,10 @@ export default function CartPage() {
               return (
                 <div
                   key={product.id}
-                  className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-4 flex gap-4"
+                  className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-3 sm:p-4 flex gap-3 sm:gap-4"
                 >
                   <Link href={`/products/${product.id}`} className="shrink-0">
-                    <div className="relative w-20 h-20 rounded-lg overflow-hidden bg-gray-100 dark:bg-slate-800">
+                    <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-lg overflow-hidden bg-gray-100 dark:bg-slate-800">
                       <Image src={image} alt={product.name} fill className="object-cover" sizes="80px" />
                     </div>
                   </Link>
@@ -89,7 +89,7 @@ export default function CartPage() {
                     <p className="text-xs text-gray-500 mt-0.5">{product.category}</p>
                     <p className="text-xs text-gray-500">{formatPrice(product.price)} each</p>
                   </div>
-                  <div className="flex flex-col items-end gap-3 shrink-0">
+                  <div className="flex flex-col items-end gap-2 sm:gap-3 shrink-0">
                     <p className="font-bold text-[#f59e0b] text-sm">
                       {formatPrice(product.price * quantity)}
                     </p>
@@ -135,7 +135,7 @@ export default function CartPage() {
 
           {/* Order summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-6 sticky top-20">
+            <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-4 sm:p-6 lg:sticky lg:top-20">
               <h2 className="text-lg font-bold text-light-text dark:text-dark-text mb-4">{t('Order Summary')}</h2>
 
               <div className="space-y-3 mb-4">
