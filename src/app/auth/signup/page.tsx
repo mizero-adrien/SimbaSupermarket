@@ -4,8 +4,8 @@ import { useState, FormEvent, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { Eye, EyeOff, UserPlus, ShoppingCart, Check, X } from 'lucide-react';
-import { signIn } from 'next-auth/react';
 import { useAuth } from '@/context/AuthContext';
+import GoogleAuthButton from '@/components/GoogleAuthButton';
 
 function PasswordStrength({ password }: { password: string }) {
   const checks = [
@@ -36,7 +36,7 @@ function PasswordStrength({ password }: { password: string }) {
 }
 
 export default function SignupPage() {
-  const { signup, user, isLoading } = useAuth();
+  const { signup, loginWithGoogle, user, isLoading } = useAuth();
   const router = useRouter();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -98,11 +98,15 @@ export default function SignupPage() {
   async function handleGoogleSignup() {
     setError('');
     setGoogleLoading(true);
-    const callbackUrl = `${window.location.origin}/`;
-    const result = await signIn('google', { callbackUrl });
+    const result = await loginWithGoogle();
     setGoogleLoading(false);
 
-    if (result?.error) setError('Google signup failed. Please try again.');
+    if (!result.ok) {
+      setError(result.error ?? 'Google signup failed. Please try again.');
+      return;
+    }
+
+    router.push(result.user?.role === 'customer' ? '/' : '/dashboard');
   }
 
   if (isLoading) {
@@ -139,6 +143,21 @@ export default function SignupPage() {
                   <span>{error}</span>
                 </div>
               )}
+
+              <GoogleAuthButton
+                label={googleLoading ? 'Connecting Google...' : 'Sign up with Google'}
+                onClick={handleGoogleSignup}
+                disabled={googleLoading}
+              />
+
+              <div className="relative py-1">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-light-border dark:border-dark-border" />
+                </div>
+                <div className="relative flex justify-center">
+                  <span className="px-2 bg-white dark:bg-dark-card text-xs text-gray-500 dark:text-gray-400">or create an account with email</span>
+                </div>
+              </div>
 
               <div>
                 <label className="block text-sm font-semibold text-light-text dark:text-dark-text mb-2">Full name</label>
@@ -234,18 +253,6 @@ export default function SignupPage() {
                     Create Account
                   </>
                 )}
-              </button>
-
-              <button
-                type="button"
-                onClick={handleGoogleSignup}
-                disabled={googleLoading}
-                className="w-full flex items-center justify-center gap-3 border border-light-border dark:border-dark-border bg-white dark:bg-dark-bg text-light-text dark:text-dark-text font-semibold py-3 rounded-lg hover:border-[#16a34a] hover:bg-[#16a34a]/5 disabled:opacity-60 transition-all"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="#EA4335" d="M12 10.2v3.9h5.5c-.2 1.3-1.5 3.9-5.5 3.9-3.3 0-6-2.7-6-6s2.7-6 6-6c1.9 0 3.1.8 3.8 1.5l2.6-2.5C16.7 3.5 14.5 2.7 12 2.7 6.9 2.7 2.7 6.9 2.7 12S6.9 21.3 12 21.3c6.9 0 9.1-4.8 9.1-7.3 0-.5-.1-.9-.1-1.3H12z"/>
-                </svg>
-                {googleLoading ? 'Connecting Google...' : 'Sign up with Google'}
               </button>
             </form>
 

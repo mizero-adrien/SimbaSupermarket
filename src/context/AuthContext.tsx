@@ -1,14 +1,15 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
-import { getSession, signOut } from 'next-auth/react';
+import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { firebaseAuth, googleProvider, isFirebaseConfigured } from '@/lib/firebase';
 import { User } from '@/types';
 import { createUser, getAllUsers, getUserByEmail, updateUser } from '@/lib/userData';
 
 interface AuthContextValue {
   user: User | null;
   login: (email: string, password: string) => Promise<{ ok: boolean; user?: User; error?: string }>;
-  loginWithGoogle: (profile: { email: string; name?: string }) => Promise<{ ok: boolean; user?: User; error?: string }>;
+  loginWithGoogle: () => Promise<{ ok: boolean; user?: User; error?: string }>;
   signup: (data: SignupData) => Promise<{ ok: boolean; user?: User; error?: string }>;
   updateProfile: (patch: { name?: string; phone?: string; email?: string; password?: string }) => { ok: boolean; error?: string };
   logout: () => void;
@@ -28,31 +29,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem('simba_session');
-      if (raw) {
-        const session = JSON.parse(raw) as User;
-        const allUsers = getAllUsers();
-        const fresh = allUsers.find(u => u.id === session.id);
-        setUser(fresh ?? null);
-      }
-    } catch {}
-    setIsLoading(false);
-  }, []);
-
-  const login = useCallback(async (email: string, password: string) => {
-    const allUsers = getAllUsers();
-    const found = allUsers.find(
-      u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
-    );
-    if (!found) return { ok: false, error: 'Invalid email or password.' };
-    setUser(found);
-    localStorage.setItem('simba_session', JSON.stringify(found));
-    return { ok: true, user: found };
-  }, []);
-
-  const loginWithGoogle = useCallback(async (profile: { email: string; name?: string }) => {
+  const syncGoogleProfile = useCallback((profile: { email: string; name?: string }) => {
     const cleanEmail = profile.email.trim().toLowerCase();
     if (!/^\S+@\S+\.\S+$/.test(cleanEmail)) {
       return { ok: false, error: 'Please provide a valid Google email.' };
@@ -89,27 +66,85 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (isLoading || user) return;
+    try {
+      const raw = localStorage.getItem('simba_session');
+      if (raw) {
+        const session = JSON.parse(raw) as User;
+        const allUsers = getAllUsers();
+        const fresh = allUsers.find(u => u.id === session.id);
+        setUser(fresh ?? null);
+      }
+    } catch {
+      // Ignore malformed local sessions.
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!firebaseAuth || !isFirebaseConfigured) {
+      setIsLoading(false);
+      return;
+    }
 
     let cancelled = false;
 
-    async function syncGoogleSession() {
-      const session = await getSession();
-      const email = session?.user?.email;
-      if (!email || cancelled) return;
+    const unsubscribe = onAuthStateChanged(firebaseAuth, async firebaseUser => {
+      if (cancelled) return;
 
-      await loginWithGoogle({
-        email,
-        name: session.user?.name ?? undefined,
-      });
-    }
+      if (firebaseUser?.email) {
+        const result = syncGoogleProfile({
+          email: firebaseUser.email,
+          name: firebaseUser.displayName ?? undefined,
+        });
 
-    syncGoogleSession();
+        if (!cancelled && result.ok && result.user) {
+          setUser(result.user);
+        }
+      }
+
+      if (!cancelled) {
+        setIsLoading(false);
+      }
+    });
 
     return () => {
       cancelled = true;
+      unsubscribe();
     };
-  }, [isLoading, user, loginWithGoogle]);
+  }, [syncGoogleProfile]);
+
+  const login = useCallback(async (email: string, password: string) => {
+    const allUsers = getAllUsers();
+    const found = allUsers.find(
+      u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+    );
+    if (!found) return { ok: false, error: 'Invalid email or password.' };
+    setUser(found);
+    localStorage.setItem('simba_session', JSON.stringify(found));
+    return { ok: true, user: found };
+  }, []);
+
+  const loginWithGoogle = useCallback(async () => {
+    if (!firebaseAuth || !isFirebaseConfigured) {
+      return { ok: false, error: 'Firebase is not configured yet.' };
+    }
+
+    try {
+      const result = await signInWithPopup(firebaseAuth, googleProvider);
+      const email = result.user.email;
+
+      if (!email) {
+        return { ok: false, error: 'Google sign in did not return an email address.' };
+      }
+
+      return syncGoogleProfile({
+        email,
+        name: result.user.displayName ?? undefined,
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Google sign in failed.';
+      return { ok: false, error: message };
+    }
+  }, [syncGoogleProfile]);
 
   const signup = useCallback(async (data: SignupData) => {
     const result = createUser({
@@ -144,7 +179,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem('simba_session');
-    void signOut({ redirect: false });
+    if (firebaseAuth) {
+      void signOut(firebaseAuth);
+    }
   }, []);
 
   return (
