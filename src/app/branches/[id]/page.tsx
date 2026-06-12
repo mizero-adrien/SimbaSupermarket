@@ -117,7 +117,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
             <div className="space-y-2">
               {branch.highlights.map(highlight => (
                 <div key={highlight} className="flex items-start gap-2 text-sm text-gray-700 dark:text-gray-300">
-                  <BadgeCheck size={15} className="shrink-0 text-[#16a34a] mt-0.5" />
+                  <BadgeCheck size={15} className="shrink-0 text-[#d97706] mt-0.5" />
                   <span>{highlight}</span>
                 </div>
               ))}
@@ -130,7 +130,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
               {branch.services.map(service => (
                 <span
                   key={service}
-                  className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#16a34a]/10 text-[#166534] dark:text-green-300"
+                  className="text-xs font-medium px-2.5 py-1 rounded-full bg-[#f59e0b]/10 text-[#d97706] dark:text-[#fbbf24]"
                 >
                   {service}
                 </span>
@@ -294,7 +294,7 @@ export default function BranchDetailPage({ params }: { params: { id: string } })
               <Link
                 key={b.id}
                 href={`/branches/${b.id}`}
-                className="shrink-0 flex items-center gap-2 bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border px-4 py-3 hover:border-[#16a34a] transition-colors"
+                className="shrink-0 flex items-center gap-2 bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border px-4 py-3 hover:border-[#f59e0b] transition-colors"
               >
                 <span className={`w-2 h-2 rounded-full ${b.isOpen ? 'bg-[#16a34a]' : 'bg-gray-400'}`} />
                 <div>

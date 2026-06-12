@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -218,7 +218,7 @@ export default function ForgotPasswordPage() {
                 className="w-full px-4 py-2.5 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
               />
             </div>
-            <button type="submit" className="w-full py-2.5 rounded-btn bg-[#16a34a] text-white font-semibold flex items-center justify-center gap-2 hover:bg-[#15803d]">
+            <button type="submit" className="w-full py-2.5 rounded-btn bg-[#f59e0b] text-white font-semibold flex items-center justify-center gap-2 hover:bg-amber-400">
               <Mail size={16} /> Send Reset Code
             </button>
           </form>
@@ -240,7 +240,7 @@ export default function ForgotPasswordPage() {
                 className="w-full px-4 py-2.5 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
               />
             </div>
-            <button type="submit" className="w-full py-2.5 rounded-btn bg-[#16a34a] text-white font-semibold flex items-center justify-center gap-2 hover:bg-[#15803d]">
+            <button type="submit" className="w-full py-2.5 rounded-btn bg-[#f59e0b] text-white font-semibold flex items-center justify-center gap-2 hover:bg-amber-400">
               <KeyRound size={16} /> Verify Code
             </button>
             <button
@@ -288,7 +288,7 @@ export default function ForgotPasswordPage() {
                 className="w-full px-4 py-2.5 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
               />
             </div>
-            <button type="submit" className="w-full py-2.5 rounded-btn bg-[#16a34a] text-white font-semibold">
+            <button type="submit" className="w-full py-2.5 rounded-btn bg-[#f59e0b] text-white font-semibold hover:bg-amber-400">
               Reset Password
             </button>
           </form>
@@ -296,11 +296,11 @@ export default function ForgotPasswordPage() {
 
         {step === 'done' && (
           <div className="text-center space-y-4">
-            <div className="w-14 h-14 rounded-full bg-[#16a34a] text-white flex items-center justify-center mx-auto">
+            <div className="w-14 h-14 rounded-full bg-[#f59e0b] text-white flex items-center justify-center mx-auto">
               <CheckCircle2 size={28} />
             </div>
             <p className="text-sm text-gray-600 dark:text-gray-300">Your password has been reset successfully.</p>
-            <Link href="/auth/login" className="inline-flex items-center justify-center w-full py-2.5 rounded-btn bg-[#f59e0b] text-white font-semibold hover:bg-[#d97706]">
+            <Link href="/auth/login" className="inline-flex items-center justify-center w-full py-2.5 rounded-btn bg-[#f59e0b] text-white font-semibold hover:bg-amber-400">
               Back to Login
             </Link>
           </div>

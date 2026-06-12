@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
 import { FolderTree, Pencil, Trash2, Save, X } from 'lucide-react';
@@ -63,7 +63,7 @@ export default function DashboardCategoriesPage() {
     <div className="max-w-5xl space-y-6">
       <div>
         <h1 className="text-2xl font-extrabold text-light-text dark:text-dark-text">Categories Management</h1>
-        <p className="text-sm text-gray-500 mt-0.5">{categories.length} categories · {productsCount} products</p>
+        <p className="text-sm text-gray-500 mt-0.5">{categories.length} categories Â· {productsCount} products</p>
       </div>
 
       {!isSystemAdmin && (
@@ -85,7 +85,7 @@ export default function DashboardCategoriesPage() {
           <button
             type="submit"
             disabled={!isSystemAdmin}
-            className="px-4 py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-[#d97706] rounded-btn disabled:opacity-60 transition-colors"
+            className="px-4 py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-amber-400 rounded-btn disabled:opacity-60 transition-colors"
           >
             Add Category
           </button>
@@ -100,7 +100,7 @@ export default function DashboardCategoriesPage() {
         <div className="divide-y divide-light-border dark:divide-dark-border">
           {categories.map(category => (
             <div key={category.name} className="px-5 py-3 flex items-center gap-3">
-              <div className="w-9 h-9 rounded-btn bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center">
+              <div className="w-9 h-9 rounded-btn bg-[#f59e0b]/10 text-[#d97706] flex items-center justify-center">
                 <FolderTree size={16} />
               </div>
 

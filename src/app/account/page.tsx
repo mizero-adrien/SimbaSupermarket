@@ -315,27 +315,27 @@ export default function AccountPage() {
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
 
         {/* Profile header card */}
-        <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-6">
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-[#f59e0b] flex items-center justify-center text-white text-2xl font-extrabold shrink-0 shadow-md">
+        <div className="bg-white dark:bg-dark-card rounded-card border border-light-border dark:border-dark-border p-4 sm:p-6">
+          <div className="flex items-start sm:items-center gap-3 sm:gap-4">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#f59e0b] flex items-center justify-center text-white text-xl sm:text-2xl font-extrabold shrink-0 shadow-md">
               {initial}
             </div>
             <div className="min-w-0 flex-1">
-              <h1 className="text-xl font-extrabold text-light-text dark:text-dark-text">{user.name}</h1>
-              <p className="text-sm text-gray-500">{user.email}</p>
-              {user.phone && <p className="text-sm text-gray-500">{user.phone}</p>}
+              <h1 className="text-lg sm:text-xl font-extrabold text-light-text dark:text-dark-text">{user.name}</h1>
+              <p className="text-xs sm:text-sm text-gray-500 truncate">{user.email}</p>
+              {user.phone && <p className="text-xs sm:text-sm text-gray-500">{user.phone}</p>}
               <p className="text-xs text-gray-400 mt-0.5">Member since {memberSince}</p>
             </div>
             <button
               onClick={() => { logout(); router.push('/'); }}
-              className="flex items-center gap-1.5 text-xs text-red-500 hover:text-red-600 border border-red-200 hover:border-red-300 px-3 py-1.5 rounded-btn transition-colors shrink-0"
+              className="flex items-center gap-1.5 text-xs text-red-500 hover:text-red-600 border border-red-200 hover:border-red-300 px-2.5 sm:px-3 py-1.5 rounded-btn transition-colors shrink-0"
             >
-              <LogOut size={13} /> Logout
+              <LogOut size={13} /> <span className="hidden sm:inline">Logout</span>
             </button>
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-3 mt-5">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4 sm:mt-5">
             {[
               { icon: ShoppingBag, label: 'Orders',      value: String(orders.length) },
               { icon: Clock,       label: 'Active',      value: String(activeCount) },
@@ -354,14 +354,14 @@ export default function AccountPage() {
         </div>
 
         {/* Page-level tabs */}
-        <div className="flex gap-2 border-b border-light-border dark:border-dark-border pb-0">
+        <div className="flex gap-1 sm:gap-2 border-b border-light-border dark:border-dark-border pb-0">
           {PAGE_TABS.map(t => {
             const Icon = t.icon;
             return (
               <button
                 key={t.key}
                 onClick={() => setPageTab(t.key)}
-                className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold border-b-2 -mb-px transition-colors ${
+                className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold border-b-2 -mb-px transition-colors ${
                   pageTab === t.key
                     ? 'border-[#16a34a] text-[#16a34a]'
                     : 'border-transparent text-gray-500 hover:text-light-text dark:hover:text-dark-text'

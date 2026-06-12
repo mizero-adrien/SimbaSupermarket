@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { FormEvent, useEffect, useMemo, useState } from 'react';
 import { Plus, Pencil, Trash2, Package } from 'lucide-react';
@@ -162,7 +162,7 @@ export default function DashboardProductsPage() {
               <button
                 type="submit"
                 disabled={!isSystemAdmin}
-                className="flex-1 flex items-center justify-center gap-1.5 bg-[#f59e0b] hover:bg-[#d97706] text-white text-sm font-semibold py-2 rounded-btn disabled:opacity-60 transition-colors"
+                className="flex-1 flex items-center justify-center gap-1.5 bg-[#f59e0b] hover:bg-amber-400 text-white text-sm font-semibold py-2 rounded-btn disabled:opacity-60 transition-colors"
               >
                 <Plus size={14} />
                 {editingId ? 'Update Product' : 'Add Product'}
@@ -191,12 +191,12 @@ export default function DashboardProductsPage() {
           <div className="divide-y divide-light-border dark:divide-dark-border max-h-[70vh] overflow-auto">
             {filteredProducts.map(product => (
               <div key={product.id} className="flex items-center gap-3 px-4 py-3">
-                <div className="w-9 h-9 rounded-btn bg-[#16a34a]/10 text-[#16a34a] flex items-center justify-center">
+                <div className="w-9 h-9 rounded-btn bg-[#f59e0b]/10 text-[#d97706] flex items-center justify-center">
                   <Package size={16} />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold text-light-text dark:text-dark-text truncate">{product.name}</p>
-                  <p className="text-xs text-gray-500 truncate">{product.category} · {formatPrice(product.price)}</p>
+                  <p className="text-xs text-gray-500 truncate">{product.category} Â· {formatPrice(product.price)}</p>
                 </div>
                 {isSystemAdmin && (
                   <div className="flex items-center gap-1.5">

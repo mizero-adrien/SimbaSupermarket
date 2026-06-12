@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { FormEvent, useEffect, useState } from 'react';
 import { Settings, UserPlus, Store, Trash2, Save, Shield } from 'lucide-react';
@@ -39,7 +39,7 @@ const initialBranchForm: BranchForm = {
   location: '',
   address: '',
   phone: '',
-  hours: 'Mon–Sun: 7:00 AM – 10:00 PM',
+  hours: 'Monâ€“Sun: 7:00 AM â€“ 10:00 PM',
   image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop',
 };
 
@@ -227,7 +227,7 @@ export default function DashboardSettingsPage() {
               </select>
             </div>
 
-            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-[#d97706] rounded-btn disabled:opacity-60 transition-colors">
+            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-amber-400 rounded-btn disabled:opacity-60 transition-colors">
               Create Account
             </button>
           </form>
@@ -291,7 +291,7 @@ export default function DashboardSettingsPage() {
               className="w-full px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg"
             />
 
-            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-[#d97706] rounded-btn disabled:opacity-60 flex items-center justify-center gap-2 transition-colors">
+            <button disabled={!isSystemAdmin} className="w-full py-2 text-sm font-semibold text-white bg-[#f59e0b] hover:bg-amber-400 rounded-btn disabled:opacity-60 flex items-center justify-center gap-2 transition-colors">
               <Save size={14} /> Save Branch
             </button>
           </form>
@@ -359,7 +359,7 @@ export default function DashboardSettingsPage() {
             <div key={branch.id} className="px-5 py-3 flex items-center justify-between gap-4">
               <div>
                 <p className="text-sm font-semibold text-light-text dark:text-dark-text">{branch.name}</p>
-                <p className="text-xs text-gray-500">{branch.id} · {branch.location}</p>
+                <p className="text-xs text-gray-500">{branch.id} Â· {branch.location}</p>
               </div>
               {isSystemAdmin && (
                 <div className="flex items-center gap-2">

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useEffect, useState } from 'react';
 import { Clock, CheckCircle, AlertCircle, XCircle, PackageCheck } from 'lucide-react';
@@ -47,7 +47,7 @@ export default function StaffOrdersPage() {
       <div>
         <h1 className="text-2xl font-extrabold text-light-text dark:text-dark-text">My Orders</h1>
         <p className="text-sm text-gray-500 mt-0.5">
-          Orders assigned to you · {active.length} active
+          Orders assigned to you Â· {active.length} active
         </p>
       </div>
 
@@ -77,11 +77,11 @@ export default function StaffOrdersPage() {
                     </span>
                   </div>
                   <p className="font-semibold text-light-text dark:text-dark-text">{order.customerName}</p>
-                  <p className="text-xs text-gray-500">{order.customerPhone} · {order.paymentMethod}</p>
+                  <p className="text-xs text-gray-500">{order.customerPhone} Â· {order.paymentMethod}</p>
                   <div className="pt-1 space-y-0.5">
                     {order.items.map((item, i) => (
                       <p key={i} className="text-sm text-gray-700 dark:text-gray-300">
-                        {item.product.name} <span className="text-gray-400">×{item.quantity}</span>
+                        {item.product.name} <span className="text-gray-400">Ã—{item.quantity}</span>
                       </p>
                     ))}
                   </div>
@@ -101,7 +101,7 @@ export default function StaffOrdersPage() {
                   {order.status === 'preparing' && (
                     <button
                       onClick={() => markReady(order)}
-                      className="px-4 py-2 text-xs font-bold rounded-btn bg-[#f59e0b] text-white hover:bg-[#d97706] transition-colors"
+                      className="px-4 py-2 text-xs font-bold rounded-btn bg-[#f59e0b] text-white hover:bg-amber-400 transition-colors"
                     >
                       Mark Ready for Pickup
                     </button>
@@ -129,7 +129,7 @@ export default function StaffOrdersPage() {
                 <div key={order.id} className="flex items-center gap-4 px-5 py-3.5 opacity-60">
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-light-text dark:text-dark-text">{order.customerName}</p>
-                    <p className="text-xs text-gray-500">{order.id} · {order.items.length} item{order.items.length !== 1 ? 's' : ''}</p>
+                    <p className="text-xs text-gray-500">{order.id} Â· {order.items.length} item{order.items.length !== 1 ? 's' : ''}</p>
                   </div>
                   <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${cfg.color}`}>{cfg.label}</span>
                   <span className="text-sm font-semibold text-light-text dark:text-dark-text">{formatPrice(order.total)}</span>

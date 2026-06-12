@@ -70,7 +70,7 @@ export default function DashboardSidebar() {
     <div className="flex flex-col h-full">
       {/* Logo */}
       <div className={`flex items-center gap-3 px-4 py-5 border-b border-light-border dark:border-dark-border ${collapsed ? 'justify-center' : ''}`}>
-        <div className="w-8 h-8 bg-[#16a34a] rounded-btn flex items-center justify-center text-white font-bold text-sm shrink-0">
+        <div className="w-8 h-8 bg-[#f59e0b] rounded-btn flex items-center justify-center text-white font-bold text-sm shrink-0">
           S
         </div>
         {!collapsed && (
@@ -83,11 +83,11 @@ export default function DashboardSidebar() {
 
       {/* Branch info pill */}
       {!collapsed && branch && (
-        <div className="mx-3 mt-3 p-3 rounded-btn bg-[#16a34a]/10 border border-[#16a34a]/20">
+        <div className="mx-3 mt-3 p-3 rounded-btn bg-[#f59e0b]/10 border border-[#f59e0b]/20">
           <div className="flex items-center gap-2">
-            <Store size={14} className="text-[#16a34a] shrink-0" />
+            <Store size={14} className="text-[#d97706] shrink-0" />
             <div className="min-w-0">
-              <p className="text-xs font-semibold text-[#16a34a] truncate">{branch.name}</p>
+              <p className="text-xs font-semibold text-[#d97706] truncate">{branch.name}</p>
               <p className="text-xs text-gray-500 truncate">{branch.location}</p>
             </div>
           </div>

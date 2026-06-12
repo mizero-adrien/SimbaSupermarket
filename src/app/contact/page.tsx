@@ -91,7 +91,7 @@ export default function ContactPage() {
   return (
     <div className="page-transition">
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white py-20 px-4 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white py-12 sm:py-16 md:py-20 px-4 overflow-hidden">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-10 left-10 w-72 h-72 bg-[#16a34a] rounded-full blur-3xl" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#f59e0b] rounded-full blur-3xl" />
@@ -101,7 +101,7 @@ export default function ContactPage() {
             <MessageCircle size={14} />
             {t('We\'d love to hear from you')}
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-5">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-5">
             {t('Get in')}{' '}
             <span className="text-[#f59e0b]">{t('Touch')}</span>
           </h1>
@@ -138,8 +138,8 @@ export default function ContactPage() {
       </section>
 
       {/* Form + extra info */}
-      <section className="py-14 px-4 bg-light-bg dark:bg-dark-bg">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-10">
+      <section className="py-8 sm:py-14 px-4 bg-light-bg dark:bg-dark-bg">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-10">
           {/* Contact form */}
           <div className="lg:col-span-3">
             <h2 className="text-2xl font-bold text-light-text dark:text-dark-text mb-1">{t('Send us a message')}</h2>

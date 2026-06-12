@@ -115,15 +115,15 @@ function BranchCard({ branch, t }: { branch: Branch; t: (key: string) => string 
         </div>
 
         <div className="flex items-start gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <MapPin size={14} className="shrink-0 mt-0.5 text-[#16a34a]" />
+          <MapPin size={14} className="shrink-0 mt-0.5 text-[#d97706]" />
           <span className="line-clamp-2">{branch.address}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <Phone size={14} className="shrink-0 text-[#16a34a]" />
+          <Phone size={14} className="shrink-0 text-[#d97706]" />
           <span>{branch.phone}</span>
         </div>
         <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-          <Clock size={14} className="shrink-0 text-[#16a34a]" />
+          <Clock size={14} className="shrink-0 text-[#d97706]" />
           <span>{branch.hours}</span>
         </div>
 
@@ -135,7 +135,7 @@ function BranchCard({ branch, t }: { branch: Branch; t: (key: string) => string 
 
         {spotlightReview && (
           <div className="flex gap-2 p-2 rounded-btn bg-gray-50 dark:bg-slate-800/60">
-            <Quote size={14} className="shrink-0 text-[#16a34a] mt-0.5" />
+            <Quote size={14} className="shrink-0 text-[#d97706] mt-0.5" />
             <p className="text-xs text-gray-600 dark:text-gray-300 line-clamp-2">
               &quot;{spotlightReview.quote}&quot;
             </p>
@@ -143,10 +143,10 @@ function BranchCard({ branch, t }: { branch: Branch; t: (key: string) => string 
         )}
 
         <div className="pt-1 flex items-center justify-between">
-          <span className="text-xs font-medium text-[#16a34a] bg-[#16a34a]/10 px-2 py-0.5 rounded-full">
+          <span className="text-xs font-medium text-[#d97706] bg-[#f59e0b]/10 px-2 py-0.5 rounded-full">
             {branch.location}
           </span>
-          <span className="flex items-center gap-0.5 text-xs text-[#16a34a] font-semibold group-hover:gap-1 transition-all">
+          <span className="flex items-center gap-0.5 text-xs text-blue-400 font-semibold group-hover:gap-1 transition-all">
             {t('View branch')} <ChevronRight size={13} />
           </span>
         </div>
