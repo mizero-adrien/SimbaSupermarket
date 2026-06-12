@@ -6,6 +6,7 @@ import { CartProvider } from '@/context/CartContext';
 import { LanguageProvider } from '@/context/LanguageContext';
 import { AuthProvider } from '@/context/AuthContext';
 import { ToastProvider } from '@/context/ToastContext';
+import { WishlistProvider } from '@/context/WishlistContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import BackToTop from '@/components/BackToTop';
@@ -32,11 +33,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <AuthProvider>
           <LanguageProvider>
             <CartProvider>
+            <WishlistProvider>
               <Navbar />
               <main>{children}</main>
               <Footer />
               <BackToTop />
               <BottomNav />
+            </WishlistProvider>
             </CartProvider>
           </LanguageProvider>
           </AuthProvider>

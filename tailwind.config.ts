@@ -39,6 +39,9 @@ const config: Config = {
       transitionProperty: {
         transform: "transform",
       },
+      backgroundImage: {
+        mirror: "linear-gradient(90deg, rgba(255,255,255,0.92) 0%, rgba(248,250,252,0.98) 50%, rgba(255,255,255,0.92) 100%)",
+      },
     },
   },
   plugins: [],

@@ -202,17 +202,17 @@ export default function BottomNav() {
                 aria-label={label}
               >
                 {/* Cart badge */}
-                {label === 'Cart' && totalItems > 0 && (
+                {href === '/cart' && totalItems > 0 && (
                   <span className="absolute top-2 right-1/2 translate-x-3 bg-[#f59e0b] text-white text-[9px] font-bold min-w-[16px] h-4 rounded-full flex items-center justify-center px-1 leading-none">
-                    {totalItems > 9 ? '9+' : totalItems}
+                    {totalItems > 99 ? '99+' : totalItems}
                   </span>
                 )}
                 <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
-                  active ? 'bg-[#f59e0b]/10 text-[#d97706]' : 'text-gray-400'
+                  active ? 'bg-[#16a34a]/10 text-[#16a34a]' : 'text-gray-400'
                 }`}>
                   <Icon size={20} />
                 </div>
-                <span className={`text-[10px] font-medium leading-none ${active ? 'text-[#d97706]' : 'text-gray-400'}`}>
+                <span className={`text-[10px] font-medium leading-none ${active ? 'text-[#16a34a]' : 'text-gray-400'}`}>
                   {label}
                 </span>
               </Link>

@@ -120,14 +120,14 @@ export default function FloatingAiAssistant() {
           style={{ maxHeight: 'min(82vh, 600px)' }}
         >
           {/* Header */}
-          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-[#16a34a] to-[#15803d] text-white shrink-0">
-            <div className="flex items-center gap-2">
-              <Sparkles size={16} />
+          <div className="flex items-center justify-between px-4 py-3 bg-white dark:bg-dark-card border-b border-light-border dark:border-dark-border shrink-0">
+            <div className="flex items-center gap-2 text-light-text dark:text-dark-text">
+              <Sparkles size={16} className="text-[#6366f1]" />
               <span className="text-sm font-bold">Simba AI Assistant</span>
             </div>
             <button
               onClick={() => setOpen(false)}
-              className="w-7 h-7 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center transition-colors"
+              className="w-7 h-7 rounded-full bg-gray-100 dark:bg-slate-700 hover:bg-gray-200 dark:hover:bg-slate-600 text-gray-500 dark:text-gray-400 flex items-center justify-center transition-colors"
               aria-label="Close"
             >
               <X size={14} />
@@ -141,14 +141,14 @@ export default function FloatingAiAssistant() {
                 {/* Bubble row */}
                 <div className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   {msg.role === 'assistant' && (
-                    <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#16a34a] to-[#15803d] flex items-center justify-center mr-1.5 mt-0.5 shrink-0">
+                    <div className="w-5 h-5 rounded-full bg-[#6366f1] flex items-center justify-center mr-1.5 mt-0.5 shrink-0">
                       <Bot size={11} className="text-white" />
                     </div>
                   )}
                   <div
                     className={`max-w-[84%] px-3 py-2 rounded-2xl text-sm leading-relaxed whitespace-pre-line ${
                       msg.role === 'user'
-                        ? 'bg-[#16a34a] text-white rounded-tr-sm'
+                        ? 'bg-[#6366f1] text-white rounded-tr-sm'
                         : 'bg-gray-100 dark:bg-slate-700 text-light-text dark:text-dark-text rounded-tl-sm'
                     }`}
                   >
@@ -164,7 +164,7 @@ export default function FloatingAiAssistant() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setOpen(false)}
-                        className="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full bg-[#16a34a]/10 text-[#16a34a] dark:text-green-400 border border-[#16a34a]/30 hover:bg-[#16a34a] hover:text-white transition-colors font-medium"
+                        className="inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full bg-[#6366f1]/10 text-[#4f46e5] dark:text-[#6366f1] border border-[#6366f1]/30 hover:bg-[#6366f1] hover:text-white transition-colors font-medium"
                       >
                         <ExternalLink size={10} />
                         {link.label}
@@ -192,7 +192,7 @@ export default function FloatingAiAssistant() {
                         </Link>
                         <button
                           onClick={() => addItem(product)}
-                          className="shrink-0 w-7 h-7 rounded-full bg-[#16a34a]/10 hover:bg-[#16a34a] text-[#16a34a] hover:text-white flex items-center justify-center transition-colors"
+                          className="shrink-0 w-7 h-7 rounded-full bg-[#6366f1]/10 hover:bg-[#6366f1] text-[#4f46e5] hover:text-white flex items-center justify-center transition-colors"
                           title="Add to cart"
                         >
                           <ShoppingCart size={11} />
@@ -215,7 +215,7 @@ export default function FloatingAiAssistant() {
                       <button
                         key={s}
                         onClick={() => void handleSend(s)}
-                        className="text-[11px] px-2.5 py-1 rounded-full border border-light-border dark:border-dark-border text-gray-600 dark:text-gray-300 hover:border-[#16a34a] hover:text-[#16a34a] transition-colors"
+                        className="text-[11px] px-2.5 py-1 rounded-full border border-light-border dark:border-dark-border text-gray-600 dark:text-gray-300 hover:border-[#6366f1] hover:text-[#4f46e5] transition-colors"
                       >
                         {s}
                       </button>
@@ -228,7 +228,7 @@ export default function FloatingAiAssistant() {
             {/* Typing indicator */}
             {loading && (
               <div className="flex justify-start items-center gap-1.5">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-r from-[#16a34a] to-[#15803d] flex items-center justify-center shrink-0">
+                <div className="w-5 h-5 rounded-full bg-[#6366f1] flex items-center justify-center shrink-0">
                   <Bot size={11} className="text-white" />
                 </div>
                 <div className="bg-gray-100 dark:bg-slate-700 px-3 py-2.5 rounded-2xl rounded-tl-sm flex gap-1 items-center">
@@ -253,12 +253,12 @@ export default function FloatingAiAssistant() {
                   if (e.key === 'Enter') { e.preventDefault(); void handleSend(query); }
                 }}
                 placeholder="Ask anything — shopping, products, help..."
-                className="flex-1 px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg text-light-text dark:text-dark-text focus:outline-none focus:border-[#16a34a]"
+                className="flex-1 px-3 py-2 text-sm border border-light-border dark:border-dark-border rounded-btn bg-white dark:bg-dark-bg text-light-text dark:text-dark-text focus:outline-none focus:border-[#6366f1]"
               />
               <button
                 onClick={() => void handleSend(query)}
                 disabled={loading || query.trim().length < 2}
-                className="w-9 h-9 rounded-btn bg-[#16a34a] hover:bg-[#15803d] text-white flex items-center justify-center disabled:opacity-50 transition-colors"
+                className="w-9 h-9 rounded-btn bg-[#6366f1] hover:bg-[#4f46e5] text-white flex items-center justify-center disabled:opacity-50 transition-colors"
                 aria-label="Send"
               >
                 <Send size={15} />
@@ -270,7 +270,7 @@ export default function FloatingAiAssistant() {
 
       <button
         onClick={() => setOpen(v => !v)}
-        className="fixed bottom-[5rem] right-3 sm:right-4 md:bottom-6 md:right-6 z-[70] w-14 h-14 rounded-full shadow-2xl bg-gradient-to-r from-[#16a34a] to-[#15803d] text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
+        className="fixed bottom-[5rem] right-3 sm:right-4 md:bottom-6 md:right-6 z-[70] w-14 h-14 rounded-full shadow-2xl bg-[#6366f1] hover:bg-[#4f46e5] text-white flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
         aria-label="Open AI Assistant"
       >
         <Bot size={24} />

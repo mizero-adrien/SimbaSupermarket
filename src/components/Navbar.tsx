@@ -17,22 +17,30 @@ import {
   Package,
   LifeBuoy,
   LogOut,
+  LayoutGrid,
+  Heart,
 } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useCart } from '@/context/CartContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
+import { useWishlist } from '@/context/WishlistContext';
+import { useRouter, usePathname } from 'next/navigation';
 import { getMasterProducts } from '@/lib/productData';
 import { formatPrice } from '@/lib/formatPrice';
+import { getCategories, categoryEmojis } from '@/lib/products';
 import { Language } from '@/types';
 import { Product } from '@/types';
 import FloatingAiAssistant from '@/components/FloatingAiAssistant';
 
 export default function Navbar() {
   const { totalItems } = useCart();
+  const { count: wishlistCount } = useWishlist();
   const { language, setLanguage, t, translateCategory } = useLanguage();
   const { user, logout } = useAuth();
   const { theme, setTheme } = useTheme();
+  const router = useRouter();
+  const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [aiQuery, setAiQuery] = useState('');
@@ -42,9 +50,11 @@ export default function Navbar() {
   const [aiResults, setAiResults] = useState<Product[]>([]);
   const [aiLoading, setAiLoading] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [catOpen, setCatOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
+  const catRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -66,21 +76,24 @@ export default function Navbar() {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
         setLangOpen(false);
       }
+      if (catRef.current && !catRef.current.contains(e.target as Node)) {
+        setCatOpen(false);
+      }
     }
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  const categories = Array.from(new Set(products.map(p => p.category)));
+  const categoryData = getCategories(products);
+
   const langs: { code: Language; label: string; full: string }[] = [
     { code: 'en', label: 'EN', full: 'English' },
     { code: 'fr', label: 'FR', full: 'FranÃ§ais' },
     { code: 'rw', label: 'RW', full: 'Kinyarwanda' },
   ];
   const currentLang = langs.find(l => l.code === language)!;
-  const quickCategories = categories.slice(0, 10);
-  const profileInitial = user?.name?.trim()?.charAt(0).toUpperCase() ?? '';
+const profileInitial = user?.name?.trim()?.charAt(0).toUpperCase() ?? '';
 
   async function runAiSearch(query: string) {
     const clean = query.trim();
@@ -118,10 +131,10 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="sticky top-0 z-40 bg-white/90 dark:bg-navy/90 backdrop-blur-md border-b border-light-border dark:border-dark-border shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center gap-8">
+    <nav className="sticky top-0 z-40 bg-mirror dark:bg-navy/90 backdrop-blur-md border-b border-light-border dark:border-dark-border shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center gap-2 sm:gap-4 md:gap-8">
         <Link href="/" className="flex items-center shrink-0">
-          <Image src="/images/logo.png" alt="Simba Supermarket" height={56} width={56} className="h-14 w-14 object-cover rounded-full" priority />
+          <Image src="/images/logo.png" alt="Simba Supermarket" height={56} width={120} className="h-8 sm:h-10 md:h-12 w-auto object-contain" priority />
         </Link>
 
         {/* Desktop nav links */}
@@ -233,23 +246,24 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2 mr-1">
             {user ? (
               <div className="relative group">
-                <button
+                <Link
+                  href="/account"
                   className="h-10 w-10 rounded-full border border-light-border dark:border-dark-border bg-white dark:bg-dark-card shadow-sm flex items-center justify-center overflow-hidden hover:border-[#16a34a] transition-colors"
-                  aria-label="Open profile menu"
+                  aria-label="Go to profile"
                 >
                   {profileInitial ? (
                     <span className="text-sm font-bold text-[#16a34a]">{profileInitial}</span>
                   ) : (
                     <UserRound size={18} className="text-gray-500" />
                   )}
-                </button>
+                </Link>
 
                 <div className="absolute top-full right-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-150 z-50">
                   <div className="w-56 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card shadow-xl py-2">
-                    <div className="px-4 pb-2 mb-1 border-b border-light-border dark:border-dark-border">
+                    <Link href="/account" className="block px-4 pb-2 mb-1 border-b border-light-border dark:border-dark-border hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors">
                       <p className="text-sm font-semibold text-light-text dark:text-dark-text line-clamp-1">{user.name}</p>
                       <p className="text-xs text-gray-500 dark:text-gray-400 line-clamp-1">{user.email}</p>
-                    </div>
+                    </Link>
 
                     {user.role !== 'customer' ? (
                       <Link href="/dashboard" className="flex items-center gap-2 px-4 py-2 text-sm text-light-text dark:text-dark-text hover:bg-gray-50 dark:hover:bg-slate-700 hover:text-[#f59e0b] transition-colors">
@@ -325,10 +339,21 @@ export default function Navbar() {
             </button>
           )}
 
-          <Link href="/cart" className="hidden md:flex relative p-2 text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors" aria-label={`Cart, ${totalItems} items`}>
+          {/* Wishlist */}
+          <Link href="/wishlist" className="relative p-2 text-light-text dark:text-dark-text hover:text-red-500 transition-colors" aria-label={`Wishlist, ${wishlistCount} items`}>
+            <Heart size={20} fill={wishlistCount > 0 ? 'currentColor' : 'none'} className={wishlistCount > 0 ? 'text-red-500' : ''} />
+            {wishlistCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 bg-red-500 text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
+                {wishlistCount > 9 ? '9+' : wishlistCount}
+              </span>
+            )}
+          </Link>
+
+          {/* Cart */}
+          <Link href="/cart" className="relative p-2 text-light-text dark:text-dark-text hover:text-[#16a34a] transition-colors" aria-label={`Cart, ${totalItems} items`}>
             <ShoppingCart size={20} />
             {totalItems > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 bg-[#16a34a] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 bg-[#f59e0b] text-white text-xs font-bold w-4 h-4 rounded-full flex items-center justify-center">
                 {totalItems > 9 ? '9+' : totalItems}
               </span>
             )}
@@ -338,19 +363,71 @@ export default function Navbar() {
 
       <div className="hidden md:block border-t border-light-border dark:border-dark-border bg-white/80 dark:bg-navy/80">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="h-11 flex items-center gap-2 overflow-x-auto scrollbar-hide">
-            <Link href="/products" className="shrink-0 text-xs font-semibold px-3 py-1.5 rounded-full bg-[#f59e0b] text-white hover:bg-green-700 transition-colors">
-              {t('All Categories')}
-            </Link>
-            {quickCategories.map(cat => (
-              <Link
-                key={cat}
-                href={`/products?category=${encodeURIComponent(cat)}`}
-                className="shrink-0 text-xs font-medium px-3 py-1.5 rounded-full border border-light-border dark:border-dark-border text-light-text dark:text-dark-text hover:border-[#f59e0b] hover:text-[#d97706] hover:bg-[#f59e0b]/5 transition-colors"
+          <div className="h-11 flex items-center justify-between">
+            <div ref={catRef} className="relative">
+              <button
+                onClick={() => setCatOpen(o => !o)}
+                className={`flex items-center gap-2 text-xs font-semibold px-4 py-1.5 rounded-full transition-colors ${
+                  catOpen ? 'bg-[#d97706] text-white' : 'bg-[#f59e0b] text-white hover:bg-[#d97706]'
+                }`}
               >
-                {translateCategory(cat)}
-              </Link>
-            ))}
+                <LayoutGrid size={13} />
+                {t('All Categories')}
+                <ChevronDown size={12} className={`transition-transform duration-150 ${catOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              {catOpen && (
+                <div className="absolute left-0 top-full mt-2 z-50 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card shadow-xl p-4 w-[500px] max-w-[calc(100vw-2rem)]">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Browse by category</p>
+
+                  <button
+                    onClick={() => { router.push('/products'); setCatOpen(false); }}
+                    className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg mb-3 bg-[#f59e0b]/10 hover:bg-[#f59e0b]/20 text-left transition-colors group"
+                  >
+                    <span className="text-xl">🛒</span>
+                    <span className="flex-1 text-sm font-semibold text-light-text dark:text-dark-text group-hover:text-[#d97706]">
+                      {t('All Products')}
+                    </span>
+                    <span className="text-xs text-gray-400">{products.length} items</span>
+                  </button>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    {categoryData.map(({ name, count }) => (
+                      <button
+                        key={name}
+                        onClick={() => { router.push(`/products?category=${encodeURIComponent(name)}`); setCatOpen(false); }}
+                        className="flex flex-col items-center gap-1.5 px-2 py-3 rounded-lg border border-transparent hover:border-[#f59e0b]/50 hover:bg-[#f59e0b]/5 transition-colors group text-center"
+                      >
+                        <span className="text-2xl">{categoryEmojis[name] ?? '📦'}</span>
+                        <span className="text-xs font-semibold text-light-text dark:text-dark-text group-hover:text-[#d97706] leading-tight">{translateCategory(name)}</span>
+                        <span className="text-xs text-gray-400">{count} items</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Free delivery badge */}
+            <Link href="/products" className="flex items-center gap-1.5 text-xs font-medium text-red-500 hover:text-red-600 transition-colors">
+              <span>🚚</span>
+              Free delivery over <span className="font-semibold text-black dark:text-white">50,000 RWF</span>
+            </Link>
+
+            {/* Today's Deals shortcut */}
+            <button
+              onClick={() => {
+                if (pathname === '/') {
+                  document.getElementById('todays-deals')?.scrollIntoView({ behavior: 'smooth' });
+                } else {
+                  router.push('/#todays-deals');
+                }
+              }}
+              className="flex items-center gap-1.5 text-xs font-semibold text-[#d97706] hover:text-[#b45309] transition-colors"
+            >
+              <span>🔥</span>
+              {t("Today's Deals")}
+            </button>
           </div>
         </div>
       </div>

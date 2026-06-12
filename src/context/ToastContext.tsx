@@ -27,7 +27,7 @@ const ToastContext = createContext<ToastContextValue>({
 });
 
 const CONFIG: Record<ToastType, { Icon: React.ElementType; border: string; iconCls: string }> = {
-  success: { Icon: CheckCircle2,  border: 'border-l-[#16a34a]', iconCls: 'text-[#16a34a]' },
+  success: { Icon: CheckCircle2,  border: 'border-l-[#f59e0b]', iconCls: 'text-[#f59e0b]' },
   error:   { Icon: XCircle,       border: 'border-l-red-500',   iconCls: 'text-red-500'   },
   warning: { Icon: AlertTriangle, border: 'border-l-[#f59e0b]', iconCls: 'text-[#f59e0b]' },
   info:    { Icon: Info,          border: 'border-l-blue-500',  iconCls: 'text-blue-500'  },
