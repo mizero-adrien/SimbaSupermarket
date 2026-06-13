@@ -111,6 +111,16 @@ export interface BranchProduct extends Product {
   addedAt: string;
 }
 
+export interface ContactMessage {
+  id: string;
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+  createdAt: string;
+  read: boolean;
+}
+
 export interface BranchOrder {
   id: string;
   branchId: string;

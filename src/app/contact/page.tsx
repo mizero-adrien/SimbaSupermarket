@@ -6,6 +6,7 @@ import {
   ChevronDown, CheckCircle2,
 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { saveContactMessage } from '@/lib/contactData';
 
 const SOCIAL_LINKS = [
   {
@@ -82,7 +83,8 @@ export default function ContactPage() {
     if (Object.keys(errs).length) { setErrors(errs); return; }
     setErrors({});
     setSending(true);
-    await new Promise(r => setTimeout(r, 1200));
+    await new Promise(r => setTimeout(r, 800));
+    saveContactMessage({ name: form.name, email: form.email, subject: form.subject, message: form.message });
     setSending(false);
     setSent(true);
     setForm({ name: '', email: '', subject: '', message: '' });

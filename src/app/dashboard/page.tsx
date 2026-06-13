@@ -5,7 +5,7 @@ import Link from 'next/link';
 import dynamic from 'next/dynamic';
 import {
   ShoppingCart, Package, TrendingUp, Users,
-  Clock, CheckCircle, AlertCircle, XCircle, ChevronRight, ArrowUpRight,
+  Clock, CheckCircle, AlertCircle, XCircle, ChevronRight, ArrowUpRight, MessageSquare,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { getAllBranches, getBranchById } from '@/lib/branches';
@@ -204,10 +204,10 @@ export default function DashboardPage() {
       {/* Quick actions */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { href: '/dashboard/products',  icon: Package,      label: 'Add Product',  color: 'text-blue-600 bg-blue-50 dark:bg-blue-900/20' },
-          { href: '/dashboard/orders',    icon: ShoppingCart, label: 'View Orders',  color: 'text-[#f59e0b] bg-[#f59e0b]/10' },
-          { href: '/dashboard/categories',icon: TrendingUp,   label: 'Categories',   color: 'text-purple-600 bg-purple-50 dark:bg-purple-900/20' },
-          { href: '/dashboard/settings',  icon: Users,        label: 'Settings',     color: 'text-amber-600 bg-amber-50 dark:bg-amber-900/20' },
+          { href: '/dashboard/products',  icon: Package,        label: 'Add Product',  color: 'text-blue-600 bg-blue-50 dark:bg-blue-900/20' },
+          { href: '/dashboard/orders',    icon: ShoppingCart,   label: 'View Orders',  color: 'text-[#f59e0b] bg-[#f59e0b]/10' },
+          { href: '/dashboard/messages',  icon: MessageSquare,  label: 'Messages',     color: 'text-[#16a34a] bg-[#16a34a]/10' },
+          { href: '/dashboard/settings',  icon: Users,          label: 'Settings',     color: 'text-amber-600 bg-amber-50 dark:bg-amber-900/20' },
         ].map(action => {
           const Icon = action.icon;
           return (

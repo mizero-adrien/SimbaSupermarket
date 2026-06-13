@@ -60,7 +60,7 @@ export default function ProductCard({ product }: Props) {
     <>
       <div className="group bg-white dark:bg-dark-card rounded-card shadow-sm border border-light-border dark:border-dark-border hover:shadow-lg hover:scale-[1.02] transition-all duration-200 overflow-hidden flex flex-col">
         <Link href={`/products/${product.id}`} className="block relative">
-          <div className="relative h-40 sm:h-48 overflow-hidden bg-gray-100 dark:bg-slate-800">
+          <div className="relative h-36 sm:h-44 overflow-hidden bg-gray-100 dark:bg-slate-800">
             <Image
               src={image}
               alt={product.name}
@@ -161,7 +161,7 @@ export default function ProductCard({ product }: Props) {
           )}
           <button
             onClick={handleAddToCart}
-            className="w-full flex items-center justify-center gap-2 bg-[#16a34a] hover:bg-green-700 text-white font-semibold text-sm py-2.5 rounded-btn transition-colors duration-150"
+            className="w-full flex items-center justify-center gap-2 bg-[#16a34a] hover:bg-green-700 text-white font-semibold text-sm py-2 rounded-btn transition-colors duration-150"
             aria-label={`Add ${product.name} to cart`}
           >
             <ShoppingCart size={14} />

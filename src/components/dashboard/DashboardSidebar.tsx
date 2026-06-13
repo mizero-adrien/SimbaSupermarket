@@ -16,9 +16,11 @@ import {
   ShoppingBag,
   Boxes,
   ClipboardList,
+  MessageSquare,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { getBranchById } from '@/lib/branches';
+import { getUnreadCount } from '@/lib/contactData';
 
 export default function DashboardSidebar() {
   const pathname = usePathname();
@@ -31,6 +33,7 @@ export default function DashboardSidebar() {
   const isSystemAdmin = user?.role === 'system_admin' || user?.role === 'admin';
   const isStaff = user?.role === 'branch_staff';
   const isManager = user?.role === 'branch_manager' || user?.role === 'branch_representative';
+  const unreadMessages = typeof window !== 'undefined' ? getUnreadCount() : 0;
 
   const roleLabel = isSystemAdmin
     ? 'System Admin'
@@ -41,19 +44,20 @@ export default function DashboardSidebar() {
     : branch?.name ?? 'Dashboard';
 
   // Nav items filtered by role
-  type NavItem = { href: string; label: string; icon: React.ElementType; exact?: boolean };
+  type NavItem = { href: string; label: string; icon: React.ElementType; exact?: boolean; badge?: number };
   const NAV_ITEMS: NavItem[] = isStaff
     ? [
         { href: '/dashboard/staff',     label: 'My Orders',  icon: ClipboardList },
         { href: '/dashboard/inventory', label: 'Inventory',  icon: Boxes },
       ]
     : [
-        { href: '/dashboard',           label: 'Overview',   icon: LayoutDashboard, exact: true },
-        { href: '/dashboard/orders',    label: 'Orders',     icon: ShoppingCart },
-        { href: '/dashboard/inventory', label: 'Inventory',  icon: Boxes },
-        { href: '/dashboard/products',  label: 'Products',   icon: Package },
-        { href: '/dashboard/categories',label: 'Categories', icon: Tag },
-        { href: '/dashboard/settings',  label: 'Settings',   icon: Settings },
+        { href: '/dashboard',            label: 'Overview',   icon: LayoutDashboard, exact: true },
+        { href: '/dashboard/orders',     label: 'Orders',     icon: ShoppingCart },
+        { href: '/dashboard/inventory',  label: 'Inventory',  icon: Boxes },
+        { href: '/dashboard/products',   label: 'Products',   icon: Package },
+        { href: '/dashboard/categories', label: 'Categories', icon: Tag },
+        { href: '/dashboard/messages',   label: 'Messages',   icon: MessageSquare, badge: unreadMessages },
+        { href: '/dashboard/settings',   label: 'Settings',   icon: Settings },
       ];
 
   function handleLogout() {
@@ -111,8 +115,20 @@ export default function DashboardSidebar() {
               } ${collapsed ? 'justify-center' : ''}`}
               title={collapsed ? item.label : undefined}
             >
-              <Icon size={18} className="shrink-0" />
-              {!collapsed && <span>{item.label}</span>}
+              <div className="relative shrink-0">
+                <Icon size={18} />
+                {item.badge != null && item.badge > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 min-w-[16px] h-4 px-0.5 rounded-full bg-red-500 text-white text-[9px] font-bold flex items-center justify-center">
+                    {item.badge > 99 ? '99+' : item.badge}
+                  </span>
+                )}
+              </div>
+              {!collapsed && <span className="flex-1">{item.label}</span>}
+              {!collapsed && item.badge != null && item.badge > 0 && (
+                <span className="ml-auto bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full leading-none">
+                  {item.badge}
+                </span>
+              )}
             </Link>
           );
         })}

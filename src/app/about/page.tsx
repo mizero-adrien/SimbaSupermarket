@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Users, MapPin, ShieldCheck, Truck, Heart, Star, UserRound, Briefcase, Wrench, Monitor } from 'lucide-react';
+import { Users, MapPin, ShieldCheck, Truck, Heart, Star, Briefcase, Wrench, Monitor } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function AboutPage() {

@@ -337,7 +337,7 @@ export default function HomePage() {
               {t('View All')} <ArrowRight size={13} />
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
             {!loaded
               ? Array.from({ length: 20 }).map((_, i) => <ProductCardSkeleton key={i} />)
               : featuredProducts.slice(0, 20).map(product => (
@@ -348,29 +348,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Bottom value props */}
-      <section className="px-4 pb-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {[
-            { Icon: Truck, title: t('Fast Delivery'), desc: t('Same-day delivery across Kigali'), color: '#f59e0b' },
-            { Icon: ShieldCheck, title: t('Verified Products'), desc: t('552 quality-checked items'), color: '#16a34a' },
-            { Icon: CreditCard, title: t('Easy Payment'), desc: t('MTN MoMo, Airtel & cash'), color: '#6366f1' },
-          ].map(({ Icon, title, desc, color }) => (
-            <div
-              key={title}
-              className="flex items-center gap-4 bg-white dark:bg-dark-card border border-light-border dark:border-dark-border rounded-card px-5 py-4"
-            >
-              <div className="w-11 h-11 rounded-full flex items-center justify-center shrink-0" style={{ backgroundColor: `${color}18` }}>
-                <Icon size={20} style={{ color }} />
-              </div>
-              <div>
-                <p className="font-semibold text-sm text-light-text dark:text-dark-text">{title}</p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">{desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
     </div>
   );

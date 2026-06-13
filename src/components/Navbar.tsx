@@ -131,7 +131,7 @@ const profileInitial = user?.name?.trim()?.charAt(0).toUpperCase() ?? '';
   }
 
   return (
-    <nav className="sticky top-0 z-40 bg-mirror dark:bg-navy/90 backdrop-blur-md border-b border-light-border dark:border-dark-border shadow-sm">
+    <nav className="sticky top-0 z-40 bg-mirror dark:bg-none dark:bg-navy/90 backdrop-blur-md border-b border-light-border dark:border-dark-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-center gap-2 sm:gap-4 md:gap-8">
         <Link href="/" className="flex items-center shrink-0">
           <Image src="/images/logo.png" alt="Simba Supermarket" height={56} width={120} className="h-8 sm:h-10 md:h-12 w-auto object-contain" priority />

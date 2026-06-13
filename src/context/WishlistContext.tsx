@@ -15,14 +15,16 @@ interface WishlistContextType {
 const WishlistContext = createContext<WishlistContextType | null>(null);
 
 export function WishlistProvider({ children }: { children: React.ReactNode }) {
-  const [ids, setIds] = useState<(string | number)[]>(() => {
-    if (typeof window === 'undefined') return [];
-    try { return JSON.parse(localStorage.getItem('simba_wishlist') ?? '[]'); }
-    catch { return []; }
-  });
+  const [ids, setIds] = useState<(string | number)[]>([]);
   const [allProducts, setAllProducts] = useState<Product[]>([]);
 
   useEffect(() => { setAllProducts(getMasterProducts()); }, []);
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem('simba_wishlist') ?? '[]');
+      if (Array.isArray(saved) && saved.length > 0) setIds(saved);
+    } catch {}
+  }, []);
   useEffect(() => { localStorage.setItem('simba_wishlist', JSON.stringify(ids)); }, [ids]);
 
   const wishlistItems = allProducts.filter(p => ids.includes(p.id));
